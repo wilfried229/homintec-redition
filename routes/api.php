@@ -23,8 +23,13 @@ Route::group(['prefix' => 'homintec'], function () {
 
     /// Route crud redition
     Route::resources([
-        'redition' => 'ReditionController'
+        'redition' => 'ReditionController',
+        'surcharge'  => 'SurchargesController'
     ]);
+
+    Route::post('fiche/techniques/store','TechniquesController@saveFiches');
+    Route::get('fiche/techniques/get/','TechniquesController@getficheTechniques');
+    Route::get('checked/connexion','TechniquesController@checkedConnexion');
 
 });
 

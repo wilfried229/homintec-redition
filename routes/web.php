@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('dashboard.index');
 });
 
-Route::get('redition','ReditionController@redition')->name('redition.list.sites');
+Route::get('redition/{site}','ReditionController@redition')->name('redition.list.sites');
+Route::get('surchages/{site}','SurchargesController@suchargeView')->name('sucharge.list.sites');

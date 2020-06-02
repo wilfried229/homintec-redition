@@ -14,12 +14,10 @@ class ReditionController extends Controller
      * Redition by site
      */
 
-     public function redition(){
+     public function redition($site){
 
-
-
-
-        return view('dashboard.redition');
+        $reditions = Redition::where('site',$site)->get();
+        return view('dashboard.redition',compact('reditions','site'));
      }
 
     /**
@@ -57,30 +55,39 @@ class ReditionController extends Controller
             $redition->site = $request->site;
             $redition->voie = $request->voie;
             $redition->percepteur = $request->percepteur;
-            $redition->temps_services = $request->temps_services;
-            $redition->date_debut = $request->date_debut;
-            $redition->date_fin  = $request->date_fin;
+            $redition->temps_presence = $request->temps_presence;
+            $redition->debut_de_vacation = $request->debut_de_vacation;
+            $redition->fin_de_vacation  = $request->fin_de_vacation;
             $redition->superviseur = $request->superviseur;
             $redition->controleur = $request->controleur;
             $redition->administateur = $request->administateur;
-            $redition->nbre_10000 = $request->nbre_10000;
-            $redition->nbre_5000 = $request->nbre_5000;
-            $redition->nbre_2000 = $request->nbre_2000;
-            $redition->nbre_1000 = $request->nbre_1000;
-            $redition->nbre_500 = $request->nbre_500;
-            $redition->nbre_250 = $request->nbre_250;
-            $redition->nbre_100 = $request->nbre_100;
-            $redition->nbre_50 = $request->nbre_50;
-            $redition->nbre_25 = $request->nbre_25;
+
+            $redition->nbre_vehiciule  = $request->nbre_vehiciule;
             $redition->declaration_billetaire = $request->declaration_billetaire;
             $redition->declaration_ticket_manuel = $request->declaration_ticket_manuel;
-            $redition->penalites = $request->penalites;
+            $redition->penalite_rejetter = $request->penalite_rejetter;
+            $redition->penalite_valider_local = $request->penalite_valider_local;
+            $redition->penalite_valider_ext = $request->penalite_valider_ext;
+
             $redition->resultat_compte = $request->resultat_compte;
             $redition->somme_gate = $request->somme_gate;
             $redition->somme_declarer_caisse = $request->somme_declarer_caisse;
-            $redition->passage_gate = $request->passage_gate;
+            $redition->passage_gate_24 = $request->passage_gate_24;
+            $redition->gate_24 = $request->gate_24;
+            $redition->remarque = $request->remarque;
+            $redition->manquant = $request->manquant;
+            $redition->suplus  = $request->suplus;
+            $redition->nbre_violation = $request->nbre_violation;
+            $redition->nbre_exempte = $request->nbre_exempte;
+            $redition->nbre_passage = $request->nbre_passage;
+            $redition->montant_coupant = $request->montant_coupant;
+            $redition->somme_totale_informatise = $request->somme_totale_informatise;
+            $redition->somme_informatise_sans_gate_24 = $request->somme_informatise_sans_gate_24;
+
             $redition->save();
+
             return response()->json($redition, 200);
+
             } catch (\Exception $ex) {
                 //throw $th;
 

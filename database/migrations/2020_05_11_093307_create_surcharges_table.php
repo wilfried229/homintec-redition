@@ -18,7 +18,21 @@ class CreateSurchargesTable extends Migration
             $table->string('immatriculation');
             $table->string('poid_rouland');
             $table->string('surcharge');
-            $table->string('montant_surcahrge');
+            $table->string('montant_surcharge');
+            $table->string('type_surcharge');
+            $table->string('date_recette');
+            $table->string('heure_recette');
+            $table->string('essieu');
+            $table->string('poids_roulant');
+            $table->string('poid_autorise');
+            $table->string('excedent');
+            $table->string('montant_apayer');
+            $table->string('montant_payer');
+            $table->string('percepteur');
+            $table->date('type_vacation');
+            $table->integer('redition_id');
+            $table->string('site');
+            $table->string('voie');
             $table->timestamps();
         });
     }
