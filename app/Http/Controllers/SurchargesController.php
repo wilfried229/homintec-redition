@@ -61,7 +61,6 @@ class SurchargesController extends Controller
         $surchage->excedent = $request->excedent;
         $surchage->montant_apayer  = $request->montant_apayer;
         $surchage->montant_payer = $request->montant_payer;
-        $surchage->surcharge  = $request->surcharge ;
         $surchage->percepteur = $request->percepteur;
         $surchage->site = $request->site;
         $surchage->voie = $request->voie;

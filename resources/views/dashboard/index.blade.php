@@ -1,4 +1,4 @@
- @extends('template')
+ @extends('template-dashboard')
 
 
  @section('content')
@@ -144,6 +144,7 @@
             </div>
         </div>
         <!-- #END# CPU Usage -->
+
 
     </div>
 </section>
