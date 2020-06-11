@@ -1,5 +1,7 @@
 @extends('template-dashboard')
 
+@section('css')
+@endsection
 
 
 @section('header')
@@ -9,156 +11,77 @@
   </div>
 @endsection
 @section('content')
-
-<section class="content">
-   <div class="container-fluid">
+<div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">List des Recettes</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Listes des recettes</h6>
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length"><label>Show <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
 
-<table class="table table-bordered table-striped table-hover dataTable js-exportable">
-    <thead>
-        <tr>
-            <th>Site</th>
-            <th>Voie</th>
-            <th>Percepteur</th>
-            <th>Temps services</th>
-            <th>Date de début</th>
-            <th>Date de fin</th>
-            <th>Superviseur</th>
-            <th>Controleur</th>
-            <th>Administateur</th>
-            <th>nbre_vehicule</th>
-            <th>manquant</th>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Site</th>
+                    <th>cabine</th>
+                    <th>Percepteur</th>
+                    <th>Date</th>
+                    <th>type</th>
+                    <th>ptrac</th>
+                    <th>cmaes</th>
+                    <th>es</th>
+                    <th>ptt</th>
+                    <th>over</th>
+                    <th>caisse</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Site</th>
+                    <th>cabine</th>
+                    <th>Percepteur</th>
+                    <th>Date</th>
+                    <th>type</th>
+                    <th>ptrac</th>
+                    <th>cmaes</th>
+                    <th>es</th>
+                    <th>ptt</th>
+                    <th>over</th>
+                    <th>caisse</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                @foreach ($reditions2 as $redition)
+                <tr>
+                <td>{{$redition->site}}</td>
+                <td>{{$redition->cabine}}</td>
+                <td>{{$redition->percepteur}}</td>
+                <td>{{$redition->date}}</td>
+                <td>{{$redition->type}}</td>
+                <td>{{$redition->ptrac}}</td>
+                <td>{{$redition->cmaes}}</td>
+                <td>{{$redition->es}}</td>
+                <th>{{$redition->ptt}}</th>
+                <th>{{$redition->over}}</th>
 
-            <th>suplus</th>
-            <th>nbre_violation</th>
-            <th>nbre_exempte</th>
+                <td>{{$redition->caisse}}</td>
 
+                </tr>
 
-
-            <th>Déclaration billetaire</th>
-            <th>Déclaration ticket manuel</th>
-            <th>penalitée rejetter</th>
-            <th>penalié validée local</th>
-            <th>penalité validée extanté</th>
-            <th>Somme déclarée caisse</th>
-            <th>Réesultat_compte</th>
-            <th>Somme déclarer caisse</th>
-            <th>Résultat Compte</th>
-            <th>Somme gate</th>
-            <th>Passage gate</th>
-            <th>remarque</th>
-            <th>nbre_passage</th>
-            <th>montant_coupant</th>
-            <th>somme_totale_informatise</th>
-             <th>somme_informatise_sans_gate_24</th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr>
-            <th>Site</th>
-            <th>Voie</th>
-            <th>Percepteur</th>
-            <th>Temps services</th>
-            <th>Date de début</th>
-            <th>Date de fin</th>
-            <th>Superviseur</th>
-            <th>Controleur</th>
-            <th>Administateur</th>
-            <th>nbre_vehicule</th>
-            <th>manquant</th>
-
-            <th>suplus</th>
-            <th>nbre_violation</th>
-            <th>nbre_exempte</th>
-
-
-
-            <th>Déclaration billetaire</th>
-            <th>Déclaration ticket manuel</th>
-            <th>penalite_rejetter</th>
-            <th>penalite_valider_local</th>
-            <th>penalite_valider_ext</th>
-            <th>somme_declarer_caisse</th>
-            <th>resultat_compte</th>
-            <th>Somme déclarer caisse</th>
-            <th>Résultat Compte</th>
-            <th>Somme gate</th>
-            <th>Passage gate</th>
-            <th>remarque</th>
-            <th>nbre_passage</th>
-            <th>montant_coupant</th>
-            <th>somme_totale_informatise</th>
-             <th>somme_informatise_sans_gate_24</th>
-        </tr>
-    </tfoot>
-    <tbody>
-
-        @foreach ($reditions as $redition)
-        <tr>
-        <td>{{$redition->site}}</td>
-        <td>{{$redition->voie}}</td>
-        <td>{{$redition->percepteur}}</td>
-        <td>{{$redition->temps_de_presence}}</td>
-        <td>{{$redition->debut_de_vacationt}}</td>
-        <td>{{$redition->fin_de_vacation}}</td>
-        <td>{{$redition->superviseur}}</td>
-        <td>{{$redition->controleur}}</td>
-        <td>{{$redition->administrateur}}</td>
-        <td>{{$redition->nbre_vehicule}}</td>
-        <td>{{$redition->manquant}}</td>
-        <td>{{$redition->suplus}}</td>
-        <td>{{$redition->nbre_violation}}</td>
-        <td>{{$redition->nbre_exempte}}</td>
-        <td>{{$redition->declaration_billetaire}}</td>
-        <td>{{$redition->declaration_ticket_manuel}}</td>
-        <td>{{$redition->penalite_rejetter}}</td>
-        <td>{{$redition->penalite_valider_local}}</td>
-        <td>{{$redition->penalite_valider_ext}}</td>
-        <td>{{$redition->somme_declarer_caisse}}</td>
-        <td>{{$redition->resultat_compte}}</td>
-        <td>{{$redition->somme_gate}}</td>
-        <td>{{$redition->passage_gate_24}}</td>
-        <td>{{$redition->remarque}}</td>
-        <td>{{$redition->remarque}}</td>
-        <td>{{$redition->nbre_passage}}</td>
-        <td>{{$redition->montant_coupant}}</td>
-        <td>{{$redition->somme_totale_informatise}}</td>
-        <td>{{$redition->somme_informatise_sans_gate_24}}</td>
-
-
-
-
-
-        </tr>
-
-        @endforeach
-    </tbody>
-</table>
+                @endforeach
+                </tbody>
+            </table>
+          </div>
         </div>
-
-        </div>
-
-        
       </div>
 
-    </div>
 
-    </div>
-       <!-- #END# CPU Usage -->
-
-   </div>
-</section>
+</div>
 @endsection
 
 
 @section('js')
-
+  <!-- Page level plugins -->
 
 @endsection
 

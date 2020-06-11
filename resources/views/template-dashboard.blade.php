@@ -17,7 +17,7 @@
   @include('partials.dashboard2.css')
 
 
-  @yield('style-css')
+  @yield('css')
 
 </head>
 
@@ -92,7 +92,7 @@
   </div>
 
    @include('partials.dashboard2.javascript')
-   @yield('custmo-js')
+   @yield('js')
 </body>
 
 </html>

@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('redition/{site}','web\ReditionWebController@redition')->name('redition.list.sites');
-Route::get('redition2/{site}','web\ReditionWebController@redition')->name('redition.list.sites');
-Route::get('redition-uemoi/{site}','web\ReditionWebController@redition')->name('redition.list.sites');
+Route::get('redition2/{site}','web\ReditionWebController@redition2')->name('redition2.list.sites');
+Route::get('redition-uemoi/{site}','web\ReditionWebController@reditionuemoi')->name('redition.uemoi.list.sites');
 
 Route::get('surchages/{site}','web\SurchargeWebController@suchargeView')->name('sucharge.list.sites');
 Route::get('surchages2/{site}','web\SurchargeWebController@suchargeView2')->name('sucharge2.list.sites');

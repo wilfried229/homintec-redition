@@ -24,14 +24,14 @@ class ReditionWebController extends Controller
 
      public function redition2($site){
 
-        $reditions = Rediton2::where('site',$site)->get();
-        return view('dashboard.redition',compact('reditions','site'));
+        $reditions2 = Rediton2::where('site',$site)->get();
+        return view('dashboard.redition2',compact('reditions2','site'));
      }
 
      public function reditionuemoi($site){
 
-        $reditions =  ReditonUemoi::where('site',$site)->get();
-        return view('dashboard.redition',compact('reditions','site'));
+        $reditionsUemoi =  ReditonUemoi::where('site',$site)->get();
+        return view('dashboard.redition-uemoi',compact('reditionsUemoi','site'));
      }
 
     //

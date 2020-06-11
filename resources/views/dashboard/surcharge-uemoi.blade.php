@@ -89,7 +89,7 @@
         </div>
 
         </div>
- 
+
       </div>
 
     </div>
@@ -104,10 +104,6 @@
 
 @section('js')
 
-<script src="{{asset('Admin2/vendor/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('Admin2/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{asset('Admin2/js/demo/datatables-demo.js')}}"></script>
+ 
 @endsection
 

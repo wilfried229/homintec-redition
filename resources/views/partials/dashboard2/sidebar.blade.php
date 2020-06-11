@@ -79,15 +79,23 @@
       <i class="fas fa-fw fa-table"></i>
       <span>Surcharges </span></a>
   </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link"  data-toggle="modal" data-target=".bd-example-modal-lg5">
+
+      <i class="fas fa-fw fa-table"></i>
+      <span>Recette2</span></a>
+  </li>
 
   <li class="nav-item">
-    <a class="nav-link" href=" ">
+    <a href="#" class="nav-link"  data-toggle="modal" data-target=".bd-example-modal-lg3">
+
       <i class="fas fa-fw fa-table"></i>
       <span>Recettes UEMOI</span></a>
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href=" ">
+    <a href="#" class="nav-link"  data-toggle="modal" data-target=".bd-example-modal-lg4">
+
       <i class="fas fa-fw fa-lock"></i>
       <span>Surcharges UEMOI</span></a>
   </li>
@@ -101,7 +109,400 @@
 
 </ul>
 
+<!------uemoi --->
 
+<div class="modal fade bd-example-modal-lg3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Recettes UEMOI /Choisissez un site</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                          <a href="{{route('redition.uemoi.list.sites','EKPE')}}">
+
+                      <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">SITE</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">EKPE</div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    </div>
+
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                     <a href="{{route('redition.uemoi.list.sites','AHOZON')}}">
+
+                      <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Site</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">AHOZON</div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    </div>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="{{route('redition.uemoi.list.sites','GRAND-POPO')}}">
+
+                      <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">site</div>
+                              <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">GRAND-POPO</div>
+                                </div>
+                                <div class="col">
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    </div>
+
+                    <!-- Pending Requests Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                             <a href="{{route('redition.uemoi.list.sites','KPEDOKPO')}}"  class=" ">
+
+                      <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">SITE</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">KPEDOKPO</div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        </a>
+                    </div>
+                  </div>
+    <!-- #END# Widgets -->
+
+
+            <div class="row">
+
+              <div class="col-xl-3 col-md-6 mb-4">
+              <a href="{{route('redition.uemoi.list.sites','SIRAROU')}}">
+
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">SITE</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">SIRAROU</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+
+
+        <div class="col-xl-3 col-md-6 mb-4">
+         <a href="{{route('redition.uemoi.list.sites','KPREKETE')}}">
+
+          <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Site</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">KPREKETE</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+        <a href="{{route('redition.uemoi.list.sites','LIBOSSOU')}}">
+
+          <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">site</div>
+                  <div class="row no-gutters align-items-center">
+                    <div class="col-auto">
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">LIBOSSOU</div>
+                    </div>
+                    <div class="col">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+                 <a href="{{route('redition.uemoi.list.sites','HOUEGBO')}}"  class=" ">
+
+          <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">SITE</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">HOUEGBO</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-comments fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+            </a>
+        </div>
+      </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+<!----- fin uemoi ------>
+
+
+
+
+ <div class="modal fade bd-example-modal-lg5" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Recettes /Choisissez un site</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                          <a href="{{route('redition2.list.sites','EKPE')}}">
+
+                      <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">SITE</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">EKPE</div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    </div>
+
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                     <a href="{{route('redition2.list.sites','AHOZON')}}">
+
+                      <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Site</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">AHOZON</div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    </div>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="{{route('redition2.list.sites','GRAND-POPO')}}">
+
+                      <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">site</div>
+                              <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">GRAND-POPO</div>
+                                </div>
+                                <div class="col">
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    </div>
+
+                    <!-- Pending Requests Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                             <a href="{{route('redition2.list.sites','KPEDOKPO')}}"  class=" ">
+
+                      <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">SITE</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">KPEDOKPO</div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        </a>
+                    </div>
+                  </div>
+    <!-- #END# Widgets -->
+
+
+            <div class="row">
+
+              <div class="col-xl-3 col-md-6 mb-4">
+              <a href="{{route('redition2.list.sites','SIRAROU')}}">
+
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">SITE</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">SIRAROU</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+
+
+        <div class="col-xl-3 col-md-6 mb-4">
+         <a href="{{route('redition2.list.sites','KPREKETE')}}">
+
+          <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Site</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">KPREKETE</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+        <a href="{{route('redition2.list.sites','LIBOSSOU')}}">
+
+          <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">site</div>
+                  <div class="row no-gutters align-items-center">
+                    <div class="col-auto">
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">LIBOSSOU</div>
+                    </div>
+                    <div class="col">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+                 <a href="{{route('redition2.list.sites','HOUEGBO')}}"  class=" ">
+
+          <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">SITE</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">HOUEGBO</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-comments fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+            </a>
+        </div>
+      </div>
+            </div>
+      </div>
+    </div>
+  </div>
   <!-- Right Sidebar -->
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -490,3 +891,4 @@
       </div>
     </div>
   </div>
+
