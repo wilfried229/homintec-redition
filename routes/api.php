@@ -27,7 +27,8 @@ Route::group(['prefix' => 'homintec'], function () {
         'surcharge'  => 'SurchargesController',
         'reddition2'=> 'Redition2Controller',
         'redditionUemoi' => 'ReditionUemoiController',
-        'surchargeUemoi' => 'SurchargeUemoiController'
+        'surchargeUemoi' => 'SurchargeUemoiController',
+        'comptage' => 'ComptagesController'
     ]);
 
     Route::post('fiche/techniques/store','TechniquesController@saveFiches');
