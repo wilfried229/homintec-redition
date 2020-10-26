@@ -16,22 +16,38 @@ class CreateReditonUemoTable extends Migration
         Schema::create('rediton_uemo', function (Blueprint $table) {
             $table->id();
             $table->string('site')->nullable();
-            $table->dateTime('date');
+            $table->string('date');
+            $table->string('heure');
             $table->string('immatricule');
+            $table->string('conducteur');
             $table->string('produit');
             $table->string('provenance');
-            $table->string('destination');
-            $table->string('societe');
+            //$table->string('destination');
+            $table->string('client');
             $table->string('classe');
-            $table->string('es1');
-            $table->string('es2');
-            $table->string('es3');
-            $table->string('es4');
-            $table->string('es5');
-            $table->string('es6');
-            $table->string('es7');
-            $table->string('es8');
-            $table->string('es9');
+            $table->string('ess1');
+            $table->string('ess2');
+            $table->string('ess3');
+            $table->string('ess4');
+            $table->string('ess5');
+            $table->string('ess6');
+            $table->string('ess7');
+            $table->string('ess8');
+            $table->string('ess9');
+
+            $table->string('Gpe1');
+            $table->string('Gpe2');
+            $table->string('Gpe3');
+            $table->string('Gpe4');
+
+            $table->string('surchGpe1');
+            $table->string('surchGpe2');
+            $table->string('surchGpe4');
+            $table->string('surchGpe3');
+
+            $table->string('PdsTotal');
+            $table->string('surchtotal');
+
 
             $table->timestamps();
         });

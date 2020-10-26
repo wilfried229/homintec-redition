@@ -44,22 +44,37 @@ class ReditionUemoiController extends Controller
 
             $reditionUemoi = new ReditonUemoi();
             $reditionUemoi->site = $request->site;
-            $reditionUemoi->date = $this->dateNow();
+            $reditionUemoi->date = $request->date;
             $reditionUemoi->immatricule  = $request->immatricule;
+            $reditionUemoi->heure  = $request->heure;
             $reditionUemoi->produit = $request->produit;
             $reditionUemoi->provenance = $request->provenance;
-            $reditionUemoi->destination = $request->destination;
-            $reditionUemoi->societe = $request->societe;
+           /// $reditionUemoi->destination = $request->destination;
+            $reditionUemoi->conducteur  = $request->conducteur;
+            $reditionUemoi->client = $request->client;
             $reditionUemoi->classe =$request->classe;
-            $reditionUemoi->es1 = $request->es1;
-            $reditionUemoi->es2 = $request->es2;
-            $reditionUemoi->es3 = $request->es3;
-            $reditionUemoi->es4 = $request->es4;
-            $reditionUemoi->es5 = $request->es5;
-            $reditionUemoi->es6 = $request->es6;
-            $reditionUemoi->es7 = $request->es7;
-            $reditionUemoi->es8 = $request->es8;
-            $reditionUemoi->es9 = $request->es9;
+            $reditionUemoi->ess1 = $request->ess1;
+            $reditionUemoi->ess2 = $request->ess2;
+            $reditionUemoi->ess3 = $request->ess3;
+            $reditionUemoi->ess4 = $request->ess4;
+            $reditionUemoi->ess5 = $request->ess5;
+            $reditionUemoi->ess6 = $request->ess6;
+            $reditionUemoi->ess7 = $request->ess7;
+            $reditionUemoi->ess8 = $request->ess8;
+            $reditionUemoi->ess9 = $request->ess9;
+
+            $reditionUemoi->Gpe1 = $request->Gpe1;
+            $reditionUemoi->Gpe2 = $request->Gpe2;
+            $reditionUemoi->Gpe3 = $request->Gpe3;
+            $reditionUemoi->Gpe4 = $request->Gpe4;
+
+            $reditionUemoi->surchGpe1 = $request->surchGpe1;
+            $reditionUemoi->surchGpe2 = $request->surchGpe2;
+            $reditionUemoi->surchGpe3 = $request->surchGpe3;
+            $reditionUemoi->surchGpe4 = $request->surchGpe4;
+
+            $reditionUemoi->PdsTotal = $request->PdsTotal;
+            $reditionUemoi->surchtotal = $request->surchtotal;
 
             $reditionUemoi->save();
 

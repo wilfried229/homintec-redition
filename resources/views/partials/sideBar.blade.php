@@ -5,7 +5,7 @@
         <div class="user-info">
 
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">HOMINTEC</div>
 
             </div>
         </div>
@@ -16,13 +16,13 @@
                 <li class="header">Menu</li>
                 <li class="active">
                     <a href="index.html">
-                        <i class="material-icons">home</i>
+                        <i class="material-icons"> </i>
                         <span>Accueil</span>
                     </a>
                 </li>
                 <li>
                     <a href="#"  data-toggle="modal" data-target=".bd-example-modal-lg">
-                        <i class="material-icons">text_fields</i>
+                        <i class="material-icons"> </i>
                         <span>Recettes</span>
 
 
@@ -32,7 +32,7 @@
 
                 <li>
                     <a href="#"  data-toggle="modal" data-target=".bd-example-modal-lg5">
-                        <i class="material-icons">text_fields</i>
+                        <i class="material-icons"> </i>
                         <span>Recettes 2</span>
 
 
@@ -42,7 +42,7 @@
 
                 <li>
                     <a href="#"  data-toggle="modal" data-target=".bd-example-modal-lg3">
-                        <i class="material-icons">text_fields</i>
+                        <i class="material-icons"> </i>
                         <span>Recettes UEMOI</span>
 
 
@@ -52,7 +52,7 @@
 
                 <li>
                     <a href="#"  data-toggle="modal" data-target=".bd-example-modal-lg2">
-                        <i class="material-icons">text_fields</i>
+                        <i class="material-icons"> </i>
                         <span>Surchages</span>
 
 
@@ -61,7 +61,7 @@
                 </li>
                 <li>
                     <a href="#"  data-toggle="modal" data-target=".bd-example-modal-lg4">
-                        <i class="material-icons">text_fields</i>
+                        <i class="material-icons"> </i>
                         <span>Surcharges UEMOI</span>
 
 
@@ -70,14 +70,14 @@
                 </li>
 
                 <li>
-                    <a href="pages/helper-classes.html">
-                        <i class="material-icons">layers</i>
+                   {{--  <a href="pages/er-classes.html">
+                        <i class="material-icons"></i>
                         <span>Pénalité</span>
-                    </a>
+                    </a> --}}
                 </li>
                 <li>
                     <a href="javascript:void(0);">
-                        <i class="material-icons col-light-blue">donut_large</i>
+                        <i class="material-icons col-light-blue"></i>
                         <span>Deconnexion</span>
                     </a>
                 </li>
@@ -113,7 +113,7 @@
 
                                 <div class="info-box bg-pink hover-expand-effect">
                                     <div class="icon">
-                                        <i class="material-icons">playlist_add_check</i>
+                                        <i class="material-icons"> </i>
                                     </div>
                                     <div class="content">
                                         <div class="text">EKPE</div>
@@ -128,7 +128,7 @@
                             <a href="{{route('sucharge.list.sites','AHOZON')}}">
                                 <div class="info-box bg-cyan hover-expand-effect">
                                     <div class="icon">
-                                        <i class="material-icons">help</i>
+                                        <i class="material-icons"></i>
                                     </div>
                                     <div class="content">
                                         <div class="text">AHOZON</div>
@@ -143,7 +143,7 @@
                             <a href="{{route('sucharge.list.sites','GRAND-POPO')}}">
                                 <div class="info-box bg-light-green hover-expand-effect">
                                     <div class="icon">
-                                        <i class="material-icons">forum</i>
+                                        <i class="material-icons"> </i>
                                     </div>
                                     <div class="content">
                                         <div class="text">GRAND POPO</div>
@@ -156,7 +156,7 @@
                             <a href="{{route('sucharge.list.sites','KPEDOKPO')}}"  class=" ">
                             <div class="info-box bg-orange hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">person_add</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">KPEDOKPO</div>
@@ -174,7 +174,7 @@
 
                             <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">playlist_add_check</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">DIHO</div>
@@ -188,7 +188,7 @@
 
                             <div class="info-box bg-cyan hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">help</i>
+                                    <i class="material-icons"></i>
                                 </div>
                                 <div class="content">
                                     <div class="text">SIRAROU</div>
@@ -202,7 +202,7 @@
 
                                     <div class="info-box bg-light-green hover-expand-effect">
                                         <div class="icon">
-                                            <i class="material-icons">forum</i>
+                                            <i class="material-icons"> </i>
                                         </div>
                                         <div class="content">
                                             <div class="text">KPREKETE</div>
@@ -217,7 +217,7 @@
 
                                 <div class="info-box bg-orange hover-expand-effect">
                                     <div class="icon">
-                                        <i class="material-icons">person_add</i>
+                                        <i class="material-icons"> </i>
                                     </div>
                                     <div class="content">
                                         <div class="text">LIBOSSOU</div>
@@ -252,7 +252,7 @@
 
                             <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">playlist_add_check</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">EKPE</div>
@@ -267,7 +267,7 @@
                         <a href="{{route('redition.list.sites','AHOZON')}}">
                             <div class="info-box bg-cyan hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">help</i>
+                                    <i class="material-icons"></i>
                                 </div>
                                 <div class="content">
                                     <div class="text">AHOZON</div>
@@ -282,7 +282,7 @@
                         <a href="{{route('redition.list.sites','GRAND-POPO')}}">
                             <div class="info-box bg-light-green hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">forum</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">GRAND POPO</div>
@@ -295,7 +295,7 @@
                         <a href="{{route('redition.list.sites','KPEDOKPO')}}"  class=" ">
                             <div class="info-box bg-orange hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">person_add</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">KPEDOKPO</div>
@@ -312,7 +312,7 @@
 
                         <div class="info-box bg-pink hover-expand-effect">
                             <div class="icon">
-                                <i class="material-icons">playlist_add_check</i>
+                                <i class="material-icons"> </i>
                             </div>
                             <div class="content">
                                 <div class="text">DIHO</div>
@@ -326,7 +326,7 @@
 
                         <div class="info-box bg-cyan hover-expand-effect">
                             <div class="icon">
-                                <i class="material-icons">help</i>
+                                <i class="material-icons"></i>
                             </div>
                             <div class="content">
                                 <div class="text">SIRAROU</div>
@@ -340,7 +340,7 @@
 
                             <div class="info-box bg-light-green hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">forum</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">KPREKETE</div>
@@ -355,7 +355,7 @@
 
                             <div class="info-box bg-orange hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">person_add</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">LIBOSSOU</div>
@@ -392,7 +392,7 @@
 
                             <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">playlist_add_check</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">EKPE</div>
@@ -407,7 +407,7 @@
                         <a href="{{route('redition2.list.sites','AHOZON')}}">
                             <div class="info-box bg-cyan hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">help</i>
+                                    <i class="material-icons"></i>
                                 </div>
                                 <div class="content">
                                     <div class="text">AHOZON</div>
@@ -422,7 +422,7 @@
                         <a href="{{route('redition2.list.sites','GRAND-POPO')}}">
                             <div class="info-box bg-light-green hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">forum</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">GRAND POPO</div>
@@ -435,7 +435,7 @@
                         <a href="{{route('redition2.list.sites','KPEDOKPO')}}"  class=" ">
                             <div class="info-box bg-orange hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">person_add</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">KPEDOKPO</div>
@@ -452,7 +452,7 @@
 
                         <div class="info-box bg-pink hover-expand-effect">
                             <div class="icon">
-                                <i class="material-icons">playlist_add_check</i>
+                                <i class="material-icons"> </i>
                             </div>
                             <div class="content">
                                 <div class="text">DIHO</div>
@@ -466,7 +466,7 @@
 
                         <div class="info-box bg-cyan hover-expand-effect">
                             <div class="icon">
-                                <i class="material-icons">help</i>
+                                <i class="material-icons"></i>
                             </div>
                             <div class="content">
                                 <div class="text">SIRAROU</div>
@@ -480,7 +480,7 @@
 
                             <div class="info-box bg-light-green hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">forum</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">KPREKETE</div>
@@ -495,7 +495,7 @@
 
                             <div class="info-box bg-orange hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">person_add</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">LIBOSSOU</div>
@@ -535,7 +535,7 @@
 
                             <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">playlist_add_check</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">EKPE</div>
@@ -550,7 +550,7 @@
                         <a href="{{route('redition.uemoi.list.sites','AHOZON')}}">
                             <div class="info-box bg-cyan hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">help</i>
+                                    <i class="material-icons"></i>
                                 </div>
                                 <div class="content">
                                     <div class="text">AHOZON</div>
@@ -565,7 +565,7 @@
                         <a href="{{route('redition.uemoi.list.sites','GRAND-POPO')}}">
                             <div class="info-box bg-light-green hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">forum</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">GRAND POPO</div>
@@ -578,7 +578,7 @@
                         <a href="{{route('redition.uemoi.list.sites','KPEDOKPO')}}"  class=" ">
                             <div class="info-box bg-orange hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">person_add</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">KPEDOKPO</div>
@@ -595,7 +595,7 @@
 
                         <div class="info-box bg-pink hover-expand-effect">
                             <div class="icon">
-                                <i class="material-icons">playlist_add_check</i>
+                                <i class="material-icons"> </i>
                             </div>
                             <div class="content">
                                 <div class="text">DIHO</div>
@@ -609,7 +609,7 @@
 
                         <div class="info-box bg-cyan hover-expand-effect">
                             <div class="icon">
-                                <i class="material-icons">help</i>
+                                <i class="material-icons"></i>
                             </div>
                             <div class="content">
                                 <div class="text">SIRAROU</div>
@@ -623,7 +623,7 @@
 
                             <div class="info-box bg-light-green hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">forum</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">KPREKETE</div>
@@ -638,7 +638,7 @@
 
                             <div class="info-box bg-orange hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">person_add</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">LIBOSSOU</div>
@@ -647,6 +647,29 @@
                             </div>
 
                         </a>
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-12 col-md-3 col-sm-6 col-xs-12">
+                        <a href="{{route('redition.uemoi.list.sites','HOUEGBO')}}">
+
+                            <div class="info-box bg-pink hover-expand-effect">
+                                <div class="icon">
+                                    <i class="material-icons"> </i>
+                                </div>
+                                <div class="content">
+                                    <div class="text">HOUEGBO</div>
+                                    <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                                </div>
+
+                            </div>
+                        </a>
+
                     </div>
                 </div>
 
@@ -675,7 +698,7 @@
 
                                 <div class="info-box bg-pink hover-expand-effect">
                                     <div class="icon">
-                                        <i class="material-icons">playlist_add_check</i>
+                                        <i class="material-icons"> </i>
                                     </div>
                                     <div class="content">
                                         <div class="text">EKPE</div>
@@ -690,7 +713,7 @@
                             <a href="{{route('suchargeVieUemio.list.sites','AHOZON')}}">
                                 <div class="info-box bg-cyan hover-expand-effect">
                                     <div class="icon">
-                                        <i class="material-icons">help</i>
+                                        <i class="material-icons"></i>
                                     </div>
                                     <div class="content">
                                         <div class="text">AHOZON</div>
@@ -705,7 +728,7 @@
                             <a href="{{route('suchargeVieUemio.list.sites','GRAND-POPO')}}">
                                 <div class="info-box bg-light-green hover-expand-effect">
                                     <div class="icon">
-                                        <i class="material-icons">forum</i>
+                                        <i class="material-icons"> </i>
                                     </div>
                                     <div class="content">
                                         <div class="text">GRAND POPO</div>
@@ -718,7 +741,7 @@
                             <a href="{{route('suchargeVieUemio.list.sites','KPEDOKPO')}}"  class=" ">
                             <div class="info-box bg-orange hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">person_add</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">KPEDOKPO</div>
@@ -736,7 +759,7 @@
 
                             <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">playlist_add_check</i>
+                                    <i class="material-icons"> </i>
                                 </div>
                                 <div class="content">
                                     <div class="text">DIHO</div>
@@ -750,7 +773,7 @@
 
                             <div class="info-box bg-cyan hover-expand-effect">
                                 <div class="icon">
-                                    <i class="material-icons">help</i>
+                                    <i class="material-icons"></i>
                                 </div>
                                 <div class="content">
                                     <div class="text">SIRAROU</div>
@@ -764,7 +787,7 @@
 
                                     <div class="info-box bg-light-green hover-expand-effect">
                                         <div class="icon">
-                                            <i class="material-icons">forum</i>
+                                            <i class="material-icons"> </i>
                                         </div>
                                         <div class="content">
                                             <div class="text">KPREKETE</div>
@@ -779,7 +802,7 @@
 
                                 <div class="info-box bg-orange hover-expand-effect">
                                     <div class="icon">
-                                        <i class="material-icons">person_add</i>
+                                        <i class="material-icons"> </i>
                                     </div>
                                     <div class="content">
                                         <div class="text">LIBOSSOU</div>
@@ -788,6 +811,26 @@
                                 </div>
 
                             </a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-12 col-md-3 col-sm-6 col-xs-12">
+                            <a href="{{route('suchargeVieUemio.list.sites','HOUEGBO')}}">
+
+                                <div class="info-box bg-pink hover-expand-effect">
+                                    <div class="icon">
+                                        <i class="material-icons"> </i>
+                                    </div>
+                                    <div class="content">
+                                        <div class="text">HOUEGBO</div>
+                                        <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                                    </div>
+
+                                </div>
+                            </a>
+
                         </div>
                     </div>
                 </div>
