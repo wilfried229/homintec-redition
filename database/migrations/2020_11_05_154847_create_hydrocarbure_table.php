@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRediton2Table extends Migration
+class CreateHydrocarbureTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRediton2Table extends Migration
      */
     public function up()
     {
-        Schema::create('rediton2', function (Blueprint $table) {
+        Schema::create('hydrocarbure', function (Blueprint $table) {
             $table->id();
             $table->string('percepteur');
             $table->dateTime('date');
@@ -23,11 +23,11 @@ class CreateRediton2Table extends Migration
             $table->string('sens');
             $table->string('type');
             $table->string('ptrac')->nullable();
-            $table->string('cmaes')->nullable();
+            $table->string('destination')->nullable();
             $table->string('es')->nullable();
             $table->string('ptt')->nullable();
-            $table->string('over')->nullable();
-            $table->string('caisse');
+            $table->string('conducteur')->nullable();
+            $table->string('provenance');
             $table->string('plaque')->nullable();
             $table->timestamps();
         });
@@ -40,6 +40,6 @@ class CreateRediton2Table extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rediton2');
+        Schema::dropIfExists('hydrocarbure');
     }
 }

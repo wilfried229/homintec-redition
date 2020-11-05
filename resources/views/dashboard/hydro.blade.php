@@ -35,12 +35,11 @@
                                 <th>Percepteur</th>
                                 <th>type</th>
                                 <th>ptrac</th>
-                                <th>cmaes</th>
+                                <th>destination</th>
                                 <th>es</th>
                                 <th>ptt</th>
-                                <th>over</th>
-                                <th>Prix</th>
-                                <th>caisse</th>
+                                <th>conducteur</th>
+                                <th>provenance</th>
                                 <th>Plaque</th>
                             </tr>
                             </thead>
@@ -53,39 +52,37 @@
                                 <th>Percepteur</th>
                                 <th>type</th>
                                 <th>ptrac</th>
-                                <th>cmaes</th>
+                                <th>destination</th>
                                 <th>es</th>
                                 <th>ptt</th>
-                                <th>over</th>
-                                <th>Prix</th>
-                                <th>caisse</th>
+                                <th>conducteur</th>
+                                <th>provenance</th>
                                 <th>Plaque</th>
                             </tr>
                             </tfoot>
                             <tbody>
-                            @foreach ($reditions2 as $redition)
-                            <tr>
-                            <td>{{$redition->site}}</td>
-                            <td>{{$redition->date}}</td>
+                                @foreach ($hydros as $hydro)
+                                <tr>
+                                    <td>{{$hydo->site}}</td>
+                                    <td>{{$hydo->date}}</td>
 
-                            <td>{{$redition->cabine}}</td>
-                            <td>{{$redition->percepteur}}</td>
-                            <td>{{$redition->type}}</td>
-                            <td>{{$redition->ptrac}}</td>
-                            <td>{{$redition->cmaes}}</td>
-                            <td>{{$redition->es}}</td>
-                            <th>{{$redition->ptt}}</th>
-                            <th>{{$redition->over}}</th>
-                            <th>{{$redition->prix}}</th>
-
-
-                            <td>{{$redition->caisse}}</td>
-                            <td>{{$redition->plaque}}</td>
+                                    <td>{{$hydo->cabine}}</td>
+                                    <td>{{$hydo->percepteur}}</td>
+                                    <td>{{$hydo->type}}</td>
+                                    <td>{{$hydo->ptrac}}</td>
+                                    <td>{{$hydo->destination}}</td>
+                                    <td>{{$hydo->es}}</td>
+                                    <th>{{$hydo->ptt}}</th>
+                                    <th>{{$hydo->conducteur}}</th>
 
 
-                            </tr>
+                                    <td>{{$hydo->provenance}}</td>
+                                    <td>{{$hydo->plaque}}</td>
 
-                            @endforeach
+
+                                </tr>
+
+                                @endforeach
                             </tbody>
 
                     </table>

@@ -97,8 +97,6 @@
                                 <td>{{$redition->site}}</td>
                                 <td>{{$redition->date}}</td>
                                 <td>{{$redition->heure}}</td>
-
-
                                 <td>{{$redition->immatricule}}</td>
                                 <td>{{$redition->produit}}</td>
                                 <td>{{$redition->provenance}}</td>

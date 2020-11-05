@@ -25,4 +25,6 @@ Route::get('surchages/{site}','web\SurchargeWebController@suchargeView')->name('
 Route::get('surchages2/{site}','web\SurchargeWebController@suchargeView2')->name('sucharge2.list.sites');
 Route::get('surchages/uemoi/{site}','web\SurchargeWebController@suchargeVieUemio')->name('suchargeVieUemio.list.sites');
 
+Route::get('hydro/{site}','web\ReditionWebController@hydrocarbure')->name('hydro.list.sites');
+
 Route::get('test','TestController@test');

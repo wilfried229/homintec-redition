@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Redition;
-use App\Models\Rediton2;
+use App\Models\Hydrocarbure;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class Redition2Controller extends Controller
+class HydrocarbureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +17,9 @@ class Redition2Controller extends Controller
     public function index()
     {
         //
-        $redition2 = Rediton2::all();
+        $hydro = Hydrocarbure::all();
 
-        return response()->json($redition2, 200);
+        return response()->json($hydro, 200);
     }
 
     /**
@@ -45,25 +44,25 @@ class Redition2Controller extends Controller
 
         try {
 
-            $redition2 = new Rediton2();
-            $redition2->percepteur = $request->percepteur;
-            $redition2->site = $request->site;
-            $redition2->date = $this->dateNow();
-            $redition2->cabine  = $request->cabine;
-            $redition2->prix = $request->prix;
-            $redition2->sens = $request->sens;
-            $redition2->type = $request->type;
-            $redition2->ptrac = $request->ptrac;
-            $redition2->cmaes = $request->cmaes;
-            $redition2->es =$request->es;
-            $redition2->ptt = $request->ptt;
-            $redition2->over =$request->over;
-            $redition2->caisse = $request->caisse;
-            $redition2->plaque  = $request->plaque;
+            $hydro = new Hydrocarbure();
+            $hydro->percepteur = $request->percepteur;
+            $hydro->site = $request->site;
+            $hydro->date = $this->dateNow();
+            $hydro->cabine  = $request->cabine;
+            $hydro->prix = $request->prix;
+            $hydro->sens = $request->sens;
+            $hydro->type = $request->type;
+            $hydro->ptrac = $request->ptrac;
+            $hydro->destination = $request->destination;
+            $hydro->es =$request->es;
+            $hydro->ptt = $request->ptt;
+            $hydro->conducteur =$request->conducteur;
+            $hydro->provenance = $request->provenance;
+            $hydro->plaque  = $request->plaque;
 
-            $redition2->save();
+            $hydro->save();
 
-            return response()->json($redition2, 200);
+            return response()->json($hydro, 200);
 
             } catch (\Exception $ex) {
                 //throw $th;
@@ -118,9 +117,9 @@ class Redition2Controller extends Controller
     {
         //
     }
+
     private function dateNow (){
         $now=  Carbon::now('Africa/Lagos');
         return $now;
     }
-
 }
