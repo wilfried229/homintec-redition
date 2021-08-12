@@ -3,8 +3,8 @@
 @section('header')
 <div class="block-header">
     <h2>
-        Recettes UEMOI
-        <small>({{$site}}) <a href="#" target="_blank"> </a></small>
+        Recettes UEMOA
+        <small> <a href="#" target="_blank"> </a></small>
     </h2>
 </div>
 @endsection
@@ -15,7 +15,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Recettes ({{$site}})
+                    Recettes UEMOA
                 </h2>
 
             </div>

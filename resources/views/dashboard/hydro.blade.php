@@ -8,8 +8,8 @@
 @section('header')
 <div class="block-header">
     <h2>
-        Recettes  2
-        <small>({{$site}}) <a href="https://datatables.net/" target="_blank"> </a></small>
+        Hydrocarbure
+        <small><a href="" target="_blank"> </a></small>
     </h2>
 </div>
 @endsection
@@ -19,7 +19,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Recettes ({{$site}})
+                    Hydrocarbure
                 </h2>
 
             </div>
@@ -63,21 +63,21 @@
                             <tbody>
                                 @foreach ($hydros as $hydro)
                                 <tr>
-                                    <td>{{$hydo->site}}</td>
-                                    <td>{{$hydo->date}}</td>
+                                    <td>{{$hydro->site}}</td>
+                                    <td>{{$hydro->date}}</td>
 
-                                    <td>{{$hydo->cabine}}</td>
-                                    <td>{{$hydo->percepteur}}</td>
-                                    <td>{{$hydo->type}}</td>
-                                    <td>{{$hydo->ptrac}}</td>
-                                    <td>{{$hydo->destination}}</td>
-                                    <td>{{$hydo->es}}</td>
-                                    <th>{{$hydo->ptt}}</th>
-                                    <th>{{$hydo->conducteur}}</th>
+                                    <td>{{$hydro->cabine}}</td>
+                                    <td>{{$hydro->percepteur}}</td>
+                                    <td>{{$hydro->type}}</td>
+                                    <td>{{$hydro->ptrac}}</td>
+                                    <td>{{$hydro->destination}}</td>
+                                    <td>{{$hydro->es}}</td>
+                                    <th>{{$hydro->ptt}}</th>
+                                    <th>{{$hydro->conducteur}}</th>
 
 
-                                    <td>{{$hydo->provenance}}</td>
-                                    <td>{{$hydo->plaque}}</td>
+                                    <td>{{$hydro->provenance}}</td>
+                                    <td>{{$hydro->plaque}}</td>
 
 
                                 </tr>

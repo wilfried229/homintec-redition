@@ -19,17 +19,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::group(['prefix' => 'homintec'], function () {
+Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], function () {
 
     /// Route crud redition
     Route::resources([
         'reddition' => 'ReditionController',
         'surcharge'  => 'SurchargesController',
-        'reddition2'=> 'Redition2Controller',
+        'validation'=> 'Redition2Controller',
         'redditionUemoi' => 'ReditionUemoiController',
         'surchargeUemoi' => 'SurchargeUemoiController',
         'comptage' => 'ComptagesController',
-        'hydrocarbure' => 'HydrocarbureController'
+        'hydrocarbure' => 'HydrocarbureController',
+        'recette-togo' => 'RecettesTogoController',
+        'cashFlow'=>'CashFlowController'
     ]);
 
     Route::post('fiche/techniques/store','TechniquesController@saveFiches');

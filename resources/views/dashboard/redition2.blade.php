@@ -8,8 +8,8 @@
 @section('header')
 <div class="block-header">
     <h2>
-        Recettes  2
-        <small>({{$site}}) <a href="https://datatables.net/" target="_blank"> </a></small>
+       Validation  
+        <small><a href="" target="_blank"> </a></small>
     </h2>
 </div>
 @endsection
@@ -19,7 +19,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Recettes ({{$site}})
+                    Validation
                 </h2>
 
             </div>
@@ -30,7 +30,7 @@
                             <tr>
                                 <th>Site</th>
                                 <th>Date</th>
-
+								<th>Heure</th>
                                 <th>cabine</th>
                                 <th>Percepteur</th>
                                 <th>type</th>
@@ -48,7 +48,7 @@
                             <tr>
                                 <th>Site</th>
                                 <th>Date</th>
-
+								<th>Heure</th>
                                 <th>cabine</th>
                                 <th>Percepteur</th>
                                 <th>type</th>
@@ -67,7 +67,7 @@
                             <tr>
                             <td>{{$redition->site}}</td>
                             <td>{{$redition->date}}</td>
-
+							<td>{{$redition->heure}}</td>
                             <td>{{$redition->cabine}}</td>
                             <td>{{$redition->percepteur}}</td>
                             <td>{{$redition->type}}</td>
