@@ -23,7 +23,7 @@ Route::get('redition2-search','web\ReditionWebController@reditionSearch')->name(
 Route::get('redition2-day','web\ReditionWebController@reditionByDay')->name('redition2.day');
 Route::get('redition2-month','web\ReditionWebController@reditionByMonth')->name('redition2.month');
 
-
+Route::get('cashFlow/web','CashFlowController@index')->name('cash-flow.index');
 
 Route::get('redition-uemoi','web\ReditionWebController@reditionuemoaInter')->name('redition.uemoi.list.sites');
 Route::get('redition-uemoi-day','web\ReditionWebController@reditionuemoiByDays')->name('redition.uemoi.listDay.sites');

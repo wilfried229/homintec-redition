@@ -16,7 +16,9 @@ class CashFlowController extends Controller
     public function index()
     {
         $cashFlows = CashFlow::all();
-        return response()->json($cashFlows, 200);
+
+        return view('dashboard.cashFlows',compact('cashFlows'));
+        ///return response()->json($cashFlows, 200);
         //
     }
 

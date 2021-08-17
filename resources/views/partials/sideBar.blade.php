@@ -153,6 +153,25 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="#" class="menu-toggle">
+                        <span>CashFlow</span>
+
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="{{route('cash-flow.index')}}">Par jour </a>
+                        </li>
+                        <li>
+                            <a href="{{route('cash-flow.index')}}">Par Mois</a>
+                        </li>
+                        <li>
+                            <a href="{{route('cash-flow.index')}}">Par DATE</a>
+                        </li>
+
+                    </ul>
+                </li>
+
             </ul>
 
         </div>
