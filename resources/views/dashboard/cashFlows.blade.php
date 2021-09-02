@@ -32,16 +32,26 @@
                                 <th>Date</th>
                                 <th>Voie</th>
                                 <th>Percepteur</th>
+                                <th>Debut de vacation</th>
                                 <th>Fin de vacation</th>
                                 <th>superviseur</th>
                                 <th>controleur</th>
-                                <th>Somme declarer</th>
-                                <th>Ticket</th>
-                                <th>Penalite</th>
+                                <th>Montant coupon</th>
+                                <th>Recette declarer</th>
+                                <th>Recette Informatiser</th>
+                                <th>Observation</th>
+                                <th>Manquant</th>
+                                <th>Surplus</th>
+                                <th>Nombre passage</th>
+                                <th>Nombre de violation</th>
+                                <th>Nombre Exempte</th>
                                 <th>Nombre de Gate</th>
-                                <th>Somme de Gate</th>
-                                <th>Somme informatiser de Gate</th>
-                                <th>Vehicule</th>
+                                <th>Recette Gate</th>
+                                <th>Recette de ticket</th>
+                                <th>Nombre de ticket</th>
+                                <th>Somme penalite</th>
+                                <th>Poids penalite</th>
+                                <th>Penalite annulee</th>
 
                             </tr>
                             </thead>
@@ -53,16 +63,26 @@
                                     <td>{{$cash->date}}</td>
                                     <td>{{$cash->voie}}</td>
                                     <td>{{$cash->percepteur}}</td>
+                                    <td>{{$cash->debut}}</td>
                                     <td>{{$cash->fin}}</td>
                                     <td>{{$cash->superviseur}}</td>
                                     <td>{{$cash->controleur}}</td>
-                                    <th>{{$cash->somedeclaree}}</th>
-                                    <th>{{$cash->ticket}}</th>
-                                    <td>{{$cash->penalite}}</td>
-                                    <td>{{$cash->gate24}}</td>
-                                    <td>{{$cash->somegate}}</td>
-                                    <td>{{$cash->sominformatique}}</td>
-                                    <td>{{$cash->vehicule}}</td>
+                                    <td>{{$cash->recette_informatise}}</td>
+                                    <td>{{$cash->recette_declaree}}</td>
+                                    <td>{{$cash->recette_informatise}} </td>
+                                    <td>{{$cash->observation}}</td>
+                                    <td>{{$cash->manquant}}</td>
+                                    <td>{{$cash->surplus}}</td>
+                                    <td>{{$cash->nbre_passage}} </td>
+                                    <td>{{$cash->violation}}</td>
+                                    <td>{{$cash->nbre_exempte}} </td>
+                                    <td>{{$cash->nbre_gate}}</td>
+                                    <td>{{$cash->recette_gate}} </td>
+                                    <td>{{$cash->recette_ticket}}</td>
+                                    <td>{{$cash->nbre_ticket}}</td>
+                                    <td>{{$cash->somme_penalite}} </td>
+                                    <td>{{$cash->poids_penalite}} </td>
+                                    <td>{{$cash->penalite_annulee}}</td>
 
                                 </tr>
 
