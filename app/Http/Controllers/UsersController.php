@@ -34,8 +34,8 @@ class UsersController extends Controller
 
 
         if ($request->password != $request->password_confirmation) {
-            # code...
-            return redirect()->back();
+        Session::flash('error', 'Mot de passe non identique');
+            return back();
         }
 
         $user  = new User();

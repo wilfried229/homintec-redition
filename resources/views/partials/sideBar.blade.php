@@ -5,7 +5,7 @@
         <div class="user-info">
 
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">HOMINTEC</div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</div>
 
             </div>
         </div>
@@ -15,7 +15,7 @@
             <ul class="list">
                 <li class="header">Menu</li>
                 <li class="active">
-                    <a href="{{url('test')}}">
+                    <a href="{{route('home')}}">
                         <i class="material-icons"> </i>
                         <span>Accueil</span>
                     </a>
@@ -154,22 +154,57 @@
                 </li>
 
                 <li>
-                    <a href="#" class="menu-toggle">
+
+
+                    <a href="{{route('cash-flow.index')}}" class="menu-toggle">
                         <span>CashFlow</span>
 
                     </a>
-                    <ul class="ml-menu">
+                  {{--   <ul class="ml-menu">
                         <li>
                             <a href="{{route('cash-flow.index')}}">Par jour </a>
                         </li>
-                        <li>
+                       <li>
                             <a href="{{route('cash-flow.index')}}">Par Mois</a>
                         </li>
                         <li>
                             <a href="{{route('cash-flow.index')}}">Par DATE</a>
                         </li>
 
-                    </ul>
+                    </ul> --}}
+                </li>
+
+
+                @if (Auth::user()->role == 'ADMIN')
+
+
+                <li>
+
+                    <a href="{{route('users.index')}}" class="menu-toggle">
+                        <span>Utilisateurs</span>
+
+                    </a>
+
+
+                </li>
+                @endif
+
+
+
+                <li>
+
+
+
+
+            <a class="menu-toggle" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                 <p>Déconnexion </p>
+             </a>
+
+             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                 @csrf
+             </form>
+
+
                 </li>
 
             </ul>

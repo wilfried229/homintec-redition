@@ -15,19 +15,22 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Recettes UEMOA 
+                    Recettes UEMOA
                 </h2>
 
             </div>
             <div class="body">
-                 <form action="{{ route('redition.uemoi.search.sites') }}" method="post">
+                 <form action="{{ route('redition.uemoi.search.sites') }}" method="GET">
                     @csrf
                     <div class="row">
 
-                        <div class="col 12">
-                            <input type="date" name="date" id="date" class="form-control">
+                        <div class="col-lg-6">
+                            <input type="date" name="date_debut" id="date" class="form-control">
                         </div>
 
+                        <div class="col-lg-6">
+                            <input type="date" name="date_fin" id="dates" class="form-control">
+                        </div>
                         <div class="col 12">
                             <input type="submit" value="Rechercher" class="btn btn-info">
                         </div>

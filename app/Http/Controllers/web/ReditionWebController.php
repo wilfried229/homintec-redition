@@ -56,7 +56,15 @@ class ReditionWebController extends Controller
 
    public function reditionuemoaSearch(Request $request){
 
-      $reditionsUemoi =  ReditonUemoi::whereDate('created_at',$request->date)->orderBy('id','DESC')->get();
+      $reditionsUemoi =  ReditonUemoi::
+      whereBetween('created_at', [$request->date_debut, $request->date_fin])
+      ->where('site','!=',null)
+      ->get();
+
+
+      ///dd($reditionsUemoi);
+
+
 
       return view('dashboard.redition-uemoi',compact('reditionsUemoi'));
 
@@ -73,7 +81,9 @@ class ReditionWebController extends Controller
 
     public function reditionuemoiByMonth(){
 
-      $reditionsUemoi =  ReditonUemoi::whereMonth('created_at',now())->orderBy('id','DESC')->get();
+      $reditionsUemoi =  ReditonUemoi::
+      whereMonth('created_at',now())
+      ->orderBy('id','DESC')->get();
 
       return view('dashboard.redition-uemoi',compact('reditionsUemoi'));
     }
@@ -101,10 +111,10 @@ class ReditionWebController extends Controller
 
    public function hydrocarbureByDate(Request $request){
 
-        $hydros  = Hydrocarbure::whereDate('created_at',$request->date)->orderBy('id','DESC')->get();
-
+        $hydros  = Hydrocarbure::
+        whereBetween('created_at', [$request->date_debut, $request->date_fin])
+        ->orderBy('id','DESC')->get();
         return view('dashboard.hydro',compact('hydros'));
-
    }
 
    public function hydrocarbureSearch(){

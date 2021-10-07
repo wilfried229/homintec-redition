@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CashFlow;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -41,7 +42,11 @@ class CashFlowController extends Controller
     public function store(Request $request)
     {
         try {
-      $cashFlow =  CashFlow::create($request->all());
+            $data = $request->all();
+            unset($data["date"]);
+            $data = array_merge($data, ['date' => Carbon::now('Africa/Lagos')]);
+           // dd($data);
+      $cashFlow =  CashFlow::create($data);
         return response()->json($cashFlow, 200);
             //code...
         } catch (\Exception $ex) {

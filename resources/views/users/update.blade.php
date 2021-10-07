@@ -21,7 +21,9 @@
         <div class="card">
             <div class="header">
                 <h2>
-                   Utilisateur
+                   Modification
+
+                   <a href="{{route('users.index')}}" style="float: right;" class="btn btn-info">Retour</a>
                 </h2>
 
             </div>
@@ -63,19 +65,17 @@
                                     <label for="">Role</label>
 
                                     <select name="role" id="role" class="form-control">
-                                        <option value="TECHNICIEN" @if ($user->role == "TECHNICIEN")
+                                        <option value="SIRB" @if ($user->role == "SIRB")
                                             selected
-                                        @endif>TECHNICIEN</option>
+                                        @endif>SIRB</option>
                                         <option value="ADMIN"@if ($user->role == "ADMIN")
                                             selected
                                         @endif
-
                                         >ADMINISTRATEUR</option>
-
-                                        <option value="CM" @if ($user->role == "CM")
+                                        <option value="HOMINTEC" @if ($user->role == "HOMINTEC")
                                             selected
                                         @endif
-                                        >CM</option>
+                                        >HOMINTEC</option>
 
 
 

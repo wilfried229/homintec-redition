@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <!-- Mirrored from light.pinsupreme.com/auth_register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Jun 2020 10:01:19 GMT -->
 

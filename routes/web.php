@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('redition-uemoi-day','web\ReditionWebController@reditionuemoiByDays')->name('redition.uemoi.listDay.sites');
     Route::get('redition-uemoi-month','web\ReditionWebController@reditionuemoiByMonth')->name('redition.uemoi.listMonth.sites');
 
-    Route::post('redition-uemoi-search','web\ReditionWebController@reditionuemoaSearch')->name('redition.uemoi.search.sites');
+    Route::get('redition-uemoi-search','web\ReditionWebController@reditionuemoaSearch')->name('redition.uemoi.search.sites');
 
     Route::get('surchages/{site}','web\SurchargeWebController@suchargeView')->name('sucharge.list.sites');
     Route::get('surchages2/{site}','web\SurchargeWebController@suchargeView2')->name('sucharge2.list.sites');
