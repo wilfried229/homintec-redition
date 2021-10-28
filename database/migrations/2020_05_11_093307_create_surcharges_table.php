@@ -30,7 +30,7 @@ class CreateSurchargesTable extends Migration
             $table->string('montant_payer');
             $table->string('percepteur');
             $table->date('type_vacation');
-            $table->integer('redition_id');
+           /// $table->integer('redition_id');
             $table->string('site');
             $table->string('voie');
             $table->timestamps();

@@ -76,10 +76,8 @@ class UsersController extends Controller
        try {
 
         $user = User::findOrFail($id);
-
         $user->delete();
         Session::flash('success', 'Utilisateur à été retié avec succès');
-
       return redirect()->back();
 
        } catch (\Throwable $th) {

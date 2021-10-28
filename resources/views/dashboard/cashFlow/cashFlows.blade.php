@@ -185,9 +185,9 @@
                                     </td>
                                     <td>{{$cash->superviseur}}</td>
                                     <td>{{$cash->controleur}}</td>
-                                    <td>{{$cash->recette_informatise}}</td>
-                                    <td>{{$cash->recette_declaree}}</td>
-                                    <td>{{$cash->recette_informatise}} </td>
+                                    <td>{{ number_format((float)$cash->recette_informatise, 0, '.', '.') }}</td>
+                                    <td>{{ number_format((float)$cash->recette_declaree , 0, '.', '.') }}</td>
+                                    <td>{{ number_format((float)$cash->recette_informatise , 0, '.', '.')}} </td>
                                     <td>{{$cash->observation}}</td>
                                     <td>{{$cash->manquant}}</td>
                                     <td>{{$cash->surplus}}</td>

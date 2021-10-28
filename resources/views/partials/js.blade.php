@@ -4,9 +4,7 @@
     <!-- Bootstrap Core Js -->
     <script src="{{asset('dashboard/plugins/bootstrap/js/bootstrap.js')}}"></script>
 
-    <!-- Select Plugin Js -->
-    <script src="{{asset('dashboard/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
-
+   
     <!-- Slimscroll Plugin Js -->
     <script src="{{asset('dashboard/plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
 

@@ -20,7 +20,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('redition2-day','web\ReditionWebController@reditionByDay')->name('redition2.day');
     Route::get('redition2-month','web\ReditionWebController@reditionByMonth')->name('redition2.month');
 
-    Route::get('cashFlow/web','CashFlowController@index')->name('cash-flow.index');
 
     Route::get('redition-uemoi','web\ReditionWebController@reditionuemoaInter')->name('redition.uemoi.list.sites');
     Route::get('redition-uemoi-day','web\ReditionWebController@reditionuemoiByDays')->name('redition.uemoi.listDay.sites');
@@ -49,6 +48,20 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('users', 'UsersController');
 
+
+    Route::prefix('cashFlow')->group(function () {
+    Route::get('day/web','CashFlowController@rapportJoursChoice')->name('cash-flow.day');
+    Route::get('month/web','CashFlowController@rapportMensuelsChoice')->name('cash-flow.month');
+
+    Route::get('index/web/day','CashFlowController@indexDay')->name('cash-flow.indexDay');
+
+    Route::get('index/web/month','CashFlowController@indexMonth')->name('cash-flow.indexMonth');
+
+
+
+
+
+    });
 });
 
 Auth::routes();

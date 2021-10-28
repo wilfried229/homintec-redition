@@ -19,7 +19,6 @@ class ReditionWebController extends Controller
      */
 
     public function redition($site){
-
         $reditions = Redition::where('site',$site)->orderBy('id','DESC')->get();
         return view('dashboard.redition',compact('reditions','site'));
      }

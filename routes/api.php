@@ -31,12 +31,20 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
         'comptage' => 'ComptagesController',
         'hydrocarbure' => 'HydrocarbureController',
         'recette-togo' => 'RecettesTogoController',
-        'cashFlow'=>'CashFlowController'
+        'cashFlow'=>'CashFlowController',
+        'penalite'=>'PenalitesController',
+
+
     ]);
 
     Route::post('fiche/techniques/store','TechniquesController@saveFiches');
     Route::get('fiche/techniques/get/','TechniquesController@getficheTechniques');
     Route::get('checked/connexion','TechniquesController@checkedConnexion');
+
+    Route::post('comptage-sms','ComptagesController@comptageSms');
+
+    Route::get('testupdate','CashFlowController@testUpdateRequest');
+
 
 });
 

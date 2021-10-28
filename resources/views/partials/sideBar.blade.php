@@ -20,7 +20,7 @@
                         <span>Accueil</span>
                     </a>
                 </li>
-                <li>
+   {{--              <li>
                     <a href="#" class="menu-toggle">
                         <span>Validation </span>
                     </a>
@@ -60,42 +60,6 @@
 
 
 
-             {{--    <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <span>Surchages</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{route('sucharge.list.sites','HOUEGBO')}}">HOUEGBO</a>
-                        </li>
-                        <li>
-                            <a href="{{route('sucharge.list.sites','EKPE')}}">EKPE</a>
-                        </li>
-                        <li>
-                            <a href="{{route('sucharge.list.sites','AHOZON')}}">AHOZON</a>
-                        </li>
-                        <li>
-                            <a href="{{route('sucharge.list.sites','GRAND-POPO')}}">GRAND-POPO</a>
-                        </li>
-
-                        <li>
-                            <a href="{{route('sucharge.list.sites','SIRAOU')}}">SIRAOU</a>
-                        </li>
-                        <li>
-                            <a href="{{route('sucharge.list.sites','KPEDEPKO')}}">KPEDEPKO</a>
-                        </li>
-                        <li>
-                            <a href="{{route('sucharge.list.sites','DIHO')}}">DIHO</a>
-                        </li>
-                        <li>
-                            <a href="{{route('sucharge.list.sites','BIRO')}}">BIRO</a>
-                        </li>
-                        <li>
-                            <a href="{{route('sucharge.list.sites','KPREKETE')}}">KPREKETE</a>
-                        </li>
-
-                    </ul>
-                </li> --}}
 
                 <li>
                     <a href="# class="menu-toggle">
@@ -152,27 +116,26 @@
 
                     </ul>
                 </li>
-
+ --}}
                 <li>
 
 
-                    <a href="{{route('cash-flow.index')}}" class="menu-toggle">
+                    <a href="#" class="menu-toggle">
                         <span>CashFlow</span>
-
                     </a>
-                  {{--   <ul class="ml-menu">
-                        <li>
-                            <a href="{{route('cash-flow.index')}}">Par jour </a>
-                        </li>
-                       <li>
-                            <a href="{{route('cash-flow.index')}}">Par Mois</a>
-                        </li>
-                        <li>
-                            <a href="{{route('cash-flow.index')}}">Par DATE</a>
-                        </li>
+                   <ul class="ml-menu">
 
-                    </ul> --}}
+                       <li>
+                         <a href="{{route('cash-flow.indexDay')}}">Par Jours</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('cash-flow.indexMonth')}}">Par Mois</a>
+
+                           </li>
+                    </ul>
                 </li>
+
+
 
 
                 @if (Auth::user()->role == 'ADMIN')
@@ -214,3 +177,4 @@
     </aside>
     <!-- #END# Left Sidebar -->
 </section>
+
