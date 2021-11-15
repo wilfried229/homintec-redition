@@ -56,12 +56,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('index/web/day','CashFlowController@indexDay')->name('cash-flow.indexDay');
 
     Route::get('index/web/month','CashFlowController@indexMonth')->name('cash-flow.indexMonth');
-
-
-
-
-
     });
+
+
+
 });
 
 Auth::routes();

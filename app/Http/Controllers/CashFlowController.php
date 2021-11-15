@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CashFlow;
+use App\ComptageChecked;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -129,7 +130,7 @@ class CashFlowController extends Controller
         try {
             $data = $request->all();
             unset($data["date"]);
-
+            
 
           /*   unset($data["date"]);
             unset($data["date_debut"]);
@@ -192,4 +193,5 @@ class CashFlowController extends Controller
     {
         //
     }
+
 }

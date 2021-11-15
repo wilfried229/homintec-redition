@@ -45,6 +45,6 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
 
     Route::get('testupdate','CashFlowController@testUpdateRequest');
 
-
+    Route::post('checked/compatge','ComptagesController@checkedComptage');
 });
 

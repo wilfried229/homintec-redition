@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ComptageChecked;
 use App\Comptages;
 use App\Models\Rediton2;
 use Illuminate\Http\Request;
@@ -11,6 +12,18 @@ use Illuminate\Support\Facades\Log;
 
 class ComptagesController extends Controller
 {
+
+
+    public function  checkedComptage(Request $request){
+
+        $checkedComptagePanne  = ComptageChecked::create([
+            'site' =>$request->site,
+            'cabine' =>$request->cabine,
+            'percepteur'=>$request->percepteur,
+            'date_interreption' => Carbon::now('Africa/Lagos')
+        ]);
+        return response()->json($checkedComptagePanne, 200);
+    }
 
     public function store(Request $request)
     {
@@ -84,5 +97,5 @@ class ComptagesController extends Controller
 
     }
 
-     
+
 }
