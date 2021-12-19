@@ -59,6 +59,80 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 
+    Route::post('recette-save','RecetteController@store')->name('recette.store');
+    Route::get('recette-index','RecetteController@index')->name('recette.index');
+    Route::get('recette-create','RecetteController@create')->name('recette.create');
+
+    Route::get('recette/{id}','RecetteController@show')->name('recette.show');
+    Route::put('recette/{id}','RecetteController@update')->name('recette.update');
+
+
+    Route::get('recette-get-month','RecetteController@getByMonth')->name('recette.getByMonth');
+
+    Route::get('recette-view-month','RecetteController@rapportMensuelsChoice')->name('recette.getByMonth.action');
+
+
+
+
+
+
+
+
+    Route::post('site-save','SiteController@store')->name('site.store');
+    Route::get('site-index','SiteController@index')->name('site.index');
+    Route::get('site-create','SiteController@create')->name('site.create');
+
+    Route::get('site/{id}','SiteController@show')->name('site.show');
+    Route::put('site/{id}','SiteController@update')->name('site.update');
+
+
+
+
+
+
+
+    Route::post('voie-save','VoieController@store')->name('voie.store');
+    Route::get('voie-index','VoieController@index')->name('voie.index');
+    Route::get('voie-create','VoieController@create')->name('voie.create');
+
+    Route::get('voie/{id}','VoieController@show')->name('voie.show');
+    Route::put('voie/{id}','VoieController@update')->name('voie.update');
+
+
+
+
+
+
+    Route::post('sens-save','SensController@store')->name('sens.store');
+    Route::get('sens-index','SensController@index')->name('sens.index');
+    Route::get('sens-create','SensController@create')->name('sens.create');
+
+    Route::get('sens/{id}','SensController@show')->name('sens.show');
+    Route::put('sens/{id}','SensController@update')->name('sens.update');
+
+
+
+
+
+    Route::post('percepteur-save','PercepteurController@store')->name('percepteur.store');
+    Route::get('percepteur-index','PercepteurController@index')->name('percepteur.index');
+    Route::get('percepteur-create','PercepteurController@create')->name('percepteur.create');
+
+    Route::get('percepteur/{id}','PercepteurController@show')->name('percepteur.show');
+    Route::put('percepteur/{id}','PercepteurController@update')->name('percepteur.update');
+
+
+
+
+
+
+
+    Route::post('vacation-save','VacationController@store')->name('vacation.store');
+    Route::get('vacation-index','VacationController@index')->name('vacation.index');
+    Route::get('vacation-create','VacationController@create')->name('vacation.create');
+
+    Route::get('vacation/{id}','VacationController@show')->name('vacation.show');
+    Route::put('vacation/{id}','VacationController@update')->name('vacation.update');
 
 });
 

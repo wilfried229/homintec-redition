@@ -135,10 +135,106 @@
                     </ul>
                 </li>
 
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Recettes manuel</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('recette.index')}}">Afficher Tout</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('recette.getByMonth')}}">Afficher par mois</a>
+                           </li>
+                        <li>
+                         <a  href="{{route('recette.create')}}">Ajouter</a>
+
+                           </li>
+
+
+                    </ul>
+                </li>
+
 
 
 
                 @if (Auth::user()->role == 'ADMIN')
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Site</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('site.index')}}">Afficher</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('site.create')}}">Ajouter</a>
+
+                           </li>
+                    </ul>
+                </li>
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Voies</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('voie.index')}}">Afficher</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('voie.create')}}">Ajouter</a>
+
+                           </li>
+                    </ul>
+                </li>
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Percepteur</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('percepteur.index')}}">Afficher</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('percepteur.create')}}">Ajouter</a>
+
+                           </li>
+                    </ul>
+                </li>
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Vacation</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('vacation.index')}}">Afficher</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('vacation.create')}}">Ajouter</a>
+
+                           </li>
+                    </ul>
+                </li>
 
 
                 <li>

@@ -14,7 +14,7 @@
 
 <body class="theme-red">
     <!-- Page Loader -->
-   
+
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
@@ -56,6 +56,7 @@
 
     @include('partials.js')
 
+    @yield('js')
 </body>
 
 </html>
