@@ -46,6 +46,8 @@
                                 <th>Nombre passage</th>
                                 <th>Nombre de violation</th>
                                 <th>Nombre Exempte</th>
+                                <th>Options</th>
+
 
                             </tr>
                             </thead>
@@ -59,7 +61,6 @@
                                     <td>{{$recette->percepteur()->first()->nom ." " .$recette->percepteur()->first()->prenom}}</td>
                                     <td>
                                         {{$recette->vacation()->first()->type}}
-
                                     </td>
                                     <td>{{ number_format((float)$recette->montant_coupant, 0, '.', '.') }}</td>
                                     <td>{{ number_format((float)$recette->montant_percepteur , 0, '.', '.') }}</td>
@@ -70,7 +71,14 @@
                                     <td>{{$recette->nombre_vehicule}} </td>
                                     <td>{{$recette->nombre_violation}}</td>
                                     <td>{{$recette->nombre_exemptes}} </td>
+                                    <td>   <a href="{{route('recette.show',['id'=>$recette->id])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit"></i></a>
 
+                                        <a href="" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="{{"#actionModalremoveRecette".$recette->id}}">
+                                            <i class="fa fa-1x fa-remove text-danger"></i>
+                                        </a>&nbsp;&nbsp;
+                                    </td>
+
+                                    @include('dashboard.recettes.remove',['recette'=> $recette])
                                 </tr>
 
                                 @endforeach

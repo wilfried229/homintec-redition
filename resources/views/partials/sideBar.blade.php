@@ -139,12 +139,12 @@
 
 
                     <a href="#" class="menu-toggle">
-                        <span>Recettes manuel</span>
+                        <span>Recettes manuelles</span>
                     </a>
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('recette.index')}}">Afficher Tout</a>
+                         <a href="{{route('recette.index')}}">Afficher  Tout</a>
                         </li>
 
                         <li>
@@ -160,6 +160,22 @@
                 </li>
 
 
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Surcharges manuelles</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('surcharge-manuel.index')}}">Afficher </a>
+                        </li>
+
+
+
+                    </ul>
+                </li>
 
 
                 @if (Auth::user()->role == 'ADMIN')

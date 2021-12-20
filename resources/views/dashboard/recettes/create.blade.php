@@ -188,30 +188,30 @@
 
                                             <div class="col-lg-6 col-md-6">
                                                 <label for="">Date de passage</label>
-                                                <input type="date" name="date_passage" id="date_passage" class="form-control" required>
+                                                <input type="date" name="date_passage" id="date_passage" class="form-control" >
                                             </div>
 
 
                                             <div class="col-lg-6 col-md-6">
                                                 <label for="">Heure de passage</label>
-                                                <input type="time" name="heure_passage" id="heure_passage" class="form-control" required>
+                                                <input type="time" name="heure_passage" id="heure_passage" class="form-control" >
                                             </div>
                                             <div class="col-lg-4 col-md-4">
                                                 <label for="">Immatriculation</label>
-                                                <input type="text" name="immatriculation" id="immatriculation" class="form-control" required>
+                                                <input type="text" name="immatriculation" id="immatriculation" class="form-control">
                                             </div>
 
 
                                             <div class="col-lg-4 col-md-4">
                                                 <label for="">Nombre d'essieu</label>
-                                                <input type="number" name="essieu" id="essieu" class="form-control" required>
+                                                <input type="number" name="essieu" id="essieu" class="form-control" >
                                             </div>
 
 
                                             <div class="col-lg-4 col-md-4">
                                                 <label for="">Type de surcharge</label>
 
-                                                <select name="type_surcharge" id="type_surcharge"  class="form-control" required>
+                                                <select name="type_surcharge" id="type_surcharge"  class="form-control" >
                                                     <option value="LOCAL">LOCAL</option>
                                                     <option value="INTERNATIONAL">INTERNATIONAL</option>
 
@@ -227,18 +227,18 @@
 
                                                 <div class="col-lg-4 col-md-4">
                                                     <label for="">Poids Rouland</label>
-                                                    <input type="number" name="poids_roulant" id="poids_roulant" class="form-control" required>
+                                                    <input type="number" name="poids_roulant" id="poids_roulant" class="form-control" >
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-4">
                                                     <label for="">Poids autorise</label>
-                                                    <input type="number" name="poid_autorise" id="poid_autorise" class="form-control" required>
+                                                    <input type="number" name="poid_autorise" id="poid_autorise" class="form-control" >
                                                 </div>
 
 
                                                 <div class="col-lg-4 col-md-4">
                                                     <label for="">Poids excedent</label>
-                                                    <input type="number" name="excedent" id="excedent" class="form-control" required>
+                                                    <input type="number" name="excedent" id="excedent" class="form-control" >
                                                 </div>
 
                                             </div>
@@ -247,19 +247,19 @@
 
                                             <div class="col-lg-6 col-md-6">
                                                     <label for="">Montant à payer</label>
-                                                    <input type="number" name="montant_apayer" id="montant_apayer" class="form-control" required>
+                                                    <input type="number" name="montant_apayer" id="montant_apayer" class="form-control" >
                                                 </div>
 
                                                 <div class="col-lg-6 col-md-6">
                                                     <label for="">Montant payé</label>
-                                                    <input type="number" name="montant_payer" id="montant_payer" class="form-control" required>
+                                                    <input type="number" name="montant_payer" id="montant_payer" class="form-control" >
                                                 </div>
 
 
                                                 <div class="col-lg-12 col-md-12">
                                                     <label for="">observation</label>
 
-                                                <textarea name="observation_surchages" id="observation_surchages" cols="30" rows="10" class="form-control" required></textarea>
+                                                <textarea name="observation_surchages" id="observation_surchages" cols="30" rows="10" class="form-control" ></textarea>
 
                                                 </div>
 

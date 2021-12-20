@@ -42,13 +42,6 @@
                                     {{ Session::get('success') ? Session::get('success') : Session::get('error') }}
                                   </div>
 
-                                  @else
-                                  <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                                    {{ Session::get('success') ? Session::get('success') : Session::get('error') }}
-                                  </div>
-
 
                                 @endif
 
@@ -77,10 +70,21 @@
                                                 <option value="ADMIN">ADMIN</option>
                                                 <option value="SIRB">SIRB</option>
                                                 <option value="HOMINTEC">HOMINTEC</option>
-
+                                                <option value="SUPERVISEUR">SUPERVISEUR</option>
                                             </select>
                                         </div>
 
+                                        <div hidden id="site" class="col-lg-12 col-md-4">
+                                            <label for="">Site</label>
+
+                                            <select name="site_id" id="site_id" class="form-control">
+                                               @foreach ($sites as $site )
+                                               <option value="{{$site->id}}">{{$site->nom}}</option>
+
+                                               @endforeach
+
+                                            </select>
+                                        </div>
 
                                         <div class="col-md-12">
                                             <label for="">Mot de passe</label>
@@ -119,5 +123,19 @@
 
 @section('js')
 
+<script>
+$("#role").change(function(value){
+
+console.log('okkkk');
+if (this.value == "SUPERVISEUR") {
+    $('#site').show();
+} else {
+    $('#site').hide();
+}
+
+})
+
+</script>
 
 @endsection
+

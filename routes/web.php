@@ -46,8 +46,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
 
-    Route::resource('users', 'UsersController');
+    Route::resources([
+        'users'=>'UsersController',
+        'surcharge-manuel'=>'SurchagesManuelController'
+    ]);
 
+    Route::get('surcharge-manuel-site','SurchagesManuelController@rapportMensuelsChoice')->name('surcharge.get-site');
 
     Route::prefix('cashFlow')->group(function () {
     Route::get('day/web','CashFlowController@rapportJoursChoice')->name('cash-flow.day');
@@ -65,6 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('recette/{id}','RecetteController@show')->name('recette.show');
     Route::put('recette/{id}','RecetteController@update')->name('recette.update');
+    Route::delete('recette/{id}','RecetteController@destroy')->name('recette.destroy');
 
 
     Route::get('recette-get-month','RecetteController@getByMonth')->name('recette.getByMonth');
@@ -133,6 +138,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('vacation/{id}','VacationController@show')->name('vacation.show');
     Route::put('vacation/{id}','VacationController@update')->name('vacation.update');
+
+
+
+    #Route::resources([]);
 
 });
 

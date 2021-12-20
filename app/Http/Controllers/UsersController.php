@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -26,7 +27,10 @@ class UsersController extends Controller
     }
     public function create()
     {
-        return view('users.add');
+
+        $sites  = Site::all();
+
+        return view('users.add',compact('sites'));
     }
 
     public function store(Request $request)
@@ -43,8 +47,10 @@ class UsersController extends Controller
         $user->email  = $request->email;
         $user->password  = Hash::make($request->password);
         $user->role  = $request->role;
-
+        $user->site_id  = $request->site_id;
         $user->save();
+
+
         Session::flash('success', 'Utilisateur ajouté avec succès ');
 
         return redirect()->back();
@@ -54,7 +60,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('users.update',compact('user'));
+        $sites  = Site::all();
+
+        return view('users.update',compact('user','sites'));
     }
 
 
@@ -64,6 +72,8 @@ class UsersController extends Controller
         $user->name  = $request->name;
         $user->email  = $request->email;
         $user->role = $request->role;
+        $user->site_id  = $request->site_id;
+
         $user->update();
         Session::flash('success', 'Mise à jours éffectuée avec succès ');
 

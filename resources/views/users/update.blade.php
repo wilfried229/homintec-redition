@@ -72,16 +72,30 @@
                                             selected
                                         @endif
                                         >ADMINISTRATEUR</option>
-                                        <option value="HOMINTEC" @if ($user->role == "HOMINTEC")
+                                        <option value="HOMINTEC" @if ($user->role=="HOMINTEC")
                                             selected
                                         @endif
                                         >HOMINTEC</option>
-
-
+                                        <option value="SUPERVISEUR"  @if ($user->role=="SUPERVISEUR")
+                                            selected
+                                        @endif>SUPERVISEUR</option>
 
                                     </select>
                                 </div>
 
+
+
+                                <div hidden id="site" class="col-lg-12 col-md-4">
+                                    <label for="">Site</label>
+
+                                    <select name="site_id" id="site_id" class="form-control">
+                                       @foreach ($sites as $site )
+                                       <option value="{{$site->id}}">{{$site->nom}}</option>
+
+                                       @endforeach
+
+                                    </select>
+                                </div>
 
                             </div>
                             <br>
@@ -105,5 +119,20 @@
 
 @section('js')
 
+
+<script>
+
+var conceptName = $('#role :selected').text();
+    if ( conceptName == "SUPERVISEUR") {
+        $('#site').show();
+    }
+    $("#role").change(function(value){
+        if (this.value == "SUPERVISEUR") {
+            $('#site').show();
+        } else {
+            $('#site').hide();
+        }
+})
+</script>
 
 @endsection

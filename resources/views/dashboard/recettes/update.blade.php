@@ -60,7 +60,6 @@
 
                                                 @foreach ($voies as $voie )
                                                 <option value="{{$voie->id}}">{{$voie->nom}}</option>
-
                                                 @endforeach
 
                                             </select>
@@ -72,7 +71,6 @@
                                             <select name="vacation_id" id="vacation_id" class="form-control" required>
                                                 @foreach ($vacations as $vacation )
                                                 <option value="{{$vacation->id}}">{{$vacation->type}}</option>
-
                                                 @endforeach
                                             </select>
                                         </div>
@@ -189,23 +187,23 @@
 
                                             <div class="col-lg-6 col-md-6">
                                                 <label for="">Date de passage</label>
-                                                <input type="date" name="date_passage" value="{{$surchage->date_passage}}" id="date_passage" class="form-control" required>
+                                                <input type="date" name="date_passage" value="{{$surchage->date_passage ?? ""}}" id="date_passage" class="form-control" required>
                                             </div>
 
 
                                             <div class="col-lg-6 col-md-6">
                                                 <label for="">Heure de passage</label>
-                                                <input type="time" name="heure_passage"  value="{{$surchage->heure_passage}}" id="heure_passage" class="form-control" required>
+                                                <input type="time" name="heure_passage"  value="{{$surchage->heure_passage  ?? ""}}" id="heure_passage" class="form-control" required>
                                             </div>
                                             <div class="col-lg-4 col-md-4">
                                                 <label for="">Immatriculation</label>
-                                                <input type="text" name="immatriculation" value="{{$surchage->immatriculation}}" id="immatriculation" class="form-control" required>
+                                                <input type="text" name="immatriculation" value="{{$surchage->immatriculation  ?? ""}}" id="immatriculation" class="form-control" required>
                                             </div>
 
 
                                             <div class="col-lg-4 col-md-4">
                                                 <label for="">Nombre d'essieu</label>
-                                                <input type="number" name="essieu" value="{{$surchage->essieu}}" id="essieu" class="form-control" required>
+                                                <input type="number" name="essieu" value="{{$surchage->essieu  ?? ""}}" id="essieu" class="form-control" required>
                                             </div>
 
 
@@ -228,18 +226,18 @@
 
                                                 <div class="col-lg-4 col-md-4">
                                                     <label for="">Poids Rouland</label>
-                                                    <input type="number" name="poids_roulant" value="{{$surchage->poids_roulant}}" id="poids_roulant" class="form-control" required>
+                                                    <input type="number" name="poids_roulant" value="{{$surchage->poids_roulant  ?? ""}}" id="poids_roulant" class="form-control" required>
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-4">
                                                     <label for="">Poids autorise</label>
-                                                    <input type="number" name="poid_autorise" value="{{$surchage->poid_autorise}}" id="poid_autorise" class="form-control" required>
+                                                    <input type="number" name="poid_autorise" value="{{$surchage->poid_autorise  ?? ""}}" id="poid_autorise" class="form-control" required>
                                                 </div>
 
 
                                                 <div class="col-lg-4 col-md-4">
                                                     <label for="">Poids excedent</label>
-                                                    <input type="number" name="excedent" value="{{$surchage->excedent}}" id="excedent" class="form-control" required>
+                                                    <input type="number" name="excedent" value="{{$surchage->excedent  ?? ""}}" id="excedent" class="form-control" required>
                                                 </div>
 
                                             </div>
@@ -248,19 +246,19 @@
 
                                             <div class="col-lg-6 col-md-6">
                                                     <label for="">Montant à payer</label>
-                                                    <input type="number" name="montant_apayer" value="{{$surchage->montant_apayer}}" id="montant_apayer" class="form-control" required>
+                                                    <input type="number" name="montant_apayer" value="{{$surchage->montant_apayer  ?? ""}}" id="montant_apayer" class="form-control" required>
                                                 </div>
 
                                                 <div class="col-lg-6 col-md-6">
                                                     <label for="">Montant payé</label>
-                                                    <input type="number" name="montant_payer" value="{{$surchage->montant_payer}}" id="montant_payer" class="form-control" required>
+                                                    <input type="number" name="montant_payer" value="{{$surchage->montant_payer  ?? ""}}" id="montant_payer" class="form-control" required>
                                                 </div>
 
 
                                                 <div class="col-lg-12 col-md-12">
                                                     <label for="">observation</label>
 
-                                                <textarea name="observation_surchages" value="" id="observation_surchages" cols="30" rows="10" class="form-control" required>{{$recette->observation_surchages}}</textarea>
+                                                <textarea name="observation_surchages" value="" id="observation_surchages" cols="30" rows="10" class="form-control" >{{$recette->observation_surchages  ?? ""}}</textarea>
 
                                                 </div>
 
@@ -292,7 +290,16 @@
 @section('js')
 
 <script>
-$("#is_surchages").change(function(value){
+
+
+var date_passage = $('#date_passage').val();
+      
+
+    if (date_passage  !="" ) {
+        $('#surcharge').show();
+    }
+
+    $("#is_surchages").change(function(value){
 
     if (this.checked) {
         $('#surcharge').show();

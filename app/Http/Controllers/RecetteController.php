@@ -58,10 +58,18 @@ class RecetteController extends Controller
     {
         //
 
-            $recettes = Recette::all();
+
+                if (Auth::user()->role =="SUPERVISEUR") {
+                    # code...
+                $recettes = Recette::where('user_id','=',Auth::user()->id)->get();
+
+                } else {
+                    # code...
+                    $recettes = Recette::all();
+                }
 
 
-        return view('dashboard.recettes.index',compact('recettes'));
+            return view('dashboard.recettes.index',compact('recettes'));
     }
 
     /**
@@ -133,7 +141,9 @@ class RecetteController extends Controller
                     'montant_apayer'=>$request->montant_apayer,
                     'montant_payer'=>$request->montant_payer,
                     'observation'=>$request->observation_surchages,
-                    'recettes_id'=>$recette->id
+                    'recettes_id'=>$recette->id,
+                    'sites_id'=>Auth::user()->site_id,
+
                 ]);
         }
 
