@@ -80,13 +80,16 @@ class RecetteController extends Controller
     public function create()
     {
         //
-        $voies = Voie::all();
 
         $vacations = Vacation::all();
 
         $percepteurs = Percepteur::all();
 
         $site = Site::find(Auth::user()->site_id);
+
+
+
+        $voies = Voie::where('site_id','=',$site->id)->get();
 
         return view("dashboard.recettes.create",compact('site','voies','vacations','percepteurs'));
     }

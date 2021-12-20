@@ -135,9 +135,9 @@
                     </ul>
                 </li>
 
+                @if (Auth::user()->role == 'SUPERVISEUR' || Auth::user()->role == 'ADMIN' )
+
                 <li>
-
-
                     <a href="#" class="menu-toggle">
                         <span>Recettes manuelles</span>
                     </a>
@@ -148,7 +148,7 @@
                         </li>
 
                         <li>
-                            <a href="{{route('recette.getByMonth')}}">Afficher par mois</a>
+                            <a href="{{route('recette.getByMonth')}}">Afficher par site </a>
                            </li>
                         <li>
                          <a  href="{{route('recette.create')}}">Ajouter</a>
@@ -176,6 +176,8 @@
 
                     </ul>
                 </li>
+
+                @endif
 
 
                 @if (Auth::user()->role == 'ADMIN')

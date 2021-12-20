@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class SurchagesManuelController extends Controller
 {
@@ -87,9 +88,12 @@ class SurchagesManuelController extends Controller
      * @param  \App\SurchagesManuel  $surchagesManuel
      * @return \Illuminate\Http\Response
      */
-    public function edit(SurchagesManuel $surchagesManuel)
+    public function edit(ModelsSurchagesManuel $surcharge_manuel)
     {
         //
+
+        $surcharge = $surcharge_manuel;
+        return view("dashboard.surcharges.update",compact('surcharge'));
     }
 
     /**
@@ -99,9 +103,42 @@ class SurchagesManuelController extends Controller
      * @param  \App\SurchagesManuel  $surchagesManuel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SurchagesManuel $surchagesManuel)
+    public function update(Request $request, ModelsSurchagesManuel $surcharge_manuel)
     {
         //
+            try {
+
+                $surcharge_manuel->update([
+                    'immatriculation' =>$request->immatriculation,
+                    'poids_rouland'=>$request->poid_rouland,
+                /// "montant_surcharge"=>$request->montant_surcharge,
+                    'type_surcharge'=>$request->type_surcharge,
+                    'date_passage'=>$request->date_passage,
+                    'heure_passage'=>$request->heure_passage,
+                    'essieu'=>$request->essieu,
+                    'poids_roulant'=>$request->poids_roulant,
+                    'poid_autorise'=>$request->poid_autorise,
+                    'excedent'=>$request->excedent,
+                    'montant_apayer'=>$request->montant_apayer,
+                    'montant_payer'=>$request->montant_payer,
+                    'observation'=>$request->observation_surcharges,
+                ]);
+
+                     Session::flash('success', 'Modification effectué avec succès ');
+
+
+                return  back();
+
+            } catch (\Exception $ex) {
+                //throw $th;
+
+                Log::info($ex->getMessage());
+
+                 Session::flash('error', 'Erreur de modification. Veuillez réessayer');
+
+                return back();
+
+            }
     }
 
     /**

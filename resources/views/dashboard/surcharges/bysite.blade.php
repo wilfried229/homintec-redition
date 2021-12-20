@@ -70,7 +70,7 @@
                                     <td>{{$surcharge->montant_payer}} </td>
                                     <td>{{$surcharge->observation}}</td>
                                     <td>
-                                    <a href="" class="btn btn-info" title="Modifier"> <i class="fa fa-edit"></i></a>
+                                    <a href="{{route('surcharge-manuel.edit',['surcharge_manuel'=>$surcharge ])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit"></i></a>
                                     <a href="" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="{{"#actionModalremoveSucharges".$surcharge->id}}">
                                         <i class="fa fa-1x fa-remove text-danger"></i>
                                     </a>&nbsp;&nbsp;

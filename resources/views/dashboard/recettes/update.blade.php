@@ -210,9 +210,14 @@
                                             <div class="col-lg-4 col-md-4">
                                                 <label for="">Type de surcharge</label>
 
+
                                                 <select name="type_surcharge" id="type_surcharge" class="form-control" required>
-                                                    <option value="LOCAL">LOCAL</option>
-                                                    <option value="INTERNATIONAL">INTERNATIONAL</option>
+                                                    <option value="LOCAL"  @if ($surchage->type_surcharge=="LOCAL")
+                                                        selected
+                                                    @endif>LOCAL</option>
+                                                    <option value="INTERNATIONAL"  @if ($surchage->type_surcharge=="INTERNATIONAL")
+                                                        selected
+                                                    @endif>INTERNATIONAL</option>
 
                                                 </select>
                                             </div>
@@ -267,7 +272,8 @@
                                         </div>
 
 
-                                    <div class="row">
+
+                                        <div class="row">
 
                                         <div class="col-md-12">
                                             <input type="submit" value="Modifier" class="btn btn-success">
@@ -293,7 +299,7 @@
 
 
 var date_passage = $('#date_passage').val();
-      
+
 
     if (date_passage  !="" ) {
         $('#surcharge').show();
