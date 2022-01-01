@@ -48,8 +48,25 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resources([
         'users'=>'UsersController',
-        'surcharge-manuel'=>'SurchagesManuelController'
     ]);
+
+
+
+    Route::get('surcharge-manuel/create/index','SurchagesManuelController@createIndex')->name('surcharge-manuel.create-index');
+
+    Route::get('surcharge-manuel/create/{voie?}','SurchagesManuelController@create')->name('surcharge-manuel.create');
+    Route::get('surcharge-manuel/{site?}','SurchagesManuelController@index')->name('surcharge-manuel.index');
+    Route::get('surcharge-manuel-request','SurchagesManuelController@requests')->name('surcharge-manuel.request');
+    Route::post('surcharge-manuel/{voie?}','SurchagesManuelController@store')->name('surcharge-manuel.store');
+    Route::get('surcharge-manuel/edit/{surcharge_manuel}','SurchagesManuelController@edit')->name('surcharge-manuel.edit');
+    Route::delete('surcharge-manuel/destroy/{surcharge_manuel}/{site?}','SurchagesManuelController@destroy')->name('surcharge-manuel.destroy');
+
+
+    Route::put('surcharge-manuel/update/{surcharge_manuel}  ','SurchagesManuelController@update')->name('surcharge-manuel.update');
+
+
+
+
 
     Route::get('surcharge-manuel-site','SurchagesManuelController@rapportMensuelsChoice')->name('surcharge.get-site');
 
@@ -64,8 +81,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::post('recette-save','RecetteController@store')->name('recette.store');
-    Route::get('recette-index','RecetteController@index')->name('recette.index');
-    Route::get('recette-create','RecetteController@create')->name('recette.create');
+    Route::get('recette-index/{voie?}','RecetteController@index')->name('recette.index');
+    Route::get('recette-create/{voie?}','RecetteController@create')->name('recette.create');
+
+
+    Route::get('recette/create/index','RecetteController@createIndex')->name('recette.create-index');
 
     Route::get('recette/{id}','RecetteController@show')->name('recette.show');
     Route::put('recette/{id}','RecetteController@update')->name('recette.update');

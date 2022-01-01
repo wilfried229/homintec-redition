@@ -151,7 +151,7 @@
                             <a href="{{route('recette.getByMonth')}}">Afficher par site </a>
                            </li>
                         <li>
-                         <a  href="{{route('recette.create')}}">Ajouter</a>
+                         <a  href="{{route('recette.create-index')}}">Ajouter</a>
 
                            </li>
 
@@ -169,10 +169,12 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('surcharge-manuel.index')}}">Afficher </a>
+                         <a href="{{route('surcharge-manuel.request')}}">Afficher </a>
                         </li>
 
-
+                        <li>
+                            <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
+                           </li>
 
                     </ul>
                 </li>

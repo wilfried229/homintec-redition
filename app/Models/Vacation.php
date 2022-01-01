@@ -11,7 +11,7 @@ class Vacation extends Model
     protected $table = "vacations";
 
     protected $fillable =  [
-        'id','type'
+        'id','type','site_id'
     ];
 
 }

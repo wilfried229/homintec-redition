@@ -33,20 +33,10 @@
                     <!-- /.col -->
 
                     <div class="col-md-12">
-
-                        @if (Session::has('success'))
-
-                            <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                                    {{ Session::get('success') ? Session::get('success') : Session::get('error') }}
-                                  </div>
+                        @include('partials.flash')
 
 
-
-                                @endif
-
-                                <form action="{{route('recette.store')}}" method="post" class="form" >
+                                <form action="{{route('recette.store')}}"  method="post" class="form" >
                                     @csrf
 
 
@@ -72,6 +62,7 @@
                                         <div class="col-md-12">
                                             <input type="submit" value="Enregistrer" class="btn btn-success">
 
+                                         </a>
                                         </div>
                                     </div>
                                 </form>

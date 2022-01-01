@@ -8,7 +8,7 @@
 @section('header')
 <div class="block-header">
     <h2>
-            surcharges
+            Surcharges
         <small><a href="" target="_blank"> </a></small>
     </h2>
 </div>
@@ -21,21 +21,23 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    surcharges / {{$site->nom}} / {{$date}}
+                    Surcharges / {{$site->nom??''}} / {{$date ?? ""}}
                 </h2>
                 <br>
 
             </div>
             <div class="body">
                 <div class="table-responsive">
+                    @include('partials.flash')
+
                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
                                 <th>Site</th>
+                                <th>Voie</th>
+
                                 <th>Date de passage</th>
                                 <th>Heure de passage</th>
-                                <th>Vacation</th>
-
                                 <th>Immatriculation</th>
                                 <th>Nombre Essieu</th>
                                 <th>Type surcharge</th>
@@ -55,9 +57,10 @@
                                 @foreach ($surcharges as $surcharge)
                                 <tr>
                                     <td>{{$surcharge->site()->first()->nom ?? ""}}</td>
+                                    <td>{{$surcharge->voie()->first()->nom ?? ""}}</td>
+
                                     <td>{{$surcharge->date_passage}}</td>
                                     <td>{{$surcharge->heure_passage}}</td>
-                                    <td>{{$surcharge->recette()->first()->vacation()->first()->type}}</td>
                                     <td>
                                         {{ $surcharge->immatriculation}}
                                     </td>
@@ -70,9 +73,9 @@
                                     <td>{{$surcharge->montant_payer}} </td>
                                     <td>{{$surcharge->observation}}</td>
                                     <td>
-                                    <a href="{{route('surcharge-manuel.edit',['surcharge_manuel'=>$surcharge ])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit"></i></a>
+                                    <a href="{{route('surcharge-manuel.edit',['surcharge_manuel'=>$surcharge])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit">Modifier</i></a>
                                     <a href="" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="{{"#actionModalremoveSucharges".$surcharge->id}}">
-                                        <i class="fa fa-1x fa-remove text-danger"></i>
+                                        <i class="fa fa-1x fa-remove text-danger">Retier</i>
                                     </a>&nbsp;&nbsp;
                                 </td>
 

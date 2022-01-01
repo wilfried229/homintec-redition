@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Voie;
 use Illuminate\Database\Eloquent\Model;
 
 class SurchagesManuel extends Model
@@ -24,7 +25,7 @@ class SurchagesManuel extends Model
         'montant_apayer',
         'montant_payer',
         'observation',
-        'recettes_id',
+        'voies_id',
         'sites_id'
     ];
 
@@ -38,8 +39,8 @@ class SurchagesManuel extends Model
 
 
 
-    public function recette(){
+    public function voie(){
 
-        return $this->belongsTo(Recette::class,'recettes_id','id');
+        return $this->belongsTo(Voie::class,'voies_id','id');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use App\Models\Vacation as ModelsVacation;
 use App\vacation;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class VacationController extends Controller
         //
         $vacations =    ModelsVacation::all();
 
+
         return view('dashboard.vacations.index',compact('vacations'));
     }
 
@@ -31,7 +33,9 @@ class VacationController extends Controller
     public function create()
     {
         //
-        return view("dashboard.vacations.create");
+        $sites = Site::all();
+
+        return view("dashboard.vacations.create",compact('sites'));
 
     }
 

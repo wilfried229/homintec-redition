@@ -61,7 +61,7 @@ class RecetteController extends Controller
 
                 if (Auth::user()->role =="SUPERVISEUR") {
                     # code...
-                $recettes = Recette::where('user_id','=',Auth::user()->id)->get();
+                $recettes = Recette::where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
 
                 } else {
                     # code...
@@ -72,24 +72,41 @@ class RecetteController extends Controller
             return view('dashboard.recettes.index',compact('recettes'));
     }
 
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createIndex()
+    {
+
+
+        $voies = Voie::where('site_id','=',Auth::user()->site_id)
+        ->get();
+
+    return view('dashboard.recettes.create-index',compact('voies'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($voie =null)
     {
         //
 
-        $vacations = Vacation::all();
+       /// $vacations = Vacation::all();
 
         $percepteurs = Percepteur::all();
 
         $site = Site::find(Auth::user()->site_id);
 
+       ///// dd($site);
+        $vacations = Vacation::where('sites_id','=',$site->id)->get();
 
-
-        $voies = Voie::where('site_id','=',$site->id)->get();
+        $voies = Voie::where('id','=',$voie)->first();
+            // dd($voies);
 
         return view("dashboard.recettes.create",compact('site','voies','vacations','percepteurs'));
     }
@@ -164,15 +181,16 @@ class RecetteController extends Controller
     public function show($id)
     {
         //
-        $vacations = Vacation::all();
 
         $percepteurs = Percepteur::all();
 
-        $voies = Voie::all();
 
         $site = Site::find(Auth::user()->site_id);
         $recette = Recette::find($id);
 
+        $vacations = Vacation::where('sites_id','=',$site->id)->get();
+
+        $voies = Voie::where('site_id','=',$site->id)->get();
         $surchage = SurchagesManuel::where('recettes_id','=',$recette->id)->first();
 
         return view("dashboard.recettes.update",compact('surchage','recette','site','voies','vacations','percepteurs'));

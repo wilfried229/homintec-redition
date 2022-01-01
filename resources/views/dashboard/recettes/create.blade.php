@@ -21,7 +21,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                   Recettes / site de {{$site->nom}}
+                   Recette / site de {{$site->nom}} / {{$voies->nom ?? ''}}
 
                    <a href="{{route('recette.index')}}" style="float: right;" class="btn btn-info">Retour</a>
 
@@ -34,64 +34,49 @@
 
                     <div class="col-md-12">
 
-                        @if (Session::has('success'))
-
-                            <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                                    {{ Session::get('success') ? Session::get('success') : Session::get('error') }}
-                                  </div>
+                        @include('partials.flash')
 
 
-
-                                @endif
-
-                                <form action="{{route('recette.store')}}" method="post" class="form" >
+                                <form id="store-recette" action="{{route('recette.store')}}" method="post" class="form" >
                                     @csrf
 
                                     <div class="row">
 
 
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="">Voie</label>
+                                        <input type="hidden" name="voies_id" value="{{$voies->id ?? ''}}">
 
-                                            <select name="voies_id" id="voies_id" class="form-control" required>
 
-                                                @foreach ($voies as $voie )
-                                                <option value="{{$voie->id}}">{{$voie->nom}}</option>
 
-                                                @endforeach
-
-                                            </select>
-                                        </div>
-
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <label for=""> Vacation</label>
 
                                             <select name="vacation_id" id="vacation_id" class="form-control" required>
+
+                                                <option  selected>----------------- Selectionnez---------------</option>
+
                                                 @foreach ($vacations as $vacation )
+
                                                 <option value="{{$vacation->id}}">{{$vacation->type}}</option>
 
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="row">
 
-
-                                        <div class="col-lg-4 col-md-4">
+                                        <div class="col-lg-6 col-md-6">
                                             <label for="">Date recette</label>
                                             <input type="date" name="date_recettes" id="date_recettes" class="form-control" required>
 
                                         </div>
 
 
-                                        <div class="col-lg-4 col-md-4">
+                                        <div class="col-lg-6 col-md-6">
                                             <label for="">Heure debut</label>
                                             <input type="time" name="heure_debut" id="heure_debut" class="form-control" required>
 
                                         </div>
-                                        <div class="col-lg-4 col-md-4">
+                                        <div class="col-lg-6 col-md-6">
                                             <label for="">Heure fin</label>
 
                                             <input type="time" name="heure_fin" id="heure_fin" class="form-control" required>
@@ -103,6 +88,8 @@
                                             <label for="">Percepteur</label>
 
                                             <select name="percepteur_id" id="precepteur_id"  class="form-control" required>
+
+                                                <option  selected>-------- Selectionnez--------</option>
 
                                                 @foreach ($percepteurs as $percepteur )
                                                 <option value="{{$percepteur->id}}">{{$percepteur->nom}}</option>
@@ -137,7 +124,13 @@
 
                                         <div class="col-lg-4 col-md-4">
                                             <label for="">Montant coupant</label>
-                                            <input type="number" name="montant_coupant" id="montant_coupant" class="form-control" required>
+
+                                            <input type="hidden" name="tarif" id="tarif" value="{{$site->tarif}}" class="form-control">
+
+
+                                            <input  type="hidden" name="montant_coupant" id="montant_coupant" class="form-control" required>
+
+                                            <input disabled type="number" id="coupant" class="form-control" required>
                                         </div>
                                     </div>
                                     <br>
@@ -145,18 +138,22 @@
                                     <div class="row">
 
 
+
+
+                                        <div class="col-lg-4 col-md-4">
+                                            <label for="">Montant informatise</label>
+                                            <input type="number" name="montant_informatise" id="montant_informatise" class="form-control" required>
+                                        </div>
                                         <div class="col-lg-4 col-md-4">
                                             <label for="">Montant Percepteur</label>
                                             <input type="number" name="montant_percepteur" id="montant_percepteur" class="form-control" required>
                                         </div>
                                         <div class="col-lg-4 col-md-4">
                                             <label for="">Ecart</label>
-                                            <input type="number" name="montant_ecart" id="montant_ecart" class="form-control" required>
-                                        </div>
+                                            <input disabled type="number" id="ecart" class="form-control">
 
-                                        <div class="col-lg-4 col-md-4">
-                                            <label for="">Montant informatise</label>
-                                            <input type="number" name="montant_informatise" id="montant_informatise" class="form-control" required>
+                                            <input  type="hidden" name="montant_ecart" id="montant_ecart" class="form-control" required>
+
                                         </div>
 
                                     </div>
@@ -170,109 +167,23 @@
                                         </div>
 
 
-                                        <div class="col-md-12">
-                                            <label for="">Surcharges ?</label>
 
-
-                                            <div class="switch">
-                                                <label><input type="checkbox" id="is_surchages" name ="is_surchages"><span class="lever"></span></label>
-                                            </div>
-                                        </div>
                                     </div>
 
 
-                                    <div  id="surcharge" hidden >
 
-
-                                        <div    class="row">
-
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="">Date de passage</label>
-                                                <input type="date" name="date_passage" id="date_passage" class="form-control" >
-                                            </div>
-
-
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="">Heure de passage</label>
-                                                <input type="time" name="heure_passage" id="heure_passage" class="form-control" >
-                                            </div>
-                                            <div class="col-lg-4 col-md-4">
-                                                <label for="">Immatriculation</label>
-                                                <input type="text" name="immatriculation" id="immatriculation" class="form-control">
-                                            </div>
-
-
-                                            <div class="col-lg-4 col-md-4">
-                                                <label for="">Nombre d'essieu</label>
-                                                <input type="number" name="essieu" id="essieu" class="form-control" >
-                                            </div>
-
-
-                                            <div class="col-lg-4 col-md-4">
-                                                <label for="">Type de surcharge</label>
-
-                                                <select name="type_surcharge" id="type_surcharge"  class="form-control" >
-                                                    <option value="LOCAL">LOCAL</option>
-                                                    <option value="INTERNATIONAL">INTERNATIONAL</option>
-
-                                                </select>
-                                            </div>
-
-
-
-
-                                        </div>
-
-                                            <div class="row">
-
-                                                <div class="col-lg-4 col-md-4">
-                                                    <label for="">Poids Rouland</label>
-                                                    <input type="number" name="poids_roulant" id="poids_roulant" class="form-control" >
-                                                </div>
-
-                                                <div class="col-lg-4 col-md-4">
-                                                    <label for="">Poids autorise</label>
-                                                    <input type="number" name="poid_autorise" id="poid_autorise" class="form-control" >
-                                                </div>
-
-
-                                                <div class="col-lg-4 col-md-4">
-                                                    <label for="">Poids excedent</label>
-                                                    <input type="number" name="excedent" id="excedent" class="form-control" >
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row">
-
-                                            <div class="col-lg-6 col-md-6">
-                                                    <label for="">Montant à payer</label>
-                                                    <input type="number" name="montant_apayer" id="montant_apayer" class="form-control" >
-                                                </div>
-
-                                                <div class="col-lg-6 col-md-6">
-                                                    <label for="">Montant payé</label>
-                                                    <input type="number" name="montant_payer" id="montant_payer" class="form-control" >
-                                                </div>
-
-
-                                                <div class="col-lg-12 col-md-12">
-                                                    <label for="">observation</label>
-
-                                                <textarea name="observation_surchages" id="observation_surchages" cols="30" rows="10" class="form-control" ></textarea>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
 
 
                                     <div class="row">
 
                                         <div class="col-md-12">
-                                            <input type="submit" value="Enregistrer" class="btn btn-success">
 
+                                            <a href="javascript:void(0);"
+                                            onclick="if (confirm('Avez vous bien remplir les  données ?'))
+                                                {document.getElementById('store-recette').submit();} else {return false;}"
+                                            class="btn btn-sm btn-success">Enregistrer
+                                             <i class="fa fa-trash"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </form>
@@ -299,7 +210,56 @@ $("#is_surchages").change(function(value){
         $('#surcharge').hide();
     }
 
-})
+
+
+
+});
+
+$("#montant_informatise").keyup(function() {
+
+    var ecart  = $('#montant_informatise').val() - $('#montant_percepteur').val();
+    $('#ecart').val(ecart);
+    $('#montant_ecart').val(ecart);
+
+
+console.log(ecart);
+  });
+
+  $("#montant_percepteur").keyup(function() {
+
+var ecart  = $('#montant_informatise').val() - $('#montant_percepteur').val();
+$('#ecart').val(ecart);
+
+$('#montant_ecart').val(ecart);
+console.log(ecart);
+});
+
+
+$("#nombre_vehicule").keyup(function() {
+
+var montant_coupant = $('#nombre_vehicule').val() * $('#tarif').val();
+$('#montant_coupant').val(montant_coupant);
+$('#coupant').val(montant_coupant);
+
+
+});
+
+
+
+$("#voies_id").change(function(value){
+    myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL");
+if( $.inArray($("#voies_id option:selected").text(), myArray) != -1 ) {
+    $("#montant_coupant").prop("type", "number");
+    $("#coupant").prop("type", "hidden");
+}else{
+    $("#montant_coupant").prop("type", "hidden");
+    $("#coupant").prop("type", "number");
+}
+});
+
+
+
+//$('#montant_ecart').ke;
 
 </script>
 

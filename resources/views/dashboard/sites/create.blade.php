@@ -34,17 +34,8 @@
 
                     <div class="col-md-12">
 
-                        @if (Session::has('success'))
-
-                            <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                                    {{ Session::get('success') ? Session::get('success') : Session::get('error') }}
-                                  </div>
-
-
-
-                                @endif
+                         
+                                @include('partials.flash')
 
                                 <form action="{{route('site.store')}}" method="post" class="form" >
                                     @csrf
@@ -53,9 +44,15 @@
                                     <div class="row">
 
 
-                                        <div class="col-lg-12 col-md-12">
+                                        <div class="col-lg-6 col-md-6">
                                             <label for="">Nom</label>
                                             <input type="text" name="nom" id="nom" class="form-control">
+
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="">Tarif de passage</label>
+                                            <input type="number" name="nom" id="nom" class="form-control">
 
                                         </div>
 

@@ -53,13 +53,21 @@
                                     <div class="row">
 
 
-                                        <div class="col-lg-12 col-md-12">
+                                        <div class="col-lg-6 col-md-6">
                                             <label for="">Type</label>
                                             <input type="text" name="type" id="type" class="form-control">
 
                                         </div>
 
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="">Site</label>
+                                            <select name="site_id" id="site_id" class="form-control">
+                                                @foreach ($sites as $site )
+                                                <option value="{{$site->id}}">{{$site->nom}}</option>
+                                                @endforeach
+                                            </select>
 
+                                        </div>
 
                                      </div>
 

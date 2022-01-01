@@ -66,15 +66,15 @@
                                     <td>{{ number_format((float)$recette->montant_percepteur , 0, '.', '.') }}</td>
                                     <td>{{ number_format((float)$recette->montant_informatise , 0, '.', '.')}} </td>
                                     <td>{{$recette->observation}}</td>
-                                    <td>{{$recette->montant_ecart}}</td>
-                                    <td>{{$recette->surplus ?? ''}}</td>
+                                    <td>{{$recette->montant_ecart < 0  ? -$recette->montant_ecart : 0 }}</td>
+                                    <td>{{$recette->montant_ecart > 0  ? $recette->montant_ecart : 0}}</td>
                                     <td>{{$recette->nombre_vehicule}} </td>
                                     <td>{{$recette->nombre_violation}}</td>
                                     <td>{{$recette->nombre_exemptes}} </td>
-                                    <td>   <a href="{{route('recette.show',['id'=>$recette->id])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit"></i></a>
+                                    <td>   <a href="{{route('recette.show',['id'=>$recette->id])}}" class="btn btn-info" title="Modifier">Modifier <i class="fa fa-edit"></i></a>
 
                                         <a href="" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="{{"#actionModalremoveRecette".$recette->id}}">
-                                            <i class="fa fa-1x fa-remove text-danger"></i>
+                                            <i class="fa fa-1x fa-remove text-danger">Retirer</i>
                                         </a>&nbsp;&nbsp;
                                     </td>
 
