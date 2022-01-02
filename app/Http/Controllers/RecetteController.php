@@ -79,8 +79,7 @@ class RecetteController extends Controller
      */
     public function createIndex()
     {
-
-
+        
         $voies = Voie::where('site_id','=',Auth::user()->site_id)
         ->get();
 
