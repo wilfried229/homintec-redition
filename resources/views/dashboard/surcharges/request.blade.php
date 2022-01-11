@@ -44,9 +44,13 @@
                                     </select>
 
                                 </div>
-                                <div class="col-lg-12">
-                                    <label for=""> Choisissez le mois</label>
-                                    <input type="month" name="date" id="" class="form-control"  style="height: 50px">
+                                <div class="col-lg-6">
+                                    <label for=""> Date de début</label>
+                                    <input type="date" name="date_debut" id="" class="form-control"  style="height: 50px">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for=""> Date de fin</label>
+                                    <input type="date" name="date_fin" id="" class="form-control"  style="height: 50px">
                                 </div>
                                 <div class="col-lg-12">
                                     <br>

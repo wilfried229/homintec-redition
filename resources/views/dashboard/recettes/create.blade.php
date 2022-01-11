@@ -46,6 +46,8 @@
                                         <input type="hidden" name="voies_id" value="{{$voies->id ?? ''}}">
 
 
+                                        <input type="hidden" id="voies"  value="{{$voies->nom ?? ''}}">
+
 
                                     </div>
                                     <div class="row">
@@ -54,7 +56,7 @@
 
                                             <select name="vacation_id" id="vacation_id" class="form-control" required>
 
-                                                <option  selected>----------------- Selectionnez---------------</option>
+                                                <option value=""  selected>----------------- Selectionnez---------------</option>
 
                                                 @foreach ($vacations as $vacation )
 
@@ -89,7 +91,7 @@
 
                                             <select name="percepteur_id" id="precepteur_id"  class="form-control" required>
 
-                                                <option  selected>-------- Selectionnez--------</option>
+                                                <option  value="" selected>-------- Selectionnez--------</option>
 
                                                 @foreach ($percepteurs as $percepteur )
                                                 <option value="{{$percepteur->id}}">{{$percepteur->nom}}</option>
@@ -209,15 +211,19 @@ $("#is_surchages").change(function(value){
     } else {
         $('#surcharge').hide();
     }
-
-
-
-
 });
 
 $("#montant_informatise").keyup(function() {
 
-    var ecart  = $('#montant_informatise').val() - $('#montant_percepteur').val();
+    if ($('#montant_informatise').val() > $('#montant_coupant').val() ) {
+        var ecart  = $('#montant_percepteur').val()-  $('#montant_informatise').val();
+    }else{
+
+        var ecart  = $('#montant_percepteur').val()-  $('#montant_coupant').val();
+
+    }
+
+
     $('#ecart').val(ecart);
     $('#montant_ecart').val(ecart);
 
@@ -227,8 +233,18 @@ console.log(ecart);
 
   $("#montant_percepteur").keyup(function() {
 
-var ecart  = $('#montant_informatise').val() - $('#montant_percepteur').val();
+
+
+   if ($('#montant_informatise').val() > $('#montant_coupant').val() ) {
+        var ecart  = $('#montant_percepteur').val()-  $('#montant_informatise').val();
+    }else{
+
+        var ecart  = $('#montant_percepteur').val()-  $('#montant_coupant').val();
+
+    }
+
 $('#ecart').val(ecart);
+
 
 $('#montant_ecart').val(ecart);
 console.log(ecart);
@@ -237,29 +253,22 @@ console.log(ecart);
 
 $("#nombre_vehicule").keyup(function() {
 
-var montant_coupant = $('#nombre_vehicule').val() * $('#tarif').val();
-$('#montant_coupant').val(montant_coupant);
-$('#coupant').val(montant_coupant);
-
-
-});
-
-
-
-$("#voies_id").change(function(value){
     myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL");
-if( $.inArray($("#voies_id option:selected").text(), myArray) != -1 ) {
+if( $.inArray($("#voies").val(), myArray) != -1 ) {
     $("#montant_coupant").prop("type", "number");
     $("#coupant").prop("type", "hidden");
 }else{
     $("#montant_coupant").prop("type", "hidden");
     $("#coupant").prop("type", "number");
+
+    var montant_coupant = $('#nombre_vehicule').val() * $('#tarif').val();
+    $('#montant_coupant').val(montant_coupant);
+    $('#coupant').val(montant_coupant);
 }
+
+
+
 });
-
-
-
-//$('#montant_ecart').ke;
 
 </script>
 

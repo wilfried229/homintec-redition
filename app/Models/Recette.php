@@ -31,8 +31,6 @@ class Recette extends Model
         'percepteurs_id',
         'vacations_id',
         'voies_id',
-        'surchages_manuels_id',
-        'is_surchages',
         'user_id',
 
     ];

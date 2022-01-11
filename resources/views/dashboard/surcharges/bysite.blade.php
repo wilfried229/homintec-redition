@@ -74,9 +74,14 @@
                                     <td>{{$surcharge->observation}}</td>
                                     <td>
                                     <a href="{{route('surcharge-manuel.edit',['surcharge_manuel'=>$surcharge])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit">Modifier</i></a>
+
+                                    @if (Auth::user()->role == 'HOMINTEC' || Auth::user()->role == 'ADMIN' )
+
                                     <a href="" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="{{"#actionModalremoveSucharges".$surcharge->id}}">
                                         <i class="fa fa-1x fa-remove text-danger">Retier</i>
                                     </a>&nbsp;&nbsp;
+                                    @endif
+
                                 </td>
 
                                 @include('dashboard.surcharges.remove',['surcharge'=> $surcharge])

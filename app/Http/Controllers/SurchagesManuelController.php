@@ -30,9 +30,15 @@ class SurchagesManuelController extends Controller
         $dateDebut->startOfMonth();
         $dateFin  = Carbon::create($date);
         $dateFin->endOfMonth();
+
+
+        $debut = Carbon::parse($request->date_debut)->format('y-m-d');
+        $fin = Carbon::parse($request->dateèfin)->format('y-m-d');
+
+
         $site = Site::find($request->site_id);
         $surcharges = ModelsSurchagesManuel::Where('sites_id',$request->site_id)
-        ->whereBetween('date_passage', [$dateDebut, $dateFin])
+        ->whereBetween('date_passage', [$debut, $fin])
         ->get();
         $montantMensuels = $surcharges->sum('recette_informatise');
         return  view('dashboard.surcharges.bysite',compact('date','surcharges','montantMensuels','site'));

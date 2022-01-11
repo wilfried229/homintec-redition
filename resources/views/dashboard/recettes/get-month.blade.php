@@ -1,4 +1,4 @@
-@extends('template-redition')
+@extends('layouts.export')
 
 @section('css')
 
@@ -27,15 +27,22 @@
 
             </div>
             <div class="body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                <div class="table-responsive py-2">
+                    <table id="listExport" class="table table-bordered ">
                         <thead>
+
                             <tr>
-                                <th>Site</th>
+
+                                <th colspan="15"><h3 style="text-align: center">{{$site->nom}}</h3></th>
+
+
+                            </tr>
+                            <tr>
                                 <th>Date</th>
+                                <th>Vacation</th>
+
                                 <th>Voie</th>
                                 <th>Percepteur</th>
-                                <th>Vacation</th>
                                 <th>Montant coupon</th>
                                 <th>Recette declarer</th>
                                 <th>Recette Informatiser</th>
@@ -52,36 +59,115 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($recettes as $recette)
-                                <tr>
-                                    <td>{{$recette->site()->first()->nom}}</td>
-                                    <td>{{$recette->date_recettes}}</td>
+
+
+
+                                @foreach ($recettes as $key => $recette)
+
+
+
+                                @if($loop->first)
+                                @php
+                                    $recet=$recettes->where('date_recettes', $recette->date_recettes);
+                                    $dernier = $recet->last();
+                                    $premier = $recet->first();
+                                    $totCoupon = $recet->sum('montant_coupant');
+                                    $totInformatisee = $recet->sum('montant_informatise');
+                                    $totDeclaree = $recet->sum('montant_percepteur');
+
+
+                                    $totManquant =   $recette->montant_ecart < 0  ? $recet->sum('montant_ecart') : 0;
+
+
+                                $totSurplus = $recette->montant_ecart > 0  ? $recet->sum('montant_ecart') : 0;
+                                 $totPassage = $recet->sum('nombre_vehicule');
+                                    //$totManquant = $recet->sum('manquant');
+                                   // $totSurplus = $recet->sum('surplus');
+                                    ///$totPassagev = $recet->sum('nombrevl');
+                                    ///$totPassagep = $recet->sum('nombrepl');
+                                    ///$totPassage = $recet->sum('nombrev');
+                                    $totViolation = $recet->sum('nombre_violation');
+                                    $totExempte = $recet->sum('nombre_exemptes');
+                                @endphp
+                            @endif
+
+                            @if($dernier->date_recettes !== $recette->date_recettes)
+                                @php
+                                    $recet=$recettes->where('date_recettes', $recette->date_recettes);
+                                    $dernier = $recet->last();
+                                    $premier = $recet->first();
+                                    $totCoupon = $recet->sum('montant_coupant');
+                                    $totInformatisee = $recet->sum('montant_informatise');
+                                    $totDeclaree = $recet->sum('montant_percepteur');
+
+
+                                    $totManquant =   $recette->montant_ecart < 0  ? $recet->sum('montant_ecart') : 0;
+
+
+                                    $totSurplus = $recette->montant_ecart > 0  ? $recet->sum('montant_ecart') : 0;
+                                 $totPassage = $recet->sum('nombre_vehicule');
+                                    ///$totPassagep = $recet->sum('nombrepl');
+                                    ///$totPassage = $recet->sum('nombrev');
+
+                                    $totViolation = $recet->sum('nombre_violation');
+                                    $totExempte = $recet->sum('nombre_exemptes');
+                                @endphp
+                            @endif
+                            <tr>
+
+
+                                @if($premier->id == $recette->id)
+                                <td class="text-center" rowspan="{{$recet->count()}}">{{ $recette->date_recettes }}</td>
+                            @else
+                                <td class="d-none" style="display: none"></td>
+                            @endif
+                                    <td>{{$recette->vacation()->first()->type}}</td>
                                     <td>{{$recette->voie()->first()->nom}}</td>
                                     <td>{{$recette->percepteur()->first()->nom ." " .$recette->percepteur()->first()->prenom}}</td>
-                                    <td>
-                                        {{$recette->vacation()->first()->type}}
-
-                                    </td>
-                                    <td>{{ number_format((float)$recette->montant_coupant, 0, '.', '.') }}</td>
-                                    <td>{{ number_format((float)$recette->montant_percepteur , 0, '.', '.') }}</td>
-                                    <td>{{ number_format((float)$recette->montant_informatise , 0, '.', '.')}} </td>
+                                    <td>{{ $recette->montant_coupant}}</td>
+                                    <td>{{$recette->montant_percepteur }}</td>
+                                    <td>{{ $recette->montant_informatise}} </td>
                                     <td>{{$recette->observation}}</td>
-                                    <td>{{$recette->montant_ecart}}</td>
-                                    <td>{{$recette->surplus ?? ''}}</td>
+                                    <td>{{$recette->montant_ecart < 0  ? -$recette->montant_ecart : 0 }}</td>
+                                    <td>{{$recette->montant_ecart > 0  ? $recette->montant_ecart : 0}}</td>
                                     <td>{{$recette->nombre_vehicule}} </td>
                                     <td>{{$recette->nombre_violation}}</td>
                                     <td>{{$recette->nombre_exemptes}} </td>
 
+
                                     <td>
 
-                                    <a href="{{route('recette.show',['id'=>$recette->id])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit"></i></a>
-                                    <a href="" class="btn btn-danger " title="Supprimer"> <i class="fa fa-edit"></i></a>
+
+                                        <a href="{{route('recette.show',['id'=>$recette->id])}}" class="btn btn-info" title="Modifier"> Modifier<i class="fa fa-edit"></i></a>
 
                                     </td>
 
 
                                 </tr>
 
+                                @if($recette->id == $dernier->id)
+
+                                <tr class="bg-light">
+
+
+                                    <td style="display: none"></td>
+                                    <td style="display: none"> </td>
+                                    <td style="display: none"></td>
+                                    <td colspan="4" class="text-right">SOMME TOTAL</td>
+                                    <td>{{$totCoupon}}</td>
+                                    <td>{{$totDeclaree}}</td>
+                                    <td>{{$totInformatisee}}</td>
+                                    <td></td>
+                                    <td>{{-$totManquant}} </td>
+                                    <td>{{$totSurplus}}</td>
+                                    <td>{{$totPassage}}</td>
+                                    <td>{{$totViolation}}</td>
+                                    <td>{{$totExempte}} </td>
+                                    <td> </td>
+
+                                    </tr>
+
+                                    @endif
                                 @endforeach
                             </tbody>
 
@@ -95,6 +181,45 @@
 
 
 @section('js')
+
+
+
+
+
+<script>
+$(document).ready(function(){
+
+    var span = 1;
+    var preTD= "";
+    var preTDVal = '';
+
+    $("#listExpor tr td:first-child").each(function () {
+
+
+       var  $this = $(this)
+        if ($this.text()==preTDVal) {
+            span ++;
+
+            if (preTD!= "") {
+                preTD.attr("rowspan",span);
+                $this.remove();
+
+            }
+
+
+        } else {
+
+            preTD = $this;
+            preTDVal = $this.text();
+            span = 1;
+        }
+    })
+
+
+})
+
+</script>
+
 
 
 @endsection

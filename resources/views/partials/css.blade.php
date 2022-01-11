@@ -14,6 +14,8 @@
     <!-- JQuery DataTable Css -->
     <link href="{{asset('dashboard/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{asset('dashboard/plugins/multi-select/css/multi-select.css')}}">
+
     <!-- Custom Css -->
     <link href="{{asset('dashboard/css/style.css')}}" rel="stylesheet">
 

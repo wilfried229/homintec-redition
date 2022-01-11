@@ -142,13 +142,13 @@
                         <span>Recettes manuelles</span>
                     </a>
                    <ul class="ml-menu">
-
+{{--
                        <li>
                          <a href="{{route('recette.index')}}">Afficher  Tout</a>
-                        </li>
+                        </li> --}}
 
                         <li>
-                            <a href="{{route('recette.getByMonth')}}">Afficher par site </a>
+                            <a href="{{route('recette.getByMonth')}}">Afficher</a>
                            </li>
                         <li>
                          <a  href="{{route('recette.create-index')}}">Ajouter</a>
