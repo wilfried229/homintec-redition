@@ -65,7 +65,7 @@ class CashFlowController extends Controller
 
     public function indexMonth(){
 
-        $sites = ['EKPE','AHOZON','SIRAROU','DIHO','KEDEKPO','HOUEGBO','GRAND-POPO'];
+        $sites = ['EKPE','AHOZON','SIRAROU','DIHO','KPEDEKPO','HOUEGBO','GRAND-POPO'];
         return  view('dashboard.cashFlow.modal-month',compact('sites'));
 
     }
@@ -130,7 +130,7 @@ class CashFlowController extends Controller
         try {
             $data = $request->all();
             unset($data["date"]);
-            
+
 
           /*   unset($data["date"]);
             unset($data["date_debut"]);

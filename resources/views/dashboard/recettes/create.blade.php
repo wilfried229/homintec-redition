@@ -245,7 +245,6 @@ console.log(ecart);
 
 $('#ecart').val(ecart);
 
-
 $('#montant_ecart').val(ecart);
 console.log(ecart);
 });
