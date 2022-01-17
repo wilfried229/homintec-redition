@@ -218,15 +218,16 @@ $("#is_surchages").change(function(value){
 $("#montant_informatise").keyup(function() {
 
 
-
+/*
     if ($('#montant_informatise').val() > $('#montant_coupant').val() ) {
         var ecart  = $('#montant_percepteur').val()-  $('#montant_informatise').val();
     }else{
 
-        var ecart  = $('#montant_percepteur').val()-  $('#montant_coupant').val();
 
     }
+ */
 
+    var ecart  = $('#montant_percepteur').val()-  $('#montant_coupant').val();
 
     $('#ecart').val(ecart);
     $('#montant_ecart').val(ecart);
@@ -239,13 +240,16 @@ console.log(ecart);
 
 
 
-   if ($('#montant_informatise').val() > $('#montant_coupant').val() ) {
+   /* if ($('#montant_informatise').val() > $('#montant_coupant').val() ) {
         var ecart  = $('#montant_percepteur').val()-  $('#montant_informatise').val();
     }else{
 
         var ecart  = $('#montant_percepteur').val()-  $('#montant_coupant').val();
 
     }
+ */
+
+    var ecart  = $('#montant_percepteur').val()-  $('#montant_coupant').val();
 
 $('#ecart').val(ecart);
 

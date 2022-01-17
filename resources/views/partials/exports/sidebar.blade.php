@@ -117,6 +117,9 @@
                     </ul>
                 </li>
  --}}
+
+ @if (in_array(Auth::user()->role,["ADMIN",'SIRB']) )
+
                 <li>
 
 
@@ -134,6 +137,8 @@
                            </li>
                     </ul>
                 </li>
+
+    @endif
 
                 @if (Auth::user()->role == 'SUPERVISEUR' || Auth::user()->role == 'ADMIN' )
 

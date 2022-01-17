@@ -46,11 +46,11 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <label for=""> Date de début</label>
-                                    <input type="date" name="date_debut" id="" class="form-control"  style="height: 50px">
+                                    <input type="date" name="date_debut"  class="form-control"  style="height: 50px">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for=""> Date de fin</label>
-                                    <input type="date" name="date_fin" id="" class="form-control"  style="height: 50px">
+                                    <input type="date" name="date_fin"  class="form-control"  style="height: 50px">
                                 </div>
                                 <div class="col-lg-12">
                                     <br>

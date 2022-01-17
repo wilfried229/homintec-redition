@@ -42,14 +42,14 @@ class RecetteController extends Controller
         $dateFin->endOfMonth();
 
 
-        $debut = Carbon::parse($request->date_debut)->format('y-m-d');
-        $fin = Carbon::parse($request->dateèfin)->format('y-m-d');
+        $debut = Carbon::parse($request->date_debut)->format('Y-m-d');
+        $fin = Carbon::parse($request->date_fin)->format('Y-m-d');
 
 
+        ///dd($debut);
         $site = Site::find($request->site_id);
         $recettes = Recette::Where('sites_id',$request->site_id)
         ->whereBetween('date_recettes', [$debut, $fin])
-
         ->orderBy('date_recettes')
         ->get();
         $montantMensuels = $recettes->sum('recette_informatise');
@@ -65,38 +65,6 @@ class RecetteController extends Controller
     public function index()
     {
         //
-
-
-/*
-
-        $recettes = Recette::select(
-
-            'montant_coupant',
-            'montant_percepteur'
-            ,'date_recettes'
-            ,'heure_debut'
-            ,'heure_fin'
-            ,'nombre_vehicule'
-            ,'nombre_violation',
-            'nombre_exemptes',
-            'montant_ecart',
-            'montant_informatise',
-            'observation',
-            'sites_id',
-            'percepteurs_id',
-            'vacations_id',
-            'voies_id',
-            'user_id',
-            DB::raw('count(id) as nbreCoupons')
-                        )
-                        ->orderBy(DB::raw('Date(date_recettes)'))
-                        ->get()
-                          ->groupBy(function($date){
-                              return Carbon::parse($date->date_recettes)->format('d');
-                          })
-
-                        ;
-                     */
 
 
                 if (Auth::user()->role =="SUPERVISEUR") {

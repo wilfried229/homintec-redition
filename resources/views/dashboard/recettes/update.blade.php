@@ -203,7 +203,7 @@
 var date_passage = $('#date_passage').val();
 
 
-myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL");
+myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL",'VA','VR');
 if( $.inArray($("#voies_id option:selected").text(), myArray) != -1 ) {
 $("#montant_coupant").prop("type", "number");
 $("#coupant").prop("type", "hidden");
@@ -259,8 +259,8 @@ $("#nombre_vehicule").keyup(function() {
 
 
 
-myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL");
-if( $.inArray($("#voies").val(), myArray) != -1 ) {
+myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL",'VA','VR');
+if( $.inArray($("#voies_id option:selected").text(), myArray) != -1 ) {
     $("#montant_coupant").prop("type", "number");
     $("#coupant").prop("type", "hidden");
 }else{
@@ -281,7 +281,7 @@ if( $.inArray($("#voies").val(), myArray) != -1 ) {
 
 
 $("#voies_id").change(function(value){
-myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL");
+myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL",'VA','VR');
 if( $.inArray($("#voies_id option:selected").text(), myArray) != -1 ) {
 $("#montant_coupant").prop("type", "number");
 $("#coupant").prop("type", "hidden");

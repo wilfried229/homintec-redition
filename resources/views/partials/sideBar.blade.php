@@ -117,8 +117,10 @@
                     </ul>
                 </li>
  --}}
-                <li>
 
+ @if (in_array(Auth::user()->role,["ADMIN",'SIRB']) )
+
+                <li>
 
                     <a href="#" class="menu-toggle">
                         <span>CashFlow</span>
@@ -135,6 +137,7 @@
                     </ul>
                 </li>
 
+    @endif
                 @if (Auth::user()->role == 'SUPERVISEUR' || Auth::user()->role == 'ADMIN' )
 
                 <li>
