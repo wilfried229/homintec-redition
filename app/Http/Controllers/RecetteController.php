@@ -65,8 +65,6 @@ class RecetteController extends Controller
     public function index()
     {
         //
-
-
                 if (Auth::user()->role =="SUPERVISEUR") {
                     # code...
                 $recettes = Recette::where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
@@ -92,9 +90,8 @@ class RecetteController extends Controller
         ->orderBy('id','DESC')
         ->get();
 
+      return view('dashboard.recettes.create-index',compact('voies'));
 
-
-    return view('dashboard.recettes.create-index',compact('voies'));
     }
 
     /**
@@ -121,7 +118,6 @@ class RecetteController extends Controller
             $os = array("GRAND-POPO", "PREKETE");
         if (in_array($site->nom, $os)) {
              return view('dashboard.recettes.create-except',compact('site','voies','vacations','percepteurs'));
-
         }
 
         return view("dashboard.recettes.create",compact('site','voies','vacations','percepteurs'));
@@ -191,7 +187,6 @@ class RecetteController extends Controller
         //
 
         $percepteurs = Percepteur::all();
-
 
         $site = Site::find(Auth::user()->site_id);
         $recette = Recette::find($id);
