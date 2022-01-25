@@ -207,14 +207,6 @@
 
 
 
-$("#is_surchages").change(function(value){
-
-    if (this.checked) {
-        $('#surcharge').show();
-    } else {
-        $('#surcharge').hide();
-    }
-});
 
 $("#montant_informatise").keyup(function() {
 
@@ -269,6 +261,10 @@ if( $.inArray($("#voies").val(), myArray) != -1 ) {
     $("#montant_coupant").prop("type", "hidden");
     $("#coupant").prop("type", "number");
 
+    var montant_coupant = $('#nombre_vehicule').val() * $('#tarif').val();
+    $('#montant_coupant').val(montant_coupant);
+    $('#coupant').val(montant_coupant);
+
 
 }
 
@@ -290,9 +286,6 @@ if( $.inArray($("#voies").val(), myArray) != -1 ) {
     $('#coupant').val(montant_coupant);
 }
 
-$(function() {
-  $('.selectpicker').selectpicker();
-});
 
 </script>
 
