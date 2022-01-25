@@ -24,8 +24,7 @@
                     Recettes
                 </h2>
                 <br>
-                <a href="{{route('recette.create')}}" class="btn btn-info ">Ajouter</a>
-
+                
             </div>
             <div class="body">
                 <div class="table-responsive">

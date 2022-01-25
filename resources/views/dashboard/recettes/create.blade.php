@@ -89,12 +89,12 @@
                                         <div class="col-lg-6 col-md-6">
                                             <label for="">Percepteur</label>
 
-                                            <select name="percepteur_id" id="precepteur_id"  class="form-control" required>
+                                            <select name="percepteur_id" id="precepteur_id"  class="form-control selectpicker" data-show-subtext="true" data-live-search="true" style="height: 50px;widht:50px" required>
 
-                                                <option  value="" selected>-------- Selectionnez--------</option>
+                                                <option  value="" selected> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;    &nbsp; -------- Selectionnez--------</option>
 
                                                 @foreach ($percepteurs as $percepteur )
-                                                <option value="{{$percepteur->id}}">{{$percepteur->nom}}</option>
+                                                <option value="{{$percepteur->id}}">   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;    &nbsp;                 {{$percepteur->nom}}</option>
 
                                                 @endforeach
                                             </select>
@@ -269,7 +269,7 @@ if( $.inArray($("#voies").val(), myArray) != -1 ) {
     $("#montant_coupant").prop("type", "hidden");
     $("#coupant").prop("type", "number");
 
-     
+
 }
 
 
@@ -290,6 +290,11 @@ if( $.inArray($("#voies").val(), myArray) != -1 ) {
     $('#coupant').val(montant_coupant);
 }
 
+$(function() {
+  $('.selectpicker').selectpicker();
+});
+
 </script>
+
 
 @endsection

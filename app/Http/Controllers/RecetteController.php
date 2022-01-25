@@ -47,8 +47,8 @@ class RecetteController extends Controller
 
 
         ///dd($debut);
-        $site = Site::find($request->site_id);
-        $recettes = Recette::Where('sites_id',$request->site_id)
+        $site = Site::find($request->site_id ?? Auth::user()->site_id);
+        $recettes = Recette::Where('sites_id',$request->site_id ?? Auth::user()->site_id)
         ->whereBetween('date_recettes', [$debut, $fin])
         ->orderBy('date_recettes')
         ->get();
@@ -132,11 +132,8 @@ class RecetteController extends Controller
     public function store(Request $request)
     {
         //
-
-
     ///dd($request->all());
         try {
-
             $recette =  Recette::create([
                 'montant_coupant' =>$request->montant_coupant,
                 'montant_percepteur'=>$request->montant_percepteur,
@@ -154,13 +151,12 @@ class RecetteController extends Controller
                 'percepteurs_id'=>$request->percepteur_id,
                 'vacations_id'=>$request->vacation_id,
                 'voies_id'=>$request->voies_id,
-                'is_surchages'=>false,
                 'user_id'=>Auth::user()->id,
 
               ]);
 
 
-              return  redirect()->route('recette.index')
+              return  back()
               ->with([
                 'message' => 'Recette enregistrée avec succès',
                 'alert-type' => 'success'
@@ -170,7 +166,7 @@ class RecetteController extends Controller
             return  back()
             ->with([
               'message' =>"Erreur interne. Verifiez si toutes les champs sont bien remplir",
-              'alert-type' => 'error'
+              'alert-type' => 'danger'
           ]);
         }
 

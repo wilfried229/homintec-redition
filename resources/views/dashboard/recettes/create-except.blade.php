@@ -89,12 +89,13 @@
                                         <div class="col-lg-6 col-md-6">
                                             <label for="">Percepteur</label>
 
-                                            <select name="percepteur_id" id="precepteur_id"  class="form-control" required>
 
-                                                <option value=""  selected>-------- Selectionnez--------</option>
+                                            <select name="percepteur_id" id="precepteur_id"  class="form-control selectpicker" data-show-subtext="true" data-live-search="true" style="height: 50px;widht:50px" required>
+
+                                                <option  value="" selected> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;    &nbsp; -------- Selectionnez--------</option>
 
                                                 @foreach ($percepteurs as $percepteur )
-                                                <option value="{{$percepteur->id}}">{{$percepteur->nom}}</option>
+                                                <option value="{{$percepteur->id}}">   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;    &nbsp;                 {{$percepteur->nom}}</option>
 
                                                 @endforeach
                                             </select>
