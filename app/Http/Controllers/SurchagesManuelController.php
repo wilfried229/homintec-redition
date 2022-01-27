@@ -39,6 +39,8 @@ class SurchagesManuelController extends Controller
         $site = Site::find($request->site_id);
         $surcharges = ModelsSurchagesManuel::Where('sites_id',$request->site_id)
         ->whereBetween('date_passage', [$debut, $fin])
+        ->orderBy('date_passage','ASC')
+
         ->get();
         $montantMensuels = $surcharges->sum('recette_informatise');
         return  view('dashboard.surcharges.bysite',compact('date','surcharges','montantMensuels','site'));
@@ -87,7 +89,6 @@ class SurchagesManuelController extends Controller
 
         $voies = Voie::where('site_id','=',Auth::user()->site_id)
         ->where('nom', 'LIKE', '%PL%')
-
         ->get();
 
     return view('dashboard.surcharges.create-index',compact('voies'));

@@ -14,7 +14,6 @@ class SurchagesManuel extends Model
     protected $fillable =  [
         'id',
         'immatriculation',
-      //"montant_surcharge",
         'type_surcharge',
         'date_passage',
         'heure_passage',

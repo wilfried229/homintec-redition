@@ -1,4 +1,4 @@
-@extends('template-redition')
+@extends('layouts.export')
 
 @section('css')
 
@@ -30,13 +30,12 @@
                 <div class="table-responsive">
                     @include('partials.flash')
 
-                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                    <table id="listExport" class="table table-bordered ">
+
                         <thead>
                             <tr>
-                                <th>Site</th>
-                                <th>Voie</th>
-
                                 <th>Date de passage</th>
+                                <th>Voie</th>
                                 <th>Heure de passage</th>
                                 <th>Immatriculation</th>
                                 <th>Nombre Essieu</th>
@@ -54,12 +53,37 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($surcharges as $surcharge)
-                                <tr>
-                                    <td>{{$surcharge->site()->first()->nom ?? ""}}</td>
-                                    <td>{{$surcharge->voie()->first()->nom ?? ""}}</td>
 
-                                    <td>{{$surcharge->date_passage}}</td>
+
+
+                                @foreach ($surcharges as $surcharge)
+                                @if($loop->first)
+                                @php
+                                    $sucha=$surcharges->where('date_passage', $surcharge->date_passage);
+                                    $dernier = $sucha->last();
+                                    $premier = $sucha->first();
+                                    $totMontantApayer = $sucha->sum('montant_apayer');
+                                    $totIMontantPayer = $sucha->sum('montant_payer');
+                                @endphp
+                            @endif
+
+                            @if($dernier->date_passage !== $surcharge->date_passage)
+                                @php
+                                      $sucha=$surcharges->where('date_passage', $surcharge->date_passage);
+                                    $dernier = $sucha->last();
+                                    $premier = $sucha->first();
+                                    $totMontantApayer = $sucha->sum('montant_apayer');
+                                    $totIMontantPayer = $sucha->sum('montant_payer');
+                                @endphp
+                            @endif
+                                <tr>
+                                    @if($premier->id == $surcharge->id)
+                                    <td class="text-center" rowspan="{{$sucha->count()}}">{{$surcharge->date_passage}}</td>
+                                @else
+                                    <td class="d-none" style="display: none"></td>
+                                @endif
+                                    <td>{{$surcharge->voie()->orderBy('nom','ASC')->first()->nom ?? ""}}</td>
+
                                     <td>{{$surcharge->heure_passage}}</td>
                                     <td>
                                         {{ $surcharge->immatriculation}}
@@ -73,9 +97,12 @@
                                     <td>{{$surcharge->montant_payer}} </td>
                                     <td>{{$surcharge->observation}}</td>
                                     <td>
-                                    <a href="{{route('surcharge-manuel.edit',['surcharge_manuel'=>$surcharge])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit">Modifier</i></a>
+                                    @if (Auth::user()->role == 'SUPERVISEUR')
 
-                                    @if (Auth::user()->role == 'HOMINTEC' || Auth::user()->role == 'ADMIN' )
+                                    <a href="{{route('surcharge-manuel.edit',['surcharge_manuel'=>$surcharge])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit">Modifier</i></a>
+                                    @endif
+
+                                    @if (Auth::user()->role == 'SUPERVISEUR' )
 
                                     <a href="" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="{{"#actionModalremoveSucharges".$surcharge->id}}">
                                         <i class="fa fa-1x fa-remove text-danger">Retier</i>
@@ -87,6 +114,29 @@
                                 @include('dashboard.surcharges.remove',['surcharge'=> $surcharge])
 
                                 </tr>
+                                @if($surcharge->id == $dernier->id)
+
+                                <tr class="bg-light">
+
+                                    <td style="display: none"> </td>
+                                    <td style="display: none"></td>
+                                    <td colspan="4" class="text-right">SOMME TOTAL</td>
+
+                                    <td>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td> </td>
+                                    <td></td>
+
+                                    <td>{{$totMontantApayer}}</td>
+                                    <td>{{$totIMontantPayer}} </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                </tr>
+                                    @endif
 
                                 @endforeach
                             </tbody>
@@ -101,6 +151,40 @@
 
 
 @section('js')
+
+<script>
+    $(document).ready(function(){
+
+        var span = 1;
+        var preTD= "";
+        var preTDVal = '';
+
+        $("#listExpor tr td:first-child").each(function () {
+
+
+           var  $this = $(this)
+            if ($this.text()==preTDVal) {
+                span ++;
+
+                if (preTD!= "") {
+                    preTD.attr("rowspan",span);
+                    $this.remove();
+
+                }
+
+
+            } else {
+
+                preTD = $this;
+                preTDVal = $this.text();
+                span = 1;
+            }
+        })
+
+
+    })
+
+    </script>
 
 
 @endsection
