@@ -54,7 +54,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <label for=""> Vacation</label>
 
-                                            <select name="vacation_id" id="vacation_id" class="form-control" required>
+                                            <select name="vacations_id" id="vacations_id" class="form-control" required>
 
                                                 <option value=""  selected>----------------- Selectionnez---------------</option>
 
@@ -90,7 +90,7 @@
                                             <label for="">Percepteur</label>
 
 
-                                            <select name="percepteur_id" id="precepteur_id"  class="form-control selectpicker" data-show-subtext="true" data-live-search="true" style="height: 50px;widht:50px" required>
+                                            <select name="percepteurs_id" id="percepteurs_id"  class="form-control selectpicker" data-show-subtext="true" data-live-search="true" style="height: 50px;widht:50px" required>
 
                                                 <option  value="" selected> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;    &nbsp; -------- Selectionnez--------</option>
 
@@ -203,19 +203,7 @@
 @section('js')
 
 <script>
-$("#is_surchages").change(function(value){
-
-    if (this.checked) {
-        $('#surcharge').show();
-    } else {
-        $('#surcharge').hide();
-    }
-
-
-
-
-});
-
+ 
 $("#montant_informatise").keyup(function() {
 
 
@@ -260,7 +248,7 @@ console.log(ecart);
 });
 
 
-$("#nombre_vehic").keyup(function() {
+$("#nombre_vehicule").keyup(function() {
 
     myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL");
 if( $.inArray($("#voies").val(), myArray) != -1 ) {

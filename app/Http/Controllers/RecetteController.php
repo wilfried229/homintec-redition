@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class RecetteController extends Controller
 {
@@ -87,7 +88,6 @@ class RecetteController extends Controller
     {
 
         $voies = Voie::where('site_id','=',Auth::user()->site_id)
-        ->orderBy('id','DESC')
         ->get();
 
       return view('dashboard.recettes.create-index',compact('voies'));
@@ -106,9 +106,7 @@ class RecetteController extends Controller
        /// $vacations = Vacation::all();
 
         $percepteurs = Percepteur::all();
-
         $site = Site::find(Auth::user()->site_id);
-
        ///// dd($site);
         $vacations = Vacation::where('sites_id','=',$site->id)->get();
 
@@ -134,6 +132,45 @@ class RecetteController extends Controller
         //
     ///dd($request->all());
         try {
+
+            $data = $request->all();
+
+
+            $user =$request->user();
+            $site_id =$request->user();
+
+            $data['user_id'] = $user->id;
+            $data['sites_id'] = $user->id;
+
+           //// dd($data);
+
+            $validator = Validator::make($data, [
+               'montant_coupant' =>'required',
+               'montant_percepteur'=>'required',
+               'date_recettes'=>'required',
+               'heure_debut'=>'required',
+               'heure_fin'=>'required',
+               'nombre_vehicule'=>'required',
+               'nombre_violation'=>'required',
+               'nombre_exemptes'=>'required',
+               'montant_percepteur'=>'required',
+               'montant_ecart'=>'required',
+               'montant_informatise'=>'required',
+               'observation'=>'required',
+               'sites_id'=>'required',
+               'percepteurs_id'=>'required|numeric',
+               'vacations_id'=>'required|numeric',
+               'voies_id'=>'required|numeric',
+               'user_id'=>'required|numeric'
+         ]);
+           if($validator->fails()){
+
+               return  back()
+                 ->with([
+                   'message' => $validator->errors(). "Verifiez si les champs sont bien remplir",
+                   'alert-type' => 'danger'
+               ]);
+           }
             $recette =  Recette::create([
                 'montant_coupant' =>$request->montant_coupant,
                 'montant_percepteur'=>$request->montant_percepteur,
@@ -147,11 +184,11 @@ class RecetteController extends Controller
                 'montant_ecart'=>$request->montant_ecart,
                 'montant_informatise'=>$request->montant_informatise,
                 'observation'=>$request->observation,
-                'sites_id'=>Auth::user()->site_id,
-                'percepteurs_id'=>$request->percepteur_id,
-                'vacations_id'=>$request->vacation_id,
+                'sites_id'=>$user->site_id,
+                'percepteurs_id'=>$request->percepteurs_id,
+                'vacations_id'=>$request->vacations_id,
                 'voies_id'=>$request->voies_id,
-                'user_id'=>Auth::user()->id,
+                'user_id'=>$user->id,
 
               ]);
 
@@ -217,6 +254,8 @@ class RecetteController extends Controller
         //
 
      $site = Site::find(Auth::user()->site_id);
+
+
     $recette = Recette::find($id);
            ///dd($request->all());
       $recette->update([
@@ -233,12 +272,10 @@ class RecetteController extends Controller
         'montant_informatise'=>$request->montant_informatise,
         'observation'=>$request->observation,
         'sites_id'=>Auth::user()->site_id,
-        'percepteurs_id'=>$request->percepteur_id,
-        'vacations_id'=>$request->vacation_id,
+        'percepteurs_id'=>$request->percepteurs_id,
+        'vacations_id'=>$request->vacations_id,
         'voies_id'=>$request->voies_id,
-        'is_surchages'=>false,
         'user_id'=>Auth::user()->id,
-
       ]);
 
 
@@ -272,7 +309,7 @@ class RecetteController extends Controller
             } catch (\Exception $ex) {
                 //throw $th;
                 Log::info($ex->getMessage());
-                abort(500);
+                abort(300);
 
             }
 
