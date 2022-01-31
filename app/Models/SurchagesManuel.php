@@ -42,4 +42,6 @@ class SurchagesManuel extends Model
 
         return $this->belongsTo(Voie::class,'voies_id','id');
     }
+
+
 }

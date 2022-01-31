@@ -61,7 +61,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <label for=""> Vacation</label>
 
-                                            <select name="vacation_id" id="vacation_id" class="form-control" required>
+                                            <select name="vacations_id" id="vacations_id" class="form-control" required>
                                                 @foreach ($vacations as $vacation )
                                                 <option value="{{$vacation->id}}"
                                                     @if ($vacation->id == $recette->vacations_id)
@@ -97,7 +97,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <label for="">Percepteur</label>
 
-                                            <select name="percepteur_id" id="precepteur_id"  class="form-control" required>
+                                            <select name="percepteurs_id" id="percepteurs_id"  class="form-control" required>
 
                                                 @foreach ($percepteurs as $percepteur )
                                                 <option value="{{$percepteur->id}}"  @if ($percepteur->id == $recette->percepteurs_id)

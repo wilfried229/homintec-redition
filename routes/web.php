@@ -160,6 +160,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('vacation/{id}','VacationController@update')->name('vacation.update');
 
 
+    Route::get('point-essieux','PointsEssieuxController@index')->name('point-essieux.index');
+    Route::get('point-essieux/search','PointsEssieuxController@searchIndex')->name('point-essieux.searchIndex');
+    Route::get('vn/{id}','PointsEssieuxController@show')->name('vacation.show');
+
+
+
+
 
     #Route::resources([]);
 

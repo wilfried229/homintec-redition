@@ -203,7 +203,7 @@
 @section('js')
 
 <script>
- 
+
 $("#montant_informatise").keyup(function() {
 
 
@@ -248,7 +248,7 @@ console.log(ecart);
 });
 
 
-$("#nombre_vehicule").keyup(function() {
+$("#nombre_vehic").keyup(function() {
 
     myArray = new Array("PL11","PL12","PL13","PL21","PL22","PL23","PL11","PL21","PL1","PL2","PL51","PL61","PL31","PL41","PL71","PL81","PL");
 if( $.inArray($("#voies").val(), myArray) != -1 ) {
@@ -266,16 +266,6 @@ if( $.inArray($("#voies").val(), myArray) != -1 ) {
 
 
 });
-
-
-
-$("#voies_id").change(function(value){
-
-});
-
-
-
-//$('#montant_ecart').ke;
 
 </script>
 

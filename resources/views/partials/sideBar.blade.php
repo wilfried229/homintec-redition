@@ -227,6 +227,50 @@
 
 
                     <a href="#" class="menu-toggle">
+                        <span>Points Essieux</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('point-essieux.searchIndex')}}">Afficher</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Points Mensuels</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('percepteur.index')}}">Afficher</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Points Percepteurs</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('percepteur.index')}}">Afficher</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
                         <span>Percepteur</span>
                     </a>
                    <ul class="ml-menu">

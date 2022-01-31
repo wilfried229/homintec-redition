@@ -24,9 +24,11 @@
                     Recettes
                 </h2>
                 <br>
-                
+
             </div>
             <div class="body">
+                @include('partials.flash')
+
                 <div class="table-responsive">
 
                     <table id="tab" class="table table-bordered table-striped table-hover dataTable js-exportable">
