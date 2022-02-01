@@ -26,4 +26,9 @@ class Penalites extends Model
         'sense'
 
     ];
+
+
+  
+        //// 'eurimmatricule'
+
 }

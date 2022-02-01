@@ -97,21 +97,21 @@
                                     <td>{{$surcharge->montant_payer}} </td>
                                     <td>{{$surcharge->observation}}</td>
                                     <td>
-                                    @if (Auth::user()->role == 'SUPERVISEUR')
-
+                                    @if (in_array(Auth::user()->role,["ADMIN",'SUPERVISEUR']) )
                                     <a href="{{route('surcharge-manuel.edit',['surcharge_manuel'=>$surcharge])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit">Modifier</i></a>
                                     @endif
+                                    @if (Auth::user()->role == '' || Auth::user()->role == 'ADMIN' )
+                                    @if (in_array(Auth::user()->role,["ADMIN",'HOMINTEC']) )
 
-                                    @if (Auth::user()->role == 'SUPERVISEUR' )
-
-                                    <a href="" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="{{"#actionModalremoveSucharges".$surcharge->id}}">
-                                        <i class="fa fa-1x fa-remove text-danger">Retier</i>
-                                    </a>&nbsp;&nbsp;
+                                    <a  onclick="event.preventDefault(); document.getElementById('retirer-a-form-{{$surcharge->id}}').submit(); return false;"   class="btn btn-danger">Retirer </a>
+                                    &nbsp;&nbsp;
+                                    <form id="retirer-a-form-{{$surcharge->id}}" action="{{route('surcharge-manuel.destroy',['surcharge_manuel'=>$surcharge])}}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                     @endif
-
                                 </td>
 
-                                @include('dashboard.surcharges.remove',['surcharge'=> $surcharge])
 
                                 </tr>
                                 @if($surcharge->id == $dernier->id)

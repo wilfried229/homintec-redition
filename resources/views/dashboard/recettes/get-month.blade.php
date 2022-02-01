@@ -31,28 +31,28 @@
                     <table id="listExport" class="table table-bordered ">
                         <thead>
 
-                            <tr>
+                            <tr class="text-uppercase font-weight-bold">
 
                                 <th colspan="15"><h3 style="text-align: center">{{$site->nom}}</h3></th>
 
 
                             </tr>
                             <tr>
-                                <th>Date</th>
-                                <th>Vacation</th>
+                                <th class="text-uppercase">Date</th>
+                                <th class="text-uppercase">Vacation</th>
 
-                                <th>Voie</th>
-                                <th>Percepteur</th>
-                                <th>Montant coupon</th>
-                                <th>Recette declarer</th>
-                                <th>Recette Informatiser</th>
-                                <th>Observation</th>
-                                <th>Manquant</th>
-                                <th>Surplus</th>
-                                <th>Nombre passage</th>
-                                <th>Nombre de violation</th>
-                                <th>Nombre Exempte</th>
-                                <th>Options</th>
+                                <th class="text-uppercase">Voie</th>
+                                <th class="text-uppercase">Percepteur</th>
+                                <th class="text-uppercase">Montant coupon</th>
+                                <th class="text-uppercase">Recette declarer</th>
+                                <th class="text-uppercase">Recette Informatiser</th>
+                                <th class="text-uppercase">Observation</th>
+                                <th class="text-uppercase">Manquant</th>
+                                <th class="text-uppercase">Surplus</th>
+                                <th class="text-uppercase">Nombre passage</th>
+                                <th class="text-uppercase">Nombre de violation</th>
+                                <th class="text-uppercase">Nombre Exempte</th>
+                                <th class="text-uppercase">Options</th>
 
 
                             </tr>
@@ -121,9 +121,9 @@
                             @else
                                 <td class="d-none" style="display: none"></td>
                             @endif
-                                    <td>{{$recette->vacation()->first()->type}}</td>
-                                    <td>{{$recette->voie()->first()->nom}}</td>
-                                    <td>{{$recette->percepteur()->first()->nom ." " .$recette->percepteur()->first()->prenom}}</td>
+                                    <td>{{$recette->type}}</td>
+                                    <td>{{$recette->voie}}</td>
+                                    <td>{{$recette->percepteur_nom ." " .$recette->percepteur_prenom}}</td>
                                     <td>{{ $recette->montant_coupant}}</td>
                                     <td>{{$recette->montant_percepteur }}</td>
                                     <td>{{ $recette->montant_informatise}} </td>
@@ -137,8 +137,17 @@
 
                                     <td>
 
-
                                         <a href="{{route('recette.show',['id'=>$recette->id])}}" class="btn btn-info" title="Modifier"> Modifier<i class="fa fa-edit"></i></a>
+                                        @if (Auth::user()->role == 'HOMINTEC' || Auth::user()->role == 'ADMIN' )
+                                        <a  onclick="event.preventDefault(); document.getElementById('retirer-a-form-{{$recette->id}}').submit(); return false;"   class="btn btn-danger">Retirer </a>
+                                        &nbsp;&nbsp;
+
+                                        <form id="retirer-a-form-{{$recette->id}}" action="{{route('recette.destroy',['id'=>$recette->id])}}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+
+                                        @endif
 
                                     </td>
 

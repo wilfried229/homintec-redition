@@ -12,6 +12,7 @@ use App\Voie;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -45,14 +46,32 @@ class RecetteController extends Controller
 
         $debut = Carbon::parse($request->date_debut)->format('Y-m-d');
         $fin = Carbon::parse($request->date_fin)->format('Y-m-d');
-
-
         ///dd($debut);
         $site = Site::find($request->site_id ?? Auth::user()->site_id);
-        $recettes = Recette::Where('sites_id',$request->site_id ?? Auth::user()->site_id)
+        $recettes = DB::table('recettes')
+        ->select('recettes.id as id', 'date_recettes', 'vacations.type as type', 'voies.nom as voie',
+        'percepteurs.nom as percepteur_nom', 'percepteurs.prenom as percepteur_prenom','montant_coupant', 'montant_coupant','montant_percepteur',
+        'nombre_vehicule', 'nombre_violation', 'nombre_exemptes', 'montant_ecart', 'montant_informatise',
+            'observation', )
+        ->whereBetween('date_recettes', [$debut, $fin])
+        ->join('percepteurs', 'percepteurs.id', '=', 'recettes.percepteurs_id')
+        ->leftJoin('vacations', 'vacations.id', '=','recettes.vacations_id')
+        ->leftJoin('voies', 'voies.id', '=','recettes.voies_id')
+        ->leftJoin('sites', 'sites.id', '=','recettes.sites_id')
+       -> Where('sites.id',$request->site_id ?? Auth::user()->site_id)
+        ->groupBy('date_recettes', 'type', 'voie', 'percepteur_nom','percepteur_prenom', 'montant_coupant', 'montant_coupant', 'montant_informatise', 'montant_ecart','montant_percepteur',
+          'nombre_vehicule', 'id', 'nombre_violation', 'nombre_exemptes','observation')
+        ->get();
+
+
+      // dd($recettes);
+
+        /* $recettes = Recette::Where('sites_id',$request->site_id ?? Auth::user()->site_id)
         ->whereBetween('date_recettes', [$debut, $fin])
         ->orderBy('date_recettes')
-        ->get();
+
+        ->get(); */
+
         $montantMensuels = $recettes->sum('recette_informatise');
         return  view('dashboard.recettes.get-month',compact('date','recettes','montantMensuels','site'));
     }
@@ -87,8 +106,20 @@ class RecetteController extends Controller
     public function createIndex()
     {
 
+
+
+        if (in_array(Auth::user()->role,["ADMIN",'SIRB']) ){
+            $voies = Voie::all();
+        }else{
+
         $voies = Voie::where('site_id','=',Auth::user()->site_id)
         ->get();
+
+        }
+
+
+
+
 
       return view('dashboard.recettes.create-index',compact('voies'));
 
@@ -219,15 +250,18 @@ class RecetteController extends Controller
     {
         //
 
-        $percepteurs = Percepteur::all();
+        if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC']) ){
+            $voies = Voie::all();
+        }else{
 
+        $voies = Voie::where('site_id','=',Auth::user()->site_id)
+        ->get();
+
+        }
+        $percepteurs = Percepteur::all();
         $site = Site::find(Auth::user()->site_id);
         $recette = Recette::find($id);
-
         $vacations = Vacation::where('sites_id','=',$site->id)->get();
-
-        $voies = Voie::where('site_id','=',$site->id)->get();
-
         return view("dashboard.recettes.update",compact('recette','site','voies','vacations','percepteurs'));
     }
 
@@ -281,7 +315,7 @@ class RecetteController extends Controller
 
 
 
-     
+
 
           return  redirect()->route('recette.index')
           ->with([

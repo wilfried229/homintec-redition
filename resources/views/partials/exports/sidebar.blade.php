@@ -118,7 +118,7 @@
                 </li>
  --}}
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC']) )
 
                 <li>
 
@@ -140,7 +140,8 @@
 
     @endif
 
-                @if (Auth::user()->role == 'SUPERVISEUR' || Auth::user()->role == 'ADMIN' )
+       @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR']) )
+
 
                 <li>
                     <a href="{{route('recette.getByMonth')}}" class="menu-toggle">
