@@ -36,6 +36,26 @@ class Recette extends Model
     ];
 
 
+    public $appends =['horaire','sommesHoraire'];
+
+
+
+    public function getHoraireAttributs(){
+        $start = strtotime($this->heure_debut);
+        $end = strtotime($this->heure_fin ); // Run query to get datetime value from db
+        $elapsed = $end - $start;
+        return $elapsed;
+    }
+
+    public function getSommesHoraireAttributs(){
+
+        $start = strtotime($this->heure_debut);
+        $end = strtotime($this->heure_fin ); // Run query to get datetime value from db
+        $elapsed = $end - $start;
+
+        return $elapsed;
+    }
+
     public function site(){
 
 

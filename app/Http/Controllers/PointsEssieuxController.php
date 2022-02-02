@@ -35,7 +35,7 @@ class PointsEssieuxController extends Controller
 
         $reauesAll = [];
         foreach ($pointEssieux as $key => $value) {
-            
+
             array_push($reauesAll,$value->id);
         }
 

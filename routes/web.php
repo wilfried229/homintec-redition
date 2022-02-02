@@ -162,7 +162,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('point-essieux','PointsEssieuxController@index')->name('point-essieux.index');
     Route::get('point-essieux/search','PointsEssieuxController@searchIndex')->name('point-essieux.searchIndex');
-    Route::get('vn/{id}','PointsEssieuxController@show')->name('vacation.show');
+
+
+    Route::get('point-percepteur','PointsPercepteursController@index')->name('point-percepteur.index');
+    Route::get('point-percepteur/search','PointsPercepteursController@searchIndex')->name('point-percepteur.searchIndex');
+
+
+
+    Route::get('point-mensuel','PointsMensulesController@index')->name('point-mensuel.index');
+    Route::get('point-mensuel/search','PointsMensulesController@searchIndex')->name('point-mensuel.searchIndex');
 
 
 

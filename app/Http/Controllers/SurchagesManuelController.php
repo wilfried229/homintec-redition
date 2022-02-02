@@ -71,8 +71,10 @@ class SurchagesManuelController extends Controller
     {
 
         $surcharges = ModelsSurchagesManuel::Where('sites_id',$site ?? Auth::user()->site_id)
-        ->orderBy('id','DESC')->get();
+        ->orderBy('date_passage','DESC')
+        ->get();
 
+        
         $site = Site::find($site ?? Auth::user()->site_id);
 
     return view('dashboard.surcharges.bysite',compact('site',"surcharges"));

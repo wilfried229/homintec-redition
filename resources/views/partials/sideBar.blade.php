@@ -249,7 +249,7 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('percepteur.index')}}">Afficher</a>
+                         <a href="{{route('point-mensuel.searchIndex')}}">Afficher</a>
                         </li>
 
                     </ul>
@@ -264,7 +264,7 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('percepteur.index')}}">Afficher</a>
+                         <a href="{{route('point-percepteur.searchIndex')}}">Afficher</a>
                         </li>
 
                     </ul>

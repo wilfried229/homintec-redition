@@ -15,8 +15,19 @@ class CreatePenaliteTracsTable extends Migration
     {
         Schema::create('penalite_tracs', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('supervisieur');
+            $table->string('password_resp_client');
+            $table->date('date');
+            $table->time('heure');
+            $table->string('site');
+            $table->string('voie');
+            $table->string('percepteur');
+            $table->integer('somme_actuel');
+            $table->integer('somme_ajoute');
+            $table->integer('penalite_actuel');
+            $table->integer('penalite_ajoute');
             $table->timestamps();
+
         });
     }
 

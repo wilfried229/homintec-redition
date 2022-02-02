@@ -4,24 +4,24 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class penaliteTrac extends Model
+class PenaliteTrac extends Model
 {
     //
 
-    protected $table ='penalite_trac';
+    protected $table ='penalite_tracs';
 
     protected $fillable = [
         'supervisieur',
-        'password_resp_sirat',
+        'password_resp_client',
         'date',
         'heure',
         'site',
         'voie',
         'percepteur',
         'somme_actuel',
-        'somme_ajout',
+        'somme_ajoute',
         'penalite_actuel',
-        'penalite_ajouter',
+        'penalite_ajoute',
     ];
 
 

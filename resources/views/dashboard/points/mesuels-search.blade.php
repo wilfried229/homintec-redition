@@ -22,12 +22,12 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                       Recette
+                      Mensuels
                     </h2>
 
                 </div>
                 <div class="body">
-                    <form action="{{route('point-percepteur.index')}}" method="get" class="form">
+                    <form action="{{route('point-mensuel.index')}}" method="get" class="form">
 
                         @csrf
 

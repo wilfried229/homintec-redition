@@ -1,5 +1,4 @@
 @extends('layouts.export')
-
 @section('css')
 
 @endsection
@@ -31,7 +30,6 @@
                     @include('partials.flash')
 
                     <table id="listExport" class="table table-bordered ">
-
                         <thead>
                             <tr>
                                 <th>Date de passage</th>
@@ -100,7 +98,6 @@
                                     @if (in_array(Auth::user()->role,["ADMIN",'SUPERVISEUR']) )
                                     <a href="{{route('surcharge-manuel.edit',['surcharge_manuel'=>$surcharge])}}" class="btn btn-info" title="Modifier"> <i class="fa fa-edit">Modifier</i></a>
                                     @endif
-                                    @if (Auth::user()->role == '' || Auth::user()->role == 'ADMIN' )
                                     @if (in_array(Auth::user()->role,["ADMIN",'HOMINTEC']) )
 
                                     <a  onclick="event.preventDefault(); document.getElementById('retirer-a-form-{{$surcharge->id}}').submit(); return false;"   class="btn btn-danger">Retirer </a>
