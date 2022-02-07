@@ -118,7 +118,7 @@
                 </li>
  --}}
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
 
 
                 <li>
@@ -140,7 +140,7 @@
 
     @endif
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
 
                 <li>
                     <a href="#" class="menu-toggle">
@@ -187,7 +187,7 @@
                 @endif
 
 
-                @if (Auth::user()->role == 'ADMIN')
+                @if (Auth::user()->role == 'SUPERADMIN')
 
                 <li>
 

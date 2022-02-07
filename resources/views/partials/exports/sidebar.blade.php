@@ -118,7 +118,7 @@
                 </li>
  --}}
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERADMIN']) )
 
                 <li>
 
@@ -140,7 +140,7 @@
 
     @endif
 
-       @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR']) )
+       @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
 
 
                 <li>
@@ -188,7 +188,7 @@
                 @endif
 
 
-                @if (Auth::user()->role == 'ADMIN')
+                @if (Auth::user()->role == 'SUPERADMIN')
 
                 <li>
 
@@ -196,7 +196,7 @@
                     <a href="{{route('point-essieux.searchIndex')}}" class="menu-toggle">
                         <span>Points Essieux</span>
                     </a>
-                   
+
                 </li>
 
                 <li>

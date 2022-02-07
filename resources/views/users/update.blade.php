@@ -90,7 +90,9 @@
 
                                     <select name="site_id" id="site_id" class="form-control">
                                        @foreach ($sites as $site )
-                                       <option value="{{$site->id}}">{{$site->nom}}</option>
+                                       <option value="{{$site->id}}" @if ($site->id ==$user->site_id)
+                                                     selected
+                                       @endif>{{$site->nom}}</option>
 
                                        @endforeach
 
