@@ -186,8 +186,8 @@
 
                 @endif
 
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) )
 
-                @if (Auth::user()->role == 'SUPERADMIN')
 
                 <li>
 

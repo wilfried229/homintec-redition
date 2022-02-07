@@ -118,7 +118,7 @@
                 </li>
  --}}
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERADMIN']) )
+ @if (in_array(Auth::user()->role,['ADMIN','SIRB','HOMINTEC','SUPERADMIN']) )
 
                 <li>
 
@@ -140,7 +140,7 @@
 
     @endif
 
-       @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+       @if (in_array(Auth::user()->role,['ADMIN','SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
 
 
                 <li>
@@ -188,7 +188,8 @@
                 @endif
 
 
-                @if (Auth::user()->role == 'SUPERADMIN')
+       @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) )
+
 
                 <li>
 
