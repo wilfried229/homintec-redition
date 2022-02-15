@@ -155,6 +155,12 @@
                         <li>
                             <a href="{{route('recette.getByMonth')}}">Afficher</a>
                            </li>
+
+
+                           <li>
+                            <a href="{{route('recette.percepteur.index')}}">Afficher par percepteur</a>
+                           </li>
+
                         <li>
                          <a  href="{{route('recette.create-index')}}">Ajouter</a>
 

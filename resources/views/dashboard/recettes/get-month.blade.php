@@ -21,7 +21,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Recettes / {{$site->nom}} / {{$date}}
+                    Recettes / {{$site->nom}} 
                 </h2>
                 <br>
 

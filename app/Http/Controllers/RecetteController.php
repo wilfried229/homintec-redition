@@ -20,6 +20,47 @@ class RecetteController extends Controller
 {
 
 
+
+    public function searchIndexPercepteur(){
+
+
+        $sites = Site::all();
+
+        return view('dashboard.points.percepteur-search',compact('sites'));
+    }
+
+
+    public function recettePercepteur(){
+
+        $debut = Carbon::parse(\request()->date_debut)->format('Y-m-d');
+        $fin = Carbon::parse(\request()->date_fin)->format('Y-m-d');
+        $site = Site::find(\request()->site_id ?? Auth::user()->site_id);
+
+        ///dd(date("H:i", $elapsed));
+        $recettesPercepteurs = DB::table('recettes')
+        ->select('recettes.id as id', 'date_recettes', 'vacations.type as type', 'voies.nom as voie','percepteurs_id',
+        'percepteurs.nom as percepteur_nom', 'percepteurs.prenom as percepteur_prenom','montant_coupant', 'montant_coupant','montant_percepteur',
+        'nombre_vehicule', 'nombre_violation', 'nombre_exemptes', 'montant_ecart', 'montant_informatise',
+            'observation', )
+            ->whereBetween('date_recettes', [$debut, $fin])
+            ->join('percepteurs', 'percepteurs.id', '=', 'recettes.percepteurs_id')
+            ->leftJoin('vacations', 'vacations.id', '=','recettes.vacations_id')
+            ->leftJoin('voies', 'voies.id', '=','recettes.voies_id')
+            ->leftJoin('sites', 'sites.id', '=','recettes.sites_id')
+           -> Where('sites.id',\request()->site_id ?? Auth::user()->site_id)
+        ///->groupBy('percepteurs_id')
+        ->groupBy('percepteur_nom','date_recettes', 'type', 'voie', 'percepteur_nom','percepteur_prenom', 'montant_coupant', 'montant_coupant', 'montant_informatise', 'montant_ecart','montant_percepteur',
+        'nombre_vehicule', 'id', 'nombre_violation', 'nombre_exemptes','observation')
+
+        ->get();
+
+        $montantMensuels = $recettesPercepteurs->sum('recette_informatise');
+
+        return  view('dashboard.recettes.percepteur',compact('recettesPercepteurs','montantMensuels','site'));
+
+
+    }
+
       /**
      * Display a listing of the resource.
      *

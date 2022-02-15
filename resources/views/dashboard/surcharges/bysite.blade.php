@@ -115,22 +115,21 @@
 
                                 <tr class="bg-light">
 
-                                    <td style="display: none"> </td>
-                                    <td style="display: none"></td>
-                                    <td colspan="4" class="text-right">SOMME TOTAL</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
 
-                                    <td>
-                                    </td>
+                                    <td colspan="" class="text-right">SOMME TOTAL</td>
                                     <td></td>
                                     <td></td>
                                     <td> </td>
                                     <td></td>
-
+                                    <td></td>
                                     <td>{{$totMontantApayer}}</td>
                                     <td>{{$totIMontantPayer}} </td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+
 
                                 </tr>
                                     @endif

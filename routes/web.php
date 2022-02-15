@@ -94,6 +94,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('recette-get-month','RecetteController@getByMonth')->name('recette.getByMonth');
 
+    Route::get('recette.percepteur','RecetteController@recettePercepteur')->name('recette.percepteur');
+
+    Route::get('recette.percepteur-index','RecetteController@searchIndexPercepteur')->name('recette.percepteur.index');
+
+
+
+
+
     Route::get('recette-view-month','RecetteController@rapportMensuelsChoice')->name('recette.getByMonth.action');
 
 
