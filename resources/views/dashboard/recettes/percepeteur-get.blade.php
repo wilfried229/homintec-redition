@@ -27,7 +27,7 @@
 
                 </div>
                 <div class="body">
-                    <form action="{{route('point-percepteur.index')}}" method="get" class="form">
+                    <form action="{{route('recette.percepteur')}}" method="get" class="form">
 
                         @csrf
 

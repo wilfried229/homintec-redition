@@ -48,9 +48,6 @@
                                 <th class="text-uppercase">Recette Informatiser</th>
                                 <th class="text-uppercase">Manquant</th>
                                 <th class="text-uppercase">Surplus</th>
-                                <th class="text-uppercase">Nombre passage</th>
-                                <th class="text-uppercase">Nombre de violation</th>
-                                <th class="text-uppercase">Nombre Exempte</th>
                                 <th class="text-uppercase">Observation</th>
 
 
@@ -86,18 +83,14 @@
                                     $totDeclaree = $percepteursNom->sum('montant_percepteur');
 
 
-                                    $totManquant =   $percepteur->montant_ecart < 0  ? $percepteursNom->sum('montant_ecart') : 0;
+
+                                    $totManquant = $percepteursNom->where('montant_ecart','<=',0)->sum('montant_ecart') ;
 
 
-                                $totSurplus = $percepteur->montant_ecart > 0  ? $percepteursNom->sum('montant_ecart') : 0;
+                                    $totSurplus =  $percepteursNom->where('montant_ecart','>=',0)->sum('montant_ecart') ;
+
+
                                  $totPassage = $percepteursNom->sum('nombre_vehicule');
-                                    //$totManquant = $recet->sum('manquant');
-                                   // $totSurplus = $recet->sum('surplus');
-                                    ///$totPassagev = $recet->sum('nombrevl');
-                                    ///$totPassagep = $recet->sum('nombrepl');
-                                    ///$totPassage = $recet->sum('nombrev');
-                                    $totViolation = $percepteursNom->sum('nombre_violation');
-                                    $totExempte = $percepteursNom->sum('nombre_exemptes');
                                 @endphp
 
                             @endif
@@ -114,11 +107,12 @@
                                     $totDeclaree = $percepteursNom->sum('montant_percepteur');
 
 
-                                    $totManquant =   $percepteur->montant_ecart < 0  ? $percepteursNom->sum('montant_ecart') : 0;
+                                    $totManquant = $percepteursNom->where('montant_ecart','<=',0)->sum('montant_ecart') ;
 
 
-                                $totSurplus = $percepteur->montant_ecart > 0  ? $percepteursNom->sum('montant_ecart') : 0;
-                                 $totPassage = $percepteursNom->sum('nombre_vehicule');
+                                    $totSurplus =  $percepteursNom->where('montant_ecart','>=',0)->sum('montant_ecart') ;
+
+                                $totPassage = $percepteursNom->sum('nombre_vehicule');
                                     //$totManquant = $recet->sum('manquant');
                                    // $totSurplus = $recet->sum('surplus');
                                     ///$totPassagev = $recet->sum('nombrevl');
@@ -136,43 +130,22 @@
                             @else
                                 <td class="d-none" style="display: none"></td>
                             @endif
+                            <td class="text-center">{{ $percepteur->date_recettes  }}</td>
+
                                 <td class="text-center" >{{ $percepteur->type }}</td>
                                 <td class="text-center">{{ $percepteur->voie  }}</td>
-                                <td class="text-center">{{ $percepteur->date_recettes  }}</td>
                                 <td class="text-center">{{ $percepteur->montant_coupant  }} </td>
                                 <td class="text-center">{{ $percepteur->montant_percepteur  }} </td>
                                 <td class="text-center">{{ $percepteur->montant_informatise  }} </td>
                                 <td>{{$percepteur->montant_ecart < 0  ? -$percepteur->montant_ecart : 0 }}</td>
                                 <td>{{$percepteur->montant_ecart > 0  ? $percepteur->montant_ecart : 0}}</td>
-                                <td>{{$percepteur->nombre_vehicule}} </td>
-                                <td>{{$percepteur->nombre_violation}}</td>
-                                <td>{{$percepteur->nombre_exemptes}} </td>
                                 <td class="text-center">{{ $percepteur->observation  }}</td>
 
                                 </tr>
-                          {{--       @if($percepteur->id == $dernier->id)
-
-                                @php
-
-                                ///$total_time = array_sum($elapsed);
-                                @endphp
-                                <tr class="bg-light">
-
-                                    <td colspan="" class="text-right">SOMME TOTAL</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>{{ $arrSomme }}</td>
-
-                                </tr>
+            
                                     @endif --}}
-
-
                                     @if($percepteur->id == $dernier->id)
-
                                     <tr class="bg-light">
-
-
                                         <td style="display: none"></td>
                                         <td style="display: none"> </td>
                                         <td style="display: none"></td>
@@ -180,11 +153,8 @@
                                         <td>{{$totCoupon}}</td>
                                         <td>{{$totDeclaree}}</td>
                                         <td>{{$totInformatisee}}</td>
-                                        <td>{{-$totManquant}} </td>
+                                        <td>{{-$totManquant }} </td>
                                         <td>{{$totSurplus}}</td>
-                                        <td>{{$totPassage}}</td>
-                                        <td>{{$totViolation}}</td>
-                                        <td>{{$totExempte}} </td>
                                         <td> </td>
                                         <td></td>
 

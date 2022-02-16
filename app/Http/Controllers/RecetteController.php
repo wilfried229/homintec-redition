@@ -26,7 +26,7 @@ class RecetteController extends Controller
 
         $sites = Site::all();
 
-        return view('dashboard.points.percepteur-search',compact('sites'));
+        return view('dashboard.recettes.percepeteur-get',compact('sites'));
     }
 
 
@@ -49,7 +49,7 @@ class RecetteController extends Controller
             ->leftJoin('sites', 'sites.id', '=','recettes.sites_id')
            -> Where('sites.id',\request()->site_id ?? Auth::user()->site_id)
         ///->groupBy('percepteurs_id')
-        ->groupBy('percepteur_nom','date_recettes', 'type', 'voie', 'percepteur_nom','percepteur_prenom', 'montant_coupant', 'montant_coupant', 'montant_informatise', 'montant_ecart','montant_percepteur',
+        ->groupBy('percepteur_nom','date_recettes', 'type', 'voie', 'percepteurs_id','percepteur_prenom', 'montant_coupant', 'montant_coupant', 'montant_informatise', 'montant_ecart','montant_percepteur',
         'nombre_vehicule', 'id', 'nombre_violation', 'nombre_exemptes','observation')
 
         ->get();
