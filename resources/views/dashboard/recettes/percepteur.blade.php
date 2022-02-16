@@ -142,8 +142,8 @@
                                 <td class="text-center">{{ $percepteur->observation  }}</td>
 
                                 </tr>
-            
-                                    @endif --}}
+
+                                  
                                     @if($percepteur->id == $dernier->id)
                                     <tr class="bg-light">
                                         <td style="display: none"></td>
