@@ -143,7 +143,6 @@
 
                                 </tr>
 
-                                  
                                     @if($percepteur->id == $dernier->id)
                                     <tr class="bg-light">
                                         <td style="display: none"></td>
