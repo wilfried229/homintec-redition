@@ -255,8 +255,14 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('point-mensuel.searchIndex')}}">Afficher</a>
+                         <a href="{{route('point-mensuel.searchIndex')}}">Afficher Coupon</a>
                         </li>
+
+                        <li>
+                            <a href="{{route('point-mensuel.searchIndexInformatiser')}}">Afficher Informatiser</a>
+                           </li>
+
+
 
                     </ul>
                 </li>

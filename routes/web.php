@@ -182,6 +182,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
+    Route::get('point-mensuel-informatiser','PointsMensulesController@indexMontantInformatiser')->name('point-mensuel.indexinformatiser');
+    Route::get('point-mensuel-informatiser/getsearch','PointsMensulesController@searchIndexInformatiser')->name('point-mensuel.searchIndexInformatiser');
 
 
     #Route::resources([]);

@@ -15,6 +15,11 @@ class PointsMensulesController extends Controller
         $sites = Site::all();
         return view('dashboard.points.mesuels-search',compact('sites'));
     }
+    public function searchIndexInformatiser(){
+        $sites = Site::all();
+        return view('dashboard.points.mesuels-search-informatiser',compact('sites'));
+    }
+
 
     public function index(){
 
@@ -44,5 +49,36 @@ class PointsMensulesController extends Controller
 
         ///dd($mensuels);
         return view('dashboard.points.mesuels',compact('mensuels','site'));
+    }
+
+
+    public function indexMontantInformatiser(){
+
+        $debut = Carbon::parse(\request()->date_debut)->format('Y-m-d');
+        $fin = Carbon::parse(\request()->date_fin)->format('Y-m-d');
+        $site = Site::find(\request()->site_id ?? Auth::user()->site_id);
+
+        ///dd(date("H:i", $elapsed));
+        $pointMesuels = Recette::
+        whereBetween('date_recettes', [$debut, $fin])
+        ->where('sites_id',\request()->site_id)
+        ->orderBy('date_recettes')
+        ->get(['date_recettes'])
+        ->unique('date_recettes');
+
+
+        $mensuels =[];
+        foreach ($pointMesuels as $key => $value) {
+            # code...
+            $esuel = Recette::
+            whereDate('date_recettes',$value->date_recettes)
+            ->where('sites_id',\request()->site_id)
+            ->sum('montant_informatise');
+            $arrayMensels = ['date_recettes' =>  Carbon::parse($value->date_recettes)->format('d-m-Y'),'sommeMontantInformatiser'=>$esuel];
+            array_push($mensuels,$arrayMensels);
+        }
+
+        ///dd($mensuels);
+        return view('dashboard.points.mesuels-informatiser',compact('mensuels','site'));
     }
 }
