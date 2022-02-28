@@ -52,11 +52,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-    Route::get('surcharge-manuel/create/index','SurchagesManuelController@createIndex')->name('surcharge-manuel.create-index');
+    Route::get('surcharge-manuel/create/index/{type?}','SurchagesManuelController@createIndex')->name('surcharge-manuel.create-index');
 
-    Route::get('surcharge-manuel/create/{voie?}','SurchagesManuelController@create')->name('surcharge-manuel.create');
+    Route::get('surcharge-manuel/create/{voie?}/{type?}','SurchagesManuelController@create')->name('surcharge-manuel.create');
     Route::get('surcharge-manuel/{site?}','SurchagesManuelController@index')->name('surcharge-manuel.index');
-    Route::get('surcharge-manuel-request','SurchagesManuelController@requests')->name('surcharge-manuel.request');
+    Route::get('surcharge-manuel-request/{type?}','SurchagesManuelController@requests')->name('surcharge-manuel.request');
     Route::post('surcharge-manuel/{voie?}','SurchagesManuelController@store')->name('surcharge-manuel.store');
     Route::get('surcharge-manuel/edit/{surcharge_manuel}','SurchagesManuelController@edit')->name('surcharge-manuel.edit');
     Route::delete('surcharge-manuel/destroy/{surcharge_manuel}/{site?}','SurchagesManuelController@destroy')->name('surcharge-manuel.destroy');
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-    Route::get('surcharge-manuel-site','SurchagesManuelController@rapportMensuelsChoice')->name('surcharge.get-site');
+    Route::get('surcharge-manuel-site/{type?}','SurchagesManuelController@rapportMensuelsChoice')->name('surcharge.get-site');
 
     Route::prefix('cashFlow')->group(function () {
     Route::get('day/web','CashFlowController@rapportJoursChoice')->name('cash-flow.day');

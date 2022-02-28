@@ -25,7 +25,8 @@ class SurchagesManuel extends Model
         'montant_payer',
         'observation',
         'voies_id',
-        'sites_id'
+        'sites_id',
+        'type'
     ];
 
 

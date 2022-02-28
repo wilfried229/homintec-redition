@@ -37,13 +37,17 @@ class SurchagesManuelController extends Controller
 
 
         $site = Site::find($request->site_id);
+
+        $type = $request->type;
+
         $surcharges = ModelsSurchagesManuel::Where('sites_id',$request->site_id)
         ->whereBetween('date_passage', [$debut, $fin])
         ->orderBy('date_passage','ASC')
-
+        ->where('type',$type? "ANNULE": "NORMNAL")
         ->get();
+
         $montantMensuels = $surcharges->sum('recette_informatise');
-        return  view('dashboard.surcharges.bysite',compact('date','surcharges','montantMensuels','site'));
+        return  view('dashboard.surcharges.bysite',compact('date','surcharges','montantMensuels','site','type'));
     }
 
 
@@ -54,13 +58,13 @@ class SurchagesManuelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function requests()
+    public function requests($type=null)
     {
 
         $sites = Site::all();
         //dd($sites);
 
-    return view('dashboard.surcharges.request',compact('sites'));
+    return view('dashboard.surcharges.request',compact('sites','type'));
     }
     /**
      * Display a listing of the resource.
@@ -74,7 +78,7 @@ class SurchagesManuelController extends Controller
         ->orderBy('date_passage','DESC')
         ->get();
 
-        
+
         $site = Site::find($site ?? Auth::user()->site_id);
 
     return view('dashboard.surcharges.bysite',compact('site',"surcharges"));
@@ -85,7 +89,7 @@ class SurchagesManuelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createIndex()
+    public function createIndex($type =null)
     {
 
 
@@ -93,7 +97,7 @@ class SurchagesManuelController extends Controller
         ->where('nom', 'LIKE', '%PL%')
         ->get();
 
-    return view('dashboard.surcharges.create-index',compact('voies'));
+    return view('dashboard.surcharges.create-index',compact('voies','type'));
     }
 
 
@@ -102,10 +106,10 @@ class SurchagesManuelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($voie = null)
+    public function create($voie = null,$type =null)
     {
         //
-        //dd($voie);
+        ////dd($type);
                 $percepteurs = Percepteur::all();
 
         $site = Site::find(Auth::user()->site_id);
@@ -114,7 +118,7 @@ class SurchagesManuelController extends Controller
         $voies = Voie::where('site_id','=',$site->id)
         ->where('nom', 'LIKE', '%PL%')
         ->get();
-    return view('dashboard.surcharges.create',compact('site','voie','vacations','percepteurs'));
+    return view('dashboard.surcharges.create',compact('site','voie','vacations','percepteurs','type'));
 
     }
 

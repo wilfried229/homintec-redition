@@ -185,6 +185,26 @@
                     </ul>
                 </li>
 
+                <li>
+
+
+                    <a href="{{route('surcharge-manuel.request')}}" class="menu-toggle">
+                        <span>Surcharges annulés</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('surcharge-manuel.request')}}">Afficher </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
+                           </li>
+
+                    </ul>
+                </li>
+
+
                 @endif
 
 

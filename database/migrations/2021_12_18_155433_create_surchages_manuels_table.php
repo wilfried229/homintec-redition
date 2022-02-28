@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSurchagesManuelsTable extends Migration
 {
+
+
+   ///// ALTER TABLE `surchages_manuels` ADD `type` VARCHAR(255) NOT NULL DEFAULT 'NORMAL' AFTER `voies_id`;
     /**
      * Run the migrations.
      *
@@ -27,6 +30,7 @@ class CreateSurchagesManuelsTable extends Migration
             $table->string('montant_apayer');
             $table->string('montant_payer');
             $table->text('observation');
+            $table->string('type');
             $table->unsignedInteger('recettes_id');
             $table->timestamps();
         });

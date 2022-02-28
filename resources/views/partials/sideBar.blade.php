@@ -190,6 +190,24 @@
                     </ul>
                 </li>
 
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Surcharges annulés</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('surcharge-manuel.request',['type'=>'ANNULE'])}}">Afficher </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('surcharge-manuel.create-index',['type'=>'ANNULE'])}}">Ajouter </a>
+                           </li>
+
+                    </ul>
+                </li>
                 @endif
 
                 @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) )

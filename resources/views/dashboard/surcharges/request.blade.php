@@ -36,6 +36,7 @@
                                 <div class="col-lg-12">
                                     <label for="">Sites</label>
 
+                                    <input type="hidden" name="type" value="{{ $type }}">
                                     <select name="site_id" id="site_id" class="form-control"  >
                                     <option disabled selected> Selectionnez un Site</option>
                                     @foreach($sites as $s)

@@ -20,7 +20,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Surcharges / {{$site->nom??''}} / {{$date ?? ""}}
+                    Surcharges  {{ $type? "annulés": "" }}    / {{$site->nom??''}} / {{$date ?? ""}}
                 </h2>
                 <br>
 
