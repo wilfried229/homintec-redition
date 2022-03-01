@@ -43,9 +43,10 @@
 
                                         <div class="row">
 
+
                                             <input type="hidden" name="sites_id" value="{{$site->id}}">
                                             <input type="hidden" name="voies_id" value="{{$voie}}">
-                                            <input type="hidden" name="type" value="{{$type}}">
+                                            <input type="hidden" name="type" value='{{$type? "ANNULE": "NORMAL"}}'>
 
 
 
