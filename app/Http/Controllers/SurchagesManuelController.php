@@ -43,7 +43,7 @@ class SurchagesManuelController extends Controller
         $surcharges = ModelsSurchagesManuel::Where('sites_id',$request->site_id)
         ->whereBetween('date_passage', [$debut, $fin])
         ->orderBy('date_passage','ASC')
-        ->where('type',$type? "ANNULE": "NORMNAL")
+        ->where('type',$type? "ANNULE": "NORMAL")
         ->get();
 
         $montantMensuels = $surcharges->sum('recette_informatise');
