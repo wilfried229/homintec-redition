@@ -33,7 +33,7 @@ class SurchagesManuelController extends Controller
 
 
         $debut = Carbon::parse($request->date_debut)->format('y-m-d');
-        $fin = Carbon::parse($request->dateèfin)->format('y-m-d');
+        $fin = Carbon::parse($request->date_fin)->format('y-m-d');
 
 
         $site = Site::find($request->site_id);
