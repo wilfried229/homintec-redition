@@ -48,7 +48,9 @@ class Redition2Controller extends Controller
             $redition2 = new Rediton2();
             $redition2->percepteur = $request->percepteur;
             $redition2->site = $request->site;
-            $redition2->date = $this->dateNow();
+			  $redition2->heure = $request->heure;
+            $redition2->date = $request->date;
+            $redition2->date_api = $this->dateNow();
             $redition2->cabine  = $request->cabine;
             $redition2->prix = $request->prix;
             $redition2->sens = $request->sens;
@@ -60,7 +62,8 @@ class Redition2Controller extends Controller
             $redition2->over =$request->over;
             $redition2->caisse = $request->caisse;
             $redition2->plaque  = $request->plaque;
-
+			 $redition2->visa  = $request->visa;
+			//////$redition2->total  = $request->total;
             $redition2->save();
 
             return response()->json($redition2, 200);
