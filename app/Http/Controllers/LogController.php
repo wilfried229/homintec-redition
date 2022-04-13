@@ -45,6 +45,8 @@ class LogController extends Controller
 
             $logs = Logs::create($request->all());
 
+
+            
             $site->refer =  Hash::make($this->dateNow());
             return response()->json($logs, 200);
 

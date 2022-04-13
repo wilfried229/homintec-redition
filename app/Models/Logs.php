@@ -10,10 +10,11 @@ class logs extends Model
     protected $table = "logs";
 
     protected $fillable =  [
-        'id','percepteur','site','cabine','date','heure','old_percepteur','agent_homintec','statut'
+        'id','percepteur',
+        'site','cabine','date','heure','old_percepteur','agent_homintec','statut'
     ];
 
 
- 
+
 
 }

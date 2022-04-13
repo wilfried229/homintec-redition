@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\Services\AddDataServiceOnline;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class SendDataReddition extends Command
 {
@@ -11,7 +13,7 @@ class SendDataReddition extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'command:sendDataReddition';
 
     /**
      * The console command description.
@@ -38,5 +40,18 @@ class SendDataReddition extends Command
     public function handle()
     {
         //
+
+        try {
+            Log::debug("Début d'excécution ");
+            $logs  = new  AddDataServiceOnline();
+            $logs->sendvalidation();
+            $logs->sendLog();
+            Log::debug("Fin d'excécution du validation ");
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            Log::error($ex->getMessage());
+        } catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+        }
     }
 }
