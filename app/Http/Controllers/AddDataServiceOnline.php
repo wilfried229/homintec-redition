@@ -1,11 +1,8 @@
 <?php
-namespace App\Http\Controllers\Services;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\UtilServices;
-use App\Models\Abonnes;
 use App\Models\logs;
 use App\Models\Rediton2;
-use App\Models\Site;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +20,7 @@ class AddDataServiceOnline
     public function sendLog(){
 
         try {
-         $logs  = logs::where('site','=','EKPE')->where("refer","!=",null)->where('is_sent',false)->get();
+         $logs  = logs::where('is_sent',0)->get();
         //// $urls = 'gate24-ekpe.ngrok.io/gate24/public';
          foreach ($logs as $key => $log) {
              # code...\\
@@ -45,7 +42,9 @@ class AddDataServiceOnline
             if($resp['statusCode'] == 200){
                 $apiData = json_decode($resp['resp']);
                 $logsOld = logs::find($log->id);
-                $logsOld->update(['is_sent' =>true]);
+                $logsOld->is_sent =1;
+                $logsOld->save();
+
             }
             ///$abonnes->update(['solde' =>$recharge->montant]);
 
@@ -69,7 +68,7 @@ class AddDataServiceOnline
     public function sendvalidation(){
 
         try {
-         $validations  = Rediton2::where('site','=','EKPE')->where("refer","!=",null)->where('is_sent',false)->get();
+         $validations  = Rediton2::where('is_sent',0)->get();
         //// $urls = 'gate24-ekpe.ngrok.io/gate24/public';
          foreach ($validations as $key => $validation) {
              # code...\\
@@ -95,11 +94,11 @@ class AddDataServiceOnline
 
             $url = "https://reddition.gate24-benin.com/api/homintec/validation";
             $resp = $this->hitCurl($url,$param,'POST');
-            $apiData = "Getting header code {$resp['statusCode']}";
             if($resp['statusCode'] == 200){
                 $apiData = json_decode($resp['resp']);
-                $valida = logs::find($validation->id);
-                $valida->update(['is_sent' =>true]);
+                $valida = Rediton2::find($validation->id);
+                $valida->is_sent =1;
+                $valida->save();
             }
             ///$abonnes->update(['solde' =>$recharge->montant]);
 

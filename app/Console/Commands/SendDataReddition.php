@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\Services\AddDataServiceOnline;
+use App\Http\Controllers\AddDataServiceOnline;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 

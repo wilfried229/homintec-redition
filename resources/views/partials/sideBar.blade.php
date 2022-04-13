@@ -119,6 +119,34 @@
  --}}
 
  @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+ <li>
+    <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
+   </li>
+				<li>
+                    <a href="{{route('redition2.day')}}" >
+                        <span>Validation </span>
+                    </a>
+
+                </li>
+                <li>
+
+                    <a href="#" class="menu-toggle">
+                        <span>CashFlow</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('cash-flow.indexDay')}}">Par Jours</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('cash-flow.indexMonth')}}">Par Mois</a>
+
+                           </li>
+                    </ul>
+                </li>
+
+ @endif
+ @if (in_array(Auth::user()->role,["ADMIN",'HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
 
 
 
@@ -126,6 +154,12 @@
     <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
    </li>
 
+				<li>
+                    <a href="{{route('redition2.day')}}" >
+                        <span>Validation </span>
+                    </a>
+
+                </li>
                 <li>
 
                     <a href="#" class="menu-toggle">
@@ -145,7 +179,7 @@
 
     @endif
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
 
                 <li>
                     <a href="#" class="menu-toggle">
