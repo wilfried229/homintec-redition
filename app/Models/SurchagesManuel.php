@@ -14,7 +14,6 @@ class SurchagesManuel extends Model
     protected $fillable =  [
         'id',
         'immatriculation',
-      //"montant_surcharge",
         'type_surcharge',
         'date_passage',
         'heure_passage',
@@ -26,7 +25,8 @@ class SurchagesManuel extends Model
         'montant_payer',
         'observation',
         'voies_id',
-        'sites_id'
+        'sites_id',
+        'type'
     ];
 
 
@@ -43,4 +43,6 @@ class SurchagesManuel extends Model
 
         return $this->belongsTo(Voie::class,'voies_id','id');
     }
+
+
 }

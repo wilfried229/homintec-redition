@@ -54,7 +54,7 @@
                                         <div class="col-lg-6 col-md-6">
                                             <label for=""> Vacation</label>
 
-                                            <select name="vacation_id" id="vacation_id" class="form-control" required>
+                                            <select name="vacations_id" id="vacations_id" class="form-control" required>
 
                                                 <option value=""  selected>----------------- Selectionnez---------------</option>
 
@@ -89,12 +89,13 @@
                                         <div class="col-lg-6 col-md-6">
                                             <label for="">Percepteur</label>
 
-                                            <select name="percepteur_id" id="precepteur_id"  class="form-control" required>
 
-                                                <option value=""  selected>-------- Selectionnez--------</option>
+                                            <select name="percepteurs_id" id="percepteurs_id"  class="form-control selectpicker" data-show-subtext="true" data-live-search="true" style="height: 50px;widht:50px" required>
+
+                                                <option  value="" selected> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;    &nbsp; -------- Selectionnez--------</option>
 
                                                 @foreach ($percepteurs as $percepteur )
-                                                <option value="{{$percepteur->id}}">{{$percepteur->nom}}</option>
+                                                <option value="{{$percepteur->id}}">   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;    &nbsp;                 {{$percepteur->nom}}</option>
 
                                                 @endforeach
                                             </select>
@@ -202,18 +203,6 @@
 @section('js')
 
 <script>
-$("#is_surchages").change(function(value){
-
-    if (this.checked) {
-        $('#surcharge').show();
-    } else {
-        $('#surcharge').hide();
-    }
-
-
-
-
-});
 
 $("#montant_informatise").keyup(function() {
 
@@ -277,16 +266,6 @@ if( $.inArray($("#voies").val(), myArray) != -1 ) {
 
 
 });
-
-
-
-$("#voies_id").change(function(value){
-
-});
-
-
-
-//$('#montant_ecart').ke;
 
 </script>
 

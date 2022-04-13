@@ -118,7 +118,8 @@
                 </li>
  --}}
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+
 
 
  <li>
@@ -143,7 +144,8 @@
                 </li>
 
     @endif
-                @if (Auth::user()->role == 'SUPERVISEUR' || Auth::user()->role == 'ADMIN' )
+
+ @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
 
                 <li>
                     <a href="#" class="menu-toggle">
@@ -158,6 +160,12 @@
                         <li>
                             <a href="{{route('recette.getByMonth')}}">Afficher</a>
                            </li>
+
+
+                           <li>
+                            <a href="{{route('recette.percepteur.index')}}">Afficher par percepteur</a>
+                           </li>
+
                         <li>
                          <a  href="{{route('recette.create-index')}}">Ajouter</a>
 
@@ -187,10 +195,28 @@
                     </ul>
                 </li>
 
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Surcharges annulés</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('surcharge-manuel.request',['type'=>'ANNULE'])}}">Afficher </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('surcharge-manuel.create-index',['type'=>'ANNULE'])}}">Ajouter </a>
+                           </li>
+
+                    </ul>
+                </li>
                 @endif
 
+                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) )
 
-                @if (Auth::user()->role == 'ADMIN')
 
                 <li>
 
@@ -228,6 +254,56 @@
                     </ul>
                 </li>
 
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Points Essieux</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('point-essieux.searchIndex')}}">Afficher</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Points Mensuels</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('point-mensuel.searchIndex')}}">Afficher Coupon</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('point-mensuel.searchIndexInformatiser')}}">Afficher Informatiser</a>
+                           </li>
+
+
+
+                    </ul>
+                </li>
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Points Percepteurs</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('point-percepteur.searchIndex')}}">Afficher</a>
+                        </li>
+
+                    </ul>
+                </li>
                 <li>
 
 

@@ -3,11 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Penalites;
+use App\penaliteTrac;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class PenalitesController extends Controller
 {
+
+
+
+    public function trakPenalite(Request $request){
+
+            try {
+        $trackPenalite = PenaliteTrac::create([
+            'supervisieur'=>$request->supervisieur,
+            'password_resp_client'=>$request->password_resp_client,
+            'date'=>$request->date,
+            'heure'=>$request->heure,
+            'site'=>$request->site,
+            'voie'=>$request->voie,
+            'percepteur'=>$request->percepteur,
+            'somme_actuel'=>$request->somme_actuel,
+            'somme_ajoute'=>$request->somme_ajoute,
+            'penalite_actuel'=>$request->penalite_actuel,
+            'penalite_ajoute'=>$request->penalite_ajoute,
+        ]);
+
+        return response()->json($trackPenalite,200);
+
+
+            } catch (\Exception $th) {
+                //throw $th;
+                return response()->json($th->getMessage(), 301,);
+            }
+
+
+    }
     /**
      * Display a listing of the resource.
      *

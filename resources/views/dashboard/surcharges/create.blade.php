@@ -21,7 +21,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Surcharge / site de {{$site->nom}}
+                    Surcharge {{ $type? "annulé": "" }} /{{$site->nom}}
 
                    <a href="{{route('surcharge-manuel.index')}}" style="float: right;" class="btn btn-info">Retour</a>
 
@@ -43,8 +43,11 @@
 
                                         <div class="row">
 
+
                                             <input type="hidden" name="sites_id" value="{{$site->id}}">
                                             <input type="hidden" name="voies_id" value="{{$voie}}">
+                                            <input type="hidden" name="type" value='{{$type? "ANNULE": "NORMAL"}}'>
+
 
 
                                             <div class="col-lg-6 col-md-6">

@@ -24,10 +24,11 @@
                     Recettes
                 </h2>
                 <br>
-                <a href="{{route('recette.create')}}" class="btn btn-info ">Ajouter</a>
 
             </div>
             <div class="body">
+                @include('partials.flash')
+
                 <div class="table-responsive">
 
                     <table id="tab" class="table table-bordered table-striped table-hover dataTable js-exportable">
@@ -129,7 +130,7 @@
                                     <td>   <a href="{{route('recette.show',['id'=>$recette->id])}}" class="btn btn-info" title="Modifier">Modifier <i class="fa fa-edit"></i></a>
 
 
-                                        @if (Auth::user()->role == 'HOMONTEC' || Auth::user()->role == 'ADMIN' )
+                                        @if (Auth::user()->role == 'HOMiNTEC' || Auth::user()->role == 'ADMIN' )
                                         <a href="" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="{{"#actionModalremoveRecette".$recette->id}}">
                                             <i class="fa fa-1x fa-remove text-danger">Retirer</i>
                                         </a>&nbsp;&nbsp;

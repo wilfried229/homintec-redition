@@ -61,7 +61,7 @@
 
                                         <div class="col-lg-6 col-md-6">
                                             <label for="">Site</label>
-                                            <select name="site_id" id="site_id" class="form-control">
+                                            <select name="sites_id" id="sites_id" class="form-control">
                                                 @foreach ($sites as $site )
                                                 <option value="{{$site->id}}">{{$site->nom}}</option>
                                                 @endforeach

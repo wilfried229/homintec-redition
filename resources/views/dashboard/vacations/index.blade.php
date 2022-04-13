@@ -35,6 +35,8 @@
                             <tr>
                             <th align="center" width="10%">Options</th>
                             <th>Type</th>
+                            <th>Site</th>
+
                              </tr>
                           </thead>
                           <tbody>
@@ -44,6 +46,8 @@
                                     <a href="" class="btn btn-info"> <i class="fa fa-edit">Modifier</i></a>
                                 </td>
                                 <td>{{$vacation->type}}</td>
+                                <td>{{$vacation->sites()->first()->nom}}</td>
+
 
                             </tr>
 

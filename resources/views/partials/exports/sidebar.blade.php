@@ -118,7 +118,7 @@
                 </li>
  --}}
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB']) )
+ @if (in_array(Auth::user()->role,['ADMIN','SIRB','HOMINTEC','SUPERADMIN']) )
 
                 <li>
 
@@ -140,7 +140,8 @@
 
     @endif
 
-                @if (Auth::user()->role == 'SUPERVISEUR' || Auth::user()->role == 'ADMIN' )
+       @if (in_array(Auth::user()->role,['ADMIN','SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+
 
                 <li>
                     <a href="{{route('recette.getByMonth')}}" class="menu-toggle">
@@ -184,10 +185,75 @@
                     </ul>
                 </li>
 
+                <li>
+
+
+                    <a href="{{route('surcharge-manuel.request')}}" class="menu-toggle">
+                        <span>Surcharges annulés</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('surcharge-manuel.request')}}">Afficher </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
+                           </li>
+
+                    </ul>
+                </li>
+
+
                 @endif
 
 
-                @if (Auth::user()->role == 'ADMIN')
+       @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) )
+
+
+                <li>
+
+
+                    <a href="{{route('point-essieux.searchIndex')}}" class="menu-toggle">
+                        <span>Points Essieux</span>
+                    </a>
+
+                </li>
+
+                <li>
+
+
+                    <a href="{{route('point-mensuel.searchIndex')}}" class="menu-toggle">
+                        <span>Points Mensuels</span>
+                    </a>
+
+                </li>
+
+                <li>
+
+
+                    <a href="{{route('point-percepteur.searchIndex')}}" class="menu-toggle">
+                        <span>Points Percepteurs</span>
+                    </a>
+
+                </li>
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Percepteur</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('percepteur.index')}}">Afficher</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('percepteur.create')}}">Ajouter</a>
+
+                           </li>
+                    </ul>
+                </li>
 
                 <li>
 

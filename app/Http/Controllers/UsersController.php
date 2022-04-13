@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Site;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -23,6 +24,12 @@ class UsersController extends Controller
     public function index(){
 
         $users  = User::all();
+
+        if (Auth::user()->role =="ADMIN") {
+            # code...
+        $users  = User::where('role','SUPERVISEUR')->get();
+
+        }
         return view('users.liste',compact('users'));
     }
     public function create()

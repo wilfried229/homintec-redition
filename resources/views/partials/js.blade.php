@@ -25,11 +25,11 @@
 
 
     <!-- Custom Js -->
-    <script src="{{asset('dashboard/js/admin.js')}}"></script>
-
-    <link rel="stylesheet" href="{{asset('dashboard/plugins/multi-select/js/jquery.multi-select.js')}}">
+    <script src="{{asset('dashboard/js/admin.js')}}"></script> 
 
     <!-- Demo Js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+
     <script src="{{asset('dashboard/js/demo.js')}}"></script>
 
 {{--Begin datatable bootstrap4--}}

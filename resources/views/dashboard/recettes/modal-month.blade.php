@@ -33,6 +33,9 @@
 
                             <div class="row">
 
+
+                            @if (in_array(Auth::user()->role,["ADMIN",'SIRB']) )
+
                                 <div class="col-lg-12">
                                     <label for="">Sites</label>
 
@@ -44,6 +47,9 @@
                                     </select>
 
                                 </div>
+                                @endif
+
+
                                 <div class="col-lg-6">
                                     <label for=""> Date de début</label>
                                     <input type="date" name="date_debut"  class="form-control"  style="height: 50px">

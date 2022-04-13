@@ -14,4 +14,11 @@ class Vacation extends Model
         'id','type','site_id'
     ];
 
+
+
+    public function sites(){
+
+
+        return $this->belongsTo(Site::class,'site_id','id');
+    }
 }

@@ -37,6 +37,8 @@
                             <th>Nom Utilisateur</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Site</th>
+
                             <th>Date de création</th>
 
                              </tr>
@@ -61,6 +63,8 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <th>{{$user->role}}</th>
+                                <th>{{$user->site()->first()->nom ?? ""}}</th>
+
                                 <th>{{$user->created_at}}</th>
 
                             </tr>
