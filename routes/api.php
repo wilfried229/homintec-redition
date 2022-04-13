@@ -34,8 +34,9 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
         'cashFlow'=>'CashFlowController',
         'penalite'=>'PenalitesController',
 
-
     ]);
+
+
 
     Route::post('fiche/techniques/store','TechniquesController@saveFiches');
     Route::get('fiche/techniques/get/','TechniquesController@getficheTechniques');
@@ -46,5 +47,8 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
     Route::get('testupdate','CashFlowController@testUpdateRequest');
 
     Route::post('checked/compatge','ComptagesController@checkedComptage');
-});
 
+
+    Route::post('logs-save','LogController@store');
+
+});

@@ -160,6 +160,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('vacation/{id}','VacationController@update')->name('vacation.update');
 
 
+    /// log percepteur
+
+    Route::get('logs','LogController@index')->name('logs.index');
+
 
     #Route::resources([]);
 

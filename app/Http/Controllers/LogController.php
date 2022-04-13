@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Percepteur as ModelsPercepteur;
-use App\percepteur;
+use App\Models\Logs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
-
-class PercepteurController extends Controller
+class LogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +16,8 @@ class PercepteurController extends Controller
     public function index()
     {
         //
-
-        $percepteurs = ModelsPercepteur::all();
-        return view("dashboard.percepteurs.index",compact('percepteurs'));
-
+        $logs = Logs::all();
+        return view("dashboard.logs.index",compact('logs'));
     }
 
     /**
@@ -31,8 +28,6 @@ class PercepteurController extends Controller
     public function create()
     {
         //
-
-        return view("dashboard.percepteurs.create");
 
     }
 
@@ -45,19 +40,28 @@ class PercepteurController extends Controller
     public function store(Request $request)
     {
         //
+        try {
 
-        ModelsPercepteur::create($request->all());
 
-        return  redirect()->route('percepteur.index');
+            $logs = Logs::create($request->all());
+            return response()->json($logs, 200);
+
+            } catch (\Exception $ex) {
+                //throw $th;
+
+                Log::error($ex->getMessage());
+
+                abort(400,$ex->getMessage());
+            }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\percepteur  $percepteur
+     * @param  \App\Log  $log
      * @return \Illuminate\Http\Response
      */
-    public function show(percepteur $percepteur)
+    public function show(Log $log)
     {
         //
     }
@@ -65,10 +69,10 @@ class PercepteurController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\percepteur  $percepteur
+     * @param  \App\Log  $log
      * @return \Illuminate\Http\Response
      */
-    public function edit(percepteur $percepteur)
+    public function edit(Log $log)
     {
         //
     }
@@ -77,10 +81,10 @@ class PercepteurController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\percepteur  $percepteur
+     * @param  \App\Log  $log
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, percepteur $percepteur)
+    public function update(Request $request, Log $log)
     {
         //
     }
@@ -88,10 +92,10 @@ class PercepteurController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\percepteur  $percepteur
+     * @param  \App\Log  $log
      * @return \Illuminate\Http\Response
      */
-    public function destroy(percepteur $percepteur)
+    public function destroy(Log $log)
     {
         //
     }

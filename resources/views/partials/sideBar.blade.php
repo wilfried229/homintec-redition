@@ -120,6 +120,11 @@
 
  @if (in_array(Auth::user()->role,["ADMIN",'SIRB']) )
 
+
+ <li>
+    <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
+   </li>
+
                 <li>
 
                     <a href="#" class="menu-toggle">
