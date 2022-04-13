@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Logs;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class LogController extends Controller
@@ -43,11 +45,20 @@ class LogController extends Controller
         try {
 
 
-            $logs = Logs::create($request->all());
+            $logs = Logs::create([
+                "percepteur" =>$request->percepteur,
+                "cabine" => $request->cabine,
+                "site" => $request->site,
+                "date" => $request->date,
+                "heure" => $request->heure,
+                "old_percepteur"=>$request->old_percepteur,
+                "agent_homintec"=>$request->agent_homintec,
+                "statut"=>$request->statut,
+                "refer"=>Hash::make(Carbon::now('Africa/Lagos'))
+
+            ]);
 
 
-            
-            $site->refer =  Hash::make($this->dateNow());
             return response()->json($logs, 200);
 
             } catch (\Exception $ex) {
