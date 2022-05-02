@@ -26,28 +26,13 @@ class SurchagesManuelController extends Controller
     public function rapportMensuelsChoice(Request  $request){
 
         $date = $request->date;
-        $dateDebut  = Carbon::create($date);
-        $dateDebut->startOfMonth();
-        $dateFin  = Carbon::create($date);
-        $dateFin->endOfMonth();
-
-
-        $debut = Carbon::parse($request->date_debut)->format('y-m-d');
-        $fin = Carbon::parse($request->date_fin)->format('y-m-d');
-
-
-        $site = Site::find($request->site_id);
-
+        $date_debut = $request->date_debut;
+        $date_fin = $request->date_fin;
+        $site_id = $request->site_id;
+        $site = Site::find($site_id);
         $type = $request->type;
 
-        $surcharges = ModelsSurchagesManuel::Where('sites_id',$request->site_id)
-        ->whereBetween('date_passage', [$debut, $fin])
-        ->orderBy('date_passage','ASC')
-        ->where('type',$type? "ANNULE": "NORMAL")
-        ->get();
-
-        $montantMensuels = $surcharges->sum('recette_informatise');
-        return  view('dashboard.surcharges.bysite',compact('date','surcharges','montantMensuels','site','type'));
+        return  view('dashboard.surcharges.bysite',compact('date','site','type','date_debut','date_fin',"site_id"));
     }
 
 

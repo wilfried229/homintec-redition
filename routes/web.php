@@ -20,6 +20,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('redition2-day','web\ReditionWebController@reditionByDay')->name('redition2.day');
     Route::get('redition2-month','web\ReditionWebController@reditionByMonth')->name('redition2.month');
 
+    Route::get('recette.percepteur-index','RecetteController@searchIndexPercepteur')->name('recette.percepteur.index');
+  
 
     Route::get('redition-uemoi','web\ReditionWebController@reditionuemoaInter')->name('redition.uemoi.list.sites');
     Route::get('redition-uemoi-day','web\ReditionWebController@reditionuemoiByDays')->name('redition.uemoi.listDay.sites');
