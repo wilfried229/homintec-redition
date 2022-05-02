@@ -47,7 +47,7 @@ class SurchagesManuelController extends Controller
     {
 
         $sites = Site::all();
-        //dd($sites);
+       /// dd($type);
 
     return view('dashboard.surcharges.request',compact('sites','type'));
     }
