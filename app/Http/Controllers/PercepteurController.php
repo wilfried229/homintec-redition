@@ -68,9 +68,12 @@ class PercepteurController extends Controller
      * @param  \App\percepteur  $percepteur
      * @return \Illuminate\Http\Response
      */
-    public function edit(percepteur $percepteur)
+    public function edit( $id)
     {
         //
+        $percepteur  = ModelsPercepteur::find($id);
+
+        return view('dashboard.percepteurs.update',compact('percepteur'));
     }
 
     /**
@@ -80,9 +83,18 @@ class PercepteurController extends Controller
      * @param  \App\percepteur  $percepteur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, percepteur $percepteur)
+    public function update(Request $request,  $id)
     {
-        //
+
+        $percepteur  = ModelsPercepteur::find($id);
+
+        $percepteur->update($request->all());
+
+        return  redirect()->route('percepteur.index')->with([
+            'message' => 'Percepteur modifié avec succès',
+            'alert-type' => 'success'
+        ]);
+
     }
 
     /**
@@ -91,7 +103,7 @@ class PercepteurController extends Controller
      * @param  \App\percepteur  $percepteur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(percepteur $percepteur)
+    public function destroy($id)
     {
         //
     }

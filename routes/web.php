@@ -67,9 +67,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('surcharge-manuel/update/{surcharge_manuel}  ','SurchagesManuelController@update')->name('surcharge-manuel.update');
 
 
-
-
-
     Route::get('surcharge-manuel-site','SurchagesManuelController@rapportMensuelsChoice')->name('surcharge.get-site');
 
     Route::prefix('cashFlow')->group(function () {
@@ -146,7 +143,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('percepteur-create','PercepteurController@create')->name('percepteur.create');
 
     Route::get('percepteur/{id}','PercepteurController@show')->name('percepteur.show');
-    Route::put('percepteur/{id}','PercepteurController@update')->name('percepteur.update');
+    Route::put('percepteur/update/{id}','PercepteurController@update')->name('percepteur.update');
+    Route::get('percepteur/edit/{id}','PercepteurController@edit')->name('percepteur.edit');
 
 
 

@@ -27,15 +27,16 @@
                 <a href="{{route('percepteur.create')}}" class="btn btn-info ">Ajouter</a>
 
             </div>
+            @include('partials.flash')
 
             <div class="body">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
+                            <th>Nom et Prénom</th>
                             <th align="center" width="10%">Options</th>
-                            <th>Nom</th>
-                            <th>Prenom</th>
+
                              </tr>
                           </thead>
                           <tbody>
@@ -45,13 +46,12 @@
 
                             <tr>
 
+                                <td>{{$percepteur->nom}} {{$percepteur->prenom}}</td>
+
                                 <td>
 
-                                    <a href="" class="btn btn-info"> <i class="fa fa-edit">Modifier</i></a>
+                                    <a href="{{route('percepteur.edit',['id'=>$percepteur->id])}}" class="btn btn-info"> <i class="fa fa-edit">Modifier</i></a>
                                 </td>
-                                <td>{{$percepteur->nom}}</td>
-                                <td>{{$percepteur->prenom}}</td>
-
                             </tr>
 
                             @endforeach

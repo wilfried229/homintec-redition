@@ -34,7 +34,7 @@
 
                     <div class="col-md-12">
 
-                       
+
                         @include('partials.flash')
 
                                 <form action="{{route('percepteur.store')}}" method="post" class="form" >
@@ -44,24 +44,13 @@
                                     <div class="row">
 
 
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="">Nom</label>
+                                        <div class="col-lg-12 col-md-12">
+                                            <label for="">Nom et Prénom</label>
                                             <input type="text" name="nom" id="nom" class="form-control">
 
                                         </div>
 
-
-
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="">Prenom</label>
-                                            <input type="text" name="prenom" id="prenom" class="form-control">
-
-                                        </div>
                                      </div>
-
-
-
-
 
                                         <div class="row">
 
