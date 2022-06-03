@@ -49,7 +49,7 @@ class Redition2Controller extends Controller
             $redition2 = new Rediton2();
             $redition2->percepteur = $request->percepteur;
             $redition2->site = $request->site;
-			  $redition2->heure = $request->heure;
+			$redition2->heure = $request->heure;
             $redition2->date = $request->date;
             $redition2->date_api = $this->dateNow();
             $redition2->cabine  = $request->cabine;
@@ -64,7 +64,7 @@ class Redition2Controller extends Controller
             $redition2->caisse = $request->caisse;
             $redition2->plaque  = $request->plaque;
 			 $redition2->visa  = $request->visa;
-             
+
             $redition2->refer =  Hash::make($this->dateNow());
 			//////$redition2->total  = $request->total;
             $redition2->save();

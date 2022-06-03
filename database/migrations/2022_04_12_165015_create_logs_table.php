@@ -23,7 +23,6 @@ class CreateLogsTable extends Migration
             $table->string("old_percepteur");
             $table->string("agent_homintec");
             $table->string("statut");
-
             $table->timestamps();
         });
     }

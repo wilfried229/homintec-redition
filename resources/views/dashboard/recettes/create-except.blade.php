@@ -103,7 +103,7 @@
 
                                         <div class="col-lg-6 col-md-6">
                                             <label for="">Nombre de vehicule</label>
-                                            <input type="number" name="nombre_vehicule" id="nombre_vehicule" class="form-control" required>
+                                            <input onwheel="return false;" type="number" name="nombre_vehicule" id="nombre_vehicule" class="form-control" required>
 
                                         </div>
 
@@ -114,23 +114,23 @@
 
                                         <div class="col-lg-4 col-md-4">
                                             <label for="">Nombre de violation</label>
-                                            <input type="number" name="nombre_violation" id="nombre_violation" class="form-control" required>
+                                            <input onwheel="return false;" type="number" name="nombre_violation" id="nombre_violation" class="form-control" required>
                                         </div>
 
 
 
                                         <div class="col-lg-4 col-md-4">
                                             <label for="">Nombre de exempte</label>
-                                            <input type="number" name="nombre_exemptes" id="nombre_exemptes" class="form-control" required>
+                                            <input  onwheel="return false;" type="number" name="nombre_exemptes" id="nombre_exemptes" class="form-control" required>
                                         </div>
 
 
                                         <div class="col-lg-4 col-md-4">
                                             <label for="">Montant coupant</label>
 
-                                            <input type="hidden" name="tarif" id="tarif" value="{{$site->tarif}}" class="form-control">
+                                            <input onwheel="return false;" type="hidden" name="tarif" id="tarif" value="{{$site->tarif}}" class="form-control">
 
-                                            <input  type="number" name="montant_coupant" id="montant_coupant" class="form-control" required>
+                                            <input onwheel="return false;"  type="number" name="montant_coupant" id="montant_coupant" class="form-control" required>
 
                                         </div>
                                     </div>
@@ -143,21 +143,36 @@
 
                                         <div class="col-lg-4 col-md-4">
                                             <label for="">Montant informatise</label>
-                                            <input type="number" name="montant_informatise" id="montant_informatise" class="form-control" required>
+                                            <input onwheel="return false;"  type="number" name="montant_informatise" id="montant_informatise" class="form-control" required>
                                         </div>
                                         <div class="col-lg-4 col-md-4">
                                             <label for="">Montant Percepteur</label>
-                                            <input type="number" name="montant_percepteur" id="montant_percepteur" class="form-control" required>
+                                            <input onwheel="return false;" type="number" name="montant_percepteur" id="montant_percepteur" class="form-control" required>
                                         </div>
                                         <div class="col-lg-4 col-md-4">
                                             <label for="">Ecart</label>
                                             <input disabled type="number" id="ecart" class="form-control">
 
-                                            <input  type="hidden" name="montant_ecart" id="montant_ecart" class="form-control" required>
+                                            <input onwheel="return false;" type="hidden" name="montant_ecart" id="montant_ecart" class="form-control" required>
 
                                         </div>
 
                                     </div>
+
+
+
+                                    <div class="row" >
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="">Nombre de passage manuel </label>
+                                            <input  onwheel="return false;" type="number" name="nombre_manuel"  id="nombre_manuel" class="form-control" >
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="">Montant Manuel</label>
+                                            <input  onwheel="return false;" type="number" name="montant_manuel"    id="montant_manuel" class="form-control" >
+                                        </div>
+
+                                    </div>
+
 
                                     <div class="row">
 

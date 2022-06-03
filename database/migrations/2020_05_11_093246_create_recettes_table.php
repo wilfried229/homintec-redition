@@ -23,6 +23,8 @@ class CreateRecettesTable extends Migration
             $table->string('nombre_exemptes');
             $table->string('montant_coupant');
             $table->string('montant_percepteur');
+            $table->string('montant_manuel');
+            $table->string('nombre_manuel');
             $table->string('montant_ecart');
             $table->string('montant_informatise');
             $table->text('observation');

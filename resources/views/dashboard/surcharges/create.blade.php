@@ -68,7 +68,7 @@
 
                                             <div class="col-lg-6 col-md-6">
                                                 <label for="">Nombre d'essieu</label>
-                                                <input type="number" name="essieu" id="essieu" class="form-control" >
+                                                <input onwheel="return false;" type="number" name="essieu" id="essieu" class="form-control" >
                                             </div>
 
 
@@ -78,12 +78,12 @@
 
                                                 <div class="col-lg-4 col-md-4">
                                                     <label for="">Poids Rouland</label>
-                                                    <input type="number" name="poids_roulant" id="poids_roulant" class="form-control" >
+                                                    <input onwheel="return false;" type="number" name="poids_roulant" id="poids_roulant" class="form-control" >
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-4">
                                                     <label for="">Poids autorise</label>
-                                                    <input type="number" name="poid_autorise" id="poid_autorise" class="form-control"  required>
+                                                    <input onwheel="return false;" type="number" name="poid_autorise" id="poid_autorise" class="form-control"  required>
                                                 </div>
 
 
@@ -91,7 +91,7 @@
                                                     <label for="">Poids excedent</label>
                                                     <input disabled   id="excedent" class="form-control" >
 
-                                                    <input type="hidden" name="excedent" id="poid_excedent" class="form-control" required>
+                                                    <input  onwheel="return false;" type="hidden" name="excedent" id="poid_excedent" class="form-control" required>
                                                 </div>
 
                                             </div>
@@ -110,14 +110,14 @@
                                                 </div>
                                             <div class="col-lg-4 col-md-4">
                                                     <label for="montant_apayer">Montant à payer</label>
-                                                    <input  type="hidden" name="montant_apayer" id="apayer" class="form-control"  >
+                                                    <input onwheel="return false;" type="hidden" name="montant_apayer" id="apayer" class="form-control"  >
 
                                                     <input disabled type="number"  id="montant_apayer" class="form-control"  required>
                                                 </div>
 
                                                 <div class="col-lg-4 col-md-4">
                                                     <label for="">Montant payé</label>
-                                                    <input type="number" name="montant_payer" id="montant_payer" class="form-control"  required>
+                                                    <input onwheel="return false;" type="number" name="montant_payer" id="montant_payer" class="form-control"  required>
                                                 </div>
 
 

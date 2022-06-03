@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\SavePlaque;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class GetplaqueNumer extends Controller
@@ -18,11 +19,9 @@ class GetplaqueNumer extends Controller
     }
 
     public function getplaqueNumber(Request $request){
-        $savePlaque  =  SavePlaque::where('plaque',$request->plaque)->orderBy('id')->get();
-      return response()->json($savePlaque, 200);
+
+
+
     }
 
 }
-
-x
-  

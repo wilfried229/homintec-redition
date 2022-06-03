@@ -50,6 +50,9 @@
                                 <th>Nombre passage</th>
                                 <th>Nombre de violation</th>
                                 <th>Nombre Exempte</th>
+
+                                <th class="text-uppercase">Nombre de passage manuel</th>
+                                <th class="text-uppercase">Montant de passage manuel</th>
                                 <th>Options</th>
 
 
@@ -81,6 +84,9 @@
                                     ///$totPassage = $recet->sum('nombrev');
                                     $totViolation = $recet->sum('nombre_violation');
                                     $totExempte = $recet->sum('nombre_exemptes');
+
+                                    $totNombreManuel = $recet->sum('nombre_manuel');
+                                    $totMontantManuel = $recet->sum('montant_manuel');
                                 @endphp
                             @endif
 
@@ -104,6 +110,10 @@
 
                                     $totViolation = $recet->sum('nombre_violation');
                                     $totExempte = $recet->sum('nombre_exemptes');
+
+
+                                    $totNombreManuel = $recet->sum('nombre_manuel');
+                                    $totMontantManuel = $recet->sum('montant_manuel');
                                 @endphp
                             @endif
 
@@ -127,6 +137,9 @@
                                     <td>{{$recette->nombre_vehicule}} </td>
                                     <td>{{$recette->nombre_violation}}</td>
                                     <td>{{$recette->nombre_exemptes}} </td>
+
+                                    <td>{{$recette->nombre_manuel}} </td>
+                                    <td>{{$recette->montant_manuel}} </td>
                                     <td>   <a href="{{route('recette.show',['id'=>$recette->id])}}" class="btn btn-info" title="Modifier">Modifier <i class="fa fa-edit"></i></a>
 
 

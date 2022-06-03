@@ -26,6 +26,8 @@ class Recette extends Model
         'nombre_exemptes',
         'montant_ecart',
         'montant_informatise',
+        'montant_manuel',
+        'nombre_manuel',
         'observation',
         'sites_id',
         'percepteurs_id',

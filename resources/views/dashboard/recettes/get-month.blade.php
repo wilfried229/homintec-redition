@@ -21,7 +21,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Recettes / {{$site->nom}} 
+                    Recettes / {{$site->nom}}
                 </h2>
                 <br>
 
@@ -52,6 +52,9 @@
                                 <th class="text-uppercase">Nombre passage</th>
                                 <th class="text-uppercase">Nombre de violation</th>
                                 <th class="text-uppercase">Nombre Exempte</th>
+                                <th class="text-uppercase">Nombre de passage manuel</th>
+                                <th class="text-uppercase">Montant de passage manuel</th>
+
                                 <th class="text-uppercase">Options</th>
 
 
@@ -88,6 +91,10 @@
                                     ///$totPassage = $recet->sum('nombrev');
                                     $totViolation = $recet->sum('nombre_violation');
                                     $totExempte = $recet->sum('nombre_exemptes');
+
+
+                                    $totNombreManuel = $recet->sum('nombre_manuel');
+                                    $totMontantManuel = $recet->sum('montant_manuel');
                                 @endphp
                             @endif
 
@@ -111,6 +118,9 @@
 
                                     $totViolation = $recet->sum('nombre_violation');
                                     $totExempte = $recet->sum('nombre_exemptes');
+                                    $totNombreManuel = $recet->sum('nombre_manuel');
+                                    $totMontantManuel = $recet->sum('montant_manuel');
+
                                 @endphp
                             @endif
                             <tr>
@@ -133,6 +143,9 @@
                                     <td>{{$recette->nombre_vehicule}} </td>
                                     <td>{{$recette->nombre_violation}}</td>
                                     <td>{{$recette->nombre_exemptes}} </td>
+
+                                    <td>{{$recette->nombre_manuel}} </td>
+                                    <td>{{$recette->montant_manuel}} </td>
 
 
                                     <td>
@@ -172,7 +185,10 @@
                                     <td>{{$totPassage}}</td>
                                     <td>{{$totViolation}}</td>
                                     <td>{{$totExempte}} </td>
+                                    <td> {{$totNombreManuel}}</td>
+                                    <td>{{$totMontantManuel}} </td>
                                     <td> </td>
+
 
                                     </tr>
 
