@@ -15,6 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
         Commands\SendDataReddition::class,
+        Commands\GetValidation::class,
+
     ];
 
     /**
@@ -26,7 +28,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
 
     {
-        $schedule->command('command:sendDataReddition')->everyMinute();
+        ////$schedule->command('command:sendDataReddition')->everyMinute();
+
+        $schedule->command('command:getvalidation')->everyMinute();
 
         // $schedule->command('inspire')->hourly();
     }

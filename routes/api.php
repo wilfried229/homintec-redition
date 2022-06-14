@@ -52,7 +52,10 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
 
     Route::post('checked/compatge','ComptagesController@checkedComptage');
 
-
     Route::post('logs-save','LogController@store');
+
+    Route::post('update-validation','Redition2Controller@updateDataValidatedRecevied');
+
+
 
 });

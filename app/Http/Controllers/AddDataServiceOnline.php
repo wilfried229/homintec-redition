@@ -12,7 +12,61 @@ class AddDataServiceOnline
 {
 
 
-    public $urls = ['homintec-peage.com'];
+
+
+    public function getValidation($url){
+
+        try {
+            //code...
+                     //
+        $url = "$url/validation/public/api/homintec/validation";
+        $resp = $this->hitCurl($url,[],'GET');
+        if($resp['statusCode'] == 200){
+            $apiData = json_decode($resp['resp']);
+            foreach ($apiData as $key => $value) {
+            if(Rediton2::where('refer','=',$value->refer)->count()!=0){
+                return response()->json(3, 200);
+            }
+
+            $redition2 = new Rediton2();
+            $redition2->percepteur = $value->percepteur;
+            $redition2->site = $value->site;
+			$redition2->heure = $value->heure;
+            $redition2->date = $value->date;
+            $redition2->date_api = $value->date_api;
+            $redition2->cabine  = $value->cabine;
+            $redition2->prix = $value->prix;
+            $redition2->sens = $value->sens;
+            $redition2->type = $value->type;
+            $redition2->ptrac = $value->ptrac;
+            $redition2->cmaes = $value->cmaes;
+            $redition2->es =$value->es;
+            $redition2->ptt = $value->ptt;
+            $redition2->over =$value->over;
+            $redition2->caisse = $value->caisse;
+            $redition2->plaque  = $value->plaque;
+			$redition2->visa  = $value->visa;
+            $redition2->refer =  $value->refer;
+            $redition2->save();
+
+        }
+
+        Log::info("succes");
+        return response()->json($apiData, 200);
+
+        }
+
+        } catch (\Exception $th) {
+            //throw $th;
+        Log::error($th->getMessage());
+
+        return response()->json($th->getMessage(), 400);
+
+        }
+
+
+    }
+
 
 
 

@@ -21,6 +21,23 @@ class RecetteController extends Controller
 
 
 
+    public function cloturerRecettes(Request $request){
+
+
+        $recettes = Recette::whereBetween('date_recettes', [$request->date_recettes, $request->date_recettes])->get();
+        $recettes->update([
+            'is_cloturer'=>true,
+          ]);
+
+          return  back()
+          ->with([
+            'message' => 'Recette cloturée avec succès',
+            'alert-type' => 'success'
+        ]);
+
+    }
+
+
     public function searchIndexPercepteur(){
 
 
@@ -249,14 +266,14 @@ class RecetteController extends Controller
                 'date_recettes'=>$request->date_recettes,
                 'heure_debut'=>$request->heure_debut,
                 'heure_fin'=>$request->heure_fin,
-                'nombre_vehicule'=>$request->nombre_vehicule,
+                'nombre_vehicule'=>$request->nombre_vehicule + $request->nombre_manuel,
                 'nombre_violation'=>$request->nombre_violation,
                 'nombre_exemptes'=>$request->nombre_exemptes,
                 'montant_percepteur'=>$request->montant_percepteur,
                 'montant_ecart'=>$request->montant_ecart,
                 'nombre_manuel'=>$request->nombre_manuel,
                 'montant_manuel'=>$request->montant_manuel,
-                'montant_informatise'=>$request->montant_informatise,
+                'montant_informatise'=>$request->montant_informatise + $request->montant_manuel,
                 'observation'=>$request->observation,
                 'sites_id'=>$user->site_id,
                 'percepteurs_id'=>$request->percepteurs_id,
@@ -341,15 +358,14 @@ class RecetteController extends Controller
         'date_recettes'=>$request->date_recettes,
         'heure_debut'=>$request->heure_debut,
         'heure_fin'=>$request->heure_fin,
-        'nombre_vehicule'=>$request->nombre_vehicule,
+        'nombre_vehicule'=>$request->nombre_vehicule + $request->nombre_manuel,
         'nombre_violation'=>$request->nombre_violation,
         'nombre_exemptes'=>$request->nombre_exemptes,
         'montant_percepteur'=>$request->montant_percepteur,
         'montant_ecart'=>$request->montant_ecart,
-        'montant_informatise'=>$request->montant_informatise,
+        'montant_informatise'=>$request->montant_informatise+ $request->montant_manuel,
         'nombre_manuel'=>$request->nombre_manuel,
         'montant_manuel'=>$request->montant_manuel,
-
         'observation'=>$request->observation,
         'sites_id'=>Auth::user()->site_id,
         'percepteurs_id'=>$request->percepteurs_id,

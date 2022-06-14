@@ -26,7 +26,8 @@ class SurchagesManuel extends Model
         'observation',
         'voies_id',
         'sites_id',
-        'type'
+        'type',
+        'is_cloturer'
     ];
 
 

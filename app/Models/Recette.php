@@ -34,12 +34,12 @@ class Recette extends Model
         'vacations_id',
         'voies_id',
         'user_id',
+        'is_cloturer'
 
     ];
 
 
     public $appends =['horaire','sommesHoraire'];
-
 
 
     public function getHoraireAttributs(){
@@ -71,13 +71,11 @@ class Recette extends Model
     }
     public function voie(){
 
-
         return $this->belongsTo(Voie::class,'voies_id','id');
     }
 
 
     public function vacation(){
-
 
         return $this->belongsTo(Vacation::class,'vacations_id','id');
     }

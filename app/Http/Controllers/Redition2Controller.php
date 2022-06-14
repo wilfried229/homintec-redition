@@ -11,6 +11,26 @@ use Illuminate\Support\Facades\Log;
 
 class Redition2Controller extends Controller
 {
+
+
+    public function  getvalidation(){
+        $redition2 = Rediton2::where('is_sent',0)->get();
+        return response()->json($redition2, 200);
+
+    }
+
+
+    public function  updateDataValidatedRecevied(Request $request){
+
+        $redition2 = Rediton2::where('id',$request->id)->first();
+        $redition2->is_sent  = true;
+        $redition2->save();
+        return response()->json('success', 200);
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +38,14 @@ class Redition2Controller extends Controller
      */
     public function index()
     {
-        //
-        $redition2 = Rediton2::all();
+     $validation =  Rediton2::where('is_sent','=',false)->take(2)->get();
+        foreach ($validation  as $key => $value) {
+            $value->is_sent = true;
+            $value->save();
+        }
 
-        return response()->json($redition2, 200);
+        return response()->json($validation, 200);
+
     }
 
     /**
@@ -127,6 +151,30 @@ class Redition2Controller extends Controller
     private function dateNow (){
         $now=  Carbon::now('Africa/Lagos');
         return $now;
+    }
+
+    function hitCurl($url,$param = [],$type){
+        $ch = curl_init();
+        if(strtoupper($type) == 'GET'){
+            $param = http_build_query((array)$param);
+            $url = "{$url}?{$param}";
+        }else{
+            curl_setopt_array($ch,[
+                CURLOPT_POST => (strtoupper($type) == 'POST'),
+                CURLOPT_POSTFIELDS => (array)$param,
+            ]);
+        }
+        curl_setopt_array($ch,[
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+        ]);
+        $resp = curl_exec($ch);
+        $statusCode = curl_getinfo($ch,CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        return [
+            'statusCode' => $statusCode,
+            'resp' => $resp
+        ];
     }
 
 }

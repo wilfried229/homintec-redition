@@ -23,6 +23,23 @@ class SurchagesManuelController extends Controller
 
 
 
+    public function cloturerRecettes(Request $request){
+
+
+        $surcharge = ModelsSurchagesManuel::whereBetween('date_recettes', [$request->date_recettes, $request->date_recettes])->get();
+        $surcharge->update([
+            'is_cloturer'=>true,
+          ]);
+
+          return  back()
+          ->with([
+            'message' => 'Surcharge cloturée avec succès',
+            'alert-type' => 'success'
+        ]);
+
+    }
+
+
     public function rapportMensuelsChoice(Request  $request){
 
         $date = $request->date;

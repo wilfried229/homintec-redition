@@ -165,6 +165,20 @@
 
                                     </div>
 
+                                           <div class="row" >
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="">Nombre de passage manuel </label>
+                                            <input  onwheel="return false;" value="{{$recette->nombre_manuel}}" type="number" name="nombre_manuel"  id="nombre_manuel" class="form-control" >
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="">Montant Manuel</label>
+                                            <input  onwheel="return false;" value="{{$recette->montant_manuel}}" type="number" name="montant_manuel"    id="montant_manuel" class="form-control" >
+                                        </div>
+
+                                    </div>
+
+
+
                                     <div class="row">
 
                                         <div class="col-md-12">
