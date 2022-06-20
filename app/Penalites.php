@@ -23,7 +23,8 @@ class Penalites extends Model
         'percepteur',
         'site',
         'cabine',
-        'sens'
+        'sens',
+        'refer'
 
     ];
 

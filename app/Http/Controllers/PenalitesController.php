@@ -41,14 +41,58 @@ class PenalitesController extends Controller
 
 
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+
+     /**
+      *     /**
+    * @OA\Info(
+    *      version="1.0.0",
+    *      title="Api covid19 Documentation",
+    *      description="Implementation of Swagger with in Laravel",
+    *      @OA\Contact(
+    *          email="admin@admin.com"
+    *      ),
+    *      @OA\License(
+    *          name="Apache 2.0",
+    *          url="http://www.apache.org/licenses/LICENSE-2.0.html"
+    *      )
+    * ),
+     * @OA\Get(
+     *      path="/api/homintec/penalite",
+     *      operationId="index",
+     *      tags={"Penalite"},
+
+     *      summary="Get List Of penlaite",
+     *      description="Returns all penlaite",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     * @OA\Response(
+     *      response=400,
+     *      description="Bad Request"
+     *   ),
+     * @OA\Response(
+     *      response=404,
+     *      description="not found"
+     *   ),
+     *  )
      */
     public function index()
     {
-        //
+        $penalites = Penalites::all();
+        ///dd($penalites);
+        return response()->json($penalites, 200);
     }
 
     /**
@@ -58,14 +102,34 @@ class PenalitesController extends Controller
      */
     public function create()
     {
-        //           
+        //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+        /**
+     * @OA\Post(
+     * path="/api/homintec/penalite",
+     * summary="save penalite",
+     * description="Login by email, password",
+     * operationId="store",
+     * tags={"store"},
+     * @OA\RequestBody(
+     *    required=true,
+     *    description="pass penalite",
+     *    @OA\JsonContent(
+     *       required={"rouland","type","facteur","penalite","autorise","excedant"},
+     *       @OA\Property(property="rouland", type="string", format="string", example="string"),
+     *       @OA\Property(property="type", type="string", format="string", example="string"),
+     *       @OA\Property(property="facteur", type="string", example="string"),
+     *    ),
+     * ),
+     * @OA\Response(
+     *    response=422,
+     *    description="Wrong credentials response",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+     *        )
+     *     )
+     * )
      */
     public function store(Request $request)
     {
@@ -93,8 +157,6 @@ class PenalitesController extends Controller
             //throw $th;
             Log::info($ex->getMessage());
         return response()->json($ex->getMessage(), 400);
-
-
 
         }
 
@@ -144,7 +206,7 @@ class PenalitesController extends Controller
     {
         //
     }
-	
+
 	private function dateNow (){
         $now=  Carbon::now('Africa/Lagos');
         return $now;

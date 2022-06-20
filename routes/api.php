@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 
 Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], function () {
 
@@ -35,6 +31,7 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
         'penalite'=>'PenalitesController',
         'douanes'=>'DouaneController',
         'comptageChecked' => 'ComptageCheckedController',
+        'violation' =>'ViolationController'
 
 
     ]);
