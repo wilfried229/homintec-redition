@@ -6,6 +6,8 @@ use App\Penalites;
 use App\penaliteTrac;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class PenalitesController extends Controller
 {
@@ -83,6 +85,7 @@ class PenalitesController extends Controller
         $penalite->site = $request->site;
         $penalite->cabine = $request->cabine;
         $penalite->sens = $request->sens;
+		$penalite->refer =  Hash::make($this->dateNow());
         $penalite->save();
 
         return response()->json($penalite, 200);
@@ -140,5 +143,10 @@ class PenalitesController extends Controller
     public function destroy(Penalites $penalites)
     {
         //
+    }
+	
+	private function dateNow (){
+        $now=  Carbon::now('Africa/Lagos');
+        return $now;
     }
 }

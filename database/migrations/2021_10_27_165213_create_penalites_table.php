@@ -29,7 +29,8 @@ class CreatePenalitesTable extends Migration
             $table->string('site');
             $table->string('cabine');
             $table->string('sens');
-
+			$table->boolean('is_sent')->default(false);
+			$table->string('refer')->unique();
             $table->timestamps();
         });
     }
