@@ -8,7 +8,7 @@
 @section('header')
 <div class="block-header">
     <h2>
-            Ajouter un intilisateur
+            Ajouter un utilisateur
         <small><a href="" target="_blank"> </a></small>
     </h2>
 </div>

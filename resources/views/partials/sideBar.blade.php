@@ -20,103 +20,6 @@
                         <span>Accueil</span>
                     </a>
                 </li>
-   {{--              <li>
-                    <a href="#" class="menu-toggle">
-                        <span>Validation </span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{route('redition2.day')}}">Par Jour</a>
-                        </li>
-                        <li>
-                            <a href="{{route('redition2.month')}}">Par Mois</a>
-                        </li>
-                        <li>
-                            <a href="{{route('redition2.search')}}">Par Date</a>
-                        </li>
-
-
-                    </ul>
-                </li>
-
-
-                <li>
-                    <a href="#" class="menu-toggle">
-
-                        <span>Recettes UEMOI</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{route('redition.uemoi.listDay.sites')}}">Par jour </a>
-                        </li>
-                        <li>
-                            <a href="{{route('redition.uemoi.listMonth.sites')}}">Par Mois</a>
-                        </li>
-                        <li>
-                            <a href="{{route('redition.uemoi.list.sites')}}">Par DATE</a>
-                        </li>
-                    </ul>
-                </li>
-
-
-
-
-                <li>
-                    <a href="# class="menu-toggle">
-                        <span>Surcharges UEMOI</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{route('suchargeVieUemio.list.sites','HOUEGBO')}}">HOUEGBO</a>
-                        </li>
-                        <li>
-                            <a href="{{route('suchargeVieUemio.list.sites','EKPE')}}">EKPE</a>
-                        </li>
-                        <li>
-                            <a href="{{route('suchargeVieUemio.list.sites','AHOZON')}}">AHOZON</a>
-                        </li>
-                        <li>
-                            <a href="{{route('suchargeVieUemio.list.sites','GRAND-POPO')}}">GRAND-POPO</a>
-                        </li>
-
-                        <li>
-                            <a href="{{route('suchargeVieUemio.list.sites','SIRAOU')}}">SIRAOU</a>
-                        </li>
-                        <li>
-                            <a href="{{route('suchargeVieUemio.list.sites','KPEDEPKO')}}">KPEDEPKO</a>
-                        </li>
-                        <li>
-                            <a href="{{route('suchargeVieUemio.list.sites','DIHO')}}">DIHO</a>
-                        </li>
-                        <li>
-                            <a href="{{route('suchargeVieUemio.list.sites','BIRO')}}">BIRO</a>
-                        </li>
-                        <li>
-                            <a href="{{route('suchargeVieUemio.list.sites','KPREKETE')}}">KPREKETE</a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#" class="menu-toggle">
-                        <span>Hydrocarbure</span>
-
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <a href="{{route('hydro.list.days')}}">Par jour </a>
-                        </li>
-                        <li>
-                            <a href="{{route('hydro.list.month')}}">Par Mois</a>
-                        </li>
-                        <li>
-                            <a href="{{route('hydro.list.search')}}">Par DATE</a>
-                        </li>
-
-                    </ul>
-                </li>
- --}}
 
  @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
  <li>
@@ -146,40 +49,9 @@
                 </li>
 
  @endif
- @if (in_array(Auth::user()->role,["ADMIN",'HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+ 
 
-
-
- <li>
-    <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
-   </li>
-
-				<li>
-                    <a href="{{route('redition2.day')}}" >
-                        <span>Validation </span>
-                    </a>
-
-                </li>
-                <li>
-
-                    <a href="#" class="menu-toggle">
-                        <span>CashFlow</span>
-                    </a>
-                   <ul class="ml-menu">
-
-                       <li>
-                         <a href="{{route('cash-flow.indexDay')}}">Par Jours</a>
-                        </li>
-                        <li>
-                         <a  href="{{route('cash-flow.indexMonth')}}">Par Mois</a>
-
-                           </li>
-                    </ul>
-                </li>
-
-    @endif
-
- @if (in_array(Auth::user()->role,["ADMIN",'HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SUPERADMIN']) )
 
                 <li>
                     <a href="#" class="menu-toggle">
