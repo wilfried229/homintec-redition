@@ -9,8 +9,13 @@ class ComptageChecked extends Model
     //
 
     protected $table   ="comptage_checkeds";
-
-    protected $fillable   =['site','voie','percepteur','date_interreption'];
-
+    protected $fillable = [
+        'site',
+        'cabine',
+        'percepteur',
+        'date',
+        'heure',
+        'type_interruption'
+    ];
 
 }

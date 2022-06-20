@@ -9,12 +9,14 @@ class Comptages extends Model
     protected   $table = "comptages";
 
     protected $fillable = [
-        'site',
-        'cabine',
-        'percepteur',
-        'date',
-        'heure',
-        'type_interruption'
+     'percepteur',
+     'voie',
+     'site',
+     'montant_passage',
+     'montant',
+     'nbres_camion',
+     'heure_debut',
+     'heure_fin',
     ];
 
     //

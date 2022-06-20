@@ -22,6 +22,7 @@ class CreateComptageCheckedsTable extends Migration
             $table->time('heure');
             $table->string('type_interruption');
             $table->boolean('is_sent')->default(false);
+            $table->string('refer')->unique();
             $table->timestamps();
         });
     }

@@ -23,12 +23,12 @@ class Penalites extends Model
         'percepteur',
         'site',
         'cabine',
-        'sense'
+        'sens'
 
     ];
 
 
-  
+
         //// 'eurimmatricule'
 
 }

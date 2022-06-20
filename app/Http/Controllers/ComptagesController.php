@@ -7,6 +7,7 @@ use App\Comptages;
 use App\Models\Rediton2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -18,25 +19,6 @@ class ComptagesController extends Controller
 
        /// 'date_interruption' => Carbon::now('Africa/Lagos'),
 
-        try {
-            //code...
-            $checkedComptagePanne  = ComptageChecked::create([
-                'site' =>$request->site,
-                'cabine' =>$request->cabine,
-                'percepteur'=>$request->percepteur,
-                'date_interruption' => $request->date_interruption,
-                'heure'=>$request->heure,
-                'type_interruption'=>$request->type_interruption
-            ]);
-
-        return response()->json($checkedComptagePanne, 200);
-
-        } catch (\Exception $ex) {
-            //throw $th;
-            Log::error($ex->getMessage());
-        return response()->json($ex->getMessage(), 400);
-
-        }
     }
 
     public function store(Request $request)
@@ -61,7 +43,6 @@ class ComptagesController extends Controller
     public function index()
     {
         $comptages = Comptages::where('is_sent')->take(10)->get();
-
     foreach ($comptages  as $key => $value) {
         $value->is_sent = true;
         $value->save();

@@ -34,6 +34,8 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
         'cashFlow'=>'CashFlowController',
         'penalite'=>'PenalitesController',
         'douanes'=>'DouaneController',
+        'comptageChecked' => 'ComptageCheckedController',
+
 
     ]);
 
@@ -46,7 +48,6 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
     Route::get('checked/connexion','TechniquesController@checkedConnexion');
     Route::post('comptage-sms','ComptagesController@comptageSms');
     Route::get('testupdate','CashFlowController@testUpdateRequest');
-    Route::post('checked/compatge','ComptagesController@checkedComptage');
     Route::post('logs-save','LogController@store');
     Route::post('update-validation','Redition2Controller@updateDataValidatedRecevied');
 
