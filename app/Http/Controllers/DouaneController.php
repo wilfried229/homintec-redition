@@ -17,9 +17,14 @@ class DouaneController extends Controller
     public function index()
     {
         //
-    $douane =  Douane::where('is_sent','=',false)->take(10)->get();
+    $douanes =  Douane::where('is_sent','=',false)->take(10)->get();
 
-    return response()->json($douane, 200);
+    foreach ($douanes  as $key => $value) {
+        $value->is_sent = true;
+        $value->save();
+    }
+
+    return response()->json($douanes, 200);
 
     }
 

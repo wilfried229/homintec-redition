@@ -18,8 +18,10 @@ class CreateComptageCheckedsTable extends Migration
             $table->string('site');
             $table->string('percepteur');
             $table->string('cabine')->nullable();
-            $table->dateTime('date_interreption');
+            $table->dateTime('date');
             $table->time('heure');
+            $table->string('type_interruption');
+            $table->boolean('is_sent')->default(false);
             $table->timestamps();
         });
     }

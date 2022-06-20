@@ -16,13 +16,27 @@ class ComptagesController extends Controller
 
     public function  checkedComptage(Request $request){
 
-        $checkedComptagePanne  = ComptageChecked::create([
-            'site' =>$request->site,
-            'cabine' =>$request->cabine,
-            'percepteur'=>$request->percepteur,
-            'date_interreption' => Carbon::now('Africa/Lagos')
-        ]);
+       /// 'date_interruption' => Carbon::now('Africa/Lagos'),
+
+        try {
+            //code...
+            $checkedComptagePanne  = ComptageChecked::create([
+                'site' =>$request->site,
+                'cabine' =>$request->cabine,
+                'percepteur'=>$request->percepteur,
+                'date_interruption' => $request->date_interruption,
+                'heure'=>$request->heure,
+                'type_interruption'=>$request->type_interruption
+            ]);
+
         return response()->json($checkedComptagePanne, 200);
+
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::error($ex->getMessage());
+        return response()->json($ex->getMessage(), 400);
+
+        }
     }
 
     public function store(Request $request)
@@ -39,35 +53,21 @@ class ComptagesController extends Controller
         $comptage->heure_fin  = $request->heure_fin;
         $comptage->save(); */
 
-        $redition2 = new Rediton2();
-        $redition2->percepteur = $request->percepteur;
-        $redition2->site = $request->site;
-        $redition2->date = Carbon::now('Africa/Lagos');
-        $redition2->cabine  = $request->cabine;
-        $redition2->prix = $request->prix;
-        $redition2->sens = $request->sens;
-        $redition2->type = $request->type;
-        $redition2->ptrac = $request->ptrac;
-        $redition2->cmaes = $request->cmaes;
-        $redition2->es =$request->es;
-        $redition2->ptt = $request->ptt;
-        $redition2->over =$request->over;
-        $redition2->caisse = $request->caisse;
-        $redition2->plaque  = $request->plaque;
-        $redition2->save();
 
-
-
-
-         return response()->json($redition2, 200);
+         return response()->json(2, 200);
 
     }
 
     public function index()
     {
+        $comptages = Comptages::where('is_sent')->take(10)->get();
 
-        $comptage = Comptages::all();
-        return response()->json($comptage, 200);
+    foreach ($comptages  as $key => $value) {
+        $value->is_sent = true;
+        $value->save();
+    }
+
+    return response()->json($comptages, 200);
     }
 
 
