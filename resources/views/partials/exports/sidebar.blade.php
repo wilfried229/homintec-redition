@@ -214,7 +214,7 @@
                 <li>
 
 
-                    <a href="{{route('point-essieux.searchIndex')}}" class="menu-toggle">
+                    <a href="" class="menu-toggle">
                         <span>Points Essieux</span>
                     </a>
 
@@ -223,7 +223,7 @@
                 <li>
 
 
-                    <a href="{{route('point-mensuel.searchIndex')}}" class="menu-toggle">
+                    <a href="" class="menu-toggle">
                         <span>Points Mensuels</span>
                     </a>
 

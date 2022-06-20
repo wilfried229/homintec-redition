@@ -297,7 +297,7 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('point-essieux.searchIndex')}}">Afficher</a>
+                         <a href="">Afficher</a>
                         </li>
 
                     </ul>
@@ -312,11 +312,11 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('point-mensuel.searchIndex')}}">Afficher Coupon</a>
+                         <a href="">Afficher Coupon</a>
                         </li>
 
                         <li>
-                            <a href="{{route('point-mensuel.searchIndexInformatiser')}}">Afficher Informatiser</a>
+                            <a href="">Afficher Informatiser</a>
                            </li>
 
 
@@ -333,7 +333,7 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('point-percepteur.searchIndex')}}">Afficher</a>
+                         <a href="">Afficher</a>
                         </li>
 
                     </ul>
