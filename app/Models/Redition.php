@@ -11,6 +11,6 @@ class Redition extends Model
 
     protected $fillable = [
         'id','percepteur','voie','temps_services','date_debut','date_fin','superviseur','controleur',
-        'declaration_billetaire',''
+        'declaration_billetaire',
     ];
 }

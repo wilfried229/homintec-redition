@@ -38,12 +38,11 @@ class Redition2Controller extends Controller
      */
     public function index()
     {
-     $validation =  Rediton2::where('is_sent','=',false)->take(2)->get();
+     $validation =  Rediton2::where('is_sent','=',false)->take(10)->get();
         foreach ($validation  as $key => $value) {
             $value->is_sent = true;
             $value->save();
         }
-
         return response()->json($validation, 200);
 
     }
@@ -87,8 +86,8 @@ class Redition2Controller extends Controller
             $redition2->over =$request->over;
             $redition2->caisse = $request->caisse;
             $redition2->plaque  = $request->plaque;
-			 $redition2->visa  = $request->visa;
-
+			$redition2->visa  = $request->visa;
+            
             $redition2->refer =  Hash::make($this->dateNow());
 			//////$redition2->total  = $request->total;
             $redition2->save();

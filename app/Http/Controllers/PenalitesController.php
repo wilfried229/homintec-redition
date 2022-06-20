@@ -56,7 +56,7 @@ class PenalitesController extends Controller
      */
     public function create()
     {
-        //
+        //           
     }
 
     /**
