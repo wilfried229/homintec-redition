@@ -20,7 +20,7 @@ class CreateComptageCheckedsTable extends Migration
             $table->string('cabine')->nullable();
             $table->dateTime('date');
             $table->time('heure');
-            $table->string('type_interruption');
+            ////$table->string('type_interruption');
             $table->boolean('is_sent')->default(false);
             $table->string('refer')->unique();
             $table->timestamps();
