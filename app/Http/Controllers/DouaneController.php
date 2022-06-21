@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Douane;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -124,5 +125,10 @@ class DouaneController extends Controller
     public function destroy(Douane $douane)
     {
         //
+    }
+
+    private function dateNow (){
+        $now=  Carbon::now('Africa/Lagos');
+        return $now;
     }
 }

@@ -29,6 +29,8 @@ class CreateHydrocarbureTable extends Migration
             $table->string('conducteur')->nullable();
             $table->string('provenance');
             $table->string('plaque')->nullable();
+			$table->boolean('is_sent')->default(false);
+            $table->string('refer')->unique();
             $table->timestamps();
         });
     }

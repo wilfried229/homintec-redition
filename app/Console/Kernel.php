@@ -17,8 +17,6 @@ class Kernel extends ConsoleKernel
         Commands\SendDataReddition::class,
         Commands\GetValidation::class,
         Commands\getComptageChecked::class,
-
-
     ];
 
     /**
