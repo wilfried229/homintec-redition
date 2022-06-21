@@ -24,9 +24,12 @@ class Penalites extends Model
         'site',
         'cabine',
         'sens',
-        'refer'
+        'refer',
+        'is_sent'
 
     ];
+
+   
 
 
 

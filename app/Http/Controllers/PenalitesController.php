@@ -90,9 +90,15 @@ class PenalitesController extends Controller
      */
     public function index()
     {
-        $penalites = Penalites::all();
-        ///dd($penalites);
-        return response()->json($penalites, 200);
+            //
+    $penalites =  Penalites::where('is_sent','=',false)->take(10)->get();
+
+    foreach ($penalites  as $key => $value) {
+        $value->is_sent = true;
+        $value->save();
+    }
+
+    return response()->json($penalites, 200);
     }
 
     /**
