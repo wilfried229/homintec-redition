@@ -40,8 +40,11 @@ class Kernel extends ConsoleKernel
         ////$schedule->command('command:sendDataReddition')->everyMinute();
         $schedule->command('command:getvalidation')->everyMinute();
         $schedule->command('command:getComptageChecked')->everyMinute();
-
         $schedule->command('command:getViolation')->everyMinute();
+        $schedule->command('command:getAjustement')->everyMinute();
+        $schedule->command('command:getDouanes')->everyMinute();
+        $schedule->command('command:getPenalite')->everyMinute();
+        $schedule->command('command:getLoging')->everyMinute();
 
         // $schedule->command('inspire')->hourly();
     }

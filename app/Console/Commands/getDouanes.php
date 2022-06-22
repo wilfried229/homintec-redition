@@ -13,7 +13,7 @@ class getDouanes extends Command
      *
      * @var string
      */
-    protected $signature = 'command:douanes';
+    protected $signature = 'command:getDouanes';
 
     /**
      * The console command description.
