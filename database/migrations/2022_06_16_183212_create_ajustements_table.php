@@ -25,7 +25,6 @@ class CreateAjustementsTable extends Migration
             $table->string('admin')->nullable();
             $table->string('essieu')->nullable();
             $table->string('facteur')->nullable();
-            $table->string('caisse');
             $table->string('refer')->unique();
             $table->boolean('is_sent')->default(false);
             $table->timestamps();

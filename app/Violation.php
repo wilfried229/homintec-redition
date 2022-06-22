@@ -8,7 +8,7 @@ class Violation extends Model
 {
     //
     protected $table ="violations";
-    protected $fillable = [
+    protected $fillable =[
         'site',
         'date',
         'heure',

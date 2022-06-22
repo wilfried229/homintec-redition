@@ -12,7 +12,7 @@ class Penalites extends Model
     protected $fillable =[
        //// 'immatricule',
         'rouland',
-        'facteur',
+        'plaque',
         'penalite',
         'excedent',
         'autorise',
@@ -24,12 +24,9 @@ class Penalites extends Model
         'site',
         'cabine',
         'sens',
-        'refer',
-        'is_sent'
+        'refer'
 
     ];
-
-   
 
 
 

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
-class Redition2Controller extends Controller 
+class Redition2Controller extends Controller
 {
 
 

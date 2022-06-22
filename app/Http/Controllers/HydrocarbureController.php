@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Hydrocarbure;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class HydrocarbureController extends Controller
@@ -18,14 +17,10 @@ class HydrocarbureController extends Controller
     public function index()
     {
         //
+        $hydro = Hydrocarbure::all();
 
-        $hydros =  Hydrocarbure::where('is_sent','=',false)->take(10)->get();
-        foreach ($hydros  as $key => $value) {
-            $value->is_sent = true;
-            $value->save();
-        }
-
-        return response()->json($hydros, 200);
+        
+        return response()->json($hydro, 200);
     }
 
     /**
@@ -65,7 +60,7 @@ class HydrocarbureController extends Controller
             $hydro->conducteur =$request->conducteur;
             $hydro->provenance = $request->provenance;
             $hydro->plaque  = $request->plaque;
-            $hydro->refer =  Hash::make($this->dateNow());
+
             $hydro->save();
 
             return response()->json($hydro, 200);

@@ -12,7 +12,7 @@ class Hydrocarbure extends Model
 
     protected $fillable  = [
         'id','percepteur','date','prix','site',
-        'cabine','sens','type','ptrac','destination','es','ptt','conducteur','provenance','plaque','refer'
+        'cabine','sens','type','ptrac','destination','es','ptt','conducteur','provenance','plaque'
     ];
 
 }

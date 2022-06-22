@@ -54,7 +54,7 @@ class ComptageCheckedController extends Controller
                 'percepteur'=>$request->percepteur,
                 'date' => $request->date,
                 'heure'=>$request->heure,
-            //// 'type_interruption'=>$request->type_interruption,
+                'type_interruption'=>$request->type_interruption,
                 'refer' => Hash::make(Carbon::now('Africa/Lagos'))
             ]);
 

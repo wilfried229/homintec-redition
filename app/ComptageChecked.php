@@ -15,7 +15,7 @@ class ComptageChecked extends Model
         'percepteur',
         'date',
         'heure',
-       //// 'type_interruption'
+        'type_interruption'
     ];
 
 }

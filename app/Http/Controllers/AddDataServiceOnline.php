@@ -1,11 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Ajustement;
 use App\ComptageChecked;
 use App\Comptages;
+use App\Douane;
 use App\Models\logs;
 use App\Models\Rediton2;
 use App\Penalites;
+use App\Violation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -15,6 +18,197 @@ use Illuminate\Support\Facades\Hash;
 class AddDataServiceOnline
 {
 
+
+
+    public function getDouanes($url){
+
+        try {
+            //code...
+                   //
+        $url = "$url/validation/public/api/homintec/douanes";
+        $resp = $this->hitCurl($url,[],'GET');
+        if($resp['statusCode'] == 200){
+            $apiData = json_decode($resp['resp']);
+            foreach ($apiData as $key => $value) {
+            if(Douane::where('refer','=',$value->refer)->count()!=0){
+                return response()->json(3, 200);
+            }
+
+            $douane = new Douane();
+            $douane->percepteur = $value->percepteur;
+            $douane->site = $value->site;
+			$douane->heure = $value->heure;
+            $douane->date = $value->date;
+            $douane->date_api =$value->date_api;
+            $douane->cabine  = $value->cabine;
+            $douane->prix = $value->prix;
+            $douane->sens = $value->sens;
+            $douane->type = $value->type;
+            $douane->ptrac = $value->ptrac;
+            $douane->cmaes = $value->cmaes;
+            $douane->es =$value->es;
+            $douane->ptt = $value->ptt;
+            $douane->over =$value->over;
+            $douane->caisse = $value->caisse;
+            $douane->plaque  = $value->plaque;
+			$douane->visa  = $value->visa;
+            $douane->refer = $value->refer;
+            $douane->save();
+
+
+        }
+
+        Log::info("succes");
+        return response()->json($apiData, 200);
+
+        }
+
+        } catch (\Exception $th) {
+            //throw $th;
+            Log::error($th->getMessage());
+
+            return response()->json($th->getMessage(), 400);
+
+        }
+
+
+    }
+
+
+
+    public function getAjustement($url){
+
+        try {
+            //code...
+                   //
+        $url = "$url/validation/public/api/homintec/ajustement";
+        $resp = $this->hitCurl($url,[],'GET');
+        if($resp['statusCode'] == 200){
+            $apiData = json_decode($resp['resp']);
+            foreach ($apiData as $key => $value) {
+            if(Ajustement::where('refer','=',$value->refer)->count()!=0){
+                return response()->json(3, 200);
+            }
+
+            Ajustement::create([
+               'site'=>$value->site,
+               'heure'=>$value->heure,
+               'date'=>$value->date,
+               'cabine '=>$value->cabine,
+               'sens'=>$value->sens,
+               'type'=>$value->type,
+               'essieu'=>$value->essieu,
+               'admin' =>$value->admin,
+               'essieu_capte' =>$value->essieu_capte,
+               'plaque' =>$value->plaque
+            ]);
+
+        }
+
+        Log::info("succes");
+        return response()->json($apiData, 200);
+
+        }
+
+        } catch (\Exception $th) {
+            //throw $th;
+            Log::error($th->getMessage());
+
+            return response()->json($th->getMessage(), 400);
+
+        }
+
+
+    }
+
+
+
+    public function getLoging($url){
+
+        try {
+            //code...
+                   //
+        $url = "$url/validation/public/api/homintec/logs-save";
+        $resp = $this->hitCurl($url,[],'GET');
+        if($resp['statusCode'] == 200){
+            $apiData = json_decode($resp['resp']);
+            foreach ($apiData as $key => $value) {
+            if(logs::where('refer','=',$value->refer)->count()!=0){
+                return response()->json(3, 200);
+            }
+
+            logs::create([
+             "percepteur" =>$value->percepteur,
+                "cabine" => $value->cabine,
+                "site" => $value->site,
+                "date" => $value->date,
+                "heure" => $value->heure,
+                "old_percepteur"=>$value->old_percepteur,
+                "agent_homintec"=>$value->agent_homintec,
+                "statut"=>$value->statut,
+                "refer"=>$value->refer,
+            ]);
+        }
+
+        Log::info("succes");
+        return response()->json($apiData, 200);
+
+        }
+
+        } catch (\Exception $th) {
+            //throw $th;
+            Log::error($th->getMessage());
+
+            return response()->json($th->getMessage(), 400);
+
+        }
+
+
+    }
+
+
+
+    public function getViolation($url){
+
+        try {
+            //code...
+                   //
+        $url = "$url/validation/public/api/homintec/violation";
+        $resp = $this->hitCurl($url,[],'GET');
+        if($resp['statusCode'] == 200){
+            $apiData = json_decode($resp['resp']);
+            foreach ($apiData as $key => $value) {
+            if(Violation::where('refer','=',$value->refer)->count()!=0){
+                return response()->json(3, 200);
+            }
+
+            Violation::create([
+                'date' => $value->date,
+                'heure' => $value->heure,
+                'site' =>$value->site,
+                'cabine' =>$value->cabine,
+                'percepteur'=>$value->percepteur,
+                'sens' => $value->sens,
+                'refer' =>$value->refer
+            ]);
+
+        }
+
+        Log::info("succes");
+        return response()->json($apiData, 200);
+
+        }
+
+        } catch (\Exception $th) {
+            //throw $th;
+            Log::error($th->getMessage());
+
+            return response()->json($th->getMessage(), 400);
+
+        }
+
+
+    }
 
 
     public function getPenalite($url){
@@ -34,7 +228,7 @@ class AddDataServiceOnline
 
             Penalites::create([
                 'rouland' =>$value->rouland,
-                'facteur' =>$value->facteur,
+                'plaque' =>$value->plaque,
                 'penalite' =>$value->penalite,
                 'excedent' =>$value->excedent,
                 'autorise' =>$value->autorise,

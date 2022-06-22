@@ -6,6 +6,7 @@ use App\Ajustement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class AjustementController extends Controller
 {
@@ -16,8 +17,13 @@ class AjustementController extends Controller
      */
     public function index()
     {
-        //
+
         $ajustements =  Ajustement::where('is_sent','=',false)->take(10)->get();
+        foreach ($ajustements  as $key => $value) {
+            $value->is_sent = true;
+            $value->save();
+        }
+
         return response()->json($ajustements, 200);
 
     }
@@ -41,6 +47,8 @@ class AjustementController extends Controller
     public function store(Request $request)
     {
         //
+
+
         try {
 
             $ajustement = new Ajustement();
@@ -53,8 +61,8 @@ class AjustementController extends Controller
             $ajustement->essieu =$request->essieu;
             $ajustement->admin = $request->admin;
             $ajustement->essieu_capte =$request->essieu_capte;
-            $ajustement->facteur = $request->facteur;
-            $ajustement->caisse = $request->caisse;
+            $ajustement->plaque = $request->plaque;
+
             $ajustement->refer =  Hash::make($this->dateNow());
             $ajustement->save();
 
@@ -112,5 +120,9 @@ class AjustementController extends Controller
     public function destroy(Ajustement $ajustement)
     {
         //
+    }
+	private function dateNow (){
+        $now=  Carbon::now('Africa/Lagos');
+        return $now;
     }
 }

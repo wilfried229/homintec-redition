@@ -90,15 +90,17 @@ class PenalitesController extends Controller
      */
     public function index()
     {
-            //
-    $penalites =  Penalites::where('is_sent','=',false)->take(10)->get();
+        ///dd($penalites);
 
-    foreach ($penalites  as $key => $value) {
-        $value->is_sent = true;
-        $value->save();
-    }
+        $penalites =  Penalites::where('is_sent','=',false)->take(10)->get();
 
-    return response()->json($penalites, 200);
+        foreach ($penalites  as $key => $value) {
+            $value->is_sent = true;
+            $value->save();
+        }
+
+        return response()->json($penalites, 200);
+
     }
 
     /**
@@ -139,11 +141,13 @@ class PenalitesController extends Controller
      */
     public function store(Request $request)
     {
+
+
         try {
         $penalite = new Penalites();
       ////    $penalite->immatricule  = $request->immatricule;
         $penalite->rouland = $request->rouland;
-        $penalite->facteur = $request->facteur;
+        $penalite->plaque = $request->plaque;
         $penalite->penalite = $request->penalite;
         $penalite->autorise = $request->autorise;
         $penalite->excedant = $request->excedant;

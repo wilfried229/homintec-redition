@@ -17,6 +17,15 @@ class Kernel extends ConsoleKernel
         Commands\SendDataReddition::class,
         Commands\GetValidation::class,
         Commands\getComptageChecked::class,
+        Commands\getViolation::class,
+        Commands\getAjustement::class,
+        Commands\getDouanes::class,
+        Commands\getPenalite::class,
+        Commands\getDouanes::class,
+        Commands\getLoging::class,
+
+
+
     ];
 
     /**
@@ -31,6 +40,8 @@ class Kernel extends ConsoleKernel
         ////$schedule->command('command:sendDataReddition')->everyMinute();
         $schedule->command('command:getvalidation')->everyMinute();
         $schedule->command('command:getComptageChecked')->everyMinute();
+
+        $schedule->command('command:getViolation')->everyMinute();
 
         // $schedule->command('inspire')->hourly();
     }

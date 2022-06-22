@@ -11,7 +11,7 @@ class logs extends Model
 
     protected $fillable =  [
         'id','percepteur',
-        'site','cabine','date','heure','old_percepteur','agent_homintec','statut'
+        'site','cabine','date','heure','old_percepteur','agent_homintec','statut','refer'
     ];
 
 
