@@ -17,9 +17,13 @@ class LogController extends Controller
      */
     public function index()
     {
-        //
-        $logs = Logs::all();
-        return view("dashboard.logs.index",compact('logs'));
+
+        $logs =  Logs::where('is_sent','=',false)->take(10)->get();
+        foreach ($logs  as $key => $value) {
+            $value->is_sent = true;
+            $value->save();
+        }
+        return response()->json($logs, 200);
     }
 
     /**
@@ -44,7 +48,6 @@ class LogController extends Controller
         //
         try {
 
-
             $logs = Logs::create([
                 "percepteur" =>$request->percepteur,
                 "cabine" => $request->cabine,
@@ -55,7 +58,6 @@ class LogController extends Controller
                 "agent_homintec"=>$request->agent_homintec,
                 "statut"=>$request->statut,
                 "refer"=>Hash::make(Carbon::now('Africa/Lagos'))
-
             ]);
 
 

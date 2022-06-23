@@ -38,13 +38,12 @@ class Redition2Controller extends Controller
      */
     public function index()
     {
-     $validation =  Rediton2::where('is_sent','=',false)->take(10)->get();
+        $validation =  Rediton2::where('is_sent','=',false)->take(10)->get();
         foreach ($validation  as $key => $value) {
             $value->is_sent = true;
             $value->save();
         }
         return response()->json($validation, 200);
-
     }
 
     /**
