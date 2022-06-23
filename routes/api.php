@@ -31,8 +31,8 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
         'penalite'=>'PenalitesController',
         'douanes'=>'DouaneController',
         'comptageChecked' => 'ComptageCheckedController',
-        'violation' =>'ViolationController'
-
+        'violation' =>'ViolationController',
+        'transfert'=>'TransfertController'
 
     ]);
 
