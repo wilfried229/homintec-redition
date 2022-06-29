@@ -27,6 +27,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('redition2-day','web\ReditionWebController@reditionByDay')->name('redition2.day');
     Route::get('redition2-month','web\ReditionWebController@reditionByMonth')->name('redition2.month');
 
+    Route::get('validation-date','web\ValidationController@validationRecettesByDateByPecepteur')->name('validation.percpeteur.action');
+
+    Route::get('validation-search','web\ValidationController@getValidationByDateIndex')->name('validation.percpeteur.date');
+
     Route::get('recette.percepteur-index','RecetteController@searchIndexPercepteur')->name('recette.percepteur.index');
 
 

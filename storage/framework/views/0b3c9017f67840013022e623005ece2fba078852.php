@@ -1,27 +1,26 @@
-@extends('layouts.export')
+<?php $__env->startSection('css'); ?>
 
-@section('css')
-
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('header')
+<?php $__env->startSection('header'); ?>
 <div class="block-header">
     <h2>
             Recettes
         <small><a href="" target="_blank"> </a></small>
     </h2>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
                 <h2>
-                    Recettes / {{$site->nom}}
+                    Recettes / <?php echo e($site->nom); ?>
+
                 </h2>
                 <br>
 
@@ -33,7 +32,7 @@
 
                             <tr class="text-uppercase font-weight-bold">
 
-                                <th colspan="15"><h3 style="text-align: center">{{$site->nom}}</h3></th>
+                                <th colspan="15"><h3 style="text-align: center"><?php echo e($site->nom); ?></h3></th>
 
 
                             </tr>
@@ -65,12 +64,12 @@
 
 
 
-                                @foreach ($recettes as $key => $recette)
+                                <?php $__currentLoopData = $recettes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $recette): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 
 
-                                @if($loop->first)
-                                @php
+                                <?php if($loop->first): ?>
+                                <?php
                                     $recet=$recettes->where('date_recettes', $recette->date_recettes);
                                     $dernier = $recet->last();
                                     $premier = $recet->first();
@@ -95,11 +94,11 @@
 
                                     $totNombreManuel = $recet->sum('nombre_manuel');
                                     $totMontantManuel = $recet->sum('montant_manuel');
-                                @endphp
-                            @endif
+                                ?>
+                            <?php endif; ?>
 
-                            @if($dernier->date_recettes !== $recette->date_recettes)
-                                @php
+                            <?php if($dernier->date_recettes !== $recette->date_recettes): ?>
+                                <?php
                                     $recet=$recettes->where('date_recettes', $recette->date_recettes);
                                     $dernier = $recet->last();
                                     $premier = $recet->first();
@@ -117,53 +116,53 @@
                                     $totNombreManuel = $recet->sum('nombre_manuel');
                                     $totMontantManuel = $recet->sum('montant_manuel');
 
-                                @endphp
-                            @endif
+                                ?>
+                            <?php endif; ?>
                             <tr>
 
 
-                                @if($premier->id == $recette->id)
-                                <td class="text-center" rowspan="{{$recet->count()}}">{{ $recette->date_recettes }}</td>
-                            @else
+                                <?php if($premier->id == $recette->id): ?>
+                                <td class="text-center" rowspan="<?php echo e($recet->count()); ?>"><?php echo e($recette->date_recettes); ?></td>
+                            <?php else: ?>
                                 <td class="d-none" style="display: none"></td>
-                            @endif
-                                    <td>{{$recette->type}}</td>
-                                    <td>{{$recette->voie}}</td>
-                                    <td>{{$recette->percepteur_nom ." " .$recette->percepteur_prenom}}</td>
-                                    <td>{{ $recette->montant_coupant}}</td>
-                                    <td>{{$recette->montant_percepteur }}</td>
-                                    <td>{{ $recette->montant_informatise}} </td>
-                                    <td>{{$recette->observation}}</td>
-                                    <td>{{$recette->montant_ecart < 0  ? -$recette->montant_ecart : 0 }}</td>
-                                    <td>{{$recette->montant_ecart > 0  ? $recette->montant_ecart : 0}}</td>
-                                    <td>{{$recette->nombre_vehicule}} </td>
-                                    <td>{{$recette->nombre_violation}}</td>
-                                    <td>{{$recette->nombre_exemptes}} </td>
+                            <?php endif; ?>
+                                    <td><?php echo e($recette->type); ?></td>
+                                    <td><?php echo e($recette->voie); ?></td>
+                                    <td><?php echo e($recette->percepteur_nom ." " .$recette->percepteur_prenom); ?></td>
+                                    <td><?php echo e($recette->montant_coupant); ?></td>
+                                    <td><?php echo e($recette->montant_percepteur); ?></td>
+                                    <td><?php echo e($recette->montant_informatise); ?> </td>
+                                    <td><?php echo e($recette->observation); ?></td>
+                                    <td><?php echo e($recette->montant_ecart < 0  ? -$recette->montant_ecart : 0); ?></td>
+                                    <td><?php echo e($recette->montant_ecart > 0  ? $recette->montant_ecart : 0); ?></td>
+                                    <td><?php echo e($recette->nombre_vehicule); ?> </td>
+                                    <td><?php echo e($recette->nombre_violation); ?></td>
+                                    <td><?php echo e($recette->nombre_exemptes); ?> </td>
 
-                                    <td>{{$recette->nombre_manuel}} </td>
-                                    <td>{{$recette->montant_manuel}} </td>
+                                    <td><?php echo e($recette->nombre_manuel); ?> </td>
+                                    <td><?php echo e($recette->montant_manuel); ?> </td>
 
 
                                     <td>
 
-                                        <a href="{{route('recette.show',['id'=>$recette->id])}}" class="btn btn-info" title="Modifier"> Modifier<i class="fa fa-edit"></i></a>
-                                        @if (Auth::user()->role == 'HOMINTEC' || Auth::user()->role == 'ADMIN' )
-                                        <a  onclick="event.preventDefault(); document.getElementById('retirer-a-form-{{$recette->id}}').submit(); return false;"   class="btn btn-danger">Retirer </a>
+                                        <a href="<?php echo e(route('recette.show',['id'=>$recette->id])); ?>" class="btn btn-info" title="Modifier"> Modifier<i class="fa fa-edit"></i></a>
+                                        <?php if(Auth::user()->role == 'HOMINTEC' || Auth::user()->role == 'ADMIN' ): ?>
+                                        <a  onclick="event.preventDefault(); document.getElementById('retirer-a-form-<?php echo e($recette->id); ?>').submit(); return false;"   class="btn btn-danger">Retirer </a>
                                         &nbsp;&nbsp;
 
-                                        <form id="retirer-a-form-{{$recette->id}}" action="{{route('recette.destroy',['id'=>$recette->id])}}" method="POST" style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
+                                        <form id="retirer-a-form-<?php echo e($recette->id); ?>" action="<?php echo e(route('recette.destroy',['id'=>$recette->id])); ?>" method="POST" style="display: none;">
+                                            <?php echo csrf_field(); ?>
+                                            <?php echo method_field('DELETE'); ?>
                                         </form>
 
-                                        @endif
+                                        <?php endif; ?>
 
                                     </td>
 
 
                                 </tr>
 
-                                @if($recette->id == $dernier->id)
+                                <?php if($recette->id == $dernier->id): ?>
 
                                 <tr class="bg-light">
 
@@ -172,24 +171,24 @@
                                     <td style="display: none"> </td>
                                     <td style="display: none"></td>
                                     <td colspan="4" class="text-right">SOMME TOTAL</td>
-                                    <td>{{$totCoupon}}</td>
-                                    <td>{{$totDeclaree}}</td>
-                                    <td>{{$totInformatisee}}</td>
+                                    <td><?php echo e($totCoupon); ?></td>
+                                    <td><?php echo e($totDeclaree); ?></td>
+                                    <td><?php echo e($totInformatisee); ?></td>
                                     <td></td>
-                                    <td>{{-$totManquant}} </td>
-                                    <td>{{$totSurplus}}</td>
-                                    <td>{{$totPassage}}</td>
-                                    <td>{{$totViolation}}</td>
-                                    <td>{{$totExempte}} </td>
-                                    <td> {{$totNombreManuel}}</td>
-                                    <td>{{$totMontantManuel}} </td>
+                                    <td><?php echo e(-$totManquant); ?> </td>
+                                    <td><?php echo e($totSurplus); ?></td>
+                                    <td><?php echo e($totPassage); ?></td>
+                                    <td><?php echo e($totViolation); ?></td>
+                                    <td><?php echo e($totExempte); ?> </td>
+                                    <td> <?php echo e($totNombreManuel); ?></td>
+                                    <td><?php echo e($totMontantManuel); ?> </td>
                                     <td> </td>
 
 
                                     </tr>
 
-                                    @endif
-                                @endforeach
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
 
                     </table>
@@ -198,10 +197,10 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('js')
+<?php $__env->startSection('js'); ?>
 
 
 
@@ -243,4 +242,6 @@ $(document).ready(function(){
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.export', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/homintec-redition/resources/views/dashboard/recettes/get-month.blade.php ENDPATH**/ ?>

@@ -8,6 +8,7 @@ use App\Douane;
 use App\Models\logs;
 use App\Models\Rediton2;
 use App\Penalites;
+use App\Transfert;
 use App\Violation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
@@ -17,6 +18,52 @@ use Illuminate\Support\Facades\Hash;
 
 class AddDataServiceOnline
 {
+
+    public function getTransfer($url){
+
+        try {
+            //code...
+                   //
+        $url = "$url/validation/public/api/homintec/transfert";
+        $resp = $this->hitCurl($url,[],'GET');
+        if($resp['statusCode'] == 200){
+            $apiData = json_decode($resp['resp']);
+            foreach ($apiData as $key => $value) {
+            if(Douane::where('refer','=',$value->refer)->count()!=0){
+                return response()->json(3, 200);
+            }
+            $transferts = Transfert::create([
+                'percepteur'=>$value->percepteur,
+                'date'=>$value->date,
+                'heure'=>$value->heure,
+                'prix'=>$value->prix,
+                'site'=>$value->site,
+                'cabine'=>$value->cabine,
+                'sens'=>$value->sens,
+                'ptrac'=>$value->ptrac,
+                'plaque'=>$value->plaque,
+                'refer'=>$value->refer
+            ]);
+
+
+        }
+
+        Log::info("succes");
+        return response()->json($apiData, 200);
+
+        }
+
+        } catch (\Exception $th) {
+            //throw $th;
+            Log::error($th->getMessage());
+
+            return response()->json($th->getMessage(), 400);
+
+        }
+
+
+    }
+
 
 
 

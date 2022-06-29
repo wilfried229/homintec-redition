@@ -1,19 +1,17 @@
-@extends('template-redition')
+<?php $__env->startSection('css'); ?>
 
-@section('css')
-
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('header')
+<?php $__env->startSection('header'); ?>
 <div class="block-header">
     <h2>
        Validation
         <small><a href="" target="_blank"> </a></small>
     </h2>
 </div>
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -25,7 +23,7 @@
             </div>
             <div class="body">
                 <div class="table-responsive">
-                    <h1>{{ $sum }} XFOD</h1>
+                    <h1><?php echo e($sum); ?> XFOD</h1>
                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
@@ -64,29 +62,29 @@
                             </tr>
                             </tfoot>
                             <tbody>
-                            @foreach ($reditions2 as $redition)
+                            <?php $__currentLoopData = $reditions2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $redition): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                            <td>{{$redition->site}}</td>
-                            <td>{{$redition->date}}</td>
-							<td>{{$redition->heure}}</td>
-                            <td>{{$redition->cabine}}</td>
-                            <td>{{$redition->percepteur}}</td>
-                            <td>{{$redition->type}}</td>
-                            <td>{{$redition->ptrac}}</td>
-                            <td>{{$redition->cmaes}}</td>
-                            <td>{{$redition->es}}</td>
-                            <th>{{$redition->ptt}}</th>
-                            <th>{{$redition->over}}</th>
-                            <th>{{$redition->prix}}</th>
+                            <td><?php echo e($redition->site); ?></td>
+                            <td><?php echo e($redition->date); ?></td>
+							<td><?php echo e($redition->heure); ?></td>
+                            <td><?php echo e($redition->cabine); ?></td>
+                            <td><?php echo e($redition->percepteur); ?></td>
+                            <td><?php echo e($redition->type); ?></td>
+                            <td><?php echo e($redition->ptrac); ?></td>
+                            <td><?php echo e($redition->cmaes); ?></td>
+                            <td><?php echo e($redition->es); ?></td>
+                            <th><?php echo e($redition->ptt); ?></th>
+                            <th><?php echo e($redition->over); ?></th>
+                            <th><?php echo e($redition->prix); ?></th>
 
 
-                            <td>{{$redition->caisse}}</td>
-                            <td>{{$redition->plaque}}</td>
+                            <td><?php echo e($redition->caisse); ?></td>
+                            <td><?php echo e($redition->plaque); ?></td>
 
 
                             </tr>
 
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
 
                     </table>
@@ -95,11 +93,13 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('js')
+<?php $__env->startSection('js'); ?>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('template-redition', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/homintec-redition/resources/views/dashboard/redition2.blade.php ENDPATH**/ ?>

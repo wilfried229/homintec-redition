@@ -5,7 +5,7 @@
         <div class="user-info">
 
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</div>
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo e(Auth::user()->name); ?></div>
 
             </div>
         </div>
@@ -15,15 +15,15 @@
             <ul class="list">
                 <li class="header">Menu</li>
                 <li class="active">
-                    <a href="{{route('home')}}">
+                    <a href="<?php echo e(route('home')); ?>">
                         <i class="material-icons"> </i>
                         <span>Accueil</span>
                     </a>
                 </li>
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+ <?php if(in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) ): ?>
  <li>
-    <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
+    <a href="<?php echo e(route('logs.index')); ?>"><span>Logs Vacations </span></a>
    </li>
 
 
@@ -36,16 +36,16 @@
 
 
                     <li>
-                        <a href="{{route('validation.percpeteur.date')}}">Afficher</a>
+                        <a href="<?php echo e(route('validation.percpeteur.date')); ?>">Afficher</a>
                        </li>
 
 
                        <li>
-                        <a href="{{route('recette.percepteur.index')}}">Afficher par vacation</a>
+                        <a href="<?php echo e(route('recette.percepteur.index')); ?>">Afficher par vacation</a>
                        </li>
 
                     <li>
-                     <a  href="{{route('recette.create-index')}}">Ajouter</a>
+                     <a  href="<?php echo e(route('recette.create-index')); ?>">Ajouter</a>
 
                        </li>
 
@@ -59,19 +59,19 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('cash-flow.indexDay')}}">Par Jours</a>
+                         <a href="<?php echo e(route('cash-flow.indexDay')); ?>">Par Jours</a>
                         </li>
                         <li>
-                         <a  href="{{route('cash-flow.indexMonth')}}">Par Mois</a>
+                         <a  href="<?php echo e(route('cash-flow.indexMonth')); ?>">Par Mois</a>
 
                            </li>
                     </ul>
                 </li>
 
- @endif
+ <?php endif; ?>
 
 
- @if (in_array(Auth::user()->role,["ADMIN",'SUPERADMIN']) )
+ <?php if(in_array(Auth::user()->role,["ADMIN",'SUPERADMIN']) ): ?>
 
                 <li>
                     <a href="#" class="menu-toggle">
@@ -81,16 +81,16 @@
 
 
                         <li>
-                            <a href="{{route('recette.getByMonth')}}">Afficher</a>
+                            <a href="<?php echo e(route('recette.getByMonth')); ?>">Afficher</a>
                            </li>
 
 
                            <li>
-                            <a href="{{route('recette.percepteur.index')}}">Afficher par percepteur</a>
+                            <a href="<?php echo e(route('recette.percepteur.index')); ?>">Afficher par percepteur</a>
                            </li>
 
                         <li>
-                         <a  href="{{route('recette.create-index')}}">Ajouter</a>
+                         <a  href="<?php echo e(route('recette.create-index')); ?>">Ajouter</a>
 
                            </li>
 
@@ -108,11 +108,11 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('surcharge-manuel.request')}}">Afficher </a>
+                         <a href="<?php echo e(route('surcharge-manuel.request')); ?>">Afficher </a>
                         </li>
 
                         <li>
-                            <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
+                            <a href="<?php echo e(route('surcharge-manuel.create-index')); ?>">Ajouter </a>
                            </li>
 
                     </ul>
@@ -127,18 +127,18 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('surcharge-manuel.request',['type'=>'ANNULE'])}}">Afficher </a>
+                         <a href="<?php echo e(route('surcharge-manuel.request',['type'=>'ANNULE'])); ?>">Afficher </a>
                         </li>
 
                         <li>
-                            <a href="{{route('surcharge-manuel.create-index',['type'=>'ANNULE'])}}">Ajouter </a>
+                            <a href="<?php echo e(route('surcharge-manuel.create-index',['type'=>'ANNULE'])); ?>">Ajouter </a>
                            </li>
 
                     </ul>
                 </li>
-                @endif
+                <?php endif; ?>
 
-                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) )
+                <?php if(in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) ): ?>
 
 
                 <li>
@@ -150,10 +150,10 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('site.index')}}">Afficher</a>
+                         <a href="<?php echo e(route('site.index')); ?>">Afficher</a>
                         </li>
                         <li>
-                         <a  href="{{route('site.create')}}">Ajouter</a>
+                         <a  href="<?php echo e(route('site.create')); ?>">Ajouter</a>
 
                            </li>
                     </ul>
@@ -168,10 +168,10 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('voie.index')}}">Afficher</a>
+                         <a href="<?php echo e(route('voie.index')); ?>">Afficher</a>
                         </li>
                         <li>
-                         <a  href="{{route('voie.create')}}">Ajouter</a>
+                         <a  href="<?php echo e(route('voie.create')); ?>">Ajouter</a>
 
                            </li>
                     </ul>
@@ -236,10 +236,10 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('percepteur.index')}}">Afficher</a>
+                         <a href="<?php echo e(route('percepteur.index')); ?>">Afficher</a>
                         </li>
                         <li>
-                         <a  href="{{route('percepteur.create')}}">Ajouter</a>
+                         <a  href="<?php echo e(route('percepteur.create')); ?>">Ajouter</a>
 
                            </li>
                     </ul>
@@ -254,10 +254,10 @@
                    <ul class="ml-menu">
 
                        <li>
-                         <a href="{{route('vacation.index')}}">Afficher</a>
+                         <a href="<?php echo e(route('vacation.index')); ?>">Afficher</a>
                         </li>
                         <li>
-                         <a  href="{{route('vacation.create')}}">Ajouter</a>
+                         <a  href="<?php echo e(route('vacation.create')); ?>">Ajouter</a>
 
                            </li>
                     </ul>
@@ -266,14 +266,14 @@
 
                 <li>
 
-                    <a href="{{route('users.index')}}" class="menu-toggle">
+                    <a href="<?php echo e(route('users.index')); ?>" class="menu-toggle">
                         <span>Utilisateurs</span>
 
                     </a>
 
 
                 </li>
-                @endif
+                <?php endif; ?>
 
 
 
@@ -282,12 +282,12 @@
 
 
 
-            <a class="menu-toggle" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a class="menu-toggle" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                  <p>Déconnexion </p>
              </a>
 
-             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                 @csrf
+             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                 <?php echo csrf_field(); ?>
              </form>
 
 
@@ -301,3 +301,4 @@
     <!-- #END# Left Sidebar -->
 </section>
 
+<?php /**PATH /Applications/MAMP/htdocs/homintec-redition/resources/views/partials/sidebar.blade.php ENDPATH**/ ?>
