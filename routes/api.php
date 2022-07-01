@@ -32,7 +32,10 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
         'douanes'=>'DouaneController',
         'comptageChecked' => 'ComptageCheckedController',
         'violation' =>'ViolationController',
-        'transfert'=>'TransfertController'
+        'transfert'=>'TransfertController',
+        'logsAdmin' =>'LogsAdminController',
+        'ptac' =>'PtacController',
+
 
     ]);
 

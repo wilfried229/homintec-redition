@@ -23,6 +23,8 @@ class Kernel extends ConsoleKernel
         Commands\getPenalite::class,
         Commands\getDouanes::class,
         Commands\getLoging::class,
+        Commands\LogAdmin::class,
+
 
 
 
@@ -45,6 +47,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('command:getDouanes')->everyMinute();
         $schedule->command('command:getPenalite')->everyMinute();
         $schedule->command('command:getLoging')->everyMinute();
+
+        $schedule->command('command:logAdmin')->everyMinute();
+
 
         // $schedule->command('inspire')->hourly();
     }

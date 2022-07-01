@@ -6,14 +6,14 @@ use App\Http\Controllers\AddDataServiceOnline;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
-class SendDataReddition extends Command
+class LogAdmin extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:sendDataReddition';
+    protected $signature = 'command:logAdmin';
 
     /**
      * The console command description.
@@ -40,13 +40,12 @@ class SendDataReddition extends Command
     public function handle()
     {
         //
-
         try {
             Log::debug("Début d'excécution ");
             $logs  = new  AddDataServiceOnline();
-            $logs->sendvalidation();
-            $logs->sendLog();
-            Log::debug("Fin d'excécution du validation");
+            $logs->sendLogAdmin()();
+            $logs->sendptqc();
+            Log::debug("Fin d'excécution du login admin  ");
 
         } catch (\Illuminate\Database\QueryException $ex) {
             Log::error($ex->getMessage());

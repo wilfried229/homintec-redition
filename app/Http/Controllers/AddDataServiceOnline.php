@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 use App\Ajustement;
 use App\ComptageChecked;
 use App\Comptages;
+use App\Console\Commands\LogAdmin;
 use App\Douane;
 use App\Models\logs;
 use App\Models\Rediton2;
 use App\Penalites;
+use App\Ptac;
 use App\Transfert;
 use App\Violation;
 use Carbon\Carbon;
@@ -18,6 +20,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AddDataServiceOnline
 {
+
+
 
     public function getTransfer($url){
 
@@ -399,6 +403,97 @@ class AddDataServiceOnline
     }
 
 
+
+    public function sendLogAdmin(){
+
+        try {
+         $logs  = LogAdmin::where('is_sent',0)->get();
+        //// $urls = 'gate24-ekpe.ngrok.io/gate24/public';
+         foreach ($logs as $key => $log) {
+             # code...\\
+            $param = [
+                "percepteur" =>$log->percepteur,
+                "cabine" => $log->cabine,
+                "site" => $log->site,
+                "date" => $log->date,
+                "heure" => $log->heure,
+                "old_percepteur"=>$log->old_percepteur,
+                "agent_homintec"=>$log->agent_homintec,
+                "statut"=>$log->statut,
+                 "refer"=>$log->refer,
+
+            ];
+
+            $url = "https://reddition.gate24-benin.com/api/homintec/logsAdmin";
+            $resp = $this->hitCurl($url,$param,'POST');
+            $apiData = "Getting header code {$resp['statusCode']}";
+
+            if($resp['statusCode'] == 200){
+                $apiData = json_decode($resp['resp']);
+                $logsOld = LogAdmin::find($log->id);
+                $logsOld->is_sent =1;
+                $logsOld->save();
+
+            }
+            ///$abonnes->update(['solde' =>$recharge->montant]);
+
+
+         }
+
+         Log::info("SEND dat login Admin");
+
+         return true;
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::info($ex->getMessage());
+
+         return false;
+
+        }
+    }
+    public function sendptqc(){
+
+        try {
+         $ptacs  = Ptac::where('is_sent',0)->get();
+        //// $urls = 'gate24-ekpe.ngrok.io/gate24/public';
+         foreach ($ptacs as $key => $p) {
+             # code...\\
+            $param = [
+            'site'=>$p->site,
+            'date'=>$p->date,
+            'admin'=>$p->admin,
+            'heure_sortie'=>$p->heure_sortie,
+            'heure_entree'=>$p->heure_entree,
+            "refer"=>$p->refer,
+            ];
+
+            $url = "https://reddition.gate24-benin.com/api/homintec/ptac";
+            $resp = $this->hitCurl($url,$param,'POST');
+            $apiData = "Getting header code {$resp['statusCode']}";
+
+            if($resp['statusCode'] == 200){
+                $apiData = json_decode($resp['resp']);
+                $ptac = Ptac::find($p->id);
+                $ptac->is_sent =1;
+                $ptac->save();
+
+            }
+            ///$abonnes->update(['solde' =>$recharge->montant]);
+
+
+         }
+
+         Log::info("SEND dat ptac");
+
+         return true;
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::info($ex->getMessage());
+
+         return false;
+
+        }
+    }
 
 
 
