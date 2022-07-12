@@ -1,6 +1,6 @@
+
 <?php
 
-use App\Events\Hello;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,24 +14,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/broadcast',function(){
-
-    broadcast(new Hello);
-
-});
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('reddition','Redition2Controller@index')->name('redition2.searh-get');
-    Route::get('redition2-search','web\ReditionWebController@reditionSearch')->name('redition2.search');
-    Route::get('redition2-day','web\ReditionWebController@reditionByDay')->name('redition2.day');
-    Route::get('redition2-month','web\ReditionWebController@reditionByMonth')->name('redition2.month');
+
+
+    Route::get('validation','web\ValidationController@index')->name('validation.index');
+
+    Route::get('validation-voie/{voie}','web\ValidationController@validationRecettesBycabine')->name('validation.by.voies');
+
 
     Route::get('validation-date','web\ValidationController@validationRecettesByDateByPecepteur')->name('validation.percpeteur.action');
 
     Route::get('validation-search','web\ValidationController@getValidationByDateIndex')->name('validation.percpeteur.date');
 
     Route::get('recette.percepteur-index','RecetteController@searchIndexPercepteur')->name('recette.percepteur.index');
+
+
+
+
+    Route::post('reddition2','web\ReditionWebController@redition2')->name('redition2.searh-post');
+    Route::get('redition2-search','web\ReditionWebController@reditionSearch')->name('redition2.search');
+    Route::get('redition2-day','web\ReditionWebController@reditionByDay')->name('redition2.day');
+    Route::get('redition2-month','web\ReditionWebController@reditionByMonth')->name('redition2.month');
 
 
     Route::get('redition-uemoi','web\ReditionWebController@reditionuemoaInter')->name('redition.uemoi.list.sites');
@@ -65,9 +69,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-    Route::get('surcharge-manuel/create/index','SurchagesManuelController@createIndex')->name('surcharge-manuel.create-index');
+    Route::get('surcharge-manuel/create/index/{type?}','SurchagesManuelController@createIndex')->name('surcharge-manuel.create-index');
 
-    Route::get('surcharge-manuel/create/{voie?}','SurchagesManuelController@create')->name('surcharge-manuel.create');
+    Route::get('surcharge-manuel/create/{voie?}/{type?}','SurchagesManuelController@create')->name('surcharge-manuel.create');
     Route::get('surcharge-manuel/{site?}','SurchagesManuelController@index')->name('surcharge-manuel.index');
     Route::get('surcharge-manuel-request/{type?}','SurchagesManuelController@requests')->name('surcharge-manuel.request');
     Route::post('surcharge-manuel/{voie?}','SurchagesManuelController@store')->name('surcharge-manuel.store');
@@ -78,7 +82,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('surcharge-manuel/update/{surcharge_manuel}  ','SurchagesManuelController@update')->name('surcharge-manuel.update');
 
 
-    Route::get('surcharge-manuel-site','SurchagesManuelController@rapportMensuelsChoice')->name('surcharge.get-site');
+
+
+
+    Route::get('surcharge-manuel-site/{type?}','SurchagesManuelController@rapportMensuelsChoice')->name('surcharge.get-site');
 
     Route::prefix('cashFlow')->group(function () {
     Route::get('day/web','CashFlowController@rapportJoursChoice')->name('cash-flow.day');
@@ -103,6 +110,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('recette-get-month','RecetteController@getByMonth')->name('recette.getByMonth');
+
+    Route::get('recette.percepteur','RecetteController@recettePercepteur')->name('recette.percepteur');
+
+    Route::get('recette.percepteur-index','RecetteController@searchIndexPercepteur')->name('recette.percepteur.index');
+
+
+
+
 
     Route::get('recette-view-month','RecetteController@rapportMensuelsChoice')->name('recette.getByMonth.action');
 
@@ -154,10 +169,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('percepteur-create','PercepteurController@create')->name('percepteur.create');
 
     Route::get('percepteur/{id}','PercepteurController@show')->name('percepteur.show');
+    Route::put('percepteur/{id}','PercepteurController@update')->name('percepteur.update');
+
+
     Route::put('percepteur/update/{id}','PercepteurController@update')->name('percepteur.update');
     Route::get('percepteur/edit/{id}','PercepteurController@edit')->name('percepteur.edit');
-
-
 
 
 
@@ -171,16 +187,31 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('vacation/{id}','VacationController@update')->name('vacation.update');
 
 
-    /// log percepteur
-    Route::get('logs','LogController@index')->name('logs.index');
+    Route::get('point-essieux','PointsEssieuxController@index')->name('point-essieux.index');
+    Route::get('point-essieux/search','PointsEssieuxController@searchIndex')->name('point-essieux.searchIndex');
 
-    Route::post('cloturer-recettes','RecetteController@cloturerRecettes')->name('cloturer.recettes');
-    Route::post('cloturer-surchrages','SurchagesManuelController@cloturersurchrages')->name('cloturer.surchrages');
+
+    Route::get('point-percepteur','PointsPercepteursController@index')->name('point-percepteur.index');
+    Route::get('point-percepteur/search','PointsPercepteursController@searchIndex')->name('point-percepteur.searchIndex');
+
+
+
+    Route::get('point-mensuel','PointsMensulesController@index')->name('point-mensuel.index');
+    Route::get('point-mensuel/search','PointsMensulesController@searchIndex')->name('point-mensuel.searchIndex');
+
+
+
+    Route::get('point-mensuel-informatiser','PointsMensulesController@indexMontantInformatiser')->name('point-mensuel.indexinformatiser');
+    Route::get('point-mensuel-informatiser/getsearch','PointsMensulesController@searchIndexInformatiser')->name('point-mensuel.searchIndexInformatiser');
+
+
+     Route::get('logs','LogController@index')->name('logs.index');
+
+
 
     #Route::resources([]);
 
 });
 
 Auth::routes();
-
 

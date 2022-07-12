@@ -25,6 +25,10 @@
 
             @endforeach
 
+
+            <div class="">
+
+            </div>
         </div>
         <!-- #END# Widgets -->
     </div>

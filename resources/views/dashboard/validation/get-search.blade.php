@@ -35,7 +35,7 @@
 
                                 <div class="col-lg-6">
                                     <label for="">Percepteur</label>
-                                    <select name="percepteur" id="percepteur" class="form-control">
+                                    <select name="percepteur" id="percepteur" data-msg="Veuillez choisir le percepteur" class="form-control selectpicker" data-show-subtext="true" data-live-search="true" style="height: 50px;widht:50px" required>
                                         @foreach ($percepteurs as $item)
                                         <option value="{{$item->nom}}">{{ $item->nom }}</option>
                                         @endforeach

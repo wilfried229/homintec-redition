@@ -16,6 +16,16 @@ class ValidationController extends Controller
 
 
 
+    public function index(){
+
+    $sites  = Site::all();
+    $voies  = Voie::all();
+    $prix = Rediton2::whereDate('created_at',now())->sum('prix');
+    return view('dashboard.validation.index',compact('sites','voies','prix'));
+
+    }
+
+
     /***
      *
      *
@@ -56,6 +66,24 @@ class ValidationController extends Controller
         $sum = $reditions->sum('prix');
 
    // dd($reditions2);
+      return view('dashboard.redition2',compact('reditions2','sum'));
+    }
+
+
+    /**
+     *
+     *
+     * @return validation par perceteur
+     */
+
+    public function validationRecettesBycabine($voie){
+  /// dd($dateDebut->toDateString());
+       $reditions = Rediton2::
+        where('cabine',$voie)
+        ->whereDate('date',now())
+        ->orderBy('id','DESC');
+        $reditions2 =$reditions->get();
+        $sum = $reditions2->last()->prix;
       return view('dashboard.redition2',compact('reditions2','sum'));
     }
 }

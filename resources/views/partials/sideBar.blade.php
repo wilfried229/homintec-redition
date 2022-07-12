@@ -21,7 +21,7 @@
                     </a>
                 </li>
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERADMIN']) )
  <li>
     <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
    </li>
@@ -36,12 +36,12 @@
 
 
                     <li>
-                        <a href="{{route('validation.percpeteur.date')}}">Afficher</a>
+                        <a href="{{route('validation.index')}}">validation temps reels </a>
                        </li>
 
 
                        <li>
-                        <a href="{{route('recette.percepteur.index')}}">Afficher par vacation</a>
+                        <a href="{{route('validation.percpeteur.date')}}">Recettes par vacation</a>
                        </li>
 
                     <li>
@@ -71,7 +71,7 @@
  @endif
 
 
- @if (in_array(Auth::user()->role,["ADMIN",'SUPERADMIN']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SUPERADMIN','HOMINTEC','SUPERVISEUR']) )
 
                 <li>
                     <a href="#" class="menu-toggle">
@@ -185,9 +185,9 @@
                     </a>
                    <ul class="ml-menu">
 
-                       <li>
-                         <a href="">Afficher</a>
-                        </li>
+                    <li>
+                        <a href="{{route('point-essieux.searchIndex')}}">Afficher</a>
+                       </li>
 
                     </ul>
                 </li>
@@ -200,13 +200,15 @@
                     </a>
                    <ul class="ml-menu">
 
-                       <li>
-                         <a href="">Afficher Coupon</a>
-                        </li>
+                    <li>
+                        <a href="{{route('point-mensuel.searchIndex')}}">Afficher Coupon</a>
+                       </li>
 
-                        <li>
-                            <a href="">Afficher Informatiser</a>
-                           </li>
+                       <li>
+                           <a href="{{route('point-mensuel.searchIndexInformatiser')}}">Afficher Informatiser</a>
+                          </li>
+
+
 
 
 
@@ -221,9 +223,9 @@
                     </a>
                    <ul class="ml-menu">
 
-                       <li>
-                         <a href="">Afficher</a>
-                        </li>
+                    <li>
+                        <a href="{{route('point-percepteur.searchIndex')}}">Afficher</a>
+                       </li>
 
                     </ul>
                 </li>
