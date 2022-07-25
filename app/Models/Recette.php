@@ -34,7 +34,9 @@ class Recette extends Model
         'vacations_id',
         'voies_id',
         'user_id',
-        'is_cloturer'
+        'is_cloturer',
+        'suplus',
+        'manquant'
 
     ];
 
@@ -42,14 +44,14 @@ class Recette extends Model
     public $appends =['horaire','sommesHoraire'];
 
 
-    public function getHoraireAttributs(){
+    public function getHoraireAttribute(){
         $start = strtotime($this->heure_debut);
         $end = strtotime($this->heure_fin ); // Run query to get datetime value from db
         $elapsed = $end - $start;
         return $elapsed;
     }
 
-    public function getSommesHoraireAttributs(){
+    public function getSommesHoraireAttribute(){
 
         $start = strtotime($this->heure_debut);
         $end = strtotime($this->heure_fin ); // Run query to get datetime value from db

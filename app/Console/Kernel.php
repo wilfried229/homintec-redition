@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\Http\Controllers\AddDataServiceOnline;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,20 +16,16 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        Commands\SendDataReddition::class,
-        Commands\GetValidation::class,
-        Commands\getComptageChecked::class,
-        Commands\getViolation::class,
-        Commands\getAjustement::class,
-        Commands\getDouanes::class,
-        Commands\getPenalite::class,
-        Commands\getDouanes::class,
-        Commands\getLoging::class,
-        Commands\LogAdmin::class,
-
-
-
-
+       // Commands\SendDataReddition::class,
+       // Commands\GetValidation::class,
+       // Commands\getComptageChecked::class,
+        //Commands\getViolation::class,
+        //Commands\getAjustement::class,
+        //Commands\getDouanes::class,
+        //Commands\getPenalite::class,
+        //Commands\getDouanes::class,
+        //Commands\getLoging::class,
+        //Commands\LogAdmin::class,
     ];
 
     /**
@@ -40,16 +38,23 @@ class Kernel extends ConsoleKernel
 
     {
         ////$schedule->command('command:sendDataReddition')->everyMinute();
-        $schedule->command('command:getvalidation')->everyMinute();
-        $schedule->command('command:getComptageChecked')->everyMinute();
-        $schedule->command('command:getViolation')->everyMinute();
-        $schedule->command('command:getAjustement')->everyMinute();
-        $schedule->command('command:getDouanes')->everyMinute();
-        $schedule->command('command:getPenalite')->everyMinute();
-        $schedule->command('command:getLoging')->everyMinute();
+       // $schedule->command('command:getvalidation')->everyMinute();
+       // $schedule->command('command:getComptageChecked')->everyMinute();
+       // $schedule->command('command:getViolation')->everyMinute();
+       // $schedule->command('command:getAjustement')->everyMinute();
+       // $schedule->command('command:getDouanes')->everyMinute();
+        //$schedule->command('command:getPenalite')->everyMinute();
+        ///$schedule->command('command:getLoging')->everyMinute();
 
-        $schedule->command('command:logAdmin')->everyMinute();
+        ///$schedule->command('command:logAdmin')->everyMinute();
 
+
+        $schedule->call(function (){
+            $splus  = new  AddDataServiceOnline();
+            $splus->suplusManquant();
+            Log::debug("add suplus manquant...");
+
+        })->everyMinute()->runInBackground();
 
         // $schedule->command('inspire')->hourly();
     }

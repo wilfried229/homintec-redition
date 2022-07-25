@@ -1,53 +1,50 @@
+    
+
+    <?php $__env->startSection('css'); ?>
+
+    <?php $__env->stopSection(); ?>
 
 
-
-    @extends('template-redition')
-
-    @section('css')
-
-    @endsection
-
-
-    @section('header')
+    <?php $__env->startSection('header'); ?>
     <div class="block-header">
         <h2>
            Recette
             <small><a href="" target="_blank"> </a></small>
         </h2>
     </div>
-    @endsection
-    @section('content')
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('content'); ?>
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
                     <h2>
-                       Recette
+                       Recette par percepteur
                     </h2>
 
                 </div>
                 <div class="body">
-                    <form action="{{route('recette.getByMonth.action')}}" method="get" class="form">
+                    <form action="<?php echo e(route('recette.percepteur')); ?>" method="get" class="form">
 
-                        @csrf
+                        <?php echo csrf_field(); ?>
 
                             <div class="row">
 
 
-                            @if (in_array(Auth::user()->role,["ADMIN",'SUPERADMIN']) )
+                            <?php if(in_array(Auth::user()->role,["ADMIN",'SIRB']) ): ?>
 
                                 <div class="col-lg-12">
                                     <label for="">Sites</label>
 
                                     <select name="site_id" id="site_id" class="form-control"  >
                                     <option disabled selected> Selectionnez un Site</option>
-                                    @foreach($sites as $s)
-                                        <option value="{{$s->id}}"> {{$s->nom}}</option>
-                                        @endforeach
+                                    <?php $__currentLoopData = $sites; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($s->id); ?>"> <?php echo e($s->nom); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
 
                                 </div>
-                                @endif
+                                <?php endif; ?>
 
 
                                 <div class="col-lg-6">
@@ -69,11 +66,13 @@
             </div>
         </div>
     </div>
-    @endsection
+    <?php $__env->stopSection(); ?>
 
 
-    @section('js')
+    <?php $__env->startSection('js'); ?>
 
 
-    @endsection
+    <?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('template-redition', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/homintec-redition/resources/views/dashboard/recettes/percepeteur-get.blade.php ENDPATH**/ ?>

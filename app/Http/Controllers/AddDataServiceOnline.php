@@ -7,6 +7,7 @@ use App\Comptages;
 use App\Console\Commands\LogAdmin;
 use App\Douane;
 use App\Models\logs;
+use App\Models\Recette;
 use App\Models\Rediton2;
 use App\Penalites;
 use App\Ptac;
@@ -20,6 +21,41 @@ use Illuminate\Support\Facades\Hash;
 
 class AddDataServiceOnline
 {
+
+
+    const CODE_SUPLU = 'GEN-FUBARGS';
+    const CODE_MANQUANT = 'GEN-LIKETHEWIND';
+
+
+    ////ALTER TABLE `recettes` ADD `suplus` INT(11) NULL AFTER `updated_at`, ADD `manquant` INT(11) NULL AFTER `suplus`;
+
+
+    public function suplusManquant(){
+
+        $recettes = Recette::whereBetween('date_recettes', ["2022-02-01", " 2022-07-18"])->get();
+
+
+        foreach ($recettes as $key => $value) {
+            # code...
+
+            if($value->montant_ecart >= 0){
+                $value->update([
+                    'suplus'=>$value->montant_ecart,
+                    'manquant'=>0
+                  ]);
+            }else{
+                $value->update([
+                    'manquant'=>$value->montant_ecart,
+                    'suplus'=>0,
+
+                  ]);
+            }
+
+
+        }
+        return "OKK";
+    }
+
 
 
 

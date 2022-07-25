@@ -58,7 +58,7 @@ class RecetteController extends Controller
         ->select('recettes.id as id', 'date_recettes', 'vacations.type as type', 'voies.nom as voie','percepteurs_id',
         'percepteurs.nom as percepteur_nom', 'percepteurs.prenom as percepteur_prenom','montant_coupant', 'montant_coupant','montant_percepteur',
         'nombre_vehicule', 'nombre_violation', 'nombre_exemptes', 'montant_ecart', 'montant_informatise',
-            'observation', 'nombre_manuel','montant_manuel')
+            'observation', 'nombre_manuel','montant_manuel','manquant','suplus')
             ->whereBetween('date_recettes', [$debut, $fin])
             ->join('percepteurs', 'percepteurs.id', '=', 'recettes.percepteurs_id')
             ->leftJoin('vacations', 'vacations.id', '=','recettes.vacations_id')
@@ -67,7 +67,7 @@ class RecetteController extends Controller
            -> Where('sites.id',\request()->site_id ?? Auth::user()->site_id)
         ///->groupBy('percepteurs_id')
         ->groupBy('percepteur_nom','date_recettes', 'type', 'voie', 'percepteurs_id','percepteur_prenom', 'montant_coupant', 'montant_coupant', 'montant_informatise', 'montant_ecart','montant_percepteur',
-        'nombre_vehicule', 'id', 'nombre_violation', 'nombre_exemptes','observation','nombre_manuel','montant_manuel')
+        'nombre_vehicule', 'id', 'nombre_violation', 'nombre_exemptes','observation','nombre_manuel','montant_manuel','manquant','suplus')
 
         ->get();
 
@@ -110,7 +110,7 @@ class RecetteController extends Controller
         ->select('recettes.id as id', 'date_recettes', 'vacations.type as type', 'voies.nom as voie',
         'percepteurs.nom as percepteur_nom', 'percepteurs.prenom as percepteur_prenom','montant_coupant', 'montant_coupant','montant_percepteur',
         'nombre_vehicule', 'nombre_violation', 'nombre_exemptes', 'montant_ecart', 'montant_informatise',
-            'observation','nombre_manuel','montant_manuel' )
+            'observation','nombre_manuel','montant_manuel' ,'manquant','suplus')
         ->whereBetween('date_recettes', [$debut, $fin])
         ->join('percepteurs', 'percepteurs.id', '=', 'recettes.percepteurs_id')
         ->leftJoin('vacations', 'vacations.id', '=','recettes.vacations_id')
@@ -118,7 +118,7 @@ class RecetteController extends Controller
         ->leftJoin('sites', 'sites.id', '=','recettes.sites_id')
        -> Where('sites.id',$request->site_id ?? Auth::user()->site_id)
         ->groupBy('date_recettes', 'type', 'voie', 'percepteur_nom','percepteur_prenom', 'montant_coupant', 'montant_coupant', 'montant_informatise', 'montant_ecart','montant_percepteur',
-          'nombre_vehicule', 'id', 'nombre_violation', 'nombre_exemptes','observation','nombre_manuel','montant_manuel')
+          'nombre_vehicule', 'id', 'nombre_violation', 'nombre_exemptes','observation','nombre_manuel','montant_manuel','manquant','suplus')
         ->get();
 
 
@@ -174,9 +174,6 @@ class RecetteController extends Controller
         ->get();
 
         }
-
-
-
 
 
       return view('dashboard.recettes.create-index',compact('voies'));
@@ -280,6 +277,8 @@ class RecetteController extends Controller
                 'vacations_id'=>$request->vacations_id,
                 'voies_id'=>$request->voies_id,
                 'user_id'=>$user->id,
+                'suplus'=>$request->montant_ecart >=0 ? $request->montant_ecart : 0,
+                'manquant'=>$request->montant_ecart <=0 ? $request->montant_ecart : 0
 
               ]);
 
@@ -372,11 +371,9 @@ class RecetteController extends Controller
         'vacations_id'=>$request->vacations_id,
         'voies_id'=>$request->voies_id,
         'user_id'=>Auth::user()->id,
+        'suplus'=>$request->montant_ecart >=0 ? $request->montant_ecart : 0,
+        'manquant'=>$request->montant_ecart <=0 ? $request->montant_ecart : 0
       ]);
-
-
-
-
 
 
           return  redirect()->route('recette.index')

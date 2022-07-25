@@ -19,14 +19,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('validation','web\ValidationController@index')->name('validation.index');
-
     Route::get('validation-voie/{voie}','web\ValidationController@validationRecettesBycabine')->name('validation.by.voies');
-
-
     Route::get('validation-date','web\ValidationController@validationRecettesByDateByPecepteur')->name('validation.percpeteur.action');
-
     Route::get('validation-search','web\ValidationController@getValidationByDateIndex')->name('validation.percpeteur.date');
-
     Route::get('recette.percepteur-index','RecetteController@searchIndexPercepteur')->name('recette.percepteur.index');
 
 
@@ -70,15 +65,12 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('surcharge-manuel/create/index/{type?}','SurchagesManuelController@createIndex')->name('surcharge-manuel.create-index');
-
     Route::get('surcharge-manuel/create/{voie?}/{type?}','SurchagesManuelController@create')->name('surcharge-manuel.create');
     Route::get('surcharge-manuel/{site?}','SurchagesManuelController@index')->name('surcharge-manuel.index');
     Route::get('surcharge-manuel-request/{type?}','SurchagesManuelController@requests')->name('surcharge-manuel.request');
     Route::post('surcharge-manuel/{voie?}','SurchagesManuelController@store')->name('surcharge-manuel.store');
     Route::get('surcharge-manuel/edit/{surcharge_manuel}','SurchagesManuelController@edit')->name('surcharge-manuel.edit');
     Route::delete('surcharge-manuel/destroy/{surcharge_manuel}/{site?}','SurchagesManuelController@destroy')->name('surcharge-manuel.destroy');
-
-
     Route::put('surcharge-manuel/update/{surcharge_manuel}  ','SurchagesManuelController@update')->name('surcharge-manuel.update');
 
 
@@ -90,11 +82,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('cashFlow')->group(function () {
     Route::get('day/web','CashFlowController@rapportJoursChoice')->name('cash-flow.day');
     Route::get('month/web','CashFlowController@rapportMensuelsChoice')->name('cash-flow.month');
-
     Route::get('index/web/day','CashFlowController@indexDay')->name('cash-flow.indexDay');
-
     Route::get('index/web/month','CashFlowController@indexMonth')->name('cash-flow.indexMonth');
-    });
+
+});
 
 
     Route::post('recette-save','RecetteController@store')->name('recette.store');
@@ -103,16 +94,13 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('recette/create/index','RecetteController@createIndex')->name('recette.create-index');
-
     Route::get('recette/{id}','RecetteController@show')->name('recette.show');
     Route::put('recette/{id}','RecetteController@update')->name('recette.update');
     Route::delete('recette/{id}','RecetteController@destroy')->name('recette.destroy');
 
 
     Route::get('recette-get-month','RecetteController@getByMonth')->name('recette.getByMonth');
-
     Route::get('recette.percepteur','RecetteController@recettePercepteur')->name('recette.percepteur');
-
     Route::get('recette.percepteur-index','RecetteController@searchIndexPercepteur')->name('recette.percepteur.index');
 
 
