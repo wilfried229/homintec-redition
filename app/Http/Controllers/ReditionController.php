@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Redition;
+use App\Models\Rediton2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -27,8 +28,9 @@ class ReditionController extends Controller
      */
     public function index()
     {
-        $reditions  = Redition::all();
+        $reditions  = Rediton2::get()->take(10);
 
+        
         return response()->json($reditions, 200);
     }
 

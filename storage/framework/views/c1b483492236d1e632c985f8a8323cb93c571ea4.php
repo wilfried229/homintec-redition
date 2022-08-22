@@ -78,6 +78,8 @@
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
+
+    <?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>
 <?php /**PATH /Applications/MAMP/htdocs/homintec-redition/resources/views/layouts/app.blade.php ENDPATH**/ ?>

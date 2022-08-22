@@ -43,6 +43,9 @@
                        <li>
                         <a href="{{route('validation.percpeteur.date')}}">Recettes par vacation</a>
                        </li>
+                       <li>
+                        <a href="{{route('validation.site.date')}}">Recettes par site</a>
+                       </li>
 
                     <li>
                      <a  href="{{route('recette.create-index')}}">Ajouter</a>
@@ -131,7 +134,7 @@
                         </li>
 
                         <li>
-                            <a href="{{route('surcharge-manuel.create-index',['type'=>'ANNULE'])}}">Ajouter </a>
+                            <a href="{{route('surcharge-manuel.create-annuel')}}">Ajouter </a>
                            </li>
 
                     </ul>

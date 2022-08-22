@@ -68,6 +68,12 @@ class Redition2Controller extends Controller
 
         try {
 
+
+            if (Rediton2::where('refer','=',$request->refer)->count() !=0) {
+                # code...
+            return response()->json('Existe deja', 200);
+
+            }
             $redition2 = new Rediton2();
             $redition2->percepteur = $request->percepteur;
             $redition2->site = $request->site;
@@ -86,7 +92,7 @@ class Redition2Controller extends Controller
             $redition2->caisse = $request->caisse;
             $redition2->plaque  = $request->plaque;
 			$redition2->visa  = $request->visa;
-            $redition2->refer =  Hash::make($this->dateNow());
+            $redition2->refer =  $request->refer;
 			//////$redition2->total  = $request->total;
             $redition2->save();
 
@@ -110,6 +116,7 @@ class Redition2Controller extends Controller
     public function show($id)
     {
         //
+       return response()->json(Rediton2::find($id), 200);
     }
 
     /**

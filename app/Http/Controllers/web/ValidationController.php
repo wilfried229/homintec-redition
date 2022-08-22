@@ -38,10 +38,24 @@ class ValidationController extends Controller
         $percepteurs =  Percepteur::all();
         $sites  = Site::all();
         $voies  = Voie::all();
-
         return view('dashboard.validation.get-search',compact('percepteurs','sites','voies'));
 
     }
+
+    /**
+     *
+     * @return view
+     */
+    public function getValidationByDateSite(){
+
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        return view('dashboard.validation.get-site',compact('sites','voies'));
+
+
+    }
+
+
 
     /**
      *
@@ -57,16 +71,46 @@ class ValidationController extends Controller
   /// dd($dateDebut->toDateString());
        $reditions = Rediton2::
         whereBetween('date', [$dateDebut->toDateString(),$dateFin->toDateString()])
-        ->whereTime('heure', '>=', $dateDebut->toTimeString())
+       ->whereTime('heure', '>=', $dateDebut->toTimeString())
        ->whereTime('heure', '<=', $dateFin->toTimeString())
         ->where('cabine',$request->cabine)
-        ->where('percepteur',$request->percepteur)
+        ->whereSite('HOUEGBO')
+         ->where('percepteur',$request->percepteur)
         ->orderBy('id','DESC');
         $reditions2 =$reditions->get();
         $sum = $reditions->sum('prix');
 
    // dd($reditions2);
-      return view('dashboard.redition2',compact('reditions2','sum'));
+   $percepteurs = Percepteur::all();
+   $voies  = Voie::all();
+      return view('dashboard.redition2',compact('reditions2','sum','percepteurs','voies'));
+    }
+
+
+
+    /**
+     *
+     *
+     * @return validation par perceteur
+     */
+
+    public function validationRecettesByDateBySite(Request $request){
+        $dtStart = $request->date_debut;
+        $dtEnd = $request->date_fin;
+        $dateDebut  = Carbon::create($dtStart);
+        $dateFin  = Carbon::create($dtEnd);
+
+       // dd($request->all());
+        $reditions = Rediton2::
+        whereBetween('date', [$dateDebut->toDateString(),$dateFin->toDateString()])
+        ->where('site',$request->site)
+        ->where('cabine',$request->cabine)
+        ->orderBy('id','DESC');
+        $reditions2 =$reditions->get();
+        $sum = $reditions->sum('prix');
+        $percepteurs = Percepteur::all();
+         $voies  = Voie::all();
+      return view('dashboard.redition2',compact('reditions2','sum','percepteurs','voies'));
     }
 
 

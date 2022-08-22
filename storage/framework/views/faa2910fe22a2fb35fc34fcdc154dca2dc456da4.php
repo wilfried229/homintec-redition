@@ -101,4 +101,46 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('js'); ?>
+<script src="https://cdn.socket.io/4.0.1/socket.io.min.js" integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+
+
+<script>
+    $(function() {
+
+        setInterval(() => {
+
+       //// getList();
+
+        }, 2000);
+        let ip_address = '127.0.0.1';
+        let socket_port = '4000';
+        let socket = io(ip_address + ':' + socket_port);
+
+        function getList()
+            {
+                $.ajax({
+                type: 'GET',          //La méthode cible (POST ou GET)
+                url : 'http://127.0.0.1:8000/api/homintec/reddition',
+                asynch : true,
+                success:function(data){
+                    console.log(data);
+                        socket.emit('redditionData', data);
+                    }
+                });
+
+            }
+
+        socket.on('redditionData', (message) => {
+            $('.chat-content ul').append(`<li>${message}</li>`);
+        });
+    });
+</script>
+
+
+<?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/homintec-redition/resources/views/auth/login.blade.php ENDPATH**/ ?>

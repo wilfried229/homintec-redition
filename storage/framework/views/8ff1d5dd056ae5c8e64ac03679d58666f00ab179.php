@@ -43,6 +43,9 @@
                        <li>
                         <a href="<?php echo e(route('validation.percpeteur.date')); ?>">Recettes par vacation</a>
                        </li>
+                       <li>
+                        <a href="<?php echo e(route('validation.site.date')); ?>">Recettes par site</a>
+                       </li>
 
                     <li>
                      <a  href="<?php echo e(route('recette.create-index')); ?>">Ajouter</a>
@@ -131,7 +134,7 @@
                         </li>
 
                         <li>
-                            <a href="<?php echo e(route('surcharge-manuel.create-index',['type'=>'ANNULE'])); ?>">Ajouter </a>
+                            <a href="<?php echo e(route('surcharge-manuel.create-annuel')); ?>">Ajouter </a>
                            </li>
 
                     </ul>

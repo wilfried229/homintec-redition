@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use SurchagesManuelSeeder;
 
 use function GuzzleHttp\Promise\all;
 
@@ -23,6 +24,42 @@ class SurchagesManuelController extends Controller
 
 
 
+
+    public function surchargeAnnuller(Request $request){
+
+        try {
+
+            $surcharge_manuel = ModelsSurchagesManuel::create([
+                'immatriculation' =>$request->immatriculation,
+                'poids_rouland'=>$request->poid_rouland,
+                'type_surcharge'=>$request->type_surcharge,
+                'date_passage'=>$request->date_passage,
+                'heure_passage'=>$request->heure_passage,
+                'essieu'=>$request->essieu,
+                'poids_roulant'=>$request->poids_roulant,
+                'poid_autorise'=>$request->poid_autorise,
+                'excedent'=>$request->excedent,
+                'montant_apayer'=>$request->montant_apayer,
+                'montant_payer'=>$request->montant_payer,
+                'observation'=>$request->observation_surcharges,
+                'type' =>'ANNULE'
+            ]);
+                return  back() ->with([
+                'message' => 'Ajout effectuée avec succès ',
+                'alert-type' => 'danger']);
+
+        } catch (\Exception $ex) {
+            //throw $th;
+            Log::info($ex->getMessage());
+            return back()
+            ->with([
+                'message' => "Erreur dajout. Veuillez réessayer",
+                'alert-type' => 'danger'
+            ]);
+            ;
+
+        }
+    }
     public function cloturerRecettes(Request $request){
 
 
@@ -99,9 +136,28 @@ class SurchagesManuelController extends Controller
         ->where('nom', 'LIKE', '%PL%')
         ->get();
 
+        dd($voies);
+
     return view('dashboard.surcharges.create-index',compact('voies','type'));
     }
 
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createIndexAnnuller()
+    {
+        $type = "ANNULEE";
+        $voies = Voie::where('site_id','=',Auth::user()->site_id)
+        ->where('nom', 'LIKE', '%PL%')
+        ->get();
+
+        dd($voies);
+
+    return view('dashboard.surcharges.create-index-annuel',compact('voies','type'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -112,7 +168,7 @@ class SurchagesManuelController extends Controller
     {
         //
         ////dd($type);
-                $percepteurs = Percepteur::all();
+        $percepteurs = Percepteur::all();
 
         $site = Site::find(Auth::user()->site_id);
         $vacations = Vacation::where('sites_id','=',$site->id)->get();
@@ -120,6 +176,11 @@ class SurchagesManuelController extends Controller
         $voies = Voie::where('site_id','=',$site->id)
         ->where('nom', 'LIKE', '%PL%')
         ->get();
+        dd($type);
+
+        if($type == "ANNULLE"){
+
+        }
     return view('dashboard.surcharges.create',compact('site','voie','vacations','percepteurs','type'));
 
     }
