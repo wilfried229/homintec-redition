@@ -16,6 +16,7 @@ class CreateVacationsTable extends Migration
         Schema::create('vacations', function (Blueprint $table) {
             $table->id();
             $table->string("type");
+            $table->unsignedInteger('site_id');
             $table->timestamps();
         });
     }

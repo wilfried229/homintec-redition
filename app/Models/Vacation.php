@@ -11,12 +11,12 @@ class Vacation extends Model
     protected $table = "vacations";
 
     protected $fillable =  [
-        'id','type','site_id'
+        'id','type','sites_id'
     ];
 
 
 
     public function sites(){
-        return $this->belongsTo(Site::class,'site_id','id');
+        return $this->belongsTo(Site::class,'sites_id','id');
     }
 }

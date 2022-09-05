@@ -49,7 +49,10 @@ class VacationController extends Controller
     {
         //
 
-        $vacations =    ModelsVacation::create($request->all());
+        $vacations =    ModelsVacation::create([
+            'type'=>$request->type,
+            'sites_id'=>$request->site_id
+        ]);
 
         return  redirect()->route('vacation.index');
 
