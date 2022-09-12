@@ -87,6 +87,8 @@ class Redition2Controller extends Controller
             $redition2->ptrac = $request->ptrac;
             $redition2->cmaes = $request->cmaes;
             $redition2->es =$request->es;
+            $redition2->essieu_capter =$request->essieu_capter;
+            $redition2->essieu_corriger =$request->essieu_corriger;
             $redition2->ptt = $request->ptt;
             $redition2->over =$request->over;
             $redition2->caisse = $request->caisse;

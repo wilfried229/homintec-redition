@@ -26,11 +26,11 @@ class ReditionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+        public function index()
     {
         $reditions  = Rediton2::get()->take(10);
 
-        
+
         return response()->json($reditions, 200);
     }
 
