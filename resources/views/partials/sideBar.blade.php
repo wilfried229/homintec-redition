@@ -24,9 +24,7 @@
  @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERADMIN']) )
  <li>
     <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
-   </li>
-
-
+       </li>
                 <li>
                     <a href="#" class="menu-toggle">
                         <span>Validation </span>
@@ -74,74 +72,8 @@
  @endif
 
 
- @if (in_array(Auth::user()->role,["ADMIN",'SUPERADMIN','HOMINTEC','SUPERVISEUR']) )
 
-                <li>
-                    <a href="#" class="menu-toggle">
-                        <span>Recettes manuelles</span>
-                    </a>
-                   <ul class="ml-menu">
-
-
-                        <li>
-                            <a href="{{route('recette.getByMonth')}}">Afficher</a>
-                           </li>
-
-
-                           <li>
-                            <a href="{{route('recette.percepteur.index')}}">Afficher par percepteur</a>
-                           </li>
-
-                        <li>
-                         <a  href="{{route('recette.create-index')}}">Ajouter</a>
-
-                           </li>
-
-
-                    </ul>
-                </li>
-
-
-                <li>
-
-
-                    <a href="#" class="menu-toggle">
-                        <span>Surcharges manuelles</span>
-                    </a>
-                   <ul class="ml-menu">
-
-                       <li>
-                         <a href="{{route('surcharge-manuel.request')}}">Afficher </a>
-                        </li>
-
-                        <li>
-                            <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
-                           </li>
-
-                    </ul>
-                </li>
-
-                <li>
-
-
-                    <a href="#" class="menu-toggle">
-                        <span>Surcharges annulés</span>
-                    </a>
-                   <ul class="ml-menu">
-
-                       <li>
-                         <a href="{{route('surcharge-manuel.request',['type'=>'ANNULE'])}}">Afficher </a>
-                        </li>
-
-                        <li>
-                            <a href="{{route('surcharge-manuel.create-annuel')}}">Ajouter </a>
-                           </li>
-
-                    </ul>
-                </li>
-                @endif
-
-                @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) )
+        @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) )
 
 
                 <li>
@@ -180,60 +112,11 @@
                     </ul>
                 </li>
 
-                <li>
 
 
-                    <a href="#" class="menu-toggle">
-                        <span>Points Essieux</span>
-                    </a>
-                   <ul class="ml-menu">
 
-                    <li>
-                        <a href="{{route('point-essieux.searchIndex')}}">Afficher</a>
-                       </li>
-
-                    </ul>
-                </li>
 
                 <li>
-
-
-                    <a href="#" class="menu-toggle">
-                        <span>Points Mensuels</span>
-                    </a>
-                   <ul class="ml-menu">
-
-                    <li>
-                        <a href="{{route('point-mensuel.searchIndex')}}">Afficher Coupon</a>
-                       </li>
-
-                       <li>
-                           <a href="{{route('point-mensuel.searchIndexInformatiser')}}">Afficher Informatiser</a>
-                          </li>
-
-
-
-
-
-                    </ul>
-                </li>
-
-                <li>
-
-
-                    <a href="#" class="menu-toggle">
-                        <span>Points Percepteurs</span>
-                    </a>
-                   <ul class="ml-menu">
-
-                    <li>
-                        <a href="{{route('point-percepteur.searchIndex')}}">Afficher</a>
-                       </li>
-
-                    </ul>
-                </li>
-                <li>
-
 
                     <a href="#" class="menu-toggle">
                         <span>Percepteur</span>
