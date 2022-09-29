@@ -42,7 +42,10 @@ class GetValidation extends Command
         try {
             Log::debug("Début d'excécution ");
             $logs  = new  AddDataServiceOnline();
-            $logs->getValidation("http://192.168.1.100");
+            $logs->getValidation("http://192.168.1.100"); //AA
+            $logs->getValidation("http://192.168.1.100");//AR
+            $logs->getValidation("http://192.168.1.100");//AMA
+            $logs->getValidation("http://192.168.1.100");//AMR
             Log::debug("Fin d'excécution du validation");
 
         } catch (\Illuminate\Database\QueryException $ex) {
