@@ -21,7 +21,7 @@
                     </a>
                 </li>
 
- <?php if(in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERADMIN']) ): ?>
+ <?php if(in_array(Auth::user()->role,["ADMIN",'SAFER','HOMINTEC','SUPERADMIN']) ): ?>
  <li>
     <a href="<?php echo e(route('logs.index')); ?>"><span>Logs Vacations </span></a>
        </li>

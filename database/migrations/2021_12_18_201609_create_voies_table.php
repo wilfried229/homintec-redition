@@ -16,6 +16,7 @@ class CreateVoiesTable extends Migration
         Schema::create('voies', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+            $table->string('sens');
             $table->unsignedInteger('site_id');
             $table->timestamps();
         });

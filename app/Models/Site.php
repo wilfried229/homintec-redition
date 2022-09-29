@@ -10,6 +10,6 @@ class Site extends Model
     protected $table = "sites";
 
     protected $fillable =  [
-        'id','nom','tarif'
+        'id','nom'
     ];
 }

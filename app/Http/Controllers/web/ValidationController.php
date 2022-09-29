@@ -74,7 +74,7 @@ class ValidationController extends Controller
        ->whereTime('heure', '>=', $dateDebut->toTimeString())
        ->whereTime('heure', '<=', $dateFin->toTimeString())
         ->where('cabine',$request->cabine)
-        ->whereSite('HOUEGBO')
+        ///->whereSite($request->site)
          ->where('percepteur',$request->percepteur)
         ->orderBy('id','DESC');
         $reditions2 =$reditions->get();

@@ -131,7 +131,6 @@
 
 <?php $__env->startSection('js'); ?>
 
-
 <?php $__env->stopSection(); ?>
 
 

@@ -10,6 +10,6 @@ class Percepteur extends Model
     protected $table = "percepteurs";
 
     protected $fillable =  [
-        'id','nom',
+        'id','nom','prenom'
     ];
 }

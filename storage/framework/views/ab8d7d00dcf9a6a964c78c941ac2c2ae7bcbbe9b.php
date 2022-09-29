@@ -30,10 +30,18 @@
 
                             <div class="row">
 
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <label for="">Sites</label>
                                     <select name="site" id="site" class="form-control">
                                         <?php $__currentLoopData = $sites; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($item->nom); ?>"><?php echo e($item->nom); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="">Voies</label>
+                                    <select name="cabine" id="cabine" class="form-control">
+                                        <?php $__currentLoopData = $voies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($item->nom); ?>"><?php echo e($item->nom); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>

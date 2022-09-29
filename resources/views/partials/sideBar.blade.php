@@ -21,7 +21,7 @@
                     </a>
                 </li>
 
- @if (in_array(Auth::user()->role,["ADMIN",'SIRB','HOMINTEC','SUPERADMIN']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SAFER','HOMINTEC','SUPERADMIN']) )
  <li>
     <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
        </li>
