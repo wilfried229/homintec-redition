@@ -15,7 +15,7 @@ class CreateRediton2Table extends Migration
     {
         Schema::create('rediton2', function (Blueprint $table) {
             $table->id();
-    $table->string('percepteur');
+            $table->string('percepteur');
             $table->dateTime('date');
             $table->time('heure');
             $table->string('prix');
@@ -26,6 +26,8 @@ class CreateRediton2Table extends Migration
             $table->string('ptrac')->nullable();
             $table->string('cmaes')->nullable();
             $table->string('es')->nullable();
+            $table->string('essieu_capter')->nullable();
+            $table->string('essieu_corriger')->nullable();
             $table->string('ptt')->nullable();
             $table->string('over')->nullable();
             $table->string('caisse');

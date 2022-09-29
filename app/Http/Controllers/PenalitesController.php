@@ -43,7 +43,7 @@ class PenalitesController extends Controller
     }
 
      /**
-      *     /**
+      * 
     * @OA\Info(
     *      version="1.0.0",
     *      title="Api covid19 Documentation",

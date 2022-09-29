@@ -26,7 +26,6 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
         'surchargeUemoi' => 'SurchargeUemoiController',
         'comptage' => 'ComptagesController',
         'hydrocarbure' => 'HydrocarbureController',
-        'recette-togo' => 'RecettesTogoController',
         'cashFlow'=>'CashFlowController',
         'penalite'=>'PenalitesController',
         'douanes'=>'DouaneController',

@@ -412,6 +412,8 @@ class AddDataServiceOnline
             $redition2->ptrac = $value->ptrac;
             $redition2->cmaes = $value->cmaes;
             $redition2->es =$value->es;
+            $redition2->essieu_capter =$value->essieu_capter;
+            $redition2->essieu_corriger =$value->essieu_corriger;
             $redition2->ptt = $value->ptt;
             $redition2->over =$value->over;
             $redition2->caisse = $value->caisse;
@@ -601,6 +603,8 @@ class AddDataServiceOnline
               "ptrac" => $validation->ptrac,
               "cmaes" => $validation->cmaes,
               "es" =>$validation->es,
+              "essieu_capter" =>$validation->essieu_capter,
+              "essieu_corriger" =>$validation->essieu_corriger,
               "ptt" => $validation->ptt,
               "over" =>$validation->over,
               "caisse" => $validation->caisse,

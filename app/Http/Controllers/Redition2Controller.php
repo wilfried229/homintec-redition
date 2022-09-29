@@ -55,12 +55,48 @@ class Redition2Controller extends Controller
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
+ /**
+     * @OA\Post(
+     * path="/api/homintec/validtion",
+     * summary="save validation",
+     * description="data array",
+     * operationId="store",
+     * tags={"store"},
+     * @OA\RequestBody(
+     *    required=true,
+     *    description="pass recette",
+     *    @OA\JsonContent(
+     *       required={"precepteur","site","cabine","prix","sens","type","ptrac","cmaes","es","ptt","over","caisse","plaque"},
+     *       @OA\Property(property="precepteur", type="string", format="string", example="string"),
+     *       @OA\Property(property="type", type="string", format="string", example="string"),
+     *       @OA\Property(property="cabine", type="string", example="string"),
+     *       @OA\Property(property="type", type="string", example="string"),
+     *       @OA\Property(property="ptrac", type="string", example="string"),
+     *       @OA\Property(property="cmaes", type="string", example="string"),
+     *       @OA\Property(property="es", type="string", example="string"),
+     *       @OA\Property(property="ptt", type="string", example="string"),
+     *       @OA\Property(property="over", type="string", example="string"),
+     *       @OA\Property(property="caisse", type="string", example="string"),
+     *       @OA\Property(property="plaque", type="string", example="string"),
+     *       @OA\Property(property="visa", type="string", example="string"),
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *    ),
+     * ),
+     * @OA\Response(
+     *    response=422,
+     *    description="Wrong credentials response",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Sorry, w")
+     *        )
+     *     )
+     * )
      */
     public function store(Request $request)
     {
@@ -94,7 +130,7 @@ class Redition2Controller extends Controller
             $redition2->caisse = $request->caisse;
             $redition2->plaque  = $request->plaque;
 			$redition2->visa  = $request->visa;
-            $redition2->refer =  $request->refer;
+            $redition2->refer =  Hash::make($this->dateNow());
 			//////$redition2->total  = $request->total;
             $redition2->save();
 
