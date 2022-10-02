@@ -6,7 +6,7 @@ use App\ComptageChecked;
 use App\Comptages;
 use App\Console\Commands\LogAdmin;
 use App\Douane;
-use App\Models\logs;
+use App\Models\Logs;
 use App\Models\Recette;
 use App\Models\Rediton2;
 use App\Penalites;
@@ -220,11 +220,11 @@ class AddDataServiceOnline
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
-            if(logs::where('refer','=',$value->refer)->count()!=0){
+            if(Logs::where('refer','=',$value->refer)->count()!=0){
                 return response()->json(3, 200);
             }
 
-            logs::create([
+            Logs::create([
              "percepteur" =>$value->percepteur,
                 "cabine" => $value->cabine,
                 "site" => $value->site,
@@ -462,7 +462,7 @@ class AddDataServiceOnline
 
             ];
 
-            $url = "https://reddition.gate24-benin.com/api/homintec/logsAdmin";
+            $url = "http://10.13.40.42/validation/api/homintec/logsAdmin";
             $resp = $this->hitCurl($url,$param,'POST');
             $apiData = "Getting header code {$resp['statusCode']}";
 
@@ -505,7 +505,7 @@ class AddDataServiceOnline
             "refer"=>$p->refer,
             ];
 
-            $url = "https://reddition.gate24-benin.com/api/homintec/ptac";
+            $url = "https://10.13.40.42/validation/api/homintec/ptac";
             $resp = $this->hitCurl($url,$param,'POST');
             $apiData = "Getting header code {$resp['statusCode']}";
 
@@ -538,7 +538,7 @@ class AddDataServiceOnline
     public function sendLog(){
 
         try {
-         $logs  = logs::where('is_sent',0)->get();
+         $logs  = Logs::where('is_sent',0)->get();
         //// $urls = 'gate24-ekpe.ngrok.io/gate24/public';
          foreach ($logs as $key => $log) {
              # code...\\
@@ -553,7 +553,7 @@ class AddDataServiceOnline
                 "statut"=>$log->statut,
             ];
 
-            $url = "https://reddition.gate24-benin.com/api/homintec/logs-save";
+            $url = "http://10.13.40.42/validation/api/homintec/logs-save";
             $resp = $this->hitCurl($url,$param,'POST');
             $apiData = "Getting header code {$resp['statusCode']}";
 
@@ -612,7 +612,7 @@ class AddDataServiceOnline
               "visa" =>$validation->visa,
             ];
 
-            $url = "https://reddition.gate24-benin.com/api/homintec/validation";
+            $url = "http://10.13.40.42/validation/api/homintec/validation";
             $resp = $this->hitCurl($url,$param,'POST');
             if($resp['statusCode'] == 200){
                 $apiData = json_decode($resp['resp']);
