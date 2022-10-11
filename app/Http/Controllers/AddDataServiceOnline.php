@@ -406,7 +406,7 @@ class AddDataServiceOnline
             $redition2->date = $value->date;
             $redition2->date_api = $value->date_api;
             $redition2->cabine  = $value->cabine;
-            $redition2->prix = $value->prix;
+            $redition2->prix = (int) $value->prix;
             $redition2->sens = $value->sens;
             $redition2->type = $value->type;
             $redition2->ptrac = $value->ptrac;
@@ -597,7 +597,7 @@ class AddDataServiceOnline
               "date_api" => $validation->date_api,
               "heure" => $validation->heure,
               "cabine"  => $validation->cabine,
-              "prix" => $validation->prix,
+              "prix" => (int) $validation->prix,
               "sens" => $validation->sens,
               "type" => $validation->type,
               "ptrac" => $validation->ptrac,

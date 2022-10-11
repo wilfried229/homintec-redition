@@ -38,6 +38,8 @@ class Redition2Controller extends Controller
      */
     public function index()
     {
+        
+
         $validation =  Rediton2::where('is_sent','=',false)->take(10)->get();
         foreach ($validation  as $key => $value) {
             $value->is_sent = true;
@@ -110,6 +112,8 @@ class Redition2Controller extends Controller
             return response()->json('Existe deja', 200);
 
             }
+
+
             $redition2 = new Rediton2();
             $redition2->percepteur = $request->percepteur;
             $redition2->site = $request->site;
@@ -117,7 +121,7 @@ class Redition2Controller extends Controller
             $redition2->date = $request->date;
             $redition2->date_api = $this->dateNow();
             $redition2->cabine  = $request->cabine;
-            $redition2->prix = $request->prix;
+            $redition2->prix = (int)$request->prix;
             $redition2->sens = $request->sens;
             $redition2->type = $request->type;
             $redition2->ptrac = $request->ptrac;
