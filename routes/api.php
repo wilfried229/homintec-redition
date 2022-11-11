@@ -49,5 +49,7 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
     Route::get('testupdate','CashFlowController@testUpdateRequest');
     Route::post('logs-save','LogController@store');
     Route::post('update-validation','Redition2Controller@updateDataValidatedRecevied');
+    Route::post('validation-comptage','Redition2Controller@updateValidation');
+
 
 });

@@ -13,7 +13,7 @@ class CreateRediton2Table extends Migration
      */
     public function up()
     {
-        Schema::create('rediton2', function (Blueprint $table) {
+        Schema::create('validation', function (Blueprint $table) {
             $table->id();
             $table->string('percepteur');
             $table->dateTime('date');
@@ -36,6 +36,8 @@ class CreateRediton2Table extends Migration
             $table->boolean('is_sent')->default(false);
             $table->dateTime('date_api');
             $table->string('refer')->unique();
+            $table->integer('comptage')->default(0);
+            $table->dateTime('date_comptage')->nullable();
             $table->timestamps();
         });
     }

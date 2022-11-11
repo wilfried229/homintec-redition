@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Site as ModelsSite;
-use App\Site;
+use App\Models\Site;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -16,7 +15,7 @@ class SiteController extends Controller
     public function index()
     {
         //
-        $sites = ModelsSite::all();
+        $sites = Site::all();
         return view('dashboard.sites.index',compact('sites'));
     }
 
@@ -43,7 +42,7 @@ class SiteController extends Controller
     {
         //
 
-        ModelsSite::create($request->all());
+        Site::create($request->all());
 
         return  redirect()->route('site.index');
     }

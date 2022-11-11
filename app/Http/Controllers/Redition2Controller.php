@@ -13,6 +13,11 @@ class Redition2Controller extends Controller
 {
 
 
+
+    public function getValidationByVoie(){
+
+       /// $validation = Rediton2::where('voie',)->get();
+    }
     public function  getvalidation(){
         $redition2 = Rediton2::where('is_sent',0)->get();
         return response()->json($redition2, 200);
@@ -38,7 +43,7 @@ class Redition2Controller extends Controller
      */
     public function index()
     {
-        
+
 
         $validation =  Rediton2::where('is_sent','=',false)->take(10)->get();
         foreach ($validation  as $key => $value) {
@@ -109,10 +114,8 @@ class Redition2Controller extends Controller
 
             if (Rediton2::where('refer','=',$request->refer)->count() !=0) {
                 # code...
-            return response()->json('Existe deja', 200);
-
+                return response()->json('Existe deja', 200);
             }
-
 
             $redition2 = new Rediton2();
             $redition2->percepteur = $request->percepteur;
@@ -134,6 +137,7 @@ class Redition2Controller extends Controller
             $redition2->caisse = $request->caisse;
             $redition2->plaque  = $request->plaque;
 			$redition2->visa  = $request->visa;
+			$redition2->comptage  = $request->comptage;
             $redition2->refer =  Hash::make($this->dateNow());
 			//////$redition2->total  = $request->total;
             $redition2->save();
@@ -222,5 +226,38 @@ class Redition2Controller extends Controller
             'resp' => $resp
         ];
     }
+
+
+    public function updateValidation(Request $request)
+    {
+
+        try {
+
+            if (Rediton2::where('refer','=',$request->refer)->count() !=0) {
+                return response()->json('Existe deja', 200);
+            }
+
+            $validation = Rediton2::where('id',$request->id)->first();
+
+            $validation->update(
+              [
+                "comptage"=>$request->comptage,
+                "date_comptage" =>$this->dateNow(),
+              ]
+
+              );
+
+
+            return response()->json($validation, 200);
+
+            } catch (\Exception $ex) {
+                //throw $th;
+
+                Log::error($ex->getMessage());
+
+                abort(400,$ex->getMessage());
+            }
+    }
+
 
 }

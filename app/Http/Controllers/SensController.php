@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-///use App\Models\Sens as ModelsSens;
+///use App\Models\Sens as Sens;
 
-use App\Models\Sens as ModelsSens;
-use App\Sens;
+use App\Models\Sens;
 use Illuminate\Http\Request;
 
 
@@ -19,7 +18,7 @@ class SensController extends Controller
     public function index()
     {
         //
-        $sens = ModelsSens::all();
+        $sens = Sens::all();
 
         return view('dashboard.sens.index',compact('sens'));
     }
