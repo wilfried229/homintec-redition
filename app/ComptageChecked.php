@@ -15,6 +15,7 @@ class ComptageChecked extends Model
         'percepteur',
         'date',
         'heure',
+        'prix',
         'type_interruption'
     ];
 

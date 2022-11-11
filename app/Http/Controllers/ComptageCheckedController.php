@@ -19,10 +19,10 @@ class ComptageCheckedController extends Controller
     {
         //
         $checkedComptagePannes = ComptageChecked::where('is_sent')->take(10)->get();
-        foreach ($checkedComptagePannes  as $key => $value) {
+       /*  foreach ($checkedComptagePannes  as $key => $value) {
             $value->is_sent = true;
             $value->save();
-        }
+        } */
 
     return response()->json($checkedComptagePannes, 200);
     }
@@ -54,7 +54,8 @@ class ComptageCheckedController extends Controller
                 'percepteur'=>$request->percepteur,
                 'date' => $request->date,
                 'heure'=>$request->heure,
-                'type_interruption'=>$request->type_interruption,
+                'prix'=>$request->heure,
+                ///'type_interruption'=>$request->type_interruption,
                 'refer' => Hash::make(Carbon::now('Africa/Lagos'))
             ]);
 
