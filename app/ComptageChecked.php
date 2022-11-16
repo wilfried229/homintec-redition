@@ -16,7 +16,10 @@ class ComptageChecked extends Model
         'date',
         'heure',
         'prix',
-        'type_interruption'
+        'refer',
+        'nbre_vehicule',
+        'is_close',
+        'nbre_gate'
     ];
 
 }

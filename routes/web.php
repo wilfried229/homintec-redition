@@ -204,7 +204,8 @@ Route::group(['middleware' => ['auth']], function () {
 
      Route::get('logs','LogController@index')->name('logs.index');
 
-
+     Route::get('search-comptage-vacation-view','ComptageCheckedController@viewComptageByVacation')->name('search.comptage.vacation.view');
+     Route::get('search-comptage-vacation-action','ComptageCheckedController@searchComptageVacationPercepteur')->name('search.comptage.vacation.action');
 
     #Route::resources([]);
 

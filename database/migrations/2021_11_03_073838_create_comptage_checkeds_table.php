@@ -21,7 +21,9 @@ class CreateComptageCheckedsTable extends Migration
             $table->dateTime('date');
             $table->time('heure');
             $table->string('prix')->default(400);
-            ////$table->string('type_interruption');
+            $table->integer('nbre_vehicule');
+            $table->integer('nbre_gate')->default(0);
+            $table->boolean('is_close')->default(false);
             $table->boolean('is_sent')->default(false);
             $table->string('refer')->unique();
             $table->timestamps();
