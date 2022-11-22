@@ -137,7 +137,7 @@ class Redition2Controller extends Controller
             $redition2->caisse = $request->caisse;
             $redition2->plaque  = $request->plaque;
 			$redition2->visa  = $request->visa;
-			$redition2->comptage  = $request->comptage;
+			///$redition2->comptage  = $request->comptage;
             $redition2->refer =  Hash::make($this->dateNow());
 			//////$redition2->total  = $request->total;
             $redition2->save();
