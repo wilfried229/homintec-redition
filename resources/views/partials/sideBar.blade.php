@@ -22,9 +22,20 @@
                 </li>
 
  @if (in_array(Auth::user()->role,["ADMIN",'SAFER','HOMINTEC','SUPERADMIN']) )
+
  <li>
+    <a href="{{route('statistique.index')}}"><span>Statistique Vacation </span></a>
+ </li>
+
+
+ <li>
+
     <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
+
+
        </li>
+
+
                 <li>
                     <a href="#" class="menu-toggle">
                         <span>Validation </span>

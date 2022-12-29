@@ -204,6 +204,9 @@ Route::group(['middleware' => ['auth']], function () {
 
      Route::get('logs','LogController@index')->name('logs.index');
 
+     Route::get('statistique-get','ValidationController@statistiqueVacation')->name('statistique.get');
+     Route::get('statistique-index','ValidationController@statistiqueVacationView')->name('statistique.index');
+
 
 
     #Route::resources([]);

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use App\Models\Percepteur;
 use Illuminate\Http\Request;
-use App\Models\Rediton2 ;
+use App\Models\Rediton2;
 use App\Models\Site;
 use App\Voie;
 use Carbon\Carbon;
@@ -16,13 +16,13 @@ class ValidationController extends Controller
 
 
 
-    public function index(){
+    public function index()
+    {
 
-    $sites  = Site::all();
-    $voies  = Voie::all();
-    $prix = Rediton2::whereDate('created_at',now())->sum('prix');
-    return view('dashboard.validation.index',compact('sites','voies','prix'));
-
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        $prix = Rediton2::whereDate('created_at', now())->sum('prix');
+        return view('dashboard.validation.index', compact('sites', 'voies', 'prix'));
     }
 
 
@@ -33,27 +33,28 @@ class ValidationController extends Controller
      * @return view
      */
 
-    public function getValidationByDateIndex(){
+    public function getValidationByDateIndex()
+    {
 
         $percepteurs =  Percepteur::all();
         $sites  = Site::all();
         $voies  = Voie::all();
-        return view('dashboard.validation.get-search',compact('percepteurs','sites','voies'));
-
+        return view('dashboard.validation.get-search', compact('percepteurs', 'sites', 'voies'));
     }
 
     /**
      *
      * @return view
      */
-    public function getValidationByDateSite(){
+    public function getValidationByDateSite()
+    {
 
         $sites  = Site::all();
         $voies  = Voie::all();
-        return view('dashboard.validation.get-site',compact('sites','voies'));
-
-
+        return view('dashboard.validation.get-site', compact('sites', 'voies'));
     }
+
+
 
 
 
@@ -63,54 +64,23 @@ class ValidationController extends Controller
      * @return validation par perceteur
      */
 
-    public function validationRecettesByDateByPecepteur(Request $request){
-        $dtStart = $request->date_debut;
-        $dtEnd = $request->date_fin;
-        $dateDebut  = Carbon::create($dtStart);
-        $dateFin  = Carbon::create($dtEnd);
-  /// dd($dateDebut->toDateString());
-       $reditions = Rediton2::
-        whereBetween('date', [$dateDebut->toDateString(),$dateFin->toDateString()])
-       ->whereTime('heure', '>=', $dateDebut->toTimeString())
-       ->whereTime('heure', '<=', $dateFin->toTimeString())
-        ->where('cabine',$request->cabine)
-        ///->whereSite($request->site)
-         ->where('percepteur',$request->percepteur)
-        ->orderBy('id','DESC');
-        $reditions2 =$reditions->get();
-        $sum = $reditions->sum('prix');
-
-   // dd($reditions2);
-   $percepteurs = Percepteur::all();
-   $voies  = Voie::all();
-      return view('dashboard.redition2',compact('reditions2','sum','percepteurs','voies'));
-    }
-
-
-
-    /**
-     *
-     *
-     * @return validation par perceteur
-     */
-
-    public function validationRecettesByDateBySite(Request $request){
+    public function validationRecettesByDateBySite(Request $request)
+    {
         $dtStart = $request->date_debut;
         $dtEnd = $request->date_fin;
         $dateDebut  = Carbon::create($dtStart);
         $dateFin  = Carbon::create($dtEnd);
 
-       // dd($request->all());
-        $reditions = Rediton2::
-        whereBetween('date', [$dateDebut->toDateString(),$dateFin->toDateString()])
-        ->where('site',$request->site)
-        ->where('cabine',$request->cabine)
-        ->orderBy('id','DESC');
-        $reditions2 =$reditions->get();
+        // dd($request->all());
+        $reditions = Rediton2::whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
+            ->where('site', $request->site)
+            ->where('cabine', $request->cabine)
+            ->orderBy('id', 'DESC');
+        $reditions2 = $reditions->get();
         $sum = $reditions->sum('prix');
         $percepteurs = Percepteur::all();
-         $voies  = Voie::all();
-      return view('dashboard.redition2',compact('reditions2','sum','percepteurs','voies'));
+        $voies  = Voie::all();
+        return view('dashboard.redition2', compact('reditions2', 'sum', 'percepteurs', 'voies'));
     }
 
 
@@ -120,14 +90,94 @@ class ValidationController extends Controller
      * @return validation par perceteur
      */
 
-    public function validationRecettesBycabine($voie){
-  /// dd($dateDebut->toDateString());
-       $reditions = Rediton2::
-        where('cabine',$voie)
-        ->whereDate('date',now())
-        ->orderBy('id','DESC');
-        $reditions2 =$reditions->get();
+    public function validationRecettesBycabine($voie)
+    {
+        /// dd($dateDebut->toDateString());
+        $reditions = Rediton2::where('cabine', $voie)
+            ->whereDate('date', now())
+            ->orderBy('id', 'DESC');
+        $reditions2 = $reditions->get();
         $sum = $reditions2->last()->prix;
-      return view('dashboard.redition2',compact('reditions2','sum'));
+        return view('dashboard.redition2', compact('reditions2', 'sum'));
     }
+
+
+
+    public function validationRecettesByDateByPecepteur(Request $request)
+    {
+        $dtStart = $request->date_debut;
+        $dtEnd = $request->date_fin;
+        $dateDebut  = Carbon::create($dtStart);
+        $dateFin  = Carbon::create($dtEnd);
+        /// dd($dateDebut->toDateString());
+        $reditions = Rediton2::whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
+            ->whereTime('heure', '>=', $dateDebut->toTimeString())
+            ->whereTime('heure', '<=', $dateFin->toTimeString())
+            ->where('cabine', $request->cabine)
+            ///->whereSite($request->site)
+            ->where('percepteur', $request->percepteur)
+            ->orderBy('id', 'DESC');
+        $reditions2 = $reditions->get();
+        $sum = $reditions->sum('prix');
+
+        // dd($reditions2);
+        $percepteurs = Percepteur::all();
+        $voies  = Voie::all();
+        return view('dashboard.redition2', compact('reditions2', 'sum', 'percepteurs', 'voies'));
+    }
+
+
+
+
+    /**
+     *
+     *
+     * @return validation par perceteur
+     */
+
+     public function statistiqueVacation(Request $request)
+     {
+         $dtStart = $request->date_debut;
+         $dtEnd = $request->date_fin;
+         $dateDebut  = Carbon::create($dtStart);
+         $dateFin  = Carbon::create($dtEnd);
+         /// dd($dateDebut->toDateString());
+         $reditions = Rediton2::whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
+             ->whereTime('heure', '>=', $dateDebut->toTimeString())
+             ->whereTime('heure', '<=', $dateFin->toTimeString())
+             ->where('cabine', $request->cabine)
+             ///->whereSite($request->site)
+             ->where('percepteur', $request->percepteur)
+             ->orderBy('id', 'DESC');
+         $reditions2 = $reditions->get();
+         $sum = $reditions->sum('prix');
+
+         // dd($reditions2);
+         $percepteurs = Percepteur::all();
+         $voies  = Voie::all();
+         return view('dashboard.redition2', compact('reditions2', 'sum', 'percepteurs', 'voies'));
+     }
+
+
+
+
+    /**
+     *
+     *
+     * @return validation par perceteur
+     */
+
+    public function statistiqueVacationView(Request $request)
+    {
+
+        $percepteurs =  Percepteur::all();
+        $sites  = Site::all();
+        $voies  = Voie::all();
+        return view('dashboard.validation.search-statistique', compact('percepteurs', 'sites', 'voies'));
+    }
+
+
+
+
+
 }
