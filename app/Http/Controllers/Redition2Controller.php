@@ -15,6 +15,10 @@ class Redition2Controller extends Controller
 
     public function  getvalidation(){
         $redition2 = Rediton2::where('is_sent',0)->get();
+        $redition2 = Rediton2::where('prix',0)->update([
+            'prix'
+        ]);
+
         return response()->json($redition2, 200);
 
     }

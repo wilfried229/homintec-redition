@@ -8,5 +8,6 @@ class   Rediton2 extends Model
 {
     //
     protected $table = "rediton2";
-   
+
+    
 }

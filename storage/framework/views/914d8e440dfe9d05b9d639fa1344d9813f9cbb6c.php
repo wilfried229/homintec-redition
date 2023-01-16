@@ -1,22 +1,19 @@
+    
+
+    <?php $__env->startSection('css'); ?>
+
+    <?php $__env->stopSection(); ?>
 
 
-
-    @extends('template-redition')
-
-    @section('css')
-
-    @endsection
-
-
-    @section('header')
+    <?php $__env->startSection('header'); ?>
     <div class="block-header">
         <h2>
            Statistique
             <small><a href="" target="_blank"> </a></small>
         </h2>
     </div>
-    @endsection
-    @section('content')
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('content'); ?>
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
@@ -27,18 +24,18 @@
 
                 </div>
                 <div class="body">
-                    <form action="{{route('statistique.get')}}" method="get" class="form">
+                    <form action="<?php echo e(route('statistique.get')); ?>" method="get" class="form">
 
-                        @csrf
+                        <?php echo csrf_field(); ?>
 
                             <div class="row">
 
                                 <div class="col-lg-12">
                                     <label for="">Percepteur</label>
                                     <select name="percepteur" id="percepteur" data-msg="Veuillez choisir le percepteur" class="form-control selectpicker" data-show-subtext="true" data-live-search="true" style="height: 100px;widht:100px" required>
-                                        @foreach ($percepteurs as $item)
-                                        <option value="{{$item->percepteur}}">{{ $item->percepteur }}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $percepteurs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($item->percepteur); ?>"><?php echo e($item->percepteur); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
 
@@ -61,11 +58,13 @@
             </div>
         </div>
     </div>
-    @endsection
+    <?php $__env->stopSection(); ?>
 
 
-    @section('js')
+    <?php $__env->startSection('js'); ?>
 
 
-    @endsection
+    <?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('template-redition', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/homintec-redition/resources/views/dashboard/validation/search-statistique.blade.php ENDPATH**/ ?>

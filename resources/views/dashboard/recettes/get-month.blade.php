@@ -61,6 +61,7 @@
                             </tr>
                             </thead>
 
+
                             <tbody>
 
 
@@ -177,17 +178,31 @@
                                     <td>{{$totPassage}}</td>
                                     <td>{{$totViolation}}</td>
                                     <td>{{$totExempte}} </td>
-                                    <td> {{$totNombreManuel}}</td>
+                                    <td>{{$totNombreManuel}}</td>
                                     <td>{{$totMontantManuel}} </td>
                                     <td> </td>
-
-
                                     </tr>
-
                                     @endif
                                 @endforeach
                             </tbody>
 
+                            <tfoot>
+
+                                <th colspan="4" class="text-right">TOTAL GLOBAL</th>
+                                <th>{{$recettes->sum('montant_coupant')}}</th>
+                                <th>{{ $recettes->sum('montant_percepteur') }}</th>
+                                <th>{{ $recettes->sum('montant_informatise')}}</th>
+                                <td></td>
+                                <th>{{ $recettes->sum('manquant') }} </th>
+                                <th>{{ $recettes->sum('suplus') }}</th>
+                                <th>{{ $recettes->sum('nombre_vehicule') }}</th>
+                                <th>{{ $recettes->sum('nombre_violation') }}</th>
+                                <th>{{ $recettes->sum('nombre_exemptes') }} </th>
+                                <th>{{ $recettes->sum('nombre_manuel')}}</th>
+                                <th>{{ $recettes->sum('montant_manuel')}} </th>
+                                <td> </td>
+
+                            </tfoot>
                     </table>
                 </div>
             </div>

@@ -145,17 +145,31 @@ class ValidationController extends Controller
          $reditions = Rediton2::whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
              ->whereTime('heure', '>=', $dateDebut->toTimeString())
              ->whereTime('heure', '<=', $dateFin->toTimeString())
-             ->where('cabine', $request->cabine)
-             ///->whereSite($request->site)
              ->where('percepteur', $request->percepteur)
-             ->orderBy('id', 'DESC');
+
+             ;
          $reditions2 = $reditions->get();
          $sum = $reditions->sum('prix');
+         $dataStatistiques = [];
+         $dataStatistiques['VEHICULE LEGER'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','VEHICULE LEGER')->count();
+         $dataStatistiques['TRYCICLE'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','TRYCICLE')->count();
+         $dataStatistiques['VEHICULE LEGER'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','VEHICULE LEGER')->count();
+         $dataStatistiques['POIDS LOURD 2'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','POIDS LOURD')->where('es',2)->count();
+         $dataStatistiques['POIDS LOURD 3'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','POIDS LOURD')->where('es',3)->count();
+         $dataStatistiques['POIDS LOURD 4'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','POIDS LOURD')->where('es','=',4)->count();
+         $dataStatistiques['POIDS LOURD 5'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',5)->count();
+         $dataStatistiques['POIDS LOURD 6'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',6)->count();
+         $dataStatistiques['POIDS LOURD 7'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',7)->count();
+         $dataStatistiques['POIDS LOURD 8'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',8)->count();
+         $dataStatistiques['POIDS LOURD 9'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',9)->count();
+         $dataStatistiques['POIDS LOURD 10'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',10)->count();
+         $dataStatistiques['AUTOBUS'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','AUTOBUS')->count();
+        // dd($dataStatistiques);
 
-         // dd($reditions2);
-         $percepteurs = Percepteur::all();
-         $voies  = Voie::all();
-         return view('dashboard.redition2', compact('reditions2', 'sum', 'percepteurs', 'voies'));
+
+         $percepteurs = $request->percepteur;
+         $cabines  = $this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->first()->cabine;
+         return view('dashboard.validation.get-search-statistique', compact('dataStatistiques', 'sum', 'percepteurs', 'cabines','dateDebut','dateFin'));
      }
 
 
@@ -170,14 +184,25 @@ class ValidationController extends Controller
     public function statistiqueVacationView(Request $request)
     {
 
-        $percepteurs =  Percepteur::all();
+        $percepteurs =  Rediton2::distinct()->select('percepteur')->get();
+
+        //dd($percepteurs);
         $sites  = Site::all();
         $voies  = Voie::all();
+
         return view('dashboard.validation.search-statistique', compact('percepteurs', 'sites', 'voies'));
     }
 
 
 
+    public static function searchValidationStatistque($dateDebut,$dateFin,$percepteur){
+
+        $reditions = Rediton2::whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
+        ->whereTime('heure', '>=', $dateDebut->toTimeString())
+        ->whereTime('heure', '<=', $dateFin->toTimeString())
+        ->where('percepteur', $percepteur);
+        return $reditions;
+    }
 
 
 }

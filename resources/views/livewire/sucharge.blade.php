@@ -108,5 +108,22 @@
                 @endforeach
             </tbody>
 
+            <tfoot>
+                <tr>
+
+
+                    <th colspan="4" class="text-right">TOTAL GLOBAL</th>
+                    <td></td>
+                    <td></td>
+                    <td> </td>
+                    <td></td>
+                    <td></td>
+                    <th>{{ $surcharges->sum('montant_apayer') }}</th>
+                    <th>{{ $surcharges->sum('montant_payer') }}</th>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+            </tfoot>
     </table>
 </div>
