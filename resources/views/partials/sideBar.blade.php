@@ -30,6 +30,24 @@
 
  <li>
 
+
+    <a href="#" class="menu-toggle">
+        <span>Dysfonctionnnements</span>
+    </a>
+   <ul class="ml-menu">
+
+       <li>
+         <a href="{{route('dysfonctionnnemt.index')}}">Afficher</a>
+        </li>
+        <li>
+         <a  href="{{route('dysfonctionnnemt.create')}}">Ajouter</a>
+
+           </li>
+    </ul>
+</li>
+
+ <li>
+
     <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
 
 
@@ -157,6 +175,25 @@
                         </li>
                         <li>
                          <a  href="{{route('vacation.create')}}">Ajouter</a>
+
+                           </li>
+                    </ul>
+                </li>
+
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Categorie de Dysfonctionnnements</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('categorie-dysfonctionnnemt.index')}}">Afficher</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('categorie-dysfonctionnnemt.create')}}">Ajouter</a>
 
                            </li>
                     </ul>

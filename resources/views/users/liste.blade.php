@@ -21,7 +21,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Cash-Flows
+                    Utilisateur
                 </h2>
                 <br>
                 <a href="{{route('users.create')}}" class="btn btn-info ">Ajouter</a>

@@ -56,10 +56,7 @@ class UsersController extends Controller
         $user->role  = $request->role;
         $user->site_id  = $request->site_id;
         $user->save();
-
-
         Session::flash('success', 'Utilisateur ajouté avec succès ');
-
         return redirect()->back();
     }
 

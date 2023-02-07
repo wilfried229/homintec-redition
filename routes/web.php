@@ -200,13 +200,29 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('point-mensuel-informatiser','PointsMensulesController@indexMontantInformatiser')->name('point-mensuel.indexinformatiser');
     Route::get('point-mensuel-informatiser/getsearch','PointsMensulesController@searchIndexInformatiser')->name('point-mensuel.searchIndexInformatiser');
-
-
      Route::get('logs','LogController@index')->name('logs.index');
-
      Route::get('statistique-get','web\ValidationController@statistiqueVacation')->name('statistique.get');
      Route::get('statistique-index','web\ValidationController@statistiqueVacationView')->name('statistique.index');
 
+
+
+
+
+     Route::get('dysfonctionnnemt/create','DysfonctionnnemtController@create')->name('dysfonctionnnemt.create');
+     Route::get('dysfonctionnnemt/index','DysfonctionnnemtController@index')->name('dysfonctionnnemt.index');
+     Route::get('dysfonctionnnemt/{dysfonctionnnemt}','DysfonctionnnemtController@edit')->name('dysfonctionnnemt.edit');
+     Route::get('dysfonctionnnemt','DysfonctionnnemtController@list')->name('dysfonctionnnemt.list');
+     Route::post('dysfonctionnnemt','DysfonctionnnemtController@store')->name('dysfonctionnnemt.store');
+     Route::put('dysfonctionnnemt/{id}','DysfonctionnnemtController@update')->name('dysfonctionnnemt.update');
+     Route::delete('dysfonctionnnemt/{id}','DysfonctionnnemtController@destroy')->name('dysfonctionnnemt.destroy');
+
+
+     Route::get('categorie-dysfonctionnnemt/create','CategorieDysfonctionnemtsController@create')->name('categorie-dysfonctionnnemt.create');
+     Route::get('categorie-dysfonctionnnemt/index','CategorieDysfonctionnemtsController@index')->name('categorie-dysfonctionnnemt.index');
+     Route::get('categorie-dysfonctionnnemt/{categorieDysfonctionnemts}','CategorieDysfonctionnemtsController@edit')->name('categorie-dysfonctionnnemt.edit');
+     Route::post('categorie-dysfonctionnnemt/store','CategorieDysfonctionnemtsController@store')->name('categorie-dysfonctionnnemt.store');
+     Route::put('categorie-dysfonctionnnemt/{id}','CategorieDysfonctionnemtsController@update')->name('categorie-dysfonctionnnemt.update');
+     Route::delete('categorie-dysfonctionnnemt/{id}','CategorieDysfonctionnemtsController@destroy')->name('categorie-dysfonctionnnemt.destroy');
 
 
     #Route::resources([]);

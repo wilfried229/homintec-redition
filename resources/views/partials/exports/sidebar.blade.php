@@ -140,7 +140,7 @@
 
     @endif
 
-       @if (in_array(Auth::user()->role,['ADMIN','SIRB','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
+       @if (in_array(Auth::user()->role,['ADMIN','HOMINTEC','SUPERVISEUR','SUPERADMIN']) )
 
 
                 <li>
@@ -182,6 +182,24 @@
                             <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
                            </li>
 
+                    </ul>
+                </li>
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Dysfonctionnnements</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('dysfonctionnnemt.index')}}">Afficher</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('dysfonctionnnemt.create')}}">Ajouter</a>
+
+                           </li>
                     </ul>
                 </li>
 
@@ -327,7 +345,23 @@
                     </ul>
                 </li>
 
+                <li>
 
+
+                    <a href="#" class="menu-toggle">
+                        <span>Categorie de Dysfonctionnnements</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="{{route('categorie-dysfonctionnnemt.index')}}">Afficher</a>
+                        </li>
+                        <li>
+                         <a  href="{{route('categorie-dysfonctionnnemt.create')}}">Ajouter</a>
+
+                           </li>
+                    </ul>
+                </li>
                 <li>
 
                     <a href="{{route('users.index')}}" class="menu-toggle">

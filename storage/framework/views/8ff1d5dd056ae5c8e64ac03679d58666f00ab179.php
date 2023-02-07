@@ -27,6 +27,24 @@
     <a href="<?php echo e(route('statistique.index')); ?>"><span>Statistique Vacation </span></a>
  </li>
 
+ <li>
+
+
+    <a href="#" class="menu-toggle">
+        <span>Dysfonctionnnements</span>
+    </a>
+   <ul class="ml-menu">
+
+       <li>
+         <a href="<?php echo e(route('dysfonctionnnemt.index')); ?>">Afficher</a>
+        </li>
+        <li>
+         <a  href="<?php echo e(route('dysfonctionnnemt.create')); ?>">Ajouter</a>
+
+           </li>
+    </ul>
+</li>
+
 
  <li>
 
@@ -157,6 +175,25 @@
                         </li>
                         <li>
                          <a  href="<?php echo e(route('vacation.create')); ?>">Ajouter</a>
+
+                           </li>
+                    </ul>
+                </li>
+
+
+                <li>
+
+
+                    <a href="#" class="menu-toggle">
+                        <span>Categorie de Dysfonctionnnements</span>
+                    </a>
+                   <ul class="ml-menu">
+
+                       <li>
+                         <a href="<?php echo e(route('categorie-dysfonctionnnemt.index')); ?>">Afficher</a>
+                        </li>
+                        <li>
+                         <a  href="<?php echo e(route('categorie-dysfonctionnnemt.create')); ?>">Ajouter</a>
 
                            </li>
                     </ul>
