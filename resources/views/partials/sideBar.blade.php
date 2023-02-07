@@ -27,25 +27,80 @@
     <a href="{{route('statistique.index')}}"><span>Statistique Vacation </span></a>
  </li>
 
-
  <li>
+    <a href="{{route('recette.getByMonth')}}" class="menu-toggle">
+        <span>Recettes manuelles</span>
+    </a>
+    <ul class="ml-menu">
+
+        <li>
+            <a href="{{route('recette.getByMonth')}}">Afficher</a>
+        </li>
+        <li>
+            <a href="{{route('recette.create-index')}}">Ajouter</a>
+
+        </li>
+
+
+    </ul>
+</li>
+
+
+<li>
+
+
+    <a href="{{route('surcharge-manuel.request')}}" class="menu-toggle">
+        <span>Surcharges manuelles</span>
+    </a>
+    <ul class="ml-menu">
+
+        <li>
+            <a href="{{route('surcharge-manuel.request')}}">Afficher </a>
+        </li>
+
+        <li>
+            <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
+        </li>
+
+    </ul>
+</li>
+
+<li>
 
 
     <a href="#" class="menu-toggle">
         <span>Dysfonctionnnements</span>
     </a>
-   <ul class="ml-menu">
+    <ul class="ml-menu">
 
-       <li>
-         <a href="{{route('dysfonctionnnemt.index')}}">Afficher</a>
+        <li>
+            <a href="{{route('dysfonctionnnemt.index')}}">Afficher</a>
         </li>
         <li>
-         <a  href="{{route('dysfonctionnnemt.create')}}">Ajouter</a>
+            <a href="{{route('dysfonctionnnemt.create')}}">Ajouter</a>
 
-           </li>
+        </li>
     </ul>
 </li>
 
+<li>
+
+
+    <a href="{{route('surcharge-manuel.request')}}" class="menu-toggle">
+        <span>Surcharges annulés</span>
+    </a>
+    <ul class="ml-menu">
+
+        <li>
+            <a href="{{route('surcharge-manuel.request')}}">Afficher </a>
+        </li>
+
+        <li>
+            <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
+        </li>
+
+    </ul>
+</li>
  <li>
 
     <a href="{{route('logs.index')}}"><span>Logs Vacations </span></a>
