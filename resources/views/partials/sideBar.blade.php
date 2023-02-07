@@ -28,7 +28,7 @@
  </li>
 
  <li>
-    <a href="{{route('recette.getByMonth')}}" class="menu-toggle">
+    <a  class="menu-toggle">
         <span>Recettes manuelles</span>
     </a>
     <ul class="ml-menu">
@@ -49,7 +49,7 @@
 <li>
 
 
-    <a href="{{route('surcharge-manuel.request')}}" class="menu-toggle">
+    <a  class="menu-toggle">
         <span>Surcharges manuelles</span>
     </a>
     <ul class="ml-menu">
@@ -86,7 +86,7 @@
 <li>
 
 
-    <a href="{{route('surcharge-manuel.request')}}" class="menu-toggle">
+    <a class="menu-toggle">
         <span>Surcharges annulés</span>
     </a>
     <ul class="ml-menu">
