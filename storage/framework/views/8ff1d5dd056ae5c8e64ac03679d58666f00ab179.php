@@ -27,6 +27,7 @@
     <a href="<?php echo e(route('statistique.index')); ?>"><span>Statistique Vacation </span></a>
  </li>
 
+
  <li>
 
 
@@ -44,7 +45,6 @@
            </li>
     </ul>
 </li>
-
 
  <li>
 

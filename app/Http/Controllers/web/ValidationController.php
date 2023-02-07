@@ -137,6 +137,9 @@ class ValidationController extends Controller
 
      public function statistiqueVacation(Request $request)
      {
+
+        $categories = ['TRYCICLE','VEHICULE LEGER','POIDS LOURD 2','POIDS LOURD 3','POIDS LOURD 4','POIDS LOURD 5','POIDS LOURD 6','POIDS LOURD 7','POIDS LOURD 8','POIDS LOURD 9','POIDS LOURD 10'];
+
          $dtStart = $request->date_debut;
          $dtEnd = $request->date_fin;
          $dateDebut  = Carbon::create($dtStart);
@@ -145,13 +148,13 @@ class ValidationController extends Controller
          $reditions = Rediton2::whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
              ->whereTime('heure', '>=', $dateDebut->toTimeString())
              ->whereTime('heure', '<=', $dateFin->toTimeString())
-             ->where('percepteur', $request->percepteur)
-
-             ;
+             ->where('percepteur', $request->percepteur);
          $reditions2 = $reditions->get();
          $sum = $reditions->sum('prix');
+
          $dataStatistiques = [];
-         $dataStatistiques['VEHICULE LEGER'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','VEHICULE LEGER')->count();
+
+
          $dataStatistiques['TRYCICLE'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','TRYCICLE')->count();
          $dataStatistiques['VEHICULE LEGER'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','VEHICULE LEGER')->count();
          $dataStatistiques['POIDS LOURD 2'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','POIDS LOURD')->where('es',2)->count();
@@ -167,9 +170,14 @@ class ValidationController extends Controller
         // dd($dataStatistiques);
 
 
+
          $percepteurs = $request->percepteur;
-         $cabines  = $this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->first()->cabine;
-         return view('dashboard.validation.get-search-statistique', compact('dataStatistiques', 'sum', 'percepteurs', 'cabines','dateDebut','dateFin'));
+         $cabines  = $this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->first();
+
+         $dataSta  = $this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur);
+
+         //dd($dataStatistiques["AUTOBUS"]);
+         return view('dashboard.validation.get-search-statistique', compact('dataSta','dataStatistiques', 'sum', 'percepteurs', 'cabines','dateDebut','dateFin',"categories"));
      }
 
 
