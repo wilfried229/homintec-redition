@@ -209,11 +209,11 @@
                     <ul class="ml-menu">
 
                         <li>
-                            <a href="{{route('surcharge-manuel.request')}}">Afficher </a>
+                            <a href="{{route('surcharge-manuel.request',['type'=>ANNULE])}}">Afficher </a>
                         </li>
 
                         <li>
-                            <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
+                            <a href="{{route('surcharge-manuel.create-index',['type'=>'ANNULE'])}}">Ajouter </a>
                         </li>
 
                     </ul>

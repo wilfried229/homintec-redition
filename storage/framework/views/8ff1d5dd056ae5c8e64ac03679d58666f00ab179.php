@@ -28,24 +28,79 @@
  </li>
 
  <li>
+    <a  class="menu-toggle">
+        <span>Recettes manuelles</span>
+    </a>
+    <ul class="ml-menu">
+
+        <li>
+            <a href="<?php echo e(route('recette.getByMonth')); ?>">Afficher</a>
+        </li>
+        <li>
+            <a href="<?php echo e(route('recette.create-index')); ?>">Ajouter</a>
+
+        </li>
+
+
+    </ul>
+</li>
+
+
+<li>
+
+
+    <a  class="menu-toggle">
+        <span>Surcharges manuelles</span>
+    </a>
+    <ul class="ml-menu">
+
+        <li>
+            <a href="<?php echo e(route('surcharge-manuel.request')); ?>">Afficher </a>
+        </li>
+
+        <li>
+            <a href="<?php echo e(route('surcharge-manuel.create-index')); ?>">Ajouter </a>
+        </li>
+
+    </ul>
+</li>
+
+<li>
 
 
     <a href="#" class="menu-toggle">
         <span>Dysfonctionnnements</span>
     </a>
-   <ul class="ml-menu">
+    <ul class="ml-menu">
 
-       <li>
-         <a href="<?php echo e(route('dysfonctionnnemt.index')); ?>">Afficher</a>
+        <li>
+            <a href="<?php echo e(route('dysfonctionnnemt.index')); ?>">Afficher</a>
         </li>
         <li>
-         <a  href="<?php echo e(route('dysfonctionnnemt.create')); ?>">Ajouter</a>
+            <a href="<?php echo e(route('dysfonctionnnemt.create')); ?>">Ajouter</a>
 
-           </li>
+        </li>
     </ul>
 </li>
 
+<li>
 
+
+    <a class="menu-toggle">
+        <span>Surcharges annulés</span>
+    </a>
+    <ul class="ml-menu">
+
+        <li>
+            <a href="<?php echo e(route('surcharge-manuel.request')); ?>">Afficher </a>
+        </li>
+
+        <li>
+            <a href="<?php echo e(route('surcharge-manuel.create-index')); ?>">Ajouter </a>
+        </li>
+
+    </ul>
+</li>
  <li>
 
     <a href="<?php echo e(route('logs.index')); ?>"><span>Logs Vacations </span></a>
@@ -105,6 +160,33 @@
         <?php if(in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) ): ?>
 
 
+        <li>
+
+
+            <a href="<?php echo e(route("point-essieux.searchIndex")); ?>" class="menu-toggle">
+                <span>Points Essieux</span>
+            </a>
+
+        </li>
+
+        <li>
+
+
+            <a href="<?php echo e(route('point-mensuel.searchIndex')); ?>" class="menu-toggle">
+                <span>Points Mensuels</span>
+            </a>
+
+        </li>
+
+        <li>
+
+
+            <a href="<?php echo e(route('point-percepteur.searchIndex')); ?>" >
+                <span>Points Percepteurs</span>
+            </a>
+
+        </li>
+        <li>
                 <li>
 
 

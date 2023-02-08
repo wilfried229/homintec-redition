@@ -21,7 +21,7 @@
                     </a>
                 </li>
 
- @if (in_array(Auth::user()->role,["ADMIN",'SAFER','HOMINTEC','SUPERADMIN']) )
+ @if (in_array(Auth::user()->role,["ADMIN",'SUPERVISEUR','HOMINTEC','SUPERADMIN']) )
 
  <li>
     <a href="{{route('statistique.index')}}"><span>Statistique Vacation </span></a>
@@ -92,11 +92,11 @@
     <ul class="ml-menu">
 
         <li>
-            <a href="{{route('surcharge-manuel.request')}}">Afficher </a>
+            <a href="{{route('surcharge-manuel.request',['type'=>'ANNULE'])}}">Afficher </a>
         </li>
 
         <li>
-            <a href="{{route('surcharge-manuel.create-index')}}">Ajouter </a>
+            <a href="{{route('surcharge-manuel.create-index',['type'=>"ANNULE"])}}">Ajouter </a>
         </li>
 
     </ul>
