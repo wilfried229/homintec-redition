@@ -28,6 +28,7 @@ class Dysfonctionnnemt extends Model
         "besoin",
         "preuvre",
         "observation",
+        "annexes",
         'categorie_dysfonctionnemt_id'
     ];
 

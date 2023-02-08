@@ -28,6 +28,7 @@ class CreateDysfonctionnnemtsTable extends Migration
             $table->text("resultat_obtenu");
             $table->text("besoin");
             $table->string("preuvre");
+            $table->text("annexes");
             $table->text("observation");
             $table->unsignedInteger('categorie_dysfonctionnemt_id');
             $table->unsignedInteger('site_id');

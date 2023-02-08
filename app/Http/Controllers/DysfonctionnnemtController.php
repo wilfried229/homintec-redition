@@ -83,6 +83,7 @@ class DysfonctionnnemtController extends Controller
             "besoin"=>$request->besoin,
             "preuvre"=>$request->preuvre,
             "observation"=>$request->observation,
+            "annexes"=>$request->annexes,
             'categorie_dysfonctionnemt_id'=>$request->categorie_dysfonctionnemt_id
         ]);
 
@@ -105,6 +106,7 @@ class DysfonctionnnemtController extends Controller
                 "besoin"=>$request->besoin?? $dysfonctionnnemt->besoin,
                 "preuvre"=>$request->preuvre?? $dysfonctionnnemt->preuvre,
                 "observation"=>$request->observation?? $dysfonctionnnemt->observation,
+                "annexes"=>$request->annexes ??$dysfonctionnnemt->annexes,
                 'categorie_dysfonctionnemt_id'=>$request->categorie_dysfonctionnemt_id ?? $dysfonctionnnemt->categorie_dysfonctionnemt_id,
             ]);
             return  back() ->with([

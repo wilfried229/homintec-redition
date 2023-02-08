@@ -143,6 +143,14 @@
 
     </div>
 
+    <div class="col-lg-12 col-md-12">
+        <label for="">Annexes</label>
+        <input type="text" name="annexes" class="form-control" value="{{ $$dysfonctionnement->annnexes ??"" }}">
+
+
+    </div>
+
+
 
 
     <div class="col-md-12">

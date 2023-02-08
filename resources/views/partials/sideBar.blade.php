@@ -160,6 +160,33 @@
         @if (in_array(Auth::user()->role,['ADMIN','SUPERADMIN']) )
 
 
+        <li>
+
+
+            <a href="{{ route("point-essieux.searchIndex") }}" class="menu-toggle">
+                <span>Points Essieux</span>
+            </a>
+
+        </li>
+
+        <li>
+
+
+            <a href="{{route('point-mensuel.searchIndex')}}" class="menu-toggle">
+                <span>Points Mensuels</span>
+            </a>
+
+        </li>
+
+        <li>
+
+
+            <a href="{{route('point-percepteur.searchIndex')}}" >
+                <span>Points Percepteurs</span>
+            </a>
+
+        </li>
+        <li>
                 <li>
 
 
