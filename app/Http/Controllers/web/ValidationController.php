@@ -9,6 +9,7 @@ use App\Models\Rediton2;
 use App\Models\Site;
 use App\Voie;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 
 class ValidationController extends Controller
 {
@@ -145,12 +146,8 @@ class ValidationController extends Controller
          $dateDebut  = Carbon::create($dtStart);
          $dateFin  = Carbon::create($dtEnd);
          /// dd($dateDebut->toDateString());
-         $reditions = Rediton2::whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
-             ->whereTime('heure', '>=', $dateDebut->toTimeString())
-             ->whereTime('heure', '<=', $dateFin->toTimeString())
-             ->where('percepteur', $request->percepteur);
-         $reditions2 = $reditions->get();
-         $sum = $reditions->sum('prix');
+         $reditions2 = $this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->get();
+         $sum = $this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->sum('prix');
 
          $dataStatistiques = [];
 
@@ -174,10 +171,12 @@ class ValidationController extends Controller
          $percepteurs = $request->percepteur;
          $cabines  = $this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->first();
 
+         $cabine = $cabines->cabine?? "-";
          $dataSta  = $this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur);
+        ////$this->generatePointVacationDocument($dataStatistiques,$percepteurs,$cabines,$dateDebut,$dateFin);
 
-         //dd($dataStatistiques["AUTOBUS"]);
-         return view('dashboard.validation.get-search-statistique', compact('dataSta','dataStatistiques', 'sum', 'percepteurs', 'cabines','dateDebut','dateFin',"categories"));
+         //dd($cabines);
+         return view('dashboard.validation.get-search-statistique', compact('dataSta','dataStatistiques', 'sum', 'percepteurs', 'cabine','dateDebut','dateFin',"categories"));
      }
 
 
@@ -212,5 +211,73 @@ class ValidationController extends Controller
         return $reditions;
     }
 
+
+
+       /**
+     * @param PointJournalier $point
+     * @return string
+     */
+    private function generatePointVacationDocument($dataStatistiques,$percepteurs,$cabines,$dateDebut,$dateFin): string {
+        $path = public_path().'/points-vacations';
+        File::makeDirectory($path, $mode = 0777, true, true);
+        $filename = time() . '_'. 'point-vacation.pdf';
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->getDomPDF()->set_option("enable_php", true);
+        $pdf->loadView('pdf.statistique', array(
+            "dataStatistiques" => $dataStatistiques,
+            'percepteurs'=>$percepteurs,
+            'cabines'=>$cabines,
+            'dateDebut'=>$dateDebut,
+            'dateFin'=>$dateFin
+
+        ));
+       return $pdf->stream(env('APP_NAME', 'SUPERVISION WEB  APP').'-pointVaction.pdf')
+       ->header('Content-Type','application/pdf');
+    }
+
+
+
+    public function printStatistique($dateDebut,$dateFin,$cabines,$percepteur){
+
+        $dtStart = $dateDebut;
+        $dtEnd = $dateFin;
+        $dateDebut  = Carbon::create($dtStart);
+        $dateFin  = Carbon::create($dtEnd);
+
+        $dataStatistiques = $this->dataSatitsiques($dateDebut,$dateFin,$percepteur);
+        $path = public_path().'/points-vacations';
+        File::makeDirectory($path, $mode = 0777, true, true);
+        $filename = time() . '_'. 'point-vacation.pdf';
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->getDomPDF()->set_option("enable_php", true);
+        $pdf->loadView('pdf.statistique', array(
+            "dataStatistiques" => $dataStatistiques,
+            'percepteurs'=>$percepteur,
+            'cabines'=>$cabines,
+            'dateDebut'=>$dateDebut,
+            'dateFin'=>$dateFin
+
+        ));
+       return $pdf->stream(env('APP_NAME', 'SUPERVISION WEB  APP').'-pointVaction.pdf')
+       ->header('Content-Type','application/pdf');
+    }
+
+    private function dataSatitsiques($dateDebut,$dateFin,$percepteur){
+        $dataStatistiques = [];
+        $dataStatistiques['TRYCICLE'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','TRYCICLE')->count();
+        $dataStatistiques['VEHICULE LEGER'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','VEHICULE LEGER')->count();
+        $dataStatistiques['POIDS LOURD 2'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','POIDS LOURD')->where('es',2)->count();
+        $dataStatistiques['POIDS LOURD 3'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','POIDS LOURD')->where('es',3)->count();
+        $dataStatistiques['POIDS LOURD 4'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','POIDS LOURD')->where('es','=',4)->count();
+        $dataStatistiques['POIDS LOURD 5'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',5)->count();
+        $dataStatistiques['POIDS LOURD 6'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',6)->count();
+        $dataStatistiques['POIDS LOURD 7'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',7)->count();
+        $dataStatistiques['POIDS LOURD 8'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',8)->count();
+        $dataStatistiques['POIDS LOURD 9'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',9)->count();
+        $dataStatistiques['POIDS LOURD 10'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','POIDS LOURD')->where('es','=',10)->count();
+        $dataStatistiques['AUTOBUS'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','AUTOBUS')->count();
+       // dd($dataStatistiques);
+       return $dataStatistiques;
+    }
 
 }

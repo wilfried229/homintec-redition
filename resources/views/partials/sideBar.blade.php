@@ -22,11 +22,11 @@
                     </a>
                 </li>
 
-                @if (in_array(Auth::user()->role,["ADMIN",'SAFER','HOMINTEC','SUPERADMIN']) )
-
                 <li>
                     <a href="{{route('statistique.index')}}"><span>Statistique Vacation </span></a>
                 </li>
+
+                @if (in_array(Auth::user()->role,["ADMIN",'SAFER','HOMINTEC','SUPERADMIN']) )
 
 
                 <li>

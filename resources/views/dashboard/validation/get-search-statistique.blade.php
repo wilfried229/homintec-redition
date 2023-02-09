@@ -21,10 +21,17 @@
                 <h2>
                     Statistiques vacation
                 </h2>
-{{--
-                <button class="btn btn-info" onclick="window.print()">Print this page</button>
- --}}
 
+
+
+                 <a  onclick="document.getElementById('form_telecharger_facture').submit()"  class="btn btn-info">
+
+                    <i title="Imprimer" style="cursor: pointer" class="fa fa-download text-secondary"></i>
+                    Imprimer
+                 </a>
+                <form hidden target="_blank" action="{{route("statistique.print",['date_debut'=>$dateDebut,'date_fin'=>$dateFin,'cabines'=>$cabine,'percepteur'=>$percepteurs])}}" method="get" id="form_telecharger_facture">
+                    @csrf
+                </form>
             </div>
             <div class="body">
 
@@ -33,7 +40,7 @@
                         <label for="">Percepteur : {{ $percepteurs }}</label>
                     </div>
                     <div class="col-lg-4">
-                        <label for="">Cabine {{ $cabines->cabine ?? "-" }}</label>
+                        <label for="">Cabine {{ $cabine  }}</label>
                     </div>
                     <div class="col-lg-4">
                         <label for="">Date de Debut : {{ $dateDebut }}</label>
@@ -119,7 +126,9 @@
 
                 </div>
 
-                {{-- <div class="row">
+                {{--
+
+                    <div class="row">
 
 
                     <div class="col-lg-3">

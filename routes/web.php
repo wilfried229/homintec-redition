@@ -203,6 +203,8 @@ Route::group(['middleware' => ['auth']], function () {
      Route::get('logs','LogController@index')->name('logs.index');
      Route::get('statistique-get','web\ValidationController@statistiqueVacation')->name('statistique.get');
      Route::get('statistique-index','web\ValidationController@statistiqueVacationView')->name('statistique.index');
+     Route::get('statistique-print/{date_debut}/{date_fin}/{cabines}/{percepteur}','web\ValidationController@printStatistique')->name('statistique.print');
+
 
 
 
