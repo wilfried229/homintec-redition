@@ -20,25 +20,30 @@
                     Statistiques vacation
                 </h2>
 
-
-
-                 <a  onclick="document.getElementById('form_telecharger_facture').submit()"  class="btn btn-info">
+                <?php if($cabines  != null): ?>
+                <a  onclick="document.getElementById('form_telecharger_facture').submit()"  class="btn btn-info">
 
                     <i title="Imprimer" style="cursor: pointer" class="fa fa-download text-secondary"></i>
                     Imprimer
                  </a>
-                <form hidden target="_blank" action="<?php echo e(route("statistique.print",['date_debut'=>$dateDebut,'date_fin'=>$dateFin,'cabines'=>$cabine,'percepteur'=>$percepteurs])); ?>" method="get" id="form_telecharger_facture">
+                 <form hidden target="_blank" action="<?php echo e(route("statistique.print",['date_debut'=>$dateDebut,'date_fin'=>$dateFin,'cabines'=>$cabines->cabine,'percepteur'=>$percepteurs])); ?>" method="get" id="form_telecharger_facture">
                     <?php echo csrf_field(); ?>
                 </form>
+                <?php endif; ?>
+
             </div>
             <div class="body">
 
+
+                <?php if($cabines  == null): ?>
+
+                <?php else: ?>
                 <div class="row">
                     <div class="col-lg-4">
                         <label for="">Percepteur : <?php echo e($percepteurs); ?></label>
                     </div>
                     <div class="col-lg-4">
-                        <label for="">Cabine <?php echo e($cabine); ?></label>
+                        <label for="">Cabine  <?php echo e($cabines->cabine); ?></label>
                     </div>
                     <div class="col-lg-4">
                         <label for="">Date de Debut : <?php echo e($dateDebut); ?></label>
@@ -48,74 +53,72 @@
                         <label for="">Date de fin : <?php echo e($dateFin); ?></label>
                     </div>
                 </div>
+                <?php endif; ?>
 
 
-                <div class="row">
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                            <thead>
-                                <th colspan="">Nombre de vehicules par categorie</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <tr>
-                                    <td colspan="">
+                <?php if($cabines  == null): ?>
 
-                                        <?php if($c =="TRYCICLE"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->count()); ?></label>
-                                        <?php endif; ?>
-                                        <?php if($c =="VEHICULE LEGER"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->count()); ?></label>
+                <div>
+                    Pas de données pour cette Vacation.
+                </div>
+               <?php else: ?>
+               <div class="row">
 
-                                        <?php endif; ?>
-
-                                        <?php if($c =="POIDS LOURD 2"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->where('es',2)->count()); ?></label>
-                                        <?php endif; ?>
-                                        <?php if($c =="POIDS LOURD 3"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->where('es',3)->count()); ?></label>
-                                        <?php endif; ?>
-                                        <?php if($c =="POIDS LOURD 4"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->where('es',4)->count()); ?></label>
-                                        <?php endif; ?>
-
-                                        <?php if($c =="POIDS LOURD 5"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->where('es',5)->count()); ?></label>
-                                        <?php endif; ?>
-
-                                        <?php if($c =="POIDS LOURD 6"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->where('es',6)->count()); ?></label>
-                                        <?php endif; ?>
-
-                                        <?php if($c =="POIDS LOURD 7"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->where('es',7)->count()); ?></label>
-                                        <?php endif; ?>
-
-                                        <?php if($c =="POIDS LOURD 8"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->where('es',8)->count()); ?></label>
-                                        <?php endif; ?>
-                                        <?php if($c =="POIDS LOURD 9"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->where('es',9)->count()); ?></label>
-                                        <?php endif; ?>
-                                        <?php if($c =="POIDS LOURD 10"): ?>
-                                        <?php echo e($c); ?> : <label for=""> <?php echo e($dataSta->where('ptrac','=',$c)->where('es',10)->count()); ?></label>
-                                        <?php endif; ?>
-                                    </td>
-
-
-                                </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-lg-12">
+                <h1>Nombre de vehicules par categorie</h1>
 
                 </div>
+            </div>
 
-                
+            <div class="row">
+
+                <div class="col-lg-3">
+                    <label for=""> TRYCICLE : <?php echo e($dataStatistiques['TRYCICLE']); ?></label>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for=""> VEHICULE LEGER : <?php echo e($dataStatistiques['VEHICULE LEGER']); ?></label>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for=""> AUTOBUS : <?php echo e($dataStatistiques['AUTOBUS']); ?></label>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for=""> POIDS LOURD  Essieu 2 : <?php echo e($dataStatistiques['POIDS LOURD 2']); ?></label>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for=""> POIDS LOURD Essieu 3 : <?php echo e($dataStatistiques['POIDS LOURD 3']); ?></label>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for=""> POIDS LOURD Essieu 4 : <?php echo e($dataStatistiques['POIDS LOURD 4']); ?></label>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for=""> POIDS LOURD Essieu  5 : <?php echo e($dataStatistiques['POIDS LOURD 5']); ?></label>
+                </div>
+                <div class="col-lg-3">
+                    <label for=""> POIDS LOURD Essieu  6 : <?php echo e($dataStatistiques['POIDS LOURD 6']); ?></label>
+                </div>
+                <div class="col-lg-3">
+                    <label for=""> POIDS LOURD  Essieu 7 : <?php echo e($dataStatistiques['POIDS LOURD 7']); ?></label>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for=""> POIDS LOURD Essieu 8 : <?php echo e($dataStatistiques['POIDS LOURD 8']); ?></label>
+                </div>
+                <div class="col-lg-3">
+                    <label for=""> POIDS LOURD Essieu 9 : <?php echo e($dataStatistiques['POIDS LOURD 9']); ?></label>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for=""> POIDS LOURD Essieu 10 : <?php echo e($dataStatistiques['POIDS LOURD 10']); ?></label>
+                </div>
+            </div>
+               <?php endif; ?>
 
             </div>
         </div>

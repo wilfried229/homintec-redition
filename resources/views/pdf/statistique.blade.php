@@ -5,84 +5,141 @@
 @endsection
 
 @section("title")
-    Statistique Vacation
+Statistique Vacation
 @endsection
 
 @section("content")
-    <div>
-        <!-- client aside -->
-        <div style="float:left">
-
-        </div>
-        <!-- entreprise aside -->
-
-    </div>
-
-    <div class="row">
+<div>
+    <!-- client aside -->
+    <div style="">
         <div class="col-lg-4">
-            <span style="" for="">Percepteur : {{ $percepteurs }}</span>
+            <span style="font-weight: bold" for="">INFORMATION DE VACATION</span>
         </div>
         <div class="col-lg-4">
-            <span for="">Cabine {{ $cabines->cabine ?? "-" }}</span>
+            <span style="font-weight: bold" for="">{{ date('d/M/Y H:i') }}</span>
         </div>
         <div class="col-lg-4">
-            <span for="">Date de Debut : {{ $dateDebut }}</span>
-
-        </div>
-        <div class="col-lg-4">
-            <span for="">Date de fin : {{ $dateFin }}</span>
+            <span style="font-weight: bold" for="">{{ $cabines->site }}</span>
         </div>
     </div>
+    <!-- entreprise aside -->
 
-    <br>
-    <br>
+</div>
 
-                    <div class="row">
+<div class="row">
 
 
-                    <div class="col-lg-3">
-                        <label for=""> TRYCICLE : {{ $dataStatistiques['TRYCICLE'] }}</label>
-                    </div>
+    <div class="col-lg-4">
+        <span style="font-weight: bold" for="">Percepteur : {{ $percepteurs }}</span>
+    </div>
+    <div class="col-lg-4">
+        <span style="font-weight: bold">Cabine {{ $cabines->cabine }}</span>
+    </div>
+    <div class="col-lg-4">
+        <span style="font-weight: bold">Date de Debut : {{ $dateDebut }}</span>
 
-                    <div class="col-lg-3">
-                        <label for=""> VEHICULE LEGER : {{ $dataStatistiques['VEHICULE LEGER'] }}</label>
-                    </div>
+    </div>
+    <div class="col-lg-4">
+        <span style="font-weight: bold">Date de fin : {{ $dateFin }}</span>
+    </div>
+</div>
+<div>
+    <table>
+        <thead>
 
-                    <div class="col-lg-3">
-                        <label for=""> AUTOBUS : {{ $dataStatistiques['AUTOBUS'] }}</label>
-                    </div>
+            <tr>
+                <th colspan="2" style="font-size:10px">NBR VEHICULE : {{ $dataStatistiques['NOMBREVEHICULE'] }}  </th>
+            </tr>
+            <tr>
+                <th style="font-size:10px">CATEGORIES </th>
+                <th style="font-size: 10px">NOMBRES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
 
-                    <div class="col-lg-3">
-                        <label for=""> POIDS LOURD Essieu 2 : {{ $dataStatistiques['POIDS LOURD 2'] }}</label>
-                    </div>
+                <td style="float: center; font-size: 10px">MOTO</td>
+                <td> {{ $dataStatistiques['MOTO'] }}</td>
+            </tr>
+            <tr>
 
-                    <div class="col-lg-3">
-                        <label for=""> POIDS LOURD Essieu 3 : {{ $dataStatistiques['POIDS LOURD 3'] }}</label>
-                    </div>
+                <td style="float: center;font-size: 10px">TRYCICLE</td>
+                <td> {{ $dataStatistiques['TRYCICLE'] }}</td>
+            </tr>
 
-                    <div class="col-lg-3">
-                        <label for=""> POIDS LOURD Essieu 4 : {{ $dataStatistiques['POIDS LOURD 4'] }}</label>
-                    </div>
+            <tr>
 
-                    <div class="col-lg-3">
-                        <label for=""> POIDS LOURD Essieu 5 : {{ $dataStatistiques['POIDS LOURD 5'] }}</label>
-                    </div>
-                    <div class="col-lg-3">
-                        <label for=""> POIDS LOURD Essieu 6 : {{ $dataStatistiques['POIDS LOURD 6'] }}</label>
-                    </div>
-                    <div class="col-lg-3">
-                        <label for=""> POIDS LOURD Essieu 7 : {{ $dataStatistiques['POIDS LOURD 7'] }}</label>
-                    </div>
+                <td style="float: center;font-size: 10px">VL</td>
+                <td> {{ $dataStatistiques['VEHICULE LEGER'] }}</td>
+            </tr>
 
-                    <div class="col-lg-3">
-                        <label for=""> POIDS LOURD Essieu 8 : {{ $dataStatistiques['POIDS LOURD 8'] }}</label>
-                    </div>
-                    <div class="col-lg-3">
-                        <label for=""> POIDS LOURD Essieu 9 : {{ $dataStatistiques['POIDS LOURD 9'] }}</label>
-                    </div>
 
-                    <div class="col-lg-3">
-                        <label for=""> POIDS LOURD Essieu 10 : {{ $dataStatistiques['POIDS LOURD 10'] }}</label>
-                    </div>
-                </div>
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">AUTOBUS</td>
+                <td> {{ $dataStatistiques['AUTOBUS'] }}</td>
+            </tr>
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">PL 2S</td>
+                <td> {{ $dataStatistiques['POIDS LOURD 2'] }}</td>
+            </tr>
+
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">PL 3S</td>
+                <td> {{ $dataStatistiques['POIDS LOURD 3'] }}</td>
+            </tr>
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">PL 4S</td>
+                <td> {{ $dataStatistiques['POIDS LOURD 4'] }}</td>
+            </tr>
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">PL 5S</td>
+                <td> {{ $dataStatistiques['POIDS LOURD 5'] }}</td>
+            </tr>
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">PL 6S</td>
+                <td> {{ $dataStatistiques['POIDS LOURD 6'] }}</td>
+            </tr>
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">PL 7S</td>
+                <td> {{ $dataStatistiques['POIDS LOURD 7'] }}</td>
+            </tr>
+
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">PL 8S</td>
+                <td> {{ $dataStatistiques['POIDS LOURD 8'] }}</td>
+            </tr>
+
+            <tr>
+
+                <td style="float:center;font-size: 10px">PL 9S</td>
+                <td> {{ $dataStatistiques['POIDS LOURD 9'] }}</td>
+            </tr>
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">PL 10S</td>
+                <td> {{ $dataStatistiques['POIDS LOURD 10'] }}</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+  </div>
 @endsection

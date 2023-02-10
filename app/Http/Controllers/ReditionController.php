@@ -28,10 +28,10 @@ class ReditionController extends Controller
      */
         public function index()
     {
-        $reditions  = Rediton2::get()->take(10);
 
+        $validation =  Rediton2::get();
 
-        return response()->json($reditions, 200);
+        return response()->json($validation, 200);
     }
 
     /**

@@ -121,7 +121,7 @@ class Redition2Controller extends Controller
             $redition2->date = $request->date;
             $redition2->date_api = $this->dateNow();
             $redition2->cabine  = $request->cabine;
-            $redition2->prix = $request->prix;
+            $redition2->prix = intval($request->prix);
             $redition2->sens = $request->sens;
             $redition2->type = $request->type;
             $redition2->ptrac = $request->ptrac;

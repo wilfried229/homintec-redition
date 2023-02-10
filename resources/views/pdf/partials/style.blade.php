@@ -130,7 +130,7 @@
         text-align: right;
     }
 
-    @page { margin-top: 0; margin-bottom: 120px}
+    @page { margin-top: 0; margin-bottom: 100px,}
     header {
         position: fixed;
         left: 0; top: 0; right: 0;
