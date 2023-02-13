@@ -168,15 +168,24 @@
             </a>
 
         </li>
-
         <li>
 
 
-            <a href="{{route('point-mensuel.searchIndex')}}" class="menu-toggle">
+            <a href="#" class="menu-toggle">
                 <span>Points Mensuels</span>
             </a>
+           <ul class="ml-menu">
 
+               <li>
+                 <a href="{{route('point-mensuel.searchIndex')}}">Coupon</a>
+                </li>
+                <li>
+                 <a  href="{{route('point-mensuel.searchIndexInformatiser')}}">Informatiser</a>
+
+                   </li>
+            </ul>
         </li>
+
 
         <li>
 

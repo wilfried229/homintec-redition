@@ -21,7 +21,7 @@
                     </a>
                 </li>
 
- <?php if(in_array(Auth::user()->role,["ADMIN",'SAFER','HOMINTEC','SUPERADMIN']) ): ?>
+ <?php if(in_array(Auth::user()->role,["ADMIN",'SUPERVISEUR','HOMINTEC','SUPERADMIN']) ): ?>
 
  <li>
     <a href="<?php echo e(route('statistique.index')); ?>"><span>Statistique Vacation </span></a>
@@ -92,11 +92,11 @@
     <ul class="ml-menu">
 
         <li>
-            <a href="<?php echo e(route('surcharge-manuel.request')); ?>">Afficher </a>
+            <a href="<?php echo e(route('surcharge-manuel.request',['type'=>'ANNULE'])); ?>">Afficher </a>
         </li>
 
         <li>
-            <a href="<?php echo e(route('surcharge-manuel.create-index')); ?>">Ajouter </a>
+            <a href="<?php echo e(route('surcharge-manuel.create-index',['type'=>"ANNULE"])); ?>">Ajouter </a>
         </li>
 
     </ul>
@@ -168,15 +168,24 @@
             </a>
 
         </li>
-
         <li>
 
 
-            <a href="<?php echo e(route('point-mensuel.searchIndex')); ?>" class="menu-toggle">
+            <a href="#" class="menu-toggle">
                 <span>Points Mensuels</span>
             </a>
+           <ul class="ml-menu">
 
+               <li>
+                 <a href="<?php echo e(route('point-mensuel.searchIndex')); ?>">Coupon</a>
+                </li>
+                <li>
+                 <a  href="<?php echo e(route('point-mensuel.searchIndexInformatiser')); ?>">Informatiser</a>
+
+                   </li>
+            </ul>
         </li>
+
 
         <li>
 

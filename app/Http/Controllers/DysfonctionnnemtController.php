@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\categorieDysfonctionnemts;
 use App\Dysfonctionnnemt;
 use App\Models\Site;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,11 +33,14 @@ class DysfonctionnnemtController extends Controller
      */
     public function list(Request $request)
     {
-
+        $dtStart = $request->date_debut;
+        $dtEnd = $request->date_fin;
+        $dateDebut  = Carbon::create($dtStart);
+        $dateFin  = Carbon::create($dtEnd);
+        
         $dysfonctionnemts = Dysfonctionnnemt::where("site_id",$request->site_id)
-        ->whereBetween('date', [$request->date_debut, $request->date_fin])
+        ->whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
         ->get();
-
 
         //dd($dysfonctionnemts);
         $site = Site::find($request->site_id);
