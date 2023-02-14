@@ -88,12 +88,17 @@
 
 
                 <div class="col-lg-3">
-                    <label for=""> TRYCICLE : {{ $dataStatistiques['TRYCICLE'] }}</label>
+                    <label for=""> TRICYCLE : {{ $dataStatistiques['TRICYCLE'] }}</label>
                 </div>
 
                 <div class="col-lg-3">
                     <label for=""> VEHICULE LEGER : {{ $dataStatistiques['VEHICULE LEGER'] }}</label>
                 </div>
+
+                <div class="col-lg-3">
+                    <label for=""> MINI BUS : {{ $dataStatistiques['MINIBUS'] }}</label>
+                </div>
+
 
                 <div class="col-lg-3">
                     <label for=""> AUTOBUS : {{ $dataStatistiques['AUTOBUS'] }}</label>

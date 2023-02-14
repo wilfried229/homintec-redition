@@ -63,8 +63,8 @@ Statistique Vacation
             </tr>
             <tr>
 
-                <td style="float: center;font-size: 10px">TRYCICLE</td>
-                <td> {{ $dataStatistiques['TRYCICLE'] }}</td>
+                <td style="float: center;font-size: 10px">TRICYCLE</td>
+                <td> {{ $dataStatistiques['TRICYCLE'] }}</td>
             </tr>
 
             <tr>
@@ -73,6 +73,12 @@ Statistique Vacation
                 <td> {{ $dataStatistiques['VEHICULE LEGER'] }}</td>
             </tr>
 
+
+            <tr>
+
+                <td style="float: center;font-size: 10px">MINI BUS</td>
+                <td> {{ $dataStatistiques['MINIBUS'] }}</td>
+            </tr>
 
 
             <tr>

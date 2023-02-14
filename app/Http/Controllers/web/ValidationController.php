@@ -155,8 +155,13 @@ class ValidationController extends Controller
          $dataStatistiques = [];
 
 
-         $dataStatistiques['TRYCICLE'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','TRYCICLE')->count();
+        // $dataStatistiques['TRYCICLE'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','TRYCICLE')->count();
+
+
+         $dataStatistiques['TRICYCLE'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','TRICYCLE')->count();
+
          $dataStatistiques['VEHICULE LEGER'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','VEHICULE LEGER')->count();
+         $dataStatistiques['MINIBUS'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','=','MINIBUS')->count();
          $dataStatistiques['POIDS LOURD 2'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','POIDS LOURD')->where('es',2)->count();
          $dataStatistiques['POIDS LOURD 3'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','POIDS LOURD')->where('es',3)->count();
          $dataStatistiques['POIDS LOURD 4'] =$this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->where('ptrac','POIDS LOURD')->where('es','=',4)->count();
@@ -193,7 +198,7 @@ class ValidationController extends Controller
 
     public function statistiqueVacationView(Request $request)
     {
- 
+
 
         $percepteurs =  Rediton2::distinct()->select('percepteur')->get();
 
@@ -209,8 +214,8 @@ class ValidationController extends Controller
     public static function searchValidationStatistque($dateDebut,$dateFin,$percepteur){
 
         $reditions = Rediton2::whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
-        ->whereTime('heure', '>=', $dateDebut->toTimeString())
-        ->whereTime('heure', '<=', $dateFin->toTimeString())
+    //  ->whereTime('heure', '>=', $dateDebut->toTimeString())
+      ///  ->whereTime('heure', '<=', $dateFin->toTimeString())
         ->where('percepteur', $percepteur);
         return $reditions;
     }
@@ -273,8 +278,9 @@ class ValidationController extends Controller
 
     private function dataSatitsiques($dateDebut,$dateFin,$percepteur){
         $dataStatistiques = [];
-        $dataStatistiques['TRYCICLE'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','TRYCICLE')->count();
+        $dataStatistiques['TRICYCLE'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','TRICYCLE')->count();
         $dataStatistiques['VEHICULE LEGER'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','VEHICULE LEGER')->count();
+        $dataStatistiques['MINIBUS'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','=','MINIBUS')->count();
         $dataStatistiques['POIDS LOURD 2'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','POIDS LOURD')->where('es',2)->count();
         $dataStatistiques['POIDS LOURD 3'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','POIDS LOURD')->where('es',3)->count();
         $dataStatistiques['POIDS LOURD 4'] =$this->searchValidationStatistque($dateDebut,$dateFin,$percepteur)->where('ptrac','POIDS LOURD')->where('es','=',4)->count();
