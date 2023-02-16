@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], function () {
 
+
+    Route::post("login",'UsersController@login');
+    Route::get("list-percepteur",'PercepteurController@listPercepteur');
+
+
     /// Route crud redition
     Route::resources([
         'reddition' => 'ReditionController',

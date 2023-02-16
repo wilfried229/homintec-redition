@@ -37,7 +37,7 @@ class DysfonctionnnemtController extends Controller
         $dtEnd = $request->date_fin;
         $dateDebut  = Carbon::create($dtStart);
         $dateFin  = Carbon::create($dtEnd);
-        
+
         $dysfonctionnemts = Dysfonctionnnemt::where("site_id",$request->site_id)
         ->whereBetween('date', [$dateDebut->toDateString(), $dateFin->toDateString()])
         ->get();
@@ -73,7 +73,7 @@ class DysfonctionnnemtController extends Controller
     {
         $dysfonctionnnemt = Dysfonctionnnemt::create([
             "date"=>$request->date,
-            "site_id" =>Auth::user()->id,
+            "site_id" =>Auth::user()->site_id,
             "localisation"=>$request->localisation,
             "panne_sirat"=>$request->panne_sirat,
             "panne_homintec"=>$request->panne_homintec,

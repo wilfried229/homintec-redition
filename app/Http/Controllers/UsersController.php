@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use App\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -101,4 +103,42 @@ class UsersController extends Controller
        }
 
     }
+
+    public function login(Request $request){
+
+        try {
+            $email = $request->input('email');
+            $password = $request->input('password');
+            $user = User::query()
+                ->where('email', '=', $email)
+                ->first();
+            if($user == null) { // user not found
+                return response()->json([
+                    "message"=> "Cet utilisateur n'existe pas"
+                ], Response::HTTP_UNAUTHORIZED);
+            }
+
+            // match password
+            $match = Hash::check($password, $user->password);
+            if($match) { // login successfully
+
+                $response['user'] = $user;
+                Log::info($user);
+
+                return response()->json($user, Response::HTTP_OK);
+            } else {
+                return response()->json([
+                        "message"=> "Mot de passe incorrect"
+                    ], Response::HTTP_UNAUTHORIZED);
+            }
+        }catch (QueryException $exception) {
+            Log::error($exception->getMessage());
+            return response()->json([
+                "message"  => $exception->getMessage(),
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+
 }

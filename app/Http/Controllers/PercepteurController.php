@@ -107,4 +107,10 @@ class PercepteurController extends Controller
     {
         //
     }
+
+
+    public function listPercepteur(){
+        $percepteurs  = ModelsPercepteur::all();
+        return  response()->json($percepteurs, 200); ;
+    }
 }
