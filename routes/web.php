@@ -225,6 +225,13 @@ Route::group(['middleware' => ['auth']], function () {
      Route::delete('categorie-dysfonctionnnemt/{id}','CategorieDysfonctionnemtsController@destroy')->name('categorie-dysfonctionnnemt.destroy');
 
 
+     Route::get('passage-manuel/create','PassageManuelController@create')->name('passage-manuel.create');
+     Route::get('passage-manuel/index','PassageManuelController@index')->name('passage-manuel.index');
+     Route::get('passage-manuel/{passageManuel}','PassageManuelController@edit')->name('passage-manuel.edit');
+     Route::get('passage-manuel','PassageManuelController@list')->name('passage-manuel.list');
+     Route::post('passage-manuel','PassageManuelController@store')->name('passage-manuel.store');
+     Route::put('passage-manuel/{id}','PassageManuelController@update')->name('passage-manuel.update');
+     Route::delete('passage-manuel/{id}','PassageManuelController@destroy')->name('passage-manuel.destroy');
     #Route::resources([]);
 
 });
