@@ -86,6 +86,24 @@
 <li>
 
 
+    <a href="#" class="menu-toggle">
+        <span>Dysfonctionnnements</span>
+    </a>
+    <ul class="ml-menu">
+
+        <li>
+            <a href="{{route('dysfonctionnnemt.index')}}">Afficher</a>
+        </li>
+        <li>
+            <a href="{{route('dysfonctionnnemt.create')}}">Ajouter</a>
+
+        </li>
+    </ul>
+</li>
+
+<li>
+
+
     <a class="menu-toggle">
         <span>Surcharges annulés</span>
     </a>
