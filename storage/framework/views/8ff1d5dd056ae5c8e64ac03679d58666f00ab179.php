@@ -86,6 +86,24 @@
 <li>
 
 
+    <a href="#" class="menu-toggle">
+        <span>Point de passage manuel</span>
+    </a>
+    <ul class="ml-menu">
+
+        <li>
+            <a href="<?php echo e(route('passage-manuel.index')); ?>">Afficher</a>
+        </li>
+        <li>
+            <a href="<?php echo e(route('passage-manuel.create')); ?>">Ajouter</a>
+
+        </li>
+    </ul>
+</li>
+
+<li>
+
+
     <a class="menu-toggle">
         <span>Surcharges annulés</span>
     </a>

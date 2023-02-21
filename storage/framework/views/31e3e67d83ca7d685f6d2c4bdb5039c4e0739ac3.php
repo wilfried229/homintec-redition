@@ -1,21 +1,19 @@
-@extends('template-redition')
+<?php $__env->startSection('css'); ?>
 
-@section('css')
-
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('header')
+<?php $__env->startSection('header'); ?>
 <div class="block-header">
     <h2>
         Ajouter un point passage manuel
         <small><a href="" target="_blank"> </a></small>
     </h2>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -23,7 +21,7 @@
                 <h2>
                     Point passage manuel
 
-                    <a href="{{route('passage-manuel.index')}}" style="float: right;" class="btn btn-info">Retour</a>
+                    <a href="<?php echo e(route('passage-manuel.index')); ?>" style="float: right;" class="btn btn-info">Retour</a>
 
                 </h2>
 
@@ -34,14 +32,14 @@
 
                     <div class="col-md-12">
 
-                        @include('partials.flash')
+                        <?php echo $__env->make('partials.flash', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 
-                        <form id="store-recette" action="{{route('passage-manuel.store')}}" method="post" class="form">
-                            @csrf
+                        <form id="store-recette" action="<?php echo e(route('passage-manuel.store')); ?>" method="post" class="form">
+                            <?php echo csrf_field(); ?>
 
-                           @include('dashboard.passage-manuel.formulaire',['voies'=>$voies,'passageManuel'=>$passageManuel,"vacations"=>$vacations,'percepteurs'=>$percepteurs])
+                           <?php echo $__env->make('dashboard.passage-manuel.formulaire',['voies'=>$voies,'passageManuel'=>$passageManuel,"vacations"=>$vacations,'percepteurs'=>$percepteurs], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             <br>
                         </form>
 
@@ -53,10 +51,10 @@
             </div>
         </div>
     </div>
-    @endsection
+    <?php $__env->stopSection(); ?>
 
 
-    @section('js')
+    <?php $__env->startSection('js'); ?>
 
     <script>
         $('#submit').click(function(e){
@@ -170,4 +168,6 @@ if( $.inArray($("#voies").val(), myArray) != -1 ) {
     </script>
 
 
-    @endsection
+    <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('template-redition', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/homintec-redition/resources/views/dashboard/passage-manuel/create.blade.php ENDPATH**/ ?>

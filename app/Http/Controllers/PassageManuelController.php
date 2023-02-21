@@ -55,7 +55,7 @@ class PassageManuelController extends Controller
         $vacations = Vacation::all();
         $percepteurs = Percepteur::all();
 
-        return view("dashboard.passage-manuel.create",compact('passageManuel','voies','vacstions','percepteurs'));
+        return view("dashboard.passage-manuel.create",compact('passageManuel','voies','vacations','percepteurs'));
     }
 
     /**

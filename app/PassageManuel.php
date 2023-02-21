@@ -19,7 +19,7 @@ class PassageManuel extends Model
         "percepteur_id",
         "trafic_mode_avant_manuel",
         "recette_mode_avant_manuel",
-        "trafic_compte_nanuel",
+        "trafic_compte_manuel",
         "equip_recette",
         "trafic_mode_apres_manuel",
         "recette_mode_apres_manuel",
