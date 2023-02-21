@@ -172,10 +172,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('percepteur/update/{id}','PercepteurController@update')->name('percepteur.update');
     Route::get('percepteur/edit/{id}','PercepteurController@edit')->name('percepteur.edit');
 
-
-
-
-
     Route::post('vacation-save','VacationController@store')->name('vacation.store');
     Route::get('vacation-index','VacationController@index')->name('vacation.index');
     Route::get('vacation-create','VacationController@create')->name('vacation.create');
@@ -228,6 +224,16 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     #Route::resources([]);
+
+    Route::get('passage-manuel/create','PassageManuelController@create')->name('dysfonctionnnemt.create');
+    Route::get('passage-manuel/index','PassageManuelController@index')->name('passage-manuel.index');
+    Route::get('passage-manuel/{passageManuel}','PassageManuelController@edit')->name('passage-manuel.edit');
+    Route::get('passage-manuel','PassageManuelController@list')->name('passage-manuel.list');
+    Route::post('passage-manuel','PassageManuelController@store')->name('passage-manuel.store');
+    Route::put('passage-manuel/{id}','PassageManuelController@update')->name('passage-manuel.update');
+    Route::delete('passage-manuel/{id}','PassageManuelController@destroy')->name('passage-manuel.destroy');
+
+
 
 });
 
