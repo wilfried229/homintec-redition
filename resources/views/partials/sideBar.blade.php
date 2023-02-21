@@ -87,7 +87,7 @@
 
 
     <a href="#" class="menu-toggle">
-        <span>Dysfonctionnnements</span>
+        <span>Point de passage manuel</span>
     </a>
     <ul class="ml-menu">
 
