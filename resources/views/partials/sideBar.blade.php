@@ -92,10 +92,10 @@
     <ul class="ml-menu">
 
         <li>
-            <a href="{{route('dysfonctionnnemt.index')}}">Afficher</a>
+            <a href="{{route('passage-manuel.index')}}">Afficher</a>
         </li>
         <li>
-            <a href="{{route('dysfonctionnnemt.create')}}">Ajouter</a>
+            <a href="{{route('passage-manuel.create')}}">Ajouter</a>
 
         </li>
     </ul>
