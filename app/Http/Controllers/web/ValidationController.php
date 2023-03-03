@@ -184,7 +184,7 @@ class ValidationController extends Controller
          $cabines  = $this->searchValidationStatistque($dateDebut,$dateFin,$request->percepteur)->first();
 
         // dd($cabines);
-         return view('dashboard.validation.get-search-statistique', compact('dataSta','dataStatistiques', 'sum', 'percepteurs', 'cabines','dateDebut','dateFin',"categories"));
+         return view('dashboard.validation.get-search-statistique', compact('dataStatistiques', 'sum', 'percepteurs', 'cabines','dateDebut','dateFin',"categories"));
      }
 
 
