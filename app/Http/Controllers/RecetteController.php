@@ -40,9 +40,7 @@ class RecetteController extends Controller
 
     public function searchIndexPercepteur(){
 
-
         $sites = Site::all();
-
         return view('dashboard.recettes.percepeteur-get',compact('sites'));
     }
 

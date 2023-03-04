@@ -39,10 +39,6 @@ class PointsEssieuxController extends Controller
             array_push($reauesAll,$value->id);
         }
 
-
-        dd($pointEssieux);
-
-        dd($reauesAll);
         return view('dashboard.points.essieux',compact('pointEssieux','site'));
     }
 }

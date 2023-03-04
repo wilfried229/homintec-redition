@@ -40,6 +40,10 @@
             <a href="{{route('recette.create-index')}}">Ajouter</a>
 
         </li>
+        <li>
+            <a href="{{route('recette.percepteur.index')}}">Par percepteur</a>
+
+        </li>
 
 
     </ul>

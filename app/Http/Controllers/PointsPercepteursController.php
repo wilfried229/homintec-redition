@@ -17,7 +17,6 @@ class PointsPercepteursController extends Controller
 
     public function searchIndex(){
 
-
         $sites = Site::all();
 
         return view('dashboard.points.percepteur-search',compact('sites'));

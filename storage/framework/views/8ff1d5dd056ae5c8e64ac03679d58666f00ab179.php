@@ -40,6 +40,10 @@
             <a href="<?php echo e(route('recette.create-index')); ?>">Ajouter</a>
 
         </li>
+        <li>
+            <a href="<?php echo e(route('recette.percepteur.index')); ?>">Par percepteur</a>
+
+        </li>
 
 
     </ul>
