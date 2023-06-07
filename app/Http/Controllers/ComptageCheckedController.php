@@ -60,7 +60,9 @@ class ComptageCheckedController extends Controller
                 'is_close' => false,
                 'nbre_vehicule' => $request->nbre_vehicule,
                 'refer' => Hash::make(now()),
-
+                ComptageChecked::OUTPUTlOOP =>$request->outputLoop,
+                ComptageChecked::INlOOP =>$request->input_loop,
+                ComptageChecked::IsVIOLATION =>$request->isViloation,
             ]);
 
             return response()->json($checkedComptagePanne, 200);
