@@ -2,11 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Services\ComptageServices;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class DbImportCommand extends Command
+class AlertViolation extends Command
 {
     /**
      * The name and signature of the console command.
@@ -35,16 +36,16 @@ class DbImportCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return int
      */
     public function handle()
     {
-        //
-
         try {
             Log::debug("Début d'excécution ");
-            DB::unprepared(file_get_contents('full/path/to/dump.sql'));
-            Log::debug("Fin d'excécution importation Db");
+            $logs  = new  ComptageServices();
+            $logs->alertViolation();
+            Log::debug("Fin d'excécution du validation");
+
         } catch (\Illuminate\Database\QueryException $ex) {
             Log::error($ex->getMessage());
         } catch (\Exception $ex) {

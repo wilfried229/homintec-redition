@@ -7,9 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Percepteur extends Model
 {
     //
-    protected $table = "percepteurs";
 
+    public const TABLE_NAME = "percepteur";
+    protected $table = self::TABLE_NAME;
+
+    public const NOM = "nom";
+    public const PRENOM = "prenom";
+    public const ID = "id";
     protected $fillable =  [
-        'id','nom','prenom'
+        self::ID,
+        self::NOM,
+        self::PRENOM
     ];
 }

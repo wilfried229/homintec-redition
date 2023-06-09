@@ -149,7 +149,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2020_05_11_115926_create_redition_table', 1),
 (20, '2020_05_20_092751_create_fiche_techniques_table', 1),
 (21, '2020_06_08_113713_create_rediton_uemo_table', 1),
-(22, '2020_06_08_114149_create_rediton2_table', 1),
+(22, '2020_06_08_114149_create_Validation_table', 1),
 (23, '2020_06_09_191717_create_surcharge_uemoi_table', 1),
 (24, '2020_06_30_163202_create_comptages_table', 1),
 (25, '2020_11_05_154847_create_hydrocarbure_table', 1),
@@ -213,10 +213,10 @@ CREATE TABLE `redition` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rediton2`
+-- Table structure for table `Validation`
 --
 
-CREATE TABLE `rediton2` (
+CREATE TABLE `Validation` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `percepteur` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
@@ -404,9 +404,9 @@ ALTER TABLE `redition`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `rediton2`
+-- Indexes for table `Validation`
 --
-ALTER TABLE `rediton2`
+ALTER TABLE `Validation`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -487,9 +487,9 @@ ALTER TABLE `redition`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `rediton2`
+-- AUTO_INCREMENT for table `Validation`
 --
-ALTER TABLE `rediton2`
+ALTER TABLE `Validation`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --

@@ -26,8 +26,6 @@ class CreateComptageCheckedsTable extends Migration
             $table->integer(ComptageChecked::NBRE_GATE)->default(0);
             $table->boolean(ComptageChecked::IS_CLOSE)->default(false);
             $table->boolean(ComptageChecked::IsVIOLATION)->default(false);
-            $table->boolean(ComptageChecked::INlOOP)->default(false);
-            $table->boolean(ComptageChecked::OUTPUTlOOP)->default(false);
             $table->boolean(ComptageChecked::IS_SENT)->default(false);
             $table->string(ComptageChecked::REFER)->unique();
             $table->timestamps();

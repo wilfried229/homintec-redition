@@ -23,7 +23,7 @@
                         </div>
                         <div class="content">
                             <div class="text text-bold text-center text-lg"></div>
-                            <h2>{{\App\Models \Rediton2::where('cabine',$voie->nom)->where('site',$voie->site()->first()->nom)->whereDate('date',now())->sum('prix') ?? "0"}}</h2>
+                            <h2>{{\App\Models \Validation::where('cabine',$voie->nom)->where('site',$voie->site()->first()->nom)->whereDate('date',now())->sum('prix') ?? "0"}}</h2>
                         </div>
                     </div>
                 </a>

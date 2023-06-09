@@ -8,7 +8,7 @@ use App\Console\Commands\LogAdmin;
 use App\Douane;
 use App\Models\logs;
 use App\Models\Recette;
-use App\Models\Rediton2;
+use App\Models\Validation;
 use App\Penalites;
 use App\Ptac;
 use App\Transfert;
@@ -395,11 +395,11 @@ class AddDataServiceOnline
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
-            if(Rediton2::where('refer','=',$value->refer)->count()!=0){
+            if(Validation::where('refer','=',$value->refer)->count()!=0){
                 return response()->json(3, 200);
             }
 
-            $redition2 = new Rediton2();
+            $redition2 = new Validation();
             $redition2->percepteur = $value->percepteur;
             $redition2->site = $value->site;
 			$redition2->heure = $value->heure;
@@ -586,7 +586,7 @@ class AddDataServiceOnline
     public function sendvalidation(){
 
         try {
-         $validations  = Rediton2::where('is_sent',0)->get();
+         $validations  = Validation::where('is_sent',0)->get();
         //// $urls = 'gate24-ekpe.ngrok.io/gate24/public';
          foreach ($validations as $key => $validation) {
              # code...\\
@@ -616,7 +616,7 @@ class AddDataServiceOnline
             $resp = $this->hitCurl($url,$param,'POST');
             if($resp['statusCode'] == 200){
                 $apiData = json_decode($resp['resp']);
-                $valida = Rediton2::find($validation->id);
+                $valida = Validation::find($validation->id);
                 $valida->is_sent =1;
                 $valida->save();
             }

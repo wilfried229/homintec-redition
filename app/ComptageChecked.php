@@ -21,8 +21,8 @@ class ComptageChecked extends Model
     public const IS_CLOSE = "is_close";
     public const NBRE_GATE = "nbre_gate";
     public const IsVIOLATION = "isViloation";
-    public const OUTPUTlOOP = "outputLoop";
-    public const INlOOP = "inputLoop";
+  //  public const OUTPUTlOOP = "outputLoop";
+    ///public const INlOOP = "inputLoop";
     public const IS_SENT = "is_sent";
 
     protected $fillable = [

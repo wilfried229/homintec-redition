@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ComptageChecked;
 use App\Comptages;
-use App\Models\Rediton2;
+use App\Models\Validation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -15,11 +15,29 @@ class ComptagesController extends Controller
 {
 
 
+    public function index()
+    {
+        $comptages = Comptages::where('is_sent')->take(10)->get();
+    foreach ($comptages  as $key => $value) {
+        $value->is_sent = true;
+        $value->save();
+    }
+
+    return response()->json($comptages, 200);
+    }
+
+
+
     public function  checkedComptage(Request $request){
 
        /// 'date_interruption' => Carbon::now('Africa/Lagos'),
 
     }
+
+    public function create(){
+
+    }
+
 
     public function store(Request $request)
     {
@@ -40,16 +58,24 @@ class ComptagesController extends Controller
 
     }
 
-    public function index()
-    {
-        $comptages = Comptages::where('is_sent')->take(10)->get();
-    foreach ($comptages  as $key => $value) {
-        $value->is_sent = true;
-        $value->save();
+    public function show($id){
+
     }
 
-    return response()->json($comptages, 200);
+    public function edit($id){
+
     }
+
+    public function update($id){
+
+
+    }
+
+    public function destroy($id){
+
+    }
+
+
 
 
 

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Hydrocarbure;
 use App\Models\RecetteTogo;
 use App\Models\Redition;
-use App\Models\Rediton2 ;
+use App\Models\Validation ;
 use App\Models\ReditonUemoi;
 
 use Illuminate\Http\Request;
@@ -25,7 +25,7 @@ class ReditionWebController extends Controller
 
      public function redition2(Request $request){
 
-        $reditions2 = Rediton2::whereDate('created_at',$request->date)->orderBy('id','DESC')->get();
+        $reditions2 = Validation::whereDate('created_at',$request->date)->orderBy('id','DESC')->get();
         return view('dashboard.redition2',compact('reditions2'));
      }
 
@@ -35,13 +35,13 @@ class ReditionWebController extends Controller
    }
      public function reditionByDay(){
 
-      $reditions2 = Rediton2::whereDate('created_at',now())->orderBy('id','DESC')->get();
+      $reditions2 = Validation::whereDate('created_at',now())->orderBy('id','DESC')->get();
       ////dd($reditions2);
       return view('dashboard.redition2',compact('reditions2'));
    }
    public function reditionByMonth(){
 
-      $reditions2 = Rediton2::whereMonth('created_at',now())->orderBy('id','DESC')->get();
+      $reditions2 = Validation::whereMonth('created_at',now())->orderBy('id','DESC')->get();
       return view('dashboard.redition2',compact('reditions2'));
    }
 

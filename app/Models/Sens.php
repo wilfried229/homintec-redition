@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sens extends Model
 {
-    
-    protected $table = "sens";
 
-    protected $fillabble =  ['id','nom','site_id'];
+    protected $table = "sens";
+    public const TABLE_NAME= "sens";
+    public const NOM  = 'nom';
+    public const SITE_ID= "site_id";
+    protected $fillabble =  [
+        'id','nom','site_id'
+    ];
 
 }

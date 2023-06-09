@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CashFlow;
-use App\Models\Rediton2;
+use App\Models\Validation;
 use App\Models\Site;
 use Illuminate\Http\Request;
 
@@ -33,7 +33,7 @@ class HomeController extends Controller
         $recettes = [];
         foreach ($sites as $key => $value) {
             # code...
-            $recette = Rediton2::where('site',$value)->whereDate('created_at',now())->sum('prix');
+            $recette = Validation::where('site',$value)->whereDate('created_at',now())->sum('prix');
                 $data = [
                     'site' =>$value->nom,
                     'recette' =>$recette

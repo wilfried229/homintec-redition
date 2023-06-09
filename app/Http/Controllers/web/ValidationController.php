@@ -5,7 +5,7 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use App\Models\Percepteur;
 use Illuminate\Http\Request;
-use App\Models\Rediton2 ;
+use App\Models\Validation ;
 use App\Models\Site;
 use App\Voie;
 use Carbon\Carbon;
@@ -20,7 +20,7 @@ class ValidationController extends Controller
 
     $sites  = Site::all();
     $voies  = Voie::all();
-    $prix = Rediton2::whereDate('created_at',now())->sum('prix');
+    $prix = Validation::whereDate('created_at',now())->sum('prix');
     return view('dashboard.validation.index',compact('sites','voies','prix'));
 
     }
@@ -69,7 +69,7 @@ class ValidationController extends Controller
         $dateDebut  = Carbon::create($dtStart);
         $dateFin  = Carbon::create($dtEnd);
   /// dd($dateDebut->toDateString());
-       $reditions = Rediton2::
+       $reditions = Validation::
         whereBetween('date', [$dateDebut->toDateString(),$dateFin->toDateString()])
        ->whereTime('heure', '>=', $dateDebut->toTimeString())
        ->whereTime('heure', '<=', $dateFin->toTimeString())
@@ -101,7 +101,7 @@ class ValidationController extends Controller
         $dateFin  = Carbon::create($dtEnd);
 
        // dd($request->all());
-        $reditions = Rediton2::
+        $reditions = Validation::
         whereBetween('date', [$dateDebut->toDateString(),$dateFin->toDateString()])
         ->where('site',$request->site)
         ->where('cabine',$request->cabine)
@@ -122,7 +122,7 @@ class ValidationController extends Controller
 
     public function validationRecettesBycabine($voie){
   /// dd($dateDebut->toDateString());
-       $reditions = Rediton2::
+       $reditions = Validation::
         where('cabine',$voie)
         ->whereDate('date',now())
         ->orderBy('id','DESC');

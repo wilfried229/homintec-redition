@@ -51,17 +51,15 @@ class ComptageCheckedController extends Controller
         try {
             //code...
             $checkedComptagePanne  = ComptageChecked::create([
-                'site' => $request->site,
-                'cabine' => $request->cabine,
-                'percepteur' => $request->percepteur,
-                'date' => $request->date,
-                'heure' => $request->heure,
-                'prix' => $request->prix,
-                'is_close' => false,
-                'nbre_vehicule' => $request->nbre_vehicule,
-                'refer' => Hash::make(now()),
-                ComptageChecked::OUTPUTlOOP =>$request->outputLoop,
-                ComptageChecked::INlOOP =>$request->input_loop,
+                ComptageChecked::SITE => $request->site,
+                ComptageChecked::CABINE => $request->cabine,
+                ComptageChecked::PERCEPTEUR => $request->percepteur,
+                ComptageChecked::DATE => $request->date,
+                ComptageChecked::HERURE=> $request->heure,
+                ComptageChecked::PRIX => $request->prix,
+                ComptageChecked::IS_CLOSE => false,
+                ComptageChecked::NBR_VEHICULE=> $request->nbre_vehicule,
+                ComptageChecked::REFER => Hash::make(now()),
                 ComptageChecked::IsVIOLATION =>$request->isViloation,
             ]);
 
