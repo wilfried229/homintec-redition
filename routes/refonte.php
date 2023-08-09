@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], function () {
+Route::group([  'middleware' => 'throttle:600000,1'], function () {
+
+    Route::group(['middleware' => 'authkey'], function() {
 
 
     /// Route crud redition
@@ -38,21 +40,10 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
 
 
     ]);
+    Route::get('validation-list','Redition2Controller@getListValidation');
 
+    Route::post('auth/login','UsersController@login');
 
-    //// penlaiter track
-    Route::post('track/penalite/store','PenalitesController@trakPenalite');
-    Route::post('fiche/techniques/store','TechniquesController@saveFiches');
-    Route::get('fiche/techniques/get/','TechniquesController@getficheTechniques');
-    Route::get('checked/connexion','TechniquesController@checkedConnexion');
-    Route::post('comptage-sms','ComptagesController@comptageSms');
-    Route::get('testupdate','CashFlowController@testUpdateRequest');
-    Route::post('logs-save','LogController@store');
-    Route::post('update-validation','Redition2Controller@updateDataValidatedRecevied');
-    Route::post('validation-comptage','Redition2Controller@updateValidation');
-
-    Route::post('comptage-rapport-byPercepteur','ComptageCheckedController@getCompatgeByDateByPercepeteur');
-    Route::post('comptage-rapport-all-cabine','ComptageCheckedController@getCompatgeByDateByPercepeteurAll');
-    Route::post('close-account-percepteur','ComptageCheckedController@closeAccountByPercepteur');
+    });
 
 });

@@ -10,10 +10,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
-class validationController extends Controller
+class Redition2Controller extends Controller
 {
 
 
+
+    public function getListValidation(){
+
+        $validations  = Validation::paginate(5);
+        return $validations;
+    }
 
     public function getValidationByVoie(){
 
@@ -44,8 +50,6 @@ class validationController extends Controller
      */
     public function index()
     {
-
-
         $validation =  Validation::where('is_sent','=',false)->take(10)->get();
         foreach ($validation  as $key => $value) {
             $value->is_sent = true;

@@ -21,6 +21,8 @@ class CreateViolationsTable extends Migration
             $table->string('site');
             $table->string('sens');
             $table->string('refer')->unique();
+            $table->integer('viole');
+
             $table->boolean('is_sent')->default(false);
             $table->timestamps();
         });

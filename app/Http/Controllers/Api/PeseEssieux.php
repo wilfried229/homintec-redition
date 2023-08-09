@@ -15,7 +15,7 @@ class PeseEssieux extends Controller
     public function index()
     {
         //
-        
+
     }
 
     /**

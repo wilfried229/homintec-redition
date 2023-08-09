@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\NotificationService;
 use App\Violation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -10,6 +11,9 @@ use Illuminate\Support\Facades\Log;
 
 class ViolationController extends Controller
 {
+
+
+    public const VIOL  = [1,2,3,4,5,6];
     /**
      * Display a listing of the resource.
      *
@@ -51,8 +55,11 @@ class ViolationController extends Controller
                 'heure'=>$request->heure,
                 'percepteur'=>$request->percepteur,
                 'sens'=>$request->sens,
+                'viol'=>$request->viol,
                 'refer'=>Hash::make(Carbon::now('Africa/Lagos'))
             ]);
+
+            $this->alertViloation($violation);
 
             return response()->json($violation, 200);
             //code...
@@ -106,5 +113,51 @@ class ViolationController extends Controller
     public function destroy(Violation $violation)
     {
         //
+    }
+
+
+    public static function  alertViloation($violation){
+
+
+        switch ($violation->viole) {
+
+                case '1':
+
+                    NotificationService::sendSms('91538546',"$violation->site / $violation->voie : Relais retiré");
+                    # code...
+                    break;
+
+                    case '2':
+                    NotificationService::sendSms('91538546',"$violation->site / $violation->voie : Siréne retiré");
+
+                        # code...
+                        break;
+
+                        case '3':
+                    NotificationService::sendSms('91538546',"$violation->site / $violation->voie : Courant retiré");
+
+                            # code...
+                            break;
+
+                            case '4':
+                                # code...
+                    NotificationService::sendSms('91538546',"$violation->site / $violation->voie : Arrete pc");
+
+                                break;
+
+                                case '5':
+                                    # code...
+
+                    NotificationService::sendSms('91538546',"$violation->site / $violation->voie : Boucle Comptage arreter");
+
+                                    break;
+
+                                    case '6':
+                                        # code...
+                    NotificationService::sendSms('91538546',"$violation->site / $violation->voie : Barrier lever");
+
+                                        break;
+
+        }
     }
 }

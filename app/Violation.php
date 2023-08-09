@@ -15,7 +15,8 @@ class Violation extends Model
         'percepteur',
         'site',
         'sens',
-        'refer'
+        'refer',
+        'viole'
     ];
 
 }

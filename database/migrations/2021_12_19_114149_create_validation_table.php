@@ -40,11 +40,14 @@ class CreateValidationTable extends Migration
             $table->boolean(Validation::IsVALID)->default(false);
             $table->boolean(Validation::IsLOOP)->default(false);
             $table->boolean(Validation::IsVIOLATION)->default(false);
-            $table->unsignedInteger('sites_id');
-            $table->unsignedInteger('voies_id');
-            $table->unsignedInteger('percepteurs_id');
-            $table->unsignedInteger('vacations_id');
-            $table->foreign('')->references('id')->on("percepteur");
+            $table->string(Validation::CLASSE)->nullable();
+            $table->string(Validation::NOMENCLATURE)->nullable();
+            $table->string(Validation::PLAQUE_PERCPETEUR)->nullable();
+            $table->unsignedInteger('sites_id')->nullable();
+            $table->unsignedInteger('voies_id')->nullable();
+            $table->unsignedInteger('percepteurs_id')->nullable();
+            $table->unsignedInteger('vacations_id')->nullable();
+          //  $table->foreign('percepteurs_id')->references('id')->on("percepteurs");
 
             $table->timestamps();
         });

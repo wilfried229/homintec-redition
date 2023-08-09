@@ -39,6 +39,11 @@ class   Validation extends Model
     public const IsVALID = "isValid";
     public const IsLOOP = "isLoop";
     public const IsVIOLATION = "isViloation";
+    public const CLASSE = "classe";
+    public const NOMENCLATURE = "nomenclature";
+    public const PLAQUE_PERCPETEUR = "plaque_percepteur";
+
+
 
 
     protected $fillable = [

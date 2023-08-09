@@ -9,6 +9,7 @@ use DateServices;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Support\Facades\Hash;
 
 class ValidationServices {
@@ -44,13 +45,27 @@ class ValidationServices {
         $validation->over =$request->over;
         $validation->caisse = $request->caisse;
         $validation->plaque  = $request->plaque;
+        $validation->plaque_percepteur  = $request->plaque_percepteur;
         $validation->visa  = $request->visa;
         $validation->isValid  = $request->isValid;
         $validation->refer =  DateServices::cryptDate($request->site);
         $validation->isLoop  = $request->isLoop;
         $validation->isViloation  = $isviolation;
+        $validation->classe  = $request->isviolation;
+        $validation->nomenclature  = $request->nomenclature;
+
 
         $validation->save();
+
+        if ($validation->essieu_capter != $validation->essieu_corriger) {
+            # code...
+            NotificationService::sendSms('91538546',"violation de donnée : Essieu capter par le système : $validation->essieu_capter ; Essieu Ajuster par le percepteur : $validation->essieu_corriger");
+        }
+
+        if ($validation->plaque_percepteur != $validation->plaque_percepteur) {
+            # code...
+            NotificationService::sendSms('91538546',"violation de donnée : Plaque capter par le système : $validation->plaque; Plaque Ajuster par le percepteur : $validation->plaque_percepteur");
+        }
         return $validation;
     }
 
