@@ -114,4 +114,6 @@ return [
 
     'password_timeout' => 10800,
 
+    "token" => "TZHCDWDk5wZ6dFOHNx0b5ksNFUDDtIIKiSHqt9HcvtbC3NA2mvcyt9vWboqOjpKmLRa9fsjQH27VIbkg"."19943",
+
 ];

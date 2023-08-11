@@ -79,7 +79,6 @@ class UsersController extends Controller
     public function store(Request $request)
     {
 
-
         if ($request->password != $request->password_confirmation) {
         Session::flash('error', 'Mot de passe non identique');
             return back();

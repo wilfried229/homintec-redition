@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Log;
 
 class Redition2Controller extends Controller
 {
-
-
-
     public function getListValidation(){
 
         $validations  = Validation::paginate(5);

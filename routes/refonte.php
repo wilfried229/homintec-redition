@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+ Route::post('auth/signin','Api\AuthController@login');
+ Route::post('auth/signup','Api\AuthController@register');
 
 Route::group([  'middleware' => 'throttle:600000,1'], function () {
 
@@ -38,11 +40,12 @@ Route::group([  'middleware' => 'throttle:600000,1'], function () {
         'logsAdmin' =>'LogsAdminController',
         'ptac' =>'PtacController',
 
-
     ]);
     Route::get('validation-list','Redition2Controller@getListValidation');
 
     Route::post('auth/login','UsersController@login');
+   
+
 
     });
 

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
 Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], function () {
 
 
@@ -34,9 +35,7 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
         'violation' =>'ViolationController',
         'transfert'=>'TransfertController',
         'logsAdmin' =>'LogsAdminController',
-        'ptac' =>'PtacController',
-
-
+        'ptac' =>'PtacController'
     ]);
 
 

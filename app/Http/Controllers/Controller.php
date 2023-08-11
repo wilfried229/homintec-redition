@@ -32,4 +32,34 @@ class Controller extends BaseController
  *
  */
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+
+
+    public function sendResponse($result, $message)
+    {
+    	$response = [
+            'success' => true,
+            'data'    => $result,
+            'message' => $message,
+        ];
+
+
+        return response()->json($response, 200);
+    }
+
+
+    /**
+     * return error response.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sendError($error, $message, $code=404)
+    {
+    	$response = [
+            'success' => false,
+            'data' => $error,
+            'message' => $message,
+        ];
+        return response()->json($response, $code);
+    }
 }
