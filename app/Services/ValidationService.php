@@ -22,10 +22,10 @@ class ValidationServices {
     public static function save(Request $request) {
 
         $isviolation = false;
-        if ($request->isValid == false && $request->isLoop == true) {
+      /*   if ($request->isValid == false && $request->isLoop == true) {
             # code...
              $isviolation = true;
-        }
+        } */
         $validation = new Validation();
         $validation->percepteur = $request->percepteur;
         $validation->site = $request->site;
@@ -48,7 +48,7 @@ class ValidationServices {
         $validation->plaque_percepteur  = $request->plaque_percepteur;
         $validation->visa  = $request->visa;
         $validation->isValid  = $request->isValid;
-        $validation->refer =  DateServices::cryptDate($request->site);
+        $validation->refer = $request->refer;
         $validation->isLoop  = $request->isLoop;
         $validation->isViloation  = $isviolation;
         $validation->classe  = $request->isviolation;
@@ -57,7 +57,7 @@ class ValidationServices {
 
         $validation->save();
 
-        if ($validation->essieu_capter != $validation->essieu_corriger) {
+       /*  if ($validation->essieu_capter != $validation->essieu_corriger) {
             # code...
             NotificationService::sendSms('91538546',"violation de donnée : Essieu capter par le système : $validation->essieu_capter ; Essieu Ajuster par le percepteur : $validation->essieu_corriger");
         }
@@ -66,7 +66,7 @@ class ValidationServices {
             # code...
             NotificationService::sendSms('91538546',"violation de donnée : Plaque capter par le système : $validation->plaque; Plaque Ajuster par le percepteur : $validation->plaque_percepteur");
         }
-        return $validation;
+        */ return $validation;
     }
 
 

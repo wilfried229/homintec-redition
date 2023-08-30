@@ -50,12 +50,18 @@ class Redition2Controller extends Controller
      */
     public function index()
     {
-        $validation =  Validation::where('is_sent','=',false)->take(10)->get();
-        foreach ($validation  as $key => $value) {
-            $value->is_sent = true;
-            $value->save();
+        try {
+            
+            $validation =  Validation::where('is_sent','=',false)->take(10)->get();
+            foreach ($validation  as $key => $value) {
+                $value->is_sent = true;
+                $value->save();
+            }
+            return response()->json($validation, 200);
+        } catch (\Throwable $th) {
+            return response()->json(0, 400);
+            
         }
-        return response()->json($validation, 200);
     }
 
     /**
