@@ -34,7 +34,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('reddition2', 'web\ReditionWebController@redition2')->name('redition2.searh-post');
     Route::get('redition2-search', 'web\ReditionWebController@reditionSearch')->name('redition2.search');
     Route::get('redition2-day', 'web\ReditionWebController@reditionByDay')->name('redition2.day');
-    Route::get('redition2-month', 'web\ReditionWebController@reditionByMonth')->name('redition2.month');
+    Route::get('reditionth', 'web\ReditionWebController@reditionByMonth')->name('redition2.month');
+    Route::get('redit-month', 'web\ReditionWebController@reditionByMonth')->name('redition.list.sites');
+    Route::get('redion2-month', 'web\ReditionWebController@reditionByMonth')->name('redition2.list.sites');
+
+
+
+
 
 
     Route::get('redition-uemoi', 'web\ReditionWebController@reditionuemoaInter')->name('redition.uemoi.list.sites');

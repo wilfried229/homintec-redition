@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CashFlow;
+use App\Models\Recette;
 use App\Models\Rediton2;
 use App\Models\Site;
 use Illuminate\Http\Request;
@@ -26,6 +27,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+
+        $recetteMontantVL = Recette::where('sites_id',"1")
+        ->whereIn('voies_id',[19,20,21,22,23])//VL
+        ->whereMonth('created_at',now())
+        ->sum('nombre_vehicule');
+        $recetteMontantPL = Recette::where('sites_id',"1")
+        ->whereIn('voies_id',[17,18])//PL
+        ->whereMonth('created_at',now())
+        ->sum('nombre_vehicule');
+        dd($recetteMontantPL,$recetteMontantVL);
+        dd($recetteMontantVL);
 
 
         $sites = Site::all();
