@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreatePercepteursTable extends Migration
 {
     /**
-     * Run the migrations.      
+     * Run the migrations.
      *
      * @return void
      */
@@ -17,7 +17,8 @@ class CreatePercepteursTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-
+            $table->string('codePercepteur')->unique();
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

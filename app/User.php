@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Percepteur;
 use App\Models\Site;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role','site_id'
+        'name', 'email', 'password','role','site_id','tel'
     ];
 
     /**
@@ -41,4 +42,6 @@ class User extends Authenticatable
     public function site(){
         return $this->belongsTo(Site::class,'site_id','id');
     }
+
+
 }

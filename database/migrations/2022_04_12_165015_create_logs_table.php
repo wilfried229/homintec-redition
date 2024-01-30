@@ -15,14 +15,18 @@ class CreateLogsTable extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->string('percepteur');
+            $table->unsignedBigInteger('percepteur_id');
             $table->date('date');
             $table->time('heure');
             $table->string("cabine");
             $table->string("site");
             $table->string("old_percepteur");
             $table->string("agent_homintec");
-            $table->string("statut");
+            $table->boolean("statut")->default(false);
+            $table->boolean("isCabin")->default(false);
+            $table->boolean("isStart")->default(false);
+            $table->dateTime('cabin_at')->nullable();
+            $table->dateTime('start_at')->nullable();
 			$table->boolean('is_sent')->default(false);
 			$table->string('refer')->unique();
             $table->timestamps();

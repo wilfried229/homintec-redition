@@ -2,17 +2,15 @@
 
 namespace App\Services;
 
-use App\ComptageChecked;
 use App\Models\Validation;
 use Carbon\Carbon;
-use DateServices;
+use DateService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Support\Facades\Hash;
 
-class ValidationServices {
+class ValidationService {
 
     public function __construct() {
         //self::initBinance();
@@ -26,12 +24,14 @@ class ValidationServices {
             # code...
              $isviolation = true;
         }
+
+        $lastValidationPrix = Validation::where('cabine','=',$request->cabine)->latest()->first()->caisse  ?? 0;
         $validation = new Validation();
         $validation->percepteur = $request->percepteur;
         $validation->site = $request->site;
-        $validation->heure = $request->heure;
-        $validation->date = $request->date;
-        $validation->date_api = DateServices::dateNow();
+        $validation->heure = Carbon::now('Africa/Lagos')->format('H:i');
+        $validation->date = Carbon::now('Africa/Lagos');
+        $validation->date_api =Carbon::now('Africa/Lagos');
         $validation->cabine  = $request->cabine;
         $validation->prix = (int)$request->prix;
         $validation->sens = $request->sens;
@@ -43,20 +43,22 @@ class ValidationServices {
         $validation->essieu_corriger =$request->essieu_corriger;
         $validation->ptt = $request->ptt;
         $validation->over =$request->over;
-        $validation->caisse = $request->caisse;
+        $validation->caisse = (int)$lastValidationPrix + (int)$request->prix ;
         $validation->plaque  = $request->plaque;
         $validation->plaque_percepteur  = $request->plaque_percepteur;
         $validation->visa  = $request->visa;
-        $validation->isValid  = $request->isValid;
-        $validation->refer =  DateServices::cryptDate($request->site);
-        $validation->isLoop  = $request->isLoop;
-        $validation->isViloation  = $isviolation;
-        $validation->classe  = $request->isviolation;
-        $validation->nomenclature  = $request->nomenclature;
+        $validation->isValid  = $request->isValid ?? 1;
+        $validation->refer = Hash::make(Carbon::now('Africa/Lagos'));
+        $validation->isLoop  = $request->isLoop ?? 0;
+        $validation->isViloation  = $isviolation ?? 0;
+        $validation->classe  = $request->classe ?? "OK" ;
+        $validation->nomenclature  = $request->nomenclature  ?? "OKK";
 
 
         $validation->save();
 
+        Log::info($validation);
+/*
         if ($validation->essieu_capter != $validation->essieu_corriger) {
             # code...
             NotificationService::sendSms('91538546',"violation de donnée : Essieu capter par le système : $validation->essieu_capter ; Essieu Ajuster par le percepteur : $validation->essieu_corriger");
@@ -65,8 +67,8 @@ class ValidationServices {
         if ($validation->plaque_percepteur != $validation->plaque_percepteur) {
             # code...
             NotificationService::sendSms('91538546',"violation de donnée : Plaque capter par le système : $validation->plaque; Plaque Ajuster par le percepteur : $validation->plaque_percepteur");
-        }
-        return $validation;
+        } */
+        return  self::reponseReturn($validation);
     }
 
 
@@ -92,6 +94,45 @@ class ValidationServices {
             //throw $th;
         }
 
+    }
+
+
+    public static function reponseReturn($reponse)
+    {
+
+
+        $reponse = [
+            'id' => $reponse->id,
+           "percepteur" => $reponse->percepteur,
+           "site" => $reponse->site,
+           "heure" => $reponse->heure,
+           "date" =>  $reponse->date,
+           "date_api" =>  $reponse->date_api,
+           "cabine"  => $reponse->cabine,
+           "prix" => (int)$reponse->prix,
+           "sens" => $reponse->sens,
+           "type" => $reponse->type,
+           "ptrac" => $reponse->ptrac,
+           "cmaes" => $reponse->cmaes,
+           "es" =>$reponse->es,
+           "essieu_capter" =>$reponse->essieu_capter,
+           "essieu_corriger" =>$reponse->essieu_corriger,
+           "ptt" => $reponse->ptt,
+           "over" =>$reponse->over,
+           "caisse" =>(int) $reponse->caisse ,
+           "plaque"  => $reponse->plaque,
+           "plaque_percepteur"  => $reponse->plaque_percepteur,
+           "visa"  => $reponse->visa,
+           "isValid"  =>(int) $reponse->isValid ,
+           "refer" => $reponse->refer,
+           "isLoop"  =>(int) $reponse->isLoop,
+           "isViloation"  =>(int) $reponse->isviolation ,
+           "classe"  => $reponse->classe ,
+           "nomenclature"  => $reponse->nomenclature  ,
+            'created_at' => $reponse->created_at->format('d/m/Y'),
+            'updated_at' => $reponse->updated_at,
+        ];
+        return $reponse;
     }
 
 

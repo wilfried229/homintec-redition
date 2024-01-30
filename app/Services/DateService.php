@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
-class DateServices{
+class DateService{
 
 
 
@@ -16,7 +16,7 @@ class DateServices{
 
     public static function cryptDate($site){
         $now=  Carbon::now('Africa/Lagos');
-        $crytp =Hash::make($now.$site);
+        $crytp =Hash::make($now);
         return $crytp;
     }
 

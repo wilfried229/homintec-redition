@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Redition;
 use App\Models\Validation;
+use App\Services\ValidationService;
 use App\Services\ValidationServices;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -71,7 +72,7 @@ class Redition2Controller extends Controller
             if (Validation::where('refer','=',$request->refer)->count() !=0) {
                 return response()->json('Existe deja', 200);
             }
-            $validation = ValidationServices::save($request);
+            $validation = ValidationService::save($request);
             return response()->json($validation, 200);
             } catch (\Exception $ex) {
                 Log::error($ex->getMessage());

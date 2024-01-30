@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Percepteur as ModelsPercepteur;
-use App\percepteur;
+use App\Models\Percepteur;
+use App\Services\PercepteurService;
 use Illuminate\Http\Request;
 
 
@@ -18,7 +18,7 @@ class PercepteurController extends Controller
     {
         //
 
-        $percepteurs = ModelsPercepteur::all();
+        $percepteurs = Percepteur::all();
         return view("dashboard.percepteurs.index",compact('percepteurs'));
 
     }
@@ -45,9 +45,7 @@ class PercepteurController extends Controller
     public function store(Request $request)
     {
         //
-
-        ModelsPercepteur::create($request->all());
-
+        PercepteurService::saveLoginPercepteur($request);
         return  redirect()->route('percepteur.index');
     }
 
@@ -71,7 +69,7 @@ class PercepteurController extends Controller
     public function edit( $id)
     {
         //
-        $percepteur  = ModelsPercepteur::find($id);
+        $percepteur  = Percepteur::find($id);
 
         return view('dashboard.percepteurs.update',compact('percepteur'));
     }
@@ -86,7 +84,7 @@ class PercepteurController extends Controller
     public function update(Request $request,  $id)
     {
 
-        $percepteur  = ModelsPercepteur::find($id);
+        $percepteur  = Percepteur::find($id);
 
         $percepteur->update($request->all());
 
@@ -106,5 +104,17 @@ class PercepteurController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function savePercepteurForApi(Request  $request){
+
+        try {
+           $percepteur =   PercepteurService::saveLoginPercepteur($request);
+            return response()->json($percepteur, 200);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json($th->getMessage(), 400);
+
+        }
     }
 }

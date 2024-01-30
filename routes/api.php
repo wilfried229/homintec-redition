@@ -35,8 +35,12 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
         'violation' =>'ViolationController',
         'transfert'=>'TransfertController',
         'logsAdmin' =>'LogsAdminController',
-        'ptac' =>'PtacController'
+        'ptac' =>'PtacController',
+        'percepteur' =>'PercepteurController'
+
     ]);
+
+    Route::post('save-percepteur','PercepteurController@savePercepteurForApi');
 
 
     //// penlaiter track
@@ -47,6 +51,11 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
     Route::post('comptage-sms','ComptagesController@comptageSms');
     Route::get('testupdate','CashFlowController@testUpdateRequest');
     Route::post('logs-save','LogController@store');
+    Route::post('logs-percepteur','LogController@getPercepteurVacationLog');
+    Route::post('login-percepteur','LogController@loginPercepteur');
+
+
+
     Route::post('update-validation','Redition2Controller@updateDataValidatedRecevied');
     Route::post('validation-comptage','Redition2Controller@updateValidation');
 
