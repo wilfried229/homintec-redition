@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ComptageChecked;
 use App\Comptages;
-use App\Models\Validation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 

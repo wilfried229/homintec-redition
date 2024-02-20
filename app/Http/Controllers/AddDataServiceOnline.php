@@ -34,7 +34,6 @@ class AddDataServiceOnline
 
         $recettes = Recette::whereBetween('date_recettes', ["2022-02-01", " 2022-07-18"])->get();
 
-
         foreach ($recettes as $key => $value) {
             # code...
 
@@ -65,7 +64,7 @@ class AddDataServiceOnline
             //code...
                    //
         $url = "$url/validation/public/api/homintec/transfert";
-        $resp = $this->hitCurl($url,[],'GET');
+        $resp = self::hitCurl($url,[],'GET');
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
@@ -113,7 +112,7 @@ class AddDataServiceOnline
             //code...
                    //
         $url = "$url/validation/public/api/homintec/douanes";
-        $resp = $this->hitCurl($url,[],'GET');
+        $resp = self::hitCurl($url,[],'GET');
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
@@ -169,7 +168,7 @@ class AddDataServiceOnline
             //code...
                    //
         $url = "$url/validation/public/api/homintec/ajustement";
-        $resp = $this->hitCurl($url,[],'GET');
+        $resp = self::hitCurl($url,[],'GET');
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
@@ -216,7 +215,7 @@ class AddDataServiceOnline
             //code...
                    //
         $url = "$url/validation/public/api/homintec/logs-save";
-        $resp = $this->hitCurl($url,[],'GET');
+        $resp = self::hitCurl($url,[],'GET');
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
@@ -261,7 +260,7 @@ class AddDataServiceOnline
             //code...
                    //
         $url = "$url/validation/public/api/homintec/violation";
-        $resp = $this->hitCurl($url,[],'GET');
+        $resp = self::hitCurl($url,[],'GET');
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
@@ -305,7 +304,7 @@ class AddDataServiceOnline
 
                           //
         $url = "$url/validation/public/api/homintec/penalite";
-        $resp = $this->hitCurl($url,[],'GET');
+        $resp = self::hitCurl($url,[],'GET');
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
@@ -348,7 +347,7 @@ class AddDataServiceOnline
             //code...
                      //
         $url = "$url/validation/public/api/homintec/comptageChecked";
-        $resp = $this->hitCurl($url,[],'GET');
+        $resp = self::hitCurl($url,[],'GET');
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
@@ -391,7 +390,7 @@ class AddDataServiceOnline
             //code...
                      //
         $url = "$url/validation/public/api/homintec/validation";
-        $resp = $this->hitCurl($url,[],'GET');
+        $resp = self::hitCurl($url,[],'GET');
         if($resp['statusCode'] == 200){
             $apiData = json_decode($resp['resp']);
             foreach ($apiData as $key => $value) {
@@ -463,7 +462,7 @@ class AddDataServiceOnline
             ];
 
             $url = "https://reddition.gate24-benin.com/api/homintec/logsAdmin";
-            $resp = $this->hitCurl($url,$param,'POST');
+            $resp = self::hitCurl($url,$param,'POST');
             $apiData = "Getting header code {$resp['statusCode']}";
 
             if($resp['statusCode'] == 200){
@@ -506,7 +505,7 @@ class AddDataServiceOnline
             ];
 
             $url = "https://reddition.gate24-benin.com/api/homintec/ptac";
-            $resp = $this->hitCurl($url,$param,'POST');
+            $resp = self::hitCurl($url,$param,'POST');
             $apiData = "Getting header code {$resp['statusCode']}";
 
             if($resp['statusCode'] == 200){
@@ -554,7 +553,7 @@ class AddDataServiceOnline
             ];
 
             $url = "https://reddition.gate24-benin.com/api/homintec/logs-save";
-            $resp = $this->hitCurl($url,$param,'POST');
+            $resp = self::hitCurl($url,$param,'POST');
             $apiData = "Getting header code {$resp['statusCode']}";
 
             if($resp['statusCode'] == 200){
@@ -583,16 +582,19 @@ class AddDataServiceOnline
 
 
 
-    public function sendvalidation(){
+    public static function sendvalidation(){
 
         try {
          $validations  = Validation::where('is_sent',0)->get();
         //// $urls = 'gate24-ekpe.ngrok.io/gate24/public';
+
+        Log::info($validations);
+
          foreach ($validations as $key => $validation) {
              # code...\\
             $param = [
-              "percepteur" => $validation->percepteur,
-              "site" => $validation->site,
+              "percepteur_id" => $validation->percepteur_id,
+              "voie_id" => $validation->voie_id,
               "date" => $validation->date,
               "date_api" => $validation->date_api,
               "heure" => $validation->heure,
@@ -610,17 +612,27 @@ class AddDataServiceOnline
               "caisse" => $validation->caisse,
               "plaque"  => $validation->plaque,
               "visa" =>$validation->visa,
+              "nomenclature" =>$validation->nomenclature,
+
             ];
 
-            $url = "https://reddition.gate24-benin.com/api/homintec/validation";
-            $resp = $this->hitCurl($url,$param,'POST');
-            if($resp['statusCode'] == 200){
-                $apiData = json_decode($resp['resp']);
+            $url = "http://192.168.1.109:3001/api/v1/validation";
+
+            $response = Http::post($url,$param
+            );
+
+            // Récupérer le corps de la réponse au format JSON
+            $data = $response->json();
+
+            //$resp = self::hitCurl($url,$param,'POST');
+            if($response->status()==201){
+               /// $apiData = json_decode($resp['resp']);
                 $valida = Validation::find($validation->id);
                 $valida->is_sent =1;
                 $valida->save();
             }
             ///$abonnes->update(['solde' =>$recharge->montant]);
+            Log::info($response->status());
 
          }
 
@@ -638,7 +650,7 @@ class AddDataServiceOnline
 
 
 
-    function hitCurl($url,$param = [],$type = 'POST'){
+    public static function hitCurl($url,$param = [],$type = 'POST'){
         $ch = curl_init();
         if(strtoupper($type) == 'GET'){
             $param = http_build_query((array)$param);

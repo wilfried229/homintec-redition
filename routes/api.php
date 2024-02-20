@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('run-command','Api\ValidationController@runSchedule');
 
 
 Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], function () {
@@ -21,21 +24,10 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
 
     /// Route crud redition
     Route::resources([
-        'reddition' => 'ReditionController',
-        'surcharge'  => 'SurchargesController',
         'validation'=> 'Redition2Controller',
-        'redditionUemoi' => 'ReditionUemoiController',
-        'surchargeUemoi' => 'SurchargeUemoiController',
         'comptage' => 'ComptagesController',
-        'hydrocarbure' => 'HydrocarbureController',
-        'cashFlow'=>'CashFlowController',
         'penalite'=>'PenalitesController',
-        'douanes'=>'DouaneController',
         'comptageChecked' => 'ComptageCheckedController',
-        'violation' =>'ViolationController',
-        'transfert'=>'TransfertController',
-        'logsAdmin' =>'LogsAdminController',
-        'ptac' =>'PtacController',
         'percepteur' =>'PercepteurController'
 
     ]);
@@ -59,8 +51,5 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
     Route::post('update-validation','Redition2Controller@updateDataValidatedRecevied');
     Route::post('validation-comptage','Redition2Controller@updateValidation');
 
-    Route::post('comptage-rapport-byPercepteur','ComptageCheckedController@getCompatgeByDateByPercepeteur');
-    Route::post('comptage-rapport-all-cabine','ComptageCheckedController@getCompatgeByDateByPercepeteurAll');
-    Route::post('close-account-percepteur','ComptageCheckedController@closeAccountByPercepteur');
 
 });

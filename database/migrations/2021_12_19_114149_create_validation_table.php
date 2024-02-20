@@ -16,11 +16,9 @@ class CreateValidationTable extends Migration
     {
         Schema::create(Validation::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->string(Validation::PERCEPTEUR);
             $table->dateTime(Validation::DATE);
             $table->time(Validation::HEURE);
             $table->string(Validation::PRIX);
-            $table->string(Validation::SITE)->nullable();
             $table->string(Validation::CABINE);
             $table->string(Validation::SENS);
             $table->string(Validation::TYPE);
@@ -43,11 +41,8 @@ class CreateValidationTable extends Migration
             $table->string(Validation::CLASSE)->nullable();
             $table->string(Validation::NOMENCLATURE)->nullable();
             $table->string(Validation::PLAQUE_PERCPETEUR)->nullable();
-            $table->unsignedInteger('sites_id')->nullable();
-            $table->unsignedInteger('voies_id')->nullable();
-            $table->unsignedInteger('percepteurs_id')->nullable();
-            $table->unsignedInteger('vacations_id')->nullable();
-          //  $table->foreign('percepteurs_id')->references('id')->on("percepteurs");
+            $table->unsignedInteger(Validation::VOIE_ID)->nullable();
+            $table->unsignedInteger(Validation::PERCEPTEUR_ID)->nullable();
 
             $table->timestamps();
         });

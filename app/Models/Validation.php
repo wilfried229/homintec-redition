@@ -11,12 +11,12 @@ class   Validation extends Model
     public const TABLE_NAME = "validation";
     protected $table = self::TABLE_NAME;
 
-    public const PERCEPTEUR = "percepteur";
+    //public const PERCEPTEUR = "percepteur";
     public const PERCEPTEUR_ID = "percepteur_id";
-    public const SITE_ID = "site_id";
+    public const VOIE_ID = "voie_id";
 
 
-    public const SITE = "site";
+   /// public const SITE = "site";
     public const HEURE = "heure";
     public const DATE = "date";
     public const DATE_API = "date_api";
@@ -47,8 +47,8 @@ class   Validation extends Model
 
 
     protected $fillable = [
-        self::PERCEPTEUR,
-        self::SITE,
+        self::PERCEPTEUR_ID,
+        self::VOIE_ID,
         self::HEURE,
         self::DATE,
         self::DATE_API,

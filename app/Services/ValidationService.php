@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Validation;
 use Carbon\Carbon;
-use DateService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -27,8 +26,8 @@ class ValidationService {
 
         $lastValidationPrix = Validation::where('cabine','=',$request->cabine)->latest()->first()->caisse  ?? 0;
         $validation = new Validation();
-        $validation->percepteur = $request->percepteur;
-        $validation->site = $request->site;
+        $validation->percepteur_id = $request->percepteur_id;
+        $validation->voie_id = $request->voie_id;
         $validation->heure = Carbon::now('Africa/Lagos')->format('H:i');
         $validation->date = Carbon::now('Africa/Lagos');
         $validation->date_api =Carbon::now('Africa/Lagos');
@@ -57,18 +56,9 @@ class ValidationService {
 
         $validation->save();
 
-        Log::info($validation);
-/*
-        if ($validation->essieu_capter != $validation->essieu_corriger) {
-            # code...
-            NotificationService::sendSms('91538546',"violation de donnée : Essieu capter par le système : $validation->essieu_capter ; Essieu Ajuster par le percepteur : $validation->essieu_corriger");
-        }
+       // return  self::reponseReturn($validation);
+       return  response()->json('success', 200);
 
-        if ($validation->plaque_percepteur != $validation->plaque_percepteur) {
-            # code...
-            NotificationService::sendSms('91538546',"violation de donnée : Plaque capter par le système : $validation->plaque; Plaque Ajuster par le percepteur : $validation->plaque_percepteur");
-        } */
-        return  self::reponseReturn($validation);
     }
 
 

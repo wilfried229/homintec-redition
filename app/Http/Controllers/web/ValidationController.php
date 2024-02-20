@@ -9,6 +9,7 @@ use App\Models\Validation ;
 use App\Models\Site;
 use App\Voie;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Artisan;
 
 class ValidationController extends Controller
 {
@@ -130,4 +131,6 @@ class ValidationController extends Controller
         $sum = $reditions2->last()->prix;
       return view('dashboard.redition2',compact('reditions2','sum'));
     }
+
+
 }

@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
        // Commands\SendDataReddition::class,
-       // Commands\GetValidation::class,
+      ///Commands\GetValidation::class,
        // Commands\getComptageChecked::class,
         //Commands\getViolation::class,
         //Commands\getAjustement::class,
@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
         //Commands\getPenalite::class,
         //Commands\getDouanes::class,
         //Commands\getLoging::class,
-        //Commands\LogAdmin::class,
+        Commands\DbImportCommand::class,
     ];
 
     /**
@@ -37,8 +37,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
 
     {
+
+        ///$schedule->command('command:name')->everyMinute()->withoutOverlapping();
         ////$schedule->command('command:sendDataReddition')->everyMinute();
-       // $schedule->command('command:getvalidation')->everyMinute();
+        $schedule->command('command:name')->everyMinute();
        // $schedule->command('command:getComptageChecked')->everyMinute();
        // $schedule->command('command:getViolation')->everyMinute();
        // $schedule->command('command:getAjustement')->everyMinute();
@@ -47,14 +49,6 @@ class Kernel extends ConsoleKernel
         ///$schedule->command('command:getLoging')->everyMinute();
 
         ///$schedule->command('command:logAdmin')->everyMinute();
-
-
-        $schedule->call(function (){
-            $splus  = new  AddDataServiceOnline();
-            $splus->suplusManquant();
-            Log::debug("add suplus manquant...");
-
-        })->everyMinute()->runInBackground();
 
         // $schedule->command('inspire')->hourly();
     }

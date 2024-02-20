@@ -2,18 +2,18 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Http\Controllers\AddDataServiceOnline;
-
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-class GetValidation extends Command
+
+class ValidationSyncho extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:getvalidation';
+    protected $signature = 'command:validationSyncho';
 
     /**
      * The console command description.
@@ -35,14 +35,14 @@ class GetValidation extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return int
      */
     public function handle()
     {
         try {
             Log::debug("Début d'excécution ");
             $logs  = new  AddDataServiceOnline();
-            $logs->getValidation("http://192.168.1.147");
+            $logs->sendvalidation();
             Log::debug("Fin d'excécution du validation");
 
         } catch (\Illuminate\Database\QueryException $ex) {
