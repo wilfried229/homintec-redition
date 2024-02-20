@@ -24,16 +24,14 @@ class ValidationService {
              $isviolation = true;
         }
 
-        $lastValidationPrix = Validation::where('cabine','=',$request->cabine)->latest()->first()->caisse  ?? 0;
+        $lastValidationPrix = Validation::where('voie_id','=',$request->voie_id)->latest()->first()->caisse  ?? 0;
         $validation = new Validation();
         $validation->percepteur_id = $request->percepteur_id;
         $validation->voie_id = $request->voie_id;
         $validation->heure = Carbon::now('Africa/Lagos')->format('H:i');
         $validation->date = Carbon::now('Africa/Lagos');
         $validation->date_api =Carbon::now('Africa/Lagos');
-        $validation->cabine  = $request->cabine;
         $validation->prix = (int)$request->prix;
-        $validation->sens = $request->sens;
         $validation->type = $request->type;
         $validation->ptrac = $request->ptrac;
         $validation->cmaes = $request->cmaes;
@@ -52,12 +50,10 @@ class ValidationService {
         $validation->isViloation  = $isviolation ?? 0;
         $validation->classe  = $request->classe ?? "OK" ;
         $validation->nomenclature  = $request->nomenclature  ?? "OKK";
-
-
         $validation->save();
 
        // return  self::reponseReturn($validation);
-       return  response()->json('success', 200);
+       return  $validation;
 
     }
 
@@ -123,6 +119,19 @@ class ValidationService {
             'updated_at' => $reponse->updated_at,
         ];
         return $reponse;
+    }
+
+
+
+    public function validationRecettesBycabine($voie_id,$dateDebut, $dateFin){
+        /// dd($dateDebut->toDateString());
+             $validation = Validation::
+              where('voie_id',$voie_id)
+              ->whereBetween('date', [
+                Carbon::create($dateDebut)->toDateString(),
+                Carbon::create($dateFin)->toDateString() ])
+              ->orderBy('id','DESC');
+            return  $validation;
     }
 
 

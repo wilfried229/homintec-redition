@@ -19,8 +19,6 @@ class CreateValidationTable extends Migration
             $table->dateTime(Validation::DATE);
             $table->time(Validation::HEURE);
             $table->string(Validation::PRIX);
-            $table->string(Validation::CABINE);
-            $table->string(Validation::SENS);
             $table->string(Validation::TYPE);
             $table->string(Validation::PTRAC)->nullable();
             $table->string(Validation::CMAES)->nullable();

@@ -120,19 +120,5 @@ class ReditionWebController extends Controller
 
       return view('dashboard.hydro-search');
    }
-
-
-
-
-
-     public function recetteTogo($site){
-
-        $recetteTogo  = RecetteTogo::where('site',$site)->orderBy('id','DESC')->get();
-        return view('dashboard.recette-togo',compact('recetteTogo'));
-
-     }
-
-
-
     //
 }

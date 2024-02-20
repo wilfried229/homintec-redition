@@ -92,10 +92,10 @@ class ValidationController extends Controller
     {
         try {
             if (Validation::where('refer','=',$request->refer)->count() !=0) {
-                return response()->json('Existe deja', 200);
+                return response()->json('Existe deja', 400);
             }
-            $validation = $this->validationService->save($request);
-            return response()->json($validation, 200);
+             $this->validationService->save($request);
+            return response()->json("success", 200);
             } catch (\Exception $ex) {
                 Log::error($ex->getMessage());
                 return response()->json($ex->getMessage(),400);

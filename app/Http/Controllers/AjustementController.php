@@ -17,13 +17,8 @@ class AjustementController extends Controller
      */
     public function index()
     {
-
-        $ajustements =  Ajustement::where('is_sent','=',false)->take(10)->get();
-        foreach ($ajustements  as $key => $value) {
-            $value->is_sent = true;
-            $value->save();
-        }
-
+        $ajustements = Ajustement::where('is_sent', false)->take(10)->get();
+        Ajustement::whereIn('id', $ajustements->pluck('id'))->update(['is_sent' => true]);
         return response()->json($ajustements, 200);
 
     }
@@ -51,22 +46,24 @@ class AjustementController extends Controller
 
         try {
 
-            $ajustement = new Ajustement();
-            $ajustement->site = $request->site;
-			$ajustement->heure = $request->heure;
-            $ajustement->date = $request->date;
-            $ajustement->cabine  = $request->cabine;
-            $ajustement->sens = $request->sens;
-            $ajustement->type = $request->type;
-            $ajustement->essieu =$request->essieu;
-            $ajustement->admin = $request->admin;
-            $ajustement->essieu_capte =$request->essieu_capte;
-            $ajustement->plaque = $request->plaque;
+            $ajustement = Ajustement::create([
+                'site' => $request->site,
+                'heure' => $request->heure,
+                'date' => $request->date,
+                'cabine' => $request->cabine,
+                'sens' => $request->sens,
+                'type' => $request->type,
+                'essieu' => $request->essieu,
+                'admin' => $request->admin,
+                'essieu_capte' => $request->essieu_capte,
+                'plaque' => $request->plaque,
+                'refer' => Hash::make($this->dateNow()),
+            ]);
 
-            $ajustement->refer =  Hash::make($this->dateNow());
-            $ajustement->save();
+            // Ou, si vous voulez également récupérer l'ajustement après la sauvegarde :
+            // $ajustement = Ajustement::create([...]);
 
-            return response()->json($ajustement, 200);
+            return response()->json($ajustement, 201); // 201 Created
 
             } catch (\Exception $ex) {
                 //throw $th;

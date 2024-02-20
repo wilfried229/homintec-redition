@@ -24,7 +24,7 @@ Route::group(['prefix' => 'homintec','middleware' => 'throttle:600000,1'], funct
 
     /// Route crud redition
     Route::resources([
-        'validation'=> 'Redition2Controller',
+        'validation'=> 'Api\ValidationController',
         'comptage' => 'ComptagesController',
         'penalite'=>'PenalitesController',
         'comptageChecked' => 'ComptageCheckedController',

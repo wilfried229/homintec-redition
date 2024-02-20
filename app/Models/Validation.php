@@ -20,8 +20,6 @@ class   Validation extends Model
     public const HEURE = "heure";
     public const DATE = "date";
     public const DATE_API = "date_api";
-    public const CABINE = "cabine";
-    public const SENS = "sens";
     public const PRIX = "prix";
     public const TYPE = "type";
     public const PTRAC = "ptrac";
@@ -52,8 +50,6 @@ class   Validation extends Model
         self::HEURE,
         self::DATE,
         self::DATE_API,
-        self::CABINE,
-        self::SENS,
         self::PRIX,
         self::TYPE,
         self::PTRAC,
