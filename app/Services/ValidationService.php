@@ -135,4 +135,19 @@ class ValidationService {
     }
 
 
+
+  public static  function generateDigits($length) {
+        $add = 1;
+        $max = 12 - $add;
+        if ($length > $max) {
+            return self::generateDigits($max) . self::generateDigits($length - $max);
+        }
+        $max = pow(10, $length + $add);
+        $min = $max / 10;
+        $number = mt_rand($min, $max);
+
+        return strval($number);
+    }
+
+
 }

@@ -436,6 +436,8 @@ class AddDataServiceOnline
                     "plaque"  => $validation->plaque,
                     "visa" => $validation->visa,
                     "nomenclature" => $validation->nomenclature,
+                    "refer" => $validation->refer,
+
 
                     // ... autres champs ...
                 ])->toArray();
