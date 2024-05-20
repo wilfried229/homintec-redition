@@ -41,6 +41,7 @@ class ValidationService {
         $validation->es =$request->es;
         $validation->essieu_capter =$request->essieu_capter;
         $validation->essieu_corriger =$request->essieu_corriger;
+        $validation->image_es =$request->image_es;
         $validation->ptt = $request->ptt;
         $validation->over =$request->over;
         $validation->caisse = (int)$lastValidationPrix + (int)$request->prix ;

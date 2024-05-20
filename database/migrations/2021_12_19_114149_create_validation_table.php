@@ -29,6 +29,7 @@ class CreateValidationTable extends Migration
             $table->string(Validation::ES)->nullable();
             $table->string(Validation::ESSIEU_CAPTER)->nullable();
             $table->string(Validation::ESSIEU_CORRIGER)->nullable();
+            $table->string(Validation::IMAGE_ES)->nullable();
             $table->string(Validation::PTT)->nullable();
             $table->string(Validation::OVER)->nullable();
             $table->string(Validation::CAISSE);

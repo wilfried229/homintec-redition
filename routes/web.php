@@ -18,7 +18,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-    Route::get('validation','web\ValidationController@index')->name('validation.index');
+    Route::get('validation','web\ValidationController@index')->name('validation.index.web');
     Route::get('validation-voie/{voie}','web\ValidationController@validationRecettesBycabine')->name('validation.by.voies');
     Route::get('validation-date','web\ValidationController@validationRecettesByDateByPecepteur')->name('validation.percpeteur.action');
     Route::get('validation-by-site','web\ValidationController@validationRecettesByDateBySite')->name('validation.site.action');

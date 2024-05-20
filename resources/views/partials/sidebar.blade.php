@@ -35,7 +35,7 @@
 
 
                             <li>
-                                <a href="{{ route('validation.index') }}">validation temps reels </a>
+                                <a href="{{ route('validation.index.web') }}">validation temps reels </a>
                             </li>
 
 
@@ -55,7 +55,7 @@
                         </ul>
                     <li>
 
-                        <li>
+                    {{--     <li>
                             <a href="#" class="menu-toggle">
                                 <span>Comptage </span>
                             </a>
@@ -66,12 +66,12 @@
                                     <a href="{{ route('search.comptage.vacation.view') }}">Comptage  par vacation</a>
                                 </li>
 
-                 
+
 
 
                             </ul>
-                        <li>
-                        <a href="#" class="menu-toggle">
+                        <li> --}}
+                       {{--  <a href="#" class="menu-toggle">
                             <span>CashFlow</span>
                         </a>
                         <ul class="ml-menu">
@@ -83,7 +83,7 @@
                                 <a href="{{ route('cash-flow.indexMonth') }}">Par Mois</a>
 
                             </li>
-                        </ul>
+                        </ul> --}}
                     </li>
                 @endif
 
