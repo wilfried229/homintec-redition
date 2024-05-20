@@ -27,6 +27,8 @@ class   Validation extends Model
     public const ES = "es";
     public const ESSIEU_CAPTER = "essieu_capter";
     public const ESSIEU_CORRIGER = "essieu_corriger";
+    public const IMAGE_ES = "image_es";
+
     public const PTT = "ptt";
     public const OVER = "over";
     public const CAISSE = "caisse";
