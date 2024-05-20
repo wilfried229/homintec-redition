@@ -437,8 +437,6 @@ class AddDataServiceOnline
                     "visa" => $validation->visa,
                     "nomenclature" => $validation->nomenclature,
                     "refer" => $validation->refer,
-
-
                     // ... autres champs ...
                 ])->toArray();
 
