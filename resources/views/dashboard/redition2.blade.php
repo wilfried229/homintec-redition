@@ -21,7 +21,6 @@
                 <h2>
                     Validation
                 </h2>
-
                 <form action="{{route('validation.percpeteur.action')}}" method="get" class="form">
 
                     @csrf
@@ -63,6 +62,7 @@
             <div class="body">
                 <div class="table-responsive">
                     <h1>{{ $sum }} XFOD</h1>
+
                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
@@ -84,6 +84,7 @@
                             </thead>
                             <tfoot>
                             <tr>
+                                <th>Image</th>
                                 <th>Site</th>
                                 <th>Date</th>
 								<th>Heure</th>
@@ -103,6 +104,10 @@
                             <tbody>
                             @foreach ($reditions2 as $redition)
                             <tr>
+                                <td>
+                                    <img src="{{$redition->image_es}}" alt="" width="50" height="50" srcset="">
+                                </td>
+
                             <td>{{$redition->site}}</td>
                             <td>{{$redition->date}}</td>
 							<td>{{$redition->heure}}</td>
@@ -117,11 +122,9 @@
                             <th>{{$redition->prix}}</th>
                             <td>{{$redition->caisse}}</td>
                             <td>{{$redition->plaque}}</td>
-
                             </tr>
                             @endforeach
                             </tbody>
-
                     </table>
                 </div>
             </div>

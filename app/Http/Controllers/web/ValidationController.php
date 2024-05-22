@@ -127,7 +127,9 @@ class ValidationController extends Controller
         ->whereDate('date',now())
         ->orderBy('id','DESC');
         $reditions2 =$reditions->get();
-        $sum = $reditions2->last()->prix;
-      return view('dashboard.redition2',compact('reditions2','sum'));
+        $sum = $reditions2->last() ? $reditions->last()->prix : 0;
+        $percepteurs = Percepteur::all();
+        $voies  = Voie::all();
+      return view('dashboard.redition2',compact('reditions2','sum','percepteurs','voies'));
     }
 }

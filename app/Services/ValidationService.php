@@ -19,11 +19,6 @@ class ValidationService {
 
     public static function save(Request $request) {
 
-        $isviolation = false;
-        if ($request->isValid == false && $request->isLoop == true) {
-            # code...
-             $isviolation = true;
-        }
 
         $lastValidationPrix = Validation::where('cabine','=',$request->cabine)->latest()->first()->caisse  ?? 0;
         $validation = new Validation();
@@ -51,14 +46,11 @@ class ValidationService {
         $validation->isValid  = $request->isValid ?? 1;
         $validation->refer = Hash::make(Carbon::now('Africa/Lagos'));
         $validation->isLoop  = $request->isLoop ?? 0;
-        $validation->isViloation  = $isviolation ?? 0;
+        $validation->isViloation  = $request->isViloation ?? 0;
         $validation->classe  = $request->classe ?? "OK" ;
         $validation->nomenclature  = $request->nomenclature  ?? "OKK";
-
-
         $validation->save();
 
-        Log::info($validation);
 /*
         if ($validation->essieu_capter != $validation->essieu_corriger) {
             # code...
