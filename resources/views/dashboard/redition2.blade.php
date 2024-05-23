@@ -66,6 +66,7 @@
                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
+                                <th>Image Essieu</th>
                                 <th>Site</th>
                                 <th>Date</th>
 								<th>Heure</th>
@@ -75,6 +76,9 @@
                                 <th>ptrac</th>
                                 <th>cmaes</th>
                                 <th>es</th>
+                                <th>es AVCC</th>
+                                <th>es Corrigé</th>
+
                                 <th>ptt</th>
                                 <th>over</th>
                                 <th>Prix</th>
@@ -84,7 +88,7 @@
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>Image</th>
+                                <th>Image Essieu</th>
                                 <th>Site</th>
                                 <th>Date</th>
 								<th>Heure</th>
@@ -94,6 +98,8 @@
                                 <th>ptrac</th>
                                 <th>cmaes</th>
                                 <th>es</th>
+                                <th>es AVCC</th>
+                                <th>es Corrigé</th>
                                 <th>ptt</th>
                                 <th>over</th>
                                 <th>Prix</th>
@@ -105,7 +111,7 @@
                             @foreach ($reditions2 as $redition)
                             <tr>
                                 <td>
-                                    <img src="{{$redition->image_es}}" alt="" width="50" height="50" srcset="">
+                                    <img src="data:image/png;base64,{{$redition->image_es}}" alt="" width="50" height="50" srcset="">
                                 </td>
 
                             <td>{{$redition->site}}</td>
@@ -117,6 +123,8 @@
                             <td>{{$redition->ptrac}}</td>
                             <td>{{$redition->cmaes}}</td>
                             <td>{{$redition->es}}</td>
+                            <td>{{$redition->essieu_capter}}</td>
+                            <td>{{$redition->essieu_corriger}}</td>
                             <th>{{$redition->ptt}}</th>
                             <th>{{$redition->over}}</th>
                             <th>{{$redition->prix}}</th>
